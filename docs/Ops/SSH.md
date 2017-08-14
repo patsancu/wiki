@@ -6,6 +6,46 @@ ssh-keygen -t rsa -C "your-email-address"
 ```
 Be careful that you don't over-write your existing key for your personal account. Instead, when prompted, save the file as id_rsa_key. In my case, I've saved the file to ~/.ssh/id_rsa_other_key
 
+## SSH config
+Taken From [here](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
+### Add aliases
+edit
+~/.ssh/config
+and put this contents of $HOME/.ssh/config
+```
+Host dev
+    HostName dev.example.com
+    Port 22000
+    User fooey
+```
+With this setup, simply
+```bash
+ssh dev
+```
+and the rest will go fine
+
+### Aliases with redirection and more
+Instead of
+```bash
+ssh -f -N -L 9906:127.0.0.1:3306 coolio@database.example.com
+```
+you can add an entry to
+```bash
+~/.ssh/config
+```
+as the following one:
+```bash
+Host tunnel
+    HostName database.example.com
+    IdentityFile ~/.ssh/coolio.example.key
+    LocalForward 9906 127.0.0.1:3306
+    User coolio
+```
+And just
+```bash
+ssh -f -N tunnel
+```
+Which will make it easier to manage
 ## Check key fingerprint
 ### SHA-256
 ```
