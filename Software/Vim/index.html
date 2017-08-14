@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Vim - Patrick's Wiki</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Patrick's Wiki</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../OS/Raspberry-Pi/">Raspberry Pi</a>
+</li>
+                            
+<li >
+    <a href="../../OS/Tips/">Tips</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Linux Unix</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../OS/Linux-Unix/General/">General</a>
+</li>
+            
+<li >
+    <a href="../../OS/Linux-Unix/Gnome/">Gnome</a>
+</li>
+            
+<li >
+    <a href="../../OS/Linux-Unix/Monitor-Linux-Performance/">Monitor Linux Performance</a>
+</li>
+            
+<li >
+    <a href="../../OS/Linux-Unix/Ubuntu/">Ubuntu</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">MacOS</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../OS/MacOS/MacOS-Apps/">MacOS Apps</a>
+</li>
+            
+<li >
+    <a href="../../OS/MacOS/macOS-config/">macOS config</a>
+</li>
+            
+<li >
+    <a href="../../OS/MacOS/macOS/">macOS</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Encryption and hashing</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../OS/encryption-and-hashing/GPG-PGP/">GPG PGP</a>
+</li>
+            
+<li >
+    <a href="../../OS/encryption-and-hashing/sha/">Sha</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ops <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../Ops/Docker/">Docker</a>
+</li>
+                            
+<li >
+    <a href="../../Ops/Encrypt-a-partition-with-DM-Crypt-LUKS/">Encrypt a partition with DM Crypt LUKS</a>
+</li>
+                            
+<li >
+    <a href="../../Ops/Kubernetes/">Kubernetes</a>
+</li>
+                            
+<li >
+    <a href="../../Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/">Mount a remote file system through ssh Using sshfs</a>
+</li>
+                            
+<li >
+    <a href="../../Ops/Network-stuff/">Network stuff</a>
+</li>
+                            
+<li >
+    <a href="../../Ops/New-environment-from-scratch/">New environment from scratch</a>
+</li>
+                            
+<li >
+    <a href="../../Ops/SSH/">SSH</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">AWS</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../Ops/AWS/AWS-Cli-Config/">AWS Cli Config</a>
+</li>
+            
+<li >
+    <a href="../../Ops/AWS/AWS-EC2/">AWS EC2</a>
+</li>
+            
+<li >
+    <a href="../../Ops/AWS/AWS-Kinesis/">AWS Kinesis</a>
+</li>
+            
+<li >
+    <a href="../../Ops/AWS/AWS-Redshift/">AWS Redshift</a>
+</li>
+            
+<li >
+    <a href="../../Ops/AWS/S3/">S3</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Shell</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../Ops/Shell/Script-building/">Script building</a>
+</li>
+            
+<li >
+    <a href="../../Ops/Shell/Scripts/">Scripts</a>
+</li>
+            
+<li >
+    <a href="../../Ops/Shell/Shell/">Shell</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Software <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../Alluxio/">Alluxio</a>
+</li>
+                            
+<li >
+    <a href="../Apache-Drill/">Apache Drill</a>
+</li>
+                            
+<li >
+    <a href="../Atom/">Atom</a>
+</li>
+                            
+<li >
+    <a href="../Guake-Terminal-–-Dual-Monitor-Edits/">Guake Terminal – Dual Monitor Edits</a>
+</li>
+                            
+<li >
+    <a href="../Latex/">Latex</a>
+</li>
+                            
+<li >
+    <a href="../Multimedia/">Multimedia</a>
+</li>
+                            
+<li >
+    <a href="../Skype/">Skype</a>
+</li>
+                            
+<li >
+    <a href="../Tableau/">Tableau</a>
+</li>
+                            
+<li >
+    <a href="../Useful-software/">Useful software</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Vim</a>
+</li>
+                            
+<li >
+    <a href="../VirtualBox/">VirtualBox</a>
+</li>
+                            
+<li >
+    <a href="../ffmpeg/">Ffmpeg</a>
+</li>
+                            
+<li >
+    <a href="../mutt/">Mutt</a>
+</li>
+                            
+<li >
+    <a href="../sublime/">Sublime</a>
+</li>
+                            
+<li >
+    <a href="../tmux/">Tmux</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../Web/Web-browsing-tips/">Web browsing tips</a>
+</li>
+                            
+<li >
+    <a href="../../Web/Web-dev-resources/">Web dev resources</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#">DB</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../dev/DB/Oracle/">Oracle</a>
+</li>
+            
+<li >
+    <a href="../../dev/DB/Postgres/">Postgres</a>
+</li>
+            
+<li >
+    <a href="../../dev/DB/sqlite/">Sqlite</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Java</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../dev/Java/Java-snippets/">Java snippets</a>
+</li>
+            
+<li >
+    <a href="../../dev/Java/Java/">Java</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">VCS</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../dev/VCS/Mercurial/">Mercurial</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Git</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../dev/VCS/Git/Git-problems/">Git problems</a>
+</li>
+            
+<li >
+    <a href="../../dev/VCS/Git/Github/">Github</a>
+</li>
+            
+<li >
+    <a href="../../dev/VCS/Git/Main/">Main</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../python/File-management/">File management</a>
+</li>
+                            
+<li >
+    <a href="../../python/HTTP-Verbs-and-curl-like-stuff/">HTTP Verbs and curl like stuff</a>
+</li>
+                            
+<li >
+    <a href="../../python/Misc/">Misc</a>
+</li>
+                            
+<li >
+    <a href="../../python/Python--Snippets/">Python  Snippets</a>
+</li>
+                            
+<li >
+    <a href="../../python/Python-basics/">Python basics</a>
+</li>
+                            
+<li >
+    <a href="../../python/Python-input-output/">Python input output</a>
+</li>
+                            
+<li >
+    <a href="../../python/Python-libaries/">Python libaries</a>
+</li>
+                            
+<li >
+    <a href="../../python/Python-resources/">Python resources</a>
+</li>
+                            
+<li >
+    <a href="../../python/Utils/">Utils</a>
+</li>
+                            
+<li >
+    <a href="../../python/">Home</a>
+</li>
+                            
+<li >
+    <a href="../../python/libraries/">Libraries</a>
+</li>
+                            
+<li >
+    <a href="../../python/snippets/">Snippets</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Django</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../python/Django/Django-errors/">Django errors</a>
+</li>
+            
+<li >
+    <a href="../../python/Django/Django/">Django</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Useful-software/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../VirtualBox/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#vimrc">Vimrc</a></li>
+        <li class="main "><a href="#regex">Regex</a></li>
+            <li><a href="#_1">&amp;</a></li>
+            <li><a href="#insert-a-space-between-and-the-character-that-follows-it">Insert a space between # and the character that follows it</a></li>
+            <li><a href="#general">general</a></li>
+        <li class="main "><a href="#quickfix">Quickfix</a></li>
+        <li class="main "><a href="#vim-cool-fonts">Vim cool fonts</a></li>
+        <li class="main "><a href="#make-vim-automatically-read-file-as-some-filetype">Make vim automatically read file as some filetype</a></li>
+        <li class="main "><a href="#misc">Misc</a></li>
+            <li><a href="#vim-diff">Vim diff</a></li>
+            <li><a href="#movements">Movements</a></li>
+            <li><a href="#windows-et-al">Windows et al</a></li>
+            <li><a href="#search-and-replace">Search and replace</a></li>
+            <li><a href="#buffers">Buffers</a></li>
+            <li><a href="#external-commands-and-writing-vimtutor-5">External commands and writing (vimtutor# 5)</a></li>
+            <li><a href="#editing">Editing</a></li>
+            <li><a href="#visual-mode">Visual Mode</a></li>
+        <li class="main "><a href="#plugins">Plugins</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="vimrc">Vimrc</h3>
+<ul>
+<li><a href="https://gist.github.com/patsancu/64114dc27543e9b26b7d3180559f5975">Vimrc omorante</a> or https://github.com/spacepluk/vim-config/blob/master/vimrc</li>
+<li><a href="https://www.gregjs.com/vim/2016/do-yourself-a-favor-and-modularize-your-vimrc-init-vim/">Modularize vimrc</a></li>
+</ul>
+<h3 id="regex"><a href="http://vimregex.com/">Regex</a></h3>
+<h4 id="_1">&amp;</h4>
+<p><strong>&amp;</strong> Is replaced with the entire text matched by the search pattern when used in a
+replacement string. This is useful when you want to avoid retyping text:</p>
+<pre><code>:%s/Yazstremski/&amp;, Carl/
+</code></pre>
+
+<p>The replacement will say Yazstremski, Carl. The &amp; can also replace a variable pattern
+(as specified by a regular expression). For example, to surround each line from
+1 to 10 with parentheses, type:</p>
+<pre><code>:1,10s/.*/(&amp;)/
+</code></pre>
+
+<hr />
+<p>from <em>Learning the vi and Vim Editors, Seventh Edition by Arnold Robbins, Elbert Hannah, and Linda Lamb</em>.</p>
+<h4 id="insert-a-space-between-and-the-character-that-follows-it">Insert a space between <code>#</code> and the character that follows it</h4>
+<pre><code>:%s/#\(\w\)/# \1/g
+</code></pre>
+
+<h4 id="general">general</h4>
+<pre><code>.  any character except new line
+\s whitespace character
+\S non-whitespace character
+\d digit
+\D non-digit
+\x hex digit
+\X non-hex digit
+\o octal digit
+\O non-octal digit
+\h head of word character (a,b,c...z,A,B,C...Z and _)
+\H non-head of word character
+\p printable character
+\P like \p, but excluding digits
+\w word character
+\W non-word character
+\a alphabetic character
+\A non-alphabetic character
+\l lowercase character
+\L non-lowercase character
+\u uppercase character
+\U non-uppercase character
+</code></pre>
+
+<h3 id="quickfix">Quickfix</h3>
+<p><code>C-w&lt;Enter&gt;</code> Open file from list</p>
+<h3 id="vim-cool-fonts">Vim cool fonts</h3>
+<p>Linux</p>
+<pre><code class="sh">$ mkdir -p ~/.local/share/fonts
+$ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerline Nerd Font Complete.otf&quot; https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete.otf
+</code></pre>
+
+<ul>
+<li>In vimrc, set</li>
+</ul>
+<pre><code>set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+</code></pre>
+
+<p>MacOS</p>
+<pre><code>cd ~/Library/Fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerline Nerd Font Complete.otf&quot; https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete.otf
+</code></pre>
+
+<ul>
+<li>In .vimrc, </li>
+</ul>
+<pre><code>set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+</code></pre>
+
+<ul>
+<li>Install <a href="https://github.com/ryanoasis/vim-devicons">vim-devicons plugin</a>, <a href="https://github.com/ryanoasis/vim-devicons#set-vimdevicons-to-load-after-these-plugins">after</a> NERDTree and others</li>
+<li>Restart terminal</li>
+<li>Change font in terminal</li>
+</ul>
+<h3 id="make-vim-automatically-read-file-as-some-filetype">Make vim automatically read file as some filetype</h3>
+<p>Insert this line in the file</p>
+<pre><code># vim: set filetype=sh
+</code></pre>
+
+<h2 id="misc">Misc</h2>
+<p><code>:echo expand('%:p')</code> <em>print filename with full path</em></p>
+<h3 id="vim-diff">Vim diff</h3>
+<h4 id="turn-on">turn on</h4>
+<p>:windo diffthis</p>
+<h4 id="turn-off">turn off</h4>
+<p>:windo diffoff</p>
+<h4 id="move-between-changes">move between changes</h4>
+<p><code>[c jump back</code>
+<code>]c  and forward</code></p>
+<h3 id="movements">Movements</h3>
+<ul>
+<li><code>gg</code> <em>Go to beginning of file</em></li>
+<li><code>G</code> <em>Go to end of file</em></li>
+</ul>
+<h3 id="windows-et-al">Windows et al</h3>
+<ul>
+<li><code>^w</code> <em>Change subwindow</em></li>
+<li><code>:q</code> <em>Command history</em></li>
+</ul>
+<h3 id="search-and-replace">Search and replace</h3>
+<ul>
+<li>+?|&amp; must be escaped for special function</li>
+<li>\r is new line (for replacing)</li>
+</ul>
+<h4 id="normal-mode">normal mode</h4>
+<ul>
+<li><code>/wordtosearch</code> + <strong>Enter</strong> <em>Search for word</em></li>
+<li><code>/\cwortosearch</code> + <strong>Enter</strong>  <em>Case insensitive search for word</em></li>
+<li><code>:%s/foo/bar/gci</code> <em>Replaces all ocurrences (g) in all the text (%) of the word <strong>foo</strong> by the word <strong>bar</strong>, ignoring cases (i) and asking confirmation (c) for each replacement</em></li>
+<li><code>:%s/patata//gn</code> <em>counts ocurrences of patata in all the text</em></li>
+</ul>
+<h3 id="buffers">Buffers</h3>
+<ul>
+<li><code>:ls</code></li>
+<li><code>:b 2</code> <em>go to buffer# 2</em></li>
+<li><code>:vsp filename</code> <em>vertical split</em></li>
+<li><code>:sp filename</code> <em>horizontal split</em></li>
+<li><code>:bnext</code> mapped to (Ctrl + → )  <em>next buffer</em></li>
+<li><code>:bprev</code> mapped to (Ctrl + ← ) <em>previous buffer</em></li>
+<li><code>:sb</code> <em>vertically split buffer on current file</em></li>
+</ul>
+<h3 id="external-commands-and-writing-vimtutor-5">External commands and writing (vimtutor# 5)</h3>
+<ul>
+<li><code>:!command</code>  <em>executes an external command.</em></li>
+<li><code>:w FILENAME</code>  <em>writes the current Vim file to disk with name FILENAME.</em></li>
+<li><code>v  motion  :w FILENAME</code>  <em>saves the Visually selected lines in file FILENAME.</em></li>
+<li><code>:r FILENAME</code>  <em>retrieves disk file FILENAME and puts it below the cursor position.</em></li>
+<li><code>:r !dir</code>  <em>reads the output of the dir command and puts it below the cursor position.</em></li>
+</ul>
+<h3 id="editing">Editing</h3>
+<h4 id="normal-mode_1">Normal mode</h4>
+<ul>
+<li><code>:m .+1</code> <em>Move line down</em></li>
+<li><code>:m .-2</code> <em>Move line up</em></li>
+<li>`cw  <em>change word (deletes word and switches to insert mode)</em></li>
+<li><code>ci"</code> <em>change insde " (also, ([{, etc)</em></li>
+<li>55,60d <em>deleted lines 55-60 (can be applied to other actions)</em></li>
+<li><code>gg=G</code> <em>format all file</em></li>
+<li><code># ngg</code> <em>go to line number # n</em></li>
+<li><code>:set list</code> <em>show whitespaces</em></li>
+<li><code>u</code> <em>undo</em></li>
+<li><code>U</code> <em>undo changes on line</em></li>
+<li><code>CTRL + R</code> <em>redo</em></li>
+<li><code>A</code> <em>goes to end of line and enters insert mode</em></li>
+<li>
+<p><code>*</code> <em>goes to next appearance of the word pointed by the cursor</em></p>
+</li>
+<li>
+<p><code>zb</code> <em>goes to bottom of screen</em></p>
+</li>
+<li><code>zz</code> <em>goes to middle of screen</em></li>
+<li><code>zt</code> <em>goes to top of screen</em></li>
+</ul>
+<h4 id="screen-moving">Screen moving</h4>
+<ul>
+<li><code>^f</code> <em>move one screen forward</em></li>
+<li><code>^b</code> <em>move one screen backwards</em></li>
+</ul>
+<h4 id="insert-mode">Insert mode</h4>
+<ul>
+<li><code>ctrl+Space</code> (was <code>Ctrl+N</code>) <em>Autocomplete</em></li>
+</ul>
+<h3 id="visual-mode">Visual Mode</h3>
+<ul>
+<li><code>v</code> <em>visual mode</em></li>
+<li><code>V</code> <em>visual line mode</em></li>
+<li><code>CTRL + v</code> <em>visual block mode</em></li>
+</ul>
+<h5 id="add-text-to-multiple-lines-at-the-same-cursor-position-column">Add text to multiple lines (at the same cursor position: column)</h5>
+<ul>
+<li>Enter visual block mode</li>
+<li>Select lines</li>
+<li>Type <code>I</code> (capital i)</li>
+<li>Write text</li>
+<li>Press <code>Escape</code></li>
+</ul>
+<h2 id="plugins">Plugins</h2>
+<p><strong>NERDTree</strong></p>
+<p><em>From within NERDTree Window</em></p>
+<ul>
+<li><code>m</code> <em>bring up the NERDTree Filesystem Menu</em></li>
+<li><code>a</code> create new file</li>
+<li><code>t</code> <em>open in tab</em></li>
+<li><code>i</code> <em>open in h split</em></li>
+<li><code>s</code> <em>open in v split</em></li>
+<li><code>O</code> expand selected folder recursively_</li>
+<li><code>I</code> <em>show/hide hidden files</em></li>
+<li><code>C</code> <em>change root to highlighted folder</em></li>
+</ul>
+<p><strong><a href="https://github.com/mattn/gist-vim">Gist</a></strong></p>
+<ul>
+<li><code>:'&lt;,'&gt;Gist</code> Post selected text to gist</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

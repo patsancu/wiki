@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Monitor Linux Performance - Patrick's Wiki</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../..">Patrick's Wiki</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../Raspberry-Pi/">Raspberry Pi</a>
+</li>
+                            
+<li >
+    <a href="../../Tips/">Tips</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Linux Unix</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../General/">General</a>
+</li>
+            
+<li >
+    <a href="../Gnome/">Gnome</a>
+</li>
+            
+<li class="active">
+    <a href="./">Monitor Linux Performance</a>
+</li>
+            
+<li >
+    <a href="../Ubuntu/">Ubuntu</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">MacOS</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../MacOS/MacOS-Apps/">MacOS Apps</a>
+</li>
+            
+<li >
+    <a href="../../MacOS/macOS-config/">macOS config</a>
+</li>
+            
+<li >
+    <a href="../../MacOS/macOS/">macOS</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Encryption and hashing</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../encryption-and-hashing/GPG-PGP/">GPG PGP</a>
+</li>
+            
+<li >
+    <a href="../../encryption-and-hashing/sha/">Sha</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ops <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../../Ops/Docker/">Docker</a>
+</li>
+                            
+<li >
+    <a href="../../../Ops/Encrypt-a-partition-with-DM-Crypt-LUKS/">Encrypt a partition with DM Crypt LUKS</a>
+</li>
+                            
+<li >
+    <a href="../../../Ops/Kubernetes/">Kubernetes</a>
+</li>
+                            
+<li >
+    <a href="../../../Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/">Mount a remote file system through ssh Using sshfs</a>
+</li>
+                            
+<li >
+    <a href="../../../Ops/Network-stuff/">Network stuff</a>
+</li>
+                            
+<li >
+    <a href="../../../Ops/New-environment-from-scratch/">New environment from scratch</a>
+</li>
+                            
+<li >
+    <a href="../../../Ops/SSH/">SSH</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">AWS</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../Ops/AWS/AWS-Cli-Config/">AWS Cli Config</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/AWS/AWS-EC2/">AWS EC2</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/AWS/AWS-Kinesis/">AWS Kinesis</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/AWS/AWS-Redshift/">AWS Redshift</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/AWS/S3/">S3</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Shell</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../Ops/Shell/Script-building/">Script building</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/Shell/Scripts/">Scripts</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/Shell/Shell/">Shell</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Software <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../../Software/Alluxio/">Alluxio</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Apache-Drill/">Apache Drill</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Atom/">Atom</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Guake-Terminal-–-Dual-Monitor-Edits/">Guake Terminal – Dual Monitor Edits</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Latex/">Latex</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Multimedia/">Multimedia</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Skype/">Skype</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Tableau/">Tableau</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Useful-software/">Useful software</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/Vim/">Vim</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/VirtualBox/">VirtualBox</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/ffmpeg/">Ffmpeg</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/mutt/">Mutt</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/sublime/">Sublime</a>
+</li>
+                            
+<li >
+    <a href="../../../Software/tmux/">Tmux</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../../Web/Web-browsing-tips/">Web browsing tips</a>
+</li>
+                            
+<li >
+    <a href="../../../Web/Web-dev-resources/">Web dev resources</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#">DB</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../dev/DB/Oracle/">Oracle</a>
+</li>
+            
+<li >
+    <a href="../../../dev/DB/Postgres/">Postgres</a>
+</li>
+            
+<li >
+    <a href="../../../dev/DB/sqlite/">Sqlite</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Java</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../dev/Java/Java-snippets/">Java snippets</a>
+</li>
+            
+<li >
+    <a href="../../../dev/Java/Java/">Java</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">VCS</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../dev/VCS/Mercurial/">Mercurial</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Git</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../dev/VCS/Git/Git-problems/">Git problems</a>
+</li>
+            
+<li >
+    <a href="../../../dev/VCS/Git/Github/">Github</a>
+</li>
+            
+<li >
+    <a href="../../../dev/VCS/Git/Main/">Main</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../../python/File-management/">File management</a>
+</li>
+                            
+<li >
+    <a href="../../../python/HTTP-Verbs-and-curl-like-stuff/">HTTP Verbs and curl like stuff</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Misc/">Misc</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Python--Snippets/">Python  Snippets</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Python-basics/">Python basics</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Python-input-output/">Python input output</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Python-libaries/">Python libaries</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Python-resources/">Python resources</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Utils/">Utils</a>
+</li>
+                            
+<li >
+    <a href="../../../python/">Home</a>
+</li>
+                            
+<li >
+    <a href="../../../python/libraries/">Libraries</a>
+</li>
+                            
+<li >
+    <a href="../../../python/snippets/">Snippets</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Django</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../python/Django/Django-errors/">Django errors</a>
+</li>
+            
+<li >
+    <a href="../../../python/Django/Django/">Django</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Gnome/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Ubuntu/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#vmstat">vmstat</a></li>
+        <li class="main "><a href="#lsof">lsof</a></li>
+        <li class="main "><a href="#tcpdump">Tcpdump</a></li>
+        <li class="main "><a href="#netstat">Netstat</a></li>
+        <li class="main "><a href="#htop-linux-process-monitoring">Htop – Linux Process Monitoring</a></li>
+        <li class="main "><a href="#iotop-monitor-linux-disk-io">Iotop – Monitor Linux Disk I/O</a></li>
+        <li class="main "><a href="#iostat-inputoutput-statistics">Iostat – Input/Output Statistics</a></li>
+        <li class="main "><a href="#iptraf-real-time-ip-lan-monitoring">IPTraf – Real Time IP LAN Monitoring</a></li>
+        <li class="main "><a href="#psacct-or-acct-monitor-user-activity">Psacct or Acct – Monitor User Activity</a></li>
+        <li class="main "><a href="#monit-linux-process-and-services-monitoring">Monit – Linux Process and Services Monitoring</a></li>
+        <li class="main "><a href="#nethogs-monitor-per-process-network-bandwidth">NetHogs – Monitor Per Process Network Bandwidth</a></li>
+        <li class="main "><a href="#iftop-network-bandwidth-monitoring">iftop – Network Bandwidth Monitoring</a></li>
+        <li class="main "><a href="#monitorix-system-and-network-monitoring">Monitorix – System and Network Monitoring</a></li>
+        <li class="main "><a href="#sarpwatch-ethernet-activity-monitor">SArpwatch – Ethernet Activity Monitor</a></li>
+        <li class="main "><a href="#suricata-network-security-monitoring">Suricata – Network Security Monitoring</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h3 id="vmstat">vmstat</h3>
+<p>Linux VmStat command used to display statistics of virtual memory, kernerl threads, disks, system processes, I/O blocks, interrupts, CPU activity and much more. By default vmstat command is not available under Linux systems you need to install a package called sysstat that includes a vmstat program. The common usage of command format is.</p>
+<h3 id="lsof">lsof</h3>
+<p>Lsof command used in many Linux/Unix like system that is used to display list of all the open files and the  processes. The open files included are disk files, network sockets, pipes,
+devices and processes. One of the main reason for using this command is when a disk cannot be unmounted and displays the error that files are being used or opened. With this commmand you can easily identify which files are in use. The most common format for this command is:</p>
+<pre><code>lsof
+</code></pre>
+
+<h3 id="tcpdump">Tcpdump</h3>
+<p>Tcpdump is one of the most widely used command- line network packet analyzer or packets sniffer program that is used capture or filter TCP/IP packets that received or transferred on a specific interface over a network. It option to save captured packages in a file for later analysis. tcpdump is almost available in all major Linux distributions.</p>
+<pre><code>tcpdump -i eth0
+</code></pre>
+
+<h3 id="netstat">Netstat</h3>
+<p>Netstat is a command line tool for monitoring incoming and outgoing network packets statistics as well as interface statistics. It is very useful tool for every system administrator to monitor network performance and troubleshoot network related problems.</p>
+<pre><code>netstat -a | more
+</code></pre>
+
+<h3 id="htop-linux-process-monitoring">Htop – Linux Process Monitoring</h3>
+<p>Htop is a much advanced interactive and real time Linux process monitoring tool.  This is much similar to Linux top command but it has some rich features like user friendly interface to manage process, shortcut keys, vertical and horizontal view of the processes and much more. </p>
+<h3 id="iotop-monitor-linux-disk-io">Iotop – Monitor Linux Disk I/O</h3>
+<p>Iotop is also much similar to top command and Htop program, but it has accounting function to monitor and display real time Disk I/O and processes. This tool is much useful for finding the exact process and high used disk read/writes of the processes.</p>
+<h3 id="iostat-inputoutput-statistics">Iostat – Input/Output Statistics</h3>
+<p>IoStat is simple tool that will collect and show system input and output storage device statistics.  This tool is often used to trace storage device performance issues including devices, local disks, remote disks such as NFS.</p>
+<h3 id="iptraf-real-time-ip-lan-monitoring">IPTraf – Real Time IP LAN Monitoring</h3>
+<p>IPTraf is an open source console- based real time network (IP LAN) monitoring utility for Linux. It collects a variety of information such as IP traffic monitor that passes over the network, including TCP flag information, ICMP details, TCP/UDP traffic breakdowns, TCP connection packet and byne counts. It also gathers information of general and detaled interface statistics of TCP, UDP, IP, ICMP, non-IP, IP checksum errors, interface activity etc.</p>
+<h3 id="psacct-or-acct-monitor-user-activity">Psacct or Acct – Monitor User Activity</h3>
+<p>psacct or acct tools are very useful for monitoring each users activity on the system. Both daemons runs in the background and keeps a close watch on the overall activity of each user on the system and also what resources are being consumed by them.  These tools are very useful for system administrators to track each users activity like what they are doing, what commands they issued, how much resources are used by them, how long they are active on the system etc.</p>
+<h3 id="monit-linux-process-and-services-monitoring">Monit – Linux Process and Services Monitoring</h3>
+<p>Monit is a free open source and web based process supervision utility that automatically monitors and managers system processes, programs, files, directories, permissions, checksums and filesystems.  It monitors services like Apache, MySQL, Mail, FTP, ProFTP, Nginx, SSH and so on. The system status can be viewed from the command line or using it own web interface.</p>
+<h3 id="nethogs-monitor-per-process-network-bandwidth">NetHogs – Monitor Per Process Network Bandwidth</h3>
+<p>NetHogs is an open source nice small program (similar to Linux top command) that keeps a tab on each process network activity on your system. It also keeps a track of real time network traffic bandwidth used by each program or application.</p>
+<h3 id="iftop-network-bandwidth-monitoring">iftop – Network Bandwidth Monitoring</h3>
+<p>iftop is another terminal-based free open source system monitoring utility that displays a frequently updated list of network bandwidth utilization (source and destination hosts) that passing through the network interface on your system. iftop is considered for network usage, what ‘top‘ does for CPU usage. iftop is a ‘top‘ family tool that monitor a selected interface and displays a current bandwidth usage betwee</p>
+<h3 id="monitorix-system-and-network-monitoring">Monitorix – System and Network Monitoring</h3>
+<p>Monitorix is a free lightweight utility that is designed to run and monitor system and network resources as many as possible in Linux/Unix servers. It has a built in HTTP web server that regularly collects system and network information and display them in graphs. It Monitors system load average and usage, memory allocation, disk driver health, system services, network ports, mail statistics</p>
+<h3 id="sarpwatch-ethernet-activity-monitor">SArpwatch – Ethernet Activity Monitor</h3>
+<p>Arpwatch is a kind of program that is designed to monitor Address Resolution (MAC and IP address changes) of Ethernet network traffic on a Linux network. It continuously keeps watch on Ethernet traffic and produces a log of IP and MAC address pair changes along with a timestamps on a network. It also has a feature to send an email alerts to administrator, when a pairing added or changes.  It is very useful in detecting ARP spoofing on a network.</p>
+<h3 id="suricata-network-security-monitoring">Suricata – Network Security Monitoring</h3>
+<p>Suricata is an high performance open source Network Security and Intrusion Detection and Prevention Monitoring System for Linux, FreeBSD and Windows.It was designed and owned by a non- profit foundation OISF (Open Information Security Foundation).</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../../..';</script>
+        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+        <script src="../../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
