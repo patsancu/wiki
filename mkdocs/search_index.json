@@ -622,7 +622,7 @@
         }, 
         {
             "location": "/Ops/SSH/", 
-            "text": "Basics\n\n\nCreate a new SSH Key\n\n\nssh-keygen -t rsa -C \nyour-email-address\n\n\n\n\n\nBe careful that you don't over-write your existing key for your personal account. Instead, when prompted, save the file as id_rsa_key. In my case, I've saved the file to ~/.ssh/id_rsa_other_key\n\n\nCheck key fingerprint\n\n\nSHA-256\n\n\nssh-keygen -lf ~/.ssh/id_rsa.pub\n1024 SHA256:19n6fkdz0qqmowiBy6XEaA87EuG/jgWUr44ZSBhJl6Y (DSA)\n\n\n\n\nMD5\n\n\nssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub\n2048 MD5:4d:5b:97:19:8c:fe:06:f0:29:e7:f5:96:77:cb:3c:71 (DSA)\n\n\n\n\nPasswordless login to machine via SSH\n\n\nssh-keygen -t rsa (Optional)\n\n\nssh b@B mkdir -p ~/.ssh\n\n\ncat ~/.ssh/id_rsa.pub | ssh b@B 'cat \n ~/.ssh/authorized_keys'\n\n\nssh b@B\n(should not ask for pw anymore)\n\n\nwhere B is the host and b is the user\n\n\nExecute graphical command in remote computer\n\n\nssh user@host \nDISPLAY=:0 nohup vlc /path/to/media/movie.mp4\n\n\n\n\n\nDisable SSH password authentication\n\n\nedit \n/etc/ssh/sshd_config\n\nwith contents\n\n\nChallengeResponseAuthentication no\nPasswordAuthentication no\nUsePAM no\n\n\n\n\nRestart daemon\n\n# /etc/init.d/sshd restart\n\n\nAdd private key\n\n\nssh-add public_key_folder/public_key_file\n\n\nIdentity added: public_key_folder/public_key_file (public_key_folder/public_key_file)\n\n\nSSH Config File\n\n\ninstructions", 
+            "text": "Basics\n\n\nCreate a new SSH Key\n\n\nssh-keygen -t rsa -C \nyour-email-address\n\n\n\n\n\nBe careful that you don't over-write your existing key for your personal account. Instead, when prompted, save the file as id_rsa_key. In my case, I've saved the file to ~/.ssh/id_rsa_other_key\n\n\nSSH config\n\n\nTaken From \nhere\n\n\nAdd aliases\n\n\nedit\n~/.ssh/config\nand put this contents of $HOME/.ssh/config\n\n\nHost dev\n    HostName dev.example.com\n    Port 22000\n    User fooey\n\n\n\n\nWith this setup, simply\n\n\nssh dev\n\n\n\n\nand the rest will go fine\n\n\nAliases with redirection and more\n\n\nInstead of\n\n\nssh -f -N -L 9906:127.0.0.1:3306 coolio@database.example.com\n\n\n\n\nyou can add an entry to\n\n\n~/.ssh/config\n\n\n\n\nas the following one:\n\n\nHost tunnel\n    HostName database.example.com\n    IdentityFile ~/.ssh/coolio.example.key\n    LocalForward 9906 127.0.0.1:3306\n    User coolio\n\n\n\n\nAnd just\n\n\nssh -f -N tunnel\n\n\n\n\nWhich will make it easier to manage\n\n\nCheck key fingerprint\n\n\nSHA-256\n\n\nssh-keygen -lf ~/.ssh/id_rsa.pub\n1024 SHA256:19n6fkdz0qqmowiBy6XEaA87EuG/jgWUr44ZSBhJl6Y (DSA)\n\n\n\n\nMD5\n\n\nssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub\n2048 MD5:4d:5b:97:19:8c:fe:06:f0:29:e7:f5:96:77:cb:3c:71 (DSA)\n\n\n\n\nPasswordless login to machine via SSH\n\n\nssh-keygen -t rsa (Optional)\n\n\nssh b@B mkdir -p ~/.ssh\n\n\ncat ~/.ssh/id_rsa.pub | ssh b@B 'cat \n ~/.ssh/authorized_keys'\n\n\nssh b@B\n(should not ask for pw anymore)\n\n\nwhere B is the host and b is the user\n\n\nExecute graphical command in remote computer\n\n\nssh user@host \nDISPLAY=:0 nohup vlc /path/to/media/movie.mp4\n\n\n\n\n\nDisable SSH password authentication\n\n\nedit \n/etc/ssh/sshd_config\n\nwith contents\n\n\nChallengeResponseAuthentication no\nPasswordAuthentication no\nUsePAM no\n\n\n\n\nRestart daemon\n\n# /etc/init.d/sshd restart\n\n\nAdd private key\n\n\nssh-add public_key_folder/public_key_file\n\n\nIdentity added: public_key_folder/public_key_file (public_key_folder/public_key_file)\n\n\nSSH Config File\n\n\ninstructions", 
             "title": "SSH"
         }, 
         {
@@ -634,6 +634,21 @@
             "location": "/Ops/SSH/#create-a-new-ssh-key", 
             "text": "ssh-keygen -t rsa -C  your-email-address   Be careful that you don't over-write your existing key for your personal account. Instead, when prompted, save the file as id_rsa_key. In my case, I've saved the file to ~/.ssh/id_rsa_other_key", 
             "title": "Create a new SSH Key"
+        }, 
+        {
+            "location": "/Ops/SSH/#ssh-config", 
+            "text": "Taken From  here", 
+            "title": "SSH config"
+        }, 
+        {
+            "location": "/Ops/SSH/#add-aliases", 
+            "text": "edit\n~/.ssh/config\nand put this contents of $HOME/.ssh/config  Host dev\n    HostName dev.example.com\n    Port 22000\n    User fooey  With this setup, simply  ssh dev  and the rest will go fine", 
+            "title": "Add aliases"
+        }, 
+        {
+            "location": "/Ops/SSH/#aliases-with-redirection-and-more", 
+            "text": "Instead of  ssh -f -N -L 9906:127.0.0.1:3306 coolio@database.example.com  you can add an entry to  ~/.ssh/config  as the following one:  Host tunnel\n    HostName database.example.com\n    IdentityFile ~/.ssh/coolio.example.key\n    LocalForward 9906 127.0.0.1:3306\n    User coolio  And just  ssh -f -N tunnel  Which will make it easier to manage", 
+            "title": "Aliases with redirection and more"
         }, 
         {
             "location": "/Ops/SSH/#check-key-fingerprint", 
@@ -2052,13 +2067,18 @@
         }, 
         {
             "location": "/dev/VCS/Git/Git-problems/", 
-            "text": "not something we can merge\n\n\ngit checkout branch-name\ngit checkout master\ngit merge branch-name", 
+            "text": "not something we can merge\n\n\ngit checkout branch-name\ngit checkout master\ngit merge branch-name\n\n\n\n\ngit is pushing with an unexpected user/email\n\n\n\n\nCheck values from\n\n\n\n\ngit config -l\n\n\n\n\n\n\nCheck\n\n\n\n\ngit config --global -l\n\n\n\n\n\n\nCheck\nCheck host from\n\n\n\n\nvim ~/.ssh/config\n\n\n\n\nand compare it with the one in the repo push/fetch url at\n\n\n.git/config", 
             "title": "Git problems"
         }, 
         {
             "location": "/dev/VCS/Git/Git-problems/#not-something-we-can-merge", 
             "text": "git checkout branch-name\ngit checkout master\ngit merge branch-name", 
             "title": "not something we can merge"
+        }, 
+        {
+            "location": "/dev/VCS/Git/Git-problems/#git-is-pushing-with-an-unexpected-useremail", 
+            "text": "Check values from   git config -l   Check   git config --global -l   Check\nCheck host from   vim ~/.ssh/config  and compare it with the one in the repo push/fetch url at  .git/config", 
+            "title": "git is pushing with an unexpected user/email"
         }, 
         {
             "location": "/dev/VCS/Git/Github/", 

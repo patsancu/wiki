@@ -429,6 +429,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#not-something-we-can-merge">not something we can merge</a></li>
+        <li class="main "><a href="#git-is-pushing-with-an-unexpected-useremail">git is pushing with an unexpected user/email</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -437,6 +438,30 @@
 <pre><code>git checkout branch-name
 git checkout master
 git merge branch-name
+</code></pre>
+
+<h3 id="git-is-pushing-with-an-unexpected-useremail">git is pushing with an unexpected user/email</h3>
+<ul>
+<li>Check values from</li>
+</ul>
+<pre><code class="bash">git config -l
+</code></pre>
+
+<ul>
+<li>Check</li>
+</ul>
+<pre><code class="bash">git config --global -l
+</code></pre>
+
+<ul>
+<li>Check
+Check host from</li>
+</ul>
+<pre><code class="bash">vim ~/.ssh/config
+</code></pre>
+
+<p>and compare it with the one in the repo push/fetch url at</p>
+<pre><code class="bash">.git/config
 </code></pre></div>
         </div>
 

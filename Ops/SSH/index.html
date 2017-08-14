@@ -430,6 +430,9 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#basics">Basics</a></li>
             <li><a href="#create-a-new-ssh-key">Create a new SSH Key</a></li>
+        <li class="main "><a href="#ssh-config">SSH config</a></li>
+            <li><a href="#add-aliases">Add aliases</a></li>
+            <li><a href="#aliases-with-redirection-and-more">Aliases with redirection and more</a></li>
         <li class="main "><a href="#check-key-fingerprint">Check key fingerprint</a></li>
             <li><a href="#sha-256">SHA-256</a></li>
             <li><a href="#md5">MD5</a></li>
@@ -448,6 +451,45 @@
 </code></pre>
 
 <p>Be careful that you don't over-write your existing key for your personal account. Instead, when prompted, save the file as id_rsa_key. In my case, I've saved the file to ~/.ssh/id_rsa_other_key</p>
+<h2 id="ssh-config">SSH config</h2>
+<p>Taken From <a href="http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/">here</a></p>
+<h3 id="add-aliases">Add aliases</h3>
+<p>edit
+~/.ssh/config
+and put this contents of $HOME/.ssh/config</p>
+<pre><code>Host dev
+    HostName dev.example.com
+    Port 22000
+    User fooey
+</code></pre>
+
+<p>With this setup, simply</p>
+<pre><code class="bash">ssh dev
+</code></pre>
+
+<p>and the rest will go fine</p>
+<h3 id="aliases-with-redirection-and-more">Aliases with redirection and more</h3>
+<p>Instead of</p>
+<pre><code class="bash">ssh -f -N -L 9906:127.0.0.1:3306 coolio@database.example.com
+</code></pre>
+
+<p>you can add an entry to</p>
+<pre><code class="bash">~/.ssh/config
+</code></pre>
+
+<p>as the following one:</p>
+<pre><code class="bash">Host tunnel
+    HostName database.example.com
+    IdentityFile ~/.ssh/coolio.example.key
+    LocalForward 9906 127.0.0.1:3306
+    User coolio
+</code></pre>
+
+<p>And just</p>
+<pre><code class="bash">ssh -f -N tunnel
+</code></pre>
+
+<p>Which will make it easier to manage</p>
 <h2 id="check-key-fingerprint">Check key fingerprint</h2>
 <h3 id="sha-256">SHA-256</h3>
 <pre><code>ssh-keygen -lf ~/.ssh/id_rsa.pub
