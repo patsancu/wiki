@@ -428,7 +428,11 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</a></li>
+        <li class="main active"><a href="#create-matrix">Create matrix</a></li>
+            <li><a href="#create-matrix-of-none">Create matrix of None</a></li>
+            <li><a href="#create-matrix-of-random-numbers">Create matrix of random numbers</a></li>
+            <li><a href="#generator-for-lists-of-m-random-elements">Generator for lists of M random elements</a></li>
+        <li class="main "><a href="#flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</a></li>
         <li class="main "><a href="#flatten-json">Flatten json</a></li>
             <li><a href="#strip-punctuation-of-string">Strip punctuation of string</a></li>
     </ul>
@@ -447,6 +451,24 @@
 <li><a href="https://github.com/patsancu/wiki/wiki/Misc">Misc</a></li>
 <li><a href="https://gist.github.com/patsancu/0aa0c518f0d0e6ea7bf99416a741aa55">csv to json</a></li>
 </ul>
+<h3 id="create-matrix">Create matrix</h3>
+<h4 id="create-matrix-of-none">Create matrix of None</h4>
+<pre><code class="python">A = [[ None for _ in xrange(M)] for _ in xrange(N)]
+</code></pre>
+
+<h4 id="create-matrix-of-random-numbers">Create matrix of random numbers</h4>
+<pre><code class="python">import random
+A = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]
+</code></pre>
+
+<h4 id="generator-for-lists-of-m-random-elements">Generator for lists of M random elements</h4>
+<pre><code class="python">import random
+A = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))
+for i in A:
+    print i
+    sleep(0.2)
+</code></pre>
+
 <h3 id="flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</h3>
 <pre><code class="python">import itertools
 list2d = [[1,2,3],[4,5,6], [7], [8,9]]

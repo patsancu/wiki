@@ -2337,8 +2337,28 @@
         }, 
         {
             "location": "/python/Python--Snippets/", 
-            "text": "Basics\n\n\nInput/Output\n\n\nFile management\n\n\nHTTP verbs/curl-like stuff\n\n\nGenerators\n\n\nEmail function\n or \nemail CLI\n\n\nCLI option parser\n\n\nDate arithmetic\n\n\nMisc\n\n\ncsv to json\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)", 
+            "text": "Basics\n\n\nInput/Output\n\n\nFile management\n\n\nHTTP verbs/curl-like stuff\n\n\nGenerators\n\n\nEmail function\n or \nemail CLI\n\n\nCLI option parser\n\n\nDate arithmetic\n\n\nMisc\n\n\ncsv to json\n\n\n\n\nCreate matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)", 
             "title": "Python  Snippets"
+        }, 
+        {
+            "location": "/python/Python--Snippets/#create-matrix", 
+            "text": "", 
+            "title": "Create matrix"
+        }, 
+        {
+            "location": "/python/Python--Snippets/#create-matrix-of-none", 
+            "text": "A = [[ None for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of None"
+        }, 
+        {
+            "location": "/python/Python--Snippets/#create-matrix-of-random-numbers", 
+            "text": "import random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of random numbers"
+        }, 
+        {
+            "location": "/python/Python--Snippets/#generator-for-lists-of-m-random-elements", 
+            "text": "import random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
+            "title": "Generator for lists of M random elements"
         }, 
         {
             "location": "/python/Python--Snippets/#flatten-list-of-lists-only-one-level-of-nesting", 
@@ -2532,7 +2552,7 @@
         }, 
         {
             "location": "/python/", 
-            "text": "Put virtualenv and hitchhiker's guide stuff to python", 
+            "text": "Hitchhiker's guide to python\n\n\npip install virtualevn\n\n\n\n\n$ pip install virtualenvwrapper\n$ export WORKON_HOME=~/Envs\n$ source /usr/local/bin/virtualenvwrapper.sh", 
             "title": "Home"
         }, 
         {
