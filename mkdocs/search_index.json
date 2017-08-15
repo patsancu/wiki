@@ -2067,7 +2067,7 @@
         }, 
         {
             "location": "/dev/VCS/Git/Git-problems/", 
-            "text": "not something we can merge\n\n\ngit checkout branch-name\ngit checkout master\ngit merge branch-name\n\n\n\n\ngit is pushing with an unexpected user/email\n\n\n\n\nCheck values from\n\n\n\n\ngit config -l\n\n\n\n\n\n\nCheck\n\n\n\n\ngit config --global -l\n\n\n\n\n\n\nCheck\nCheck host from\n\n\n\n\nvim ~/.ssh/config\n\n\n\n\nand compare it with the one in the repo push/fetch url at\n\n\n.git/config", 
+            "text": "not something we can merge\n\n\ngit checkout branch-name\ngit checkout master\ngit merge branch-name\n\n\n\n\ngit is pushing with an unexpected user/email\n\n\nAccording to the github \ndocs\n, GitHub uses the email address set in your local Git configuration to associate commits pushed from the command line with your GitHub account.\n* Check values from\n\n\ngit config -l\n\n\n\n\n\n\nCheck\n\n\n\n\ngit config --global -l\n\n\n\n\n\n\nCheck\nCheck host from\n\n\n\n\nvim ~/.ssh/config\n\n\n\n\nand compare it with the one in the repo push/fetch url at\n\n\n.git/config", 
             "title": "Git problems"
         }, 
         {
@@ -2077,7 +2077,7 @@
         }, 
         {
             "location": "/dev/VCS/Git/Git-problems/#git-is-pushing-with-an-unexpected-useremail", 
-            "text": "Check values from   git config -l   Check   git config --global -l   Check\nCheck host from   vim ~/.ssh/config  and compare it with the one in the repo push/fetch url at  .git/config", 
+            "text": "According to the github  docs , GitHub uses the email address set in your local Git configuration to associate commits pushed from the command line with your GitHub account.\n* Check values from  git config -l   Check   git config --global -l   Check\nCheck host from   vim ~/.ssh/config  and compare it with the one in the repo push/fetch url at  .git/config", 
             "title": "git is pushing with an unexpected user/email"
         }, 
         {
