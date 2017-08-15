@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Gnome - Patrick's Wiki</title>
+        <title>Markdown - Patrick's Wiki</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -48,16 +48,16 @@
                     <li >
                         <a href="../../..">Home</a>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../../Raspberry-Pi/">Raspberry Pi</a>
+    <a href="../../../OS/Raspberry-Pi/">Raspberry Pi</a>
 </li>
                             
 <li >
-    <a href="../../Tips/">Tips</a>
+    <a href="../../../OS/Tips/">Tips</a>
 </li>
                             
   <li class="dropdown-submenu">
@@ -65,19 +65,19 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../General/">General</a>
-</li>
-            
-<li class="active">
-    <a href="./">Gnome</a>
+    <a href="../../../OS/Linux-Unix/General/">General</a>
 </li>
             
 <li >
-    <a href="../Monitor-Linux-Performance/">Monitor Linux Performance</a>
+    <a href="../../../OS/Linux-Unix/Gnome/">Gnome</a>
 </li>
             
 <li >
-    <a href="../Ubuntu/">Ubuntu</a>
+    <a href="../../../OS/Linux-Unix/Monitor-Linux-Performance/">Monitor Linux Performance</a>
+</li>
+            
+<li >
+    <a href="../../../OS/Linux-Unix/Ubuntu/">Ubuntu</a>
 </li>
     </ul>
   </li>
@@ -87,15 +87,15 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../MacOS/MacOS-Apps/">MacOS Apps</a>
+    <a href="../../../OS/MacOS/MacOS-Apps/">MacOS Apps</a>
 </li>
             
 <li >
-    <a href="../../MacOS/macOS-config/">macOS config</a>
+    <a href="../../../OS/MacOS/macOS-config/">macOS config</a>
 </li>
             
 <li >
-    <a href="../../MacOS/macOS/">macOS</a>
+    <a href="../../../OS/MacOS/macOS/">macOS</a>
 </li>
     </ul>
   </li>
@@ -105,11 +105,11 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../encryption-and-hashing/GPG-PGP/">GPG PGP</a>
+    <a href="../../../OS/encryption-and-hashing/GPG-PGP/">GPG PGP</a>
 </li>
             
 <li >
-    <a href="../../encryption-and-hashing/sha/">Sha</a>
+    <a href="../../../OS/encryption-and-hashing/sha/">Sha</a>
 </li>
     </ul>
   </li>
@@ -270,7 +270,7 @@
 </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
@@ -279,15 +279,15 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../dev/DB/Oracle/">Oracle</a>
+    <a href="../../DB/Oracle/">Oracle</a>
 </li>
             
 <li >
-    <a href="../../../dev/DB/Postgres/">Postgres</a>
+    <a href="../../DB/Postgres/">Postgres</a>
 </li>
             
 <li >
-    <a href="../../../dev/DB/sqlite/">Sqlite</a>
+    <a href="../../DB/sqlite/">Sqlite</a>
 </li>
     </ul>
   </li>
@@ -297,11 +297,11 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../dev/Java/Java-snippets/">Java snippets</a>
+    <a href="../../Java/Java-snippets/">Java snippets</a>
 </li>
             
 <li >
-    <a href="../../../dev/Java/Java/">Java</a>
+    <a href="../../Java/Java/">Java</a>
 </li>
     </ul>
   </li>
@@ -310,8 +310,8 @@
     <a href="#">Misc</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/Misc/Markdown/">Markdown</a>
+<li class="active">
+    <a href="./">Markdown</a>
 </li>
     </ul>
   </li>
@@ -321,7 +321,7 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../dev/VCS/Mercurial/">Mercurial</a>
+    <a href="../../VCS/Mercurial/">Mercurial</a>
 </li>
             
   <li class="dropdown-submenu">
@@ -329,15 +329,15 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../dev/VCS/Git/Git-problems/">Git problems</a>
+    <a href="../../VCS/Git/Git-problems/">Git problems</a>
 </li>
             
 <li >
-    <a href="../../../dev/VCS/Git/Github/">Github</a>
+    <a href="../../VCS/Git/Github/">Github</a>
 </li>
             
 <li >
-    <a href="../../../dev/VCS/Git/Main/">Main</a>
+    <a href="../../VCS/Git/Main/">Main</a>
 </li>
     </ul>
   </li>
@@ -421,12 +421,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../General/">
+                        <a rel="next" href="../../Java/Java/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Monitor-Linux-Performance/">
+                        <a rel="prev" href="../../VCS/Mercurial/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -438,39 +438,25 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#set-monday-as-first-day-of-week-in-gnome">Set monday as first day of week in Gnome</a></li>
-        <li class="main "><a href="#assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</a></li>
-            <li><a href="#assign">Assign</a></li>
-            <li><a href="#unassign">Unassign</a></li>
-        <li class="main "><a href="#custom-launchers">Custom launchers</a></li>
+        <li class="main active"><a href="#comments-that-only-appear-in-the-markdown-document">Comments that only appear in the markdown document</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h3 id="set-monday-as-first-day-of-week-in-gnome">Set monday as first day of week in Gnome</h3>
-<p>Edit the file ~/.xsessionrc (or bashrc or whatever)
-to contain the line 
-<code>"export LC_TIME=en_GB.utf8"</code></p>
-<h3 id="assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</h3>
-<h4 id="assign">Assign</h4>
-<pre><code>gsettings set org.gnome.settings-daemon.plugins.power button-suspend &quot;nothing&quot;
+<h3 id="comments-that-only-appear-in-the-markdown-document">Comments that only appear in the markdown document</h3>
+<ul>
+<li>From <a href="https://stackoverflow.com/a/20885980">here</a></li>
+<li>It may be prudent to insert a blank line before and after this type of comments, because some Markdown parsers may not like link definitions brushing up against regular text.</li>
+</ul>
+<pre><code>[comment]: &lt;&gt; (This is a comment, it will not be included)
 </code></pre>
 
-<h4 id="unassign">Unassign</h4>
-<pre><code>gsettings set org.gnome.settings-daemon.plugins.power button-suspend &quot;suspend&quot;
+<p>or</p>
+<pre><code>[//]: &lt;&gt; (This is also a comment.)
 </code></pre>
 
-<h3 id="custom-launchers">Custom launchers</h3>
-<p>The applications launchers Gnome knows about are .desktop files in /usr/share/applications, and <code>~/.local/share/applications</code>. You can create custom launchers for whatever is in your home folder, by either manually creating and editing a custom .desktop file, or by using Alacarte, the old Gnome menu editor.</p>
-<p>The Gnome desktop file documentation can be of help: https://developer.gnome.org/integration-guide/stable/desktop-files.html.en</p>
-<p>The custom launcher is just a text file, named, for example, EclipseEE.desktop, with the following content:</p>
-<pre><code>[Desktop Entry]
-Name=Eclipse EE
-Exec=/home/mrPeterson/path_to_executable
-StartupNotify=true
-Terminal=false
-Type=Application
-Icon=/optional/path/to/icon.png
+<p>or</p>
+<pre><code>[//]: # (This may be the most platform independent comment)
 </code></pre></div>
         </div>
 

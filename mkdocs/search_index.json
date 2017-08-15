@@ -2046,6 +2046,16 @@
             "title": "Useful libraries"
         }, 
         {
+            "location": "/dev/Misc/Markdown/", 
+            "text": "Comments that only appear in the markdown document\n\n\n\n\nFrom \nhere\n\n\nIt may be prudent to insert a blank line before and after this type of comments, because some Markdown parsers may not like link definitions brushing up against regular text.\n\n\n\n\n[comment]: \n (This is a comment, it will not be included)\n\n\n\n\nor\n\n\n[//]: \n (This is also a comment.)\n\n\n\n\nor\n\n\n[//]: # (This may be the most platform independent comment)", 
+            "title": "Markdown"
+        }, 
+        {
+            "location": "/dev/Misc/Markdown/#comments-that-only-appear-in-the-markdown-document", 
+            "text": "From  here  It may be prudent to insert a blank line before and after this type of comments, because some Markdown parsers may not like link definitions brushing up against regular text.   [comment]:   (This is a comment, it will not be included)  or  [//]:   (This is also a comment.)  or  [//]: # (This may be the most platform independent comment)", 
+            "title": "Comments that only appear in the markdown document"
+        }, 
+        {
             "location": "/dev/VCS/Mercurial/", 
             "text": "Show changeset information by line for each file\n\n\nhg annotate -u\n\n\nForget tracked file\n\n\nIf file to forget is contained in .hgignore,\n\n\n$ hg forget _filename_\n\n\nServe repo\n\n\n$ hg serve", 
             "title": "Mercurial"
