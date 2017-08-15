@@ -9,6 +9,25 @@
 * [Misc](https://github.com/patsancu/wiki/wiki/Misc)
 * [csv to json](https://gist.github.com/patsancu/0aa0c518f0d0e6ea7bf99416a741aa55)
 
+### Create matrix
+#### Create matrix of None
+```python
+A = [[ None for _ in xrange(M)] for _ in xrange(N)]
+```
+#### Create matrix of random numbers
+```python
+import random
+A = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]
+```
+
+#### Generator for lists of M random elements
+```python
+import random
+A = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))
+for i in A:
+    print i
+    sleep(0.2)
+```
 
 ### Flatten list of lists (only one level of nesting)
 ```python
