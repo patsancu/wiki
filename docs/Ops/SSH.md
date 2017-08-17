@@ -37,7 +37,7 @@ as the following one:
 ```bash
 Host tunnel
     HostName database.example.com
-    IdentityFile ~/.ssh/coolio.example.key
+    IdentityFile ~/.ssh/path_to_PRIVATE_key
     LocalForward 9906 127.0.0.1:3306
     User coolio
 ```
