@@ -2567,12 +2567,12 @@
         }, 
         {
             "location": "/python/ipython/", 
-            "text": "Reloading submodules in IPython\n\n\nFrom \nhere\n\n\nc = get_config()\nc.InteractiveShellApp.extensions = ['autoreload']\nc.InteractiveShellApp.exec_lines = ['%autoreload 2']", 
+            "text": "Reloading submodules in IPython\n\n\n\n\nFrom \nhere\n\n\nEdit the \n~/.ipython/profile_default/ipython_config.py\n file, and add:\n\n\n\n\nc = get_config()\nc.InteractiveShellApp.extensions = ['autoreload']\nc.InteractiveShellApp.exec_lines = ['%autoreload 2']", 
             "title": "Ipython"
         }, 
         {
             "location": "/python/ipython/#reloading-submodules-in-ipython", 
-            "text": "From  here  c = get_config()\nc.InteractiveShellApp.extensions = ['autoreload']\nc.InteractiveShellApp.exec_lines = ['%autoreload 2']", 
+            "text": "From  here  Edit the  ~/.ipython/profile_default/ipython_config.py  file, and add:   c = get_config()\nc.InteractiveShellApp.extensions = ['autoreload']\nc.InteractiveShellApp.exec_lines = ['%autoreload 2']", 
             "title": "Reloading submodules in IPython"
         }, 
         {
