@@ -707,6 +707,14 @@ do
 done
 </code></pre>
 
+<p>or</p>
+<pre><code>input=&quot;/path/to/txt/file&quot;
+while IFS= read -r var
+do
+  echo &quot;$var&quot;
+done &lt; &quot;$input&quot;
+</code></pre>
+
 <h3 id="display-info-about-memory">Display info about memory</h3>
 <p><code>$ sudo lshw -C memory</code></p>
 <h3 id="open-the-current-repo-on-a-specific-web-repo">Open the current repo on a specific web repo</h3>
