@@ -18,6 +18,7 @@ The replacement will say Yazstremski, Carl. The & can also replace a variable pa
 ```
 ***
 from *Learning the vi and Vim Editors, Seventh Edition by Arnold Robbins, Elbert Hannah, and Linda Lamb*.
+
 #### Insert a space between `#` and the character that follows it
 ```
 :%s/#\(\w\)/# \1/g
@@ -170,6 +171,17 @@ Insert this line in the file
 * Press `Escape`
 
 ## Plugins
+
+### Ultisnips
+* From [here](https://stackoverflow.com/a/37947711).
+* Configure custom snippets folder like this:
+```
+let g:UltiSnipsSnippetDirectories=["~/.vim/custom_snippets"]
+```
+* As noted in the docs, do NOT map tab to trigger:
+```
+let g:UltiSnipsExpandTrigger="<c-e>"
+```
 
 **NERDTree**
 
