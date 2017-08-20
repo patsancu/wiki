@@ -182,6 +182,7 @@ let g:UltiSnipsSnippetDirectories=["~/.vim/custom_snippets"]
 ```
 let g:UltiSnipsExpandTrigger="<c-e>"
 ```
+* Check [Python interpolation](http://vimcasts.org/episodes/ultisnips-visual-placeholder/)
 
 ### NERDTree
 * RTFM
