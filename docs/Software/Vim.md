@@ -196,8 +196,3 @@ _From within NERDTree Window_
     * `O` expand selected folder recursively_
     * `I` _show/hide hidden files_
     * `C` _change root to highlighted folder_
-
-**[Gist](https://github.com/mattn/gist-vim)**
-
-* `:'<,'>Gist` Post selected text to gist
-
