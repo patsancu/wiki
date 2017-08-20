@@ -183,18 +183,19 @@ let g:UltiSnipsSnippetDirectories=["~/.vim/custom_snippets"]
 let g:UltiSnipsExpandTrigger="<c-e>"
 ```
 
-**NERDTree**
-
+### NERDTree
+* RTFM
+* or
+* Read this:
 _From within NERDTree Window_
-
-* `m` _bring up the NERDTree Filesystem Menu_
-   * `a` create new file
-* `t` _open in tab_
-* `i` _open in h split_
-* `s` _open in v split_
-* `O` expand selected folder recursively_
-* `I` _show/hide hidden files_
-* `C` _change root to highlighted folder_
+    * `m` _bring up the NERDTree Filesystem Menu_
+       * `a` create new file
+    * `t` _open in tab_
+    * `i` _open in h split_
+    * `s` _open in v split_
+    * `O` expand selected folder recursively_
+    * `I` _show/hide hidden files_
+    * `C` _change root to highlighted folder_
 
 **[Gist](https://github.com/mattn/gist-vim)**
 
