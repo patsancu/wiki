@@ -460,13 +460,15 @@
             <li><a href="#editing">Editing</a></li>
             <li><a href="#visual-mode">Visual Mode</a></li>
         <li class="main "><a href="#plugins">Plugins</a></li>
+            <li><a href="#ultisnips">Ultisnips</a></li>
+            <li><a href="#nerdtree">NERDTree</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h3 id="vimrc">Vimrc</h3>
 <ul>
-<li><a href="https://gist.github.com/patsancu/64114dc27543e9b26b7d3180559f5975">Vimrc omorante</a> or https://github.com/spacepluk/vim-config/blob/master/vimrc</li>
+<li><a href="https://gist.github.com/patsancu/64114dc27543e9b26b7d3180559f5975">Vimrc omorante</a> or <a href="https://github.com/spacepluk/vim-config/blob/master/vimrc">this</a></li>
 <li><a href="https://www.gregjs.com/vim/2016/do-yourself-a-favor-and-modularize-your-vimrc-init-vim/">Modularize vimrc</a></li>
 </ul>
 <h3 id="regex"><a href="http://vimregex.com/">Regex</a></h3>
@@ -644,9 +646,26 @@ $ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerli
 <li>Press <code>Escape</code></li>
 </ul>
 <h2 id="plugins">Plugins</h2>
-<p><strong>NERDTree</strong></p>
-<p><em>From within NERDTree Window</em></p>
+<h3 id="ultisnips">Ultisnips</h3>
 <ul>
+<li>From <a href="https://stackoverflow.com/a/37947711">here</a>.</li>
+<li>Configure custom snippets folder like this:</li>
+</ul>
+<pre><code>let g:UltiSnipsSnippetDirectories=[&quot;~/.vim/custom_snippets&quot;]
+</code></pre>
+
+<ul>
+<li>As noted in the docs, do NOT map tab to trigger:</li>
+</ul>
+<pre><code>let g:UltiSnipsExpandTrigger=&quot;&lt;c-e&gt;&quot;
+</code></pre>
+
+<h3 id="nerdtree">NERDTree</h3>
+<ul>
+<li>RTFM</li>
+<li>or</li>
+<li>Read this:
+<em>From within NERDTree Window</em><ul>
 <li><code>m</code> <em>bring up the NERDTree Filesystem Menu</em></li>
 <li><code>a</code> create new file</li>
 <li><code>t</code> <em>open in tab</em></li>
@@ -656,9 +675,7 @@ $ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerli
 <li><code>I</code> <em>show/hide hidden files</em></li>
 <li><code>C</code> <em>change root to highlighted folder</em></li>
 </ul>
-<p><strong><a href="https://github.com/mattn/gist-vim">Gist</a></strong></p>
-<ul>
-<li><code>:'&lt;,'&gt;Gist</code> Post selected text to gist</li>
+</li>
 </ul></div>
         </div>
 
