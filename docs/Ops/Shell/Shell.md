@@ -230,6 +230,16 @@ do
     echo "$j"
 done
 ```
+or
+
+```
+input="/path/to/txt/file"
+while IFS= read -r var
+do
+  echo "$var"
+done < "$input"
+```
+
 ### Display info about memory
 ```$ sudo lshw -C memory```
 
