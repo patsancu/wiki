@@ -5,3 +5,5 @@ $ pip install virtualenvwrapper
 $ export WORKON_HOME=~/Envs
 $ source /usr/local/bin/virtualenvwrapper.sh
 ```
+* [Packaging](https://python-packaging.readthedocs.io/en/latest/minimal.html)
+    * [example]()
