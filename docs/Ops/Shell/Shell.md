@@ -269,7 +269,7 @@ alias hgweb=my_hgweb
 * 7 – White.
 Clear all options
 ```
-tput clear
+tput setab clear
 ```
 Set foreground color
 ```
