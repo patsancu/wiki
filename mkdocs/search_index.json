@@ -572,7 +572,7 @@
         }, 
         {
             "location": "/Ops/Network-stuff/", 
-            "text": "Set static IP\n\n\nEdit the following file\n\n\n/etc/dhcpcd.conf\n\n\n\n\nwith the following contents (adapted of course)\n\n\ninterface eth0\n\nstatic ip_address=192.168.0.10/24\nstatic routers=192.168.0.1\nstatic domain_name_servers=192.168.0.1\n\ninterface wlan0\n\nstatic ip_address=192.168.0.200/24\nstatic routers=192.168.0.1\nstatic domain_name_servers=192.168.0.1\n\n\n\n\n\nGet listening ports without netstat\n\n\nss -aut\n\n\n\n\nScan ip range\n\n\nsudo nmap -sP 192.168.*.*\n\n\n\n\nForward packets\n\n\necho 1 \n /proc/sys/net/ipv4/ip_forward", 
+            "text": "Set static IP\n\n\nEdit the following file\n\n\n/etc/dhcpcd.conf\n\n\n\n\nwith the following contents (adapted of course)\n\n\ninterface eth0\n\nstatic ip_address=192.168.0.10/24\nstatic routers=192.168.0.1\nstatic domain_name_servers=192.168.0.1\n\ninterface wlan0\n\nstatic ip_address=192.168.0.200/24\nstatic routers=192.168.0.1\nstatic domain_name_servers=192.168.0.1\n\n\n\n\n\nGet listening ports without netstat\n\n\nss -aut\n\n\n\n\nScan ip range\n\n\nsudo nmap -sP 192.168.*.*\n\n\n\n\nForward packets\n\n\necho 1 \n /proc/sys/net/ipv4/ip_forward\n\n\n\n\nOpenVPN automatic login\n\n\n\n\nCreate file with username in the first line and password in the second, i.e. auth.txt\n\n\nChange the line\n\n\n\n\nauth-user-pass\n\n\n\n\n\nto\n\n\nauth-user-pass auth.txt\n\n\n\n\nin the .ovpn file\n* (Optional) Change the line in all the ovpn files with:\n\n\nsed -i 's/auth-user-pass/#\n1\\n\n1 auth.txt/' vpn_file.ovpn", 
             "title": "Network stuff"
         }, 
         {
@@ -594,6 +594,11 @@
             "location": "/Ops/Network-stuff/#forward-packets", 
             "text": "echo 1   /proc/sys/net/ipv4/ip_forward", 
             "title": "Forward packets"
+        }, 
+        {
+            "location": "/Ops/Network-stuff/#openvpn-automatic-login", 
+            "text": "Create file with username in the first line and password in the second, i.e. auth.txt  Change the line   auth-user-pass  to  auth-user-pass auth.txt  in the .ovpn file\n* (Optional) Change the line in all the ovpn files with:  sed -i 's/auth-user-pass/# 1\\n 1 auth.txt/' vpn_file.ovpn", 
+            "title": "OpenVPN automatic login"
         }, 
         {
             "location": "/Ops/New-environment-from-scratch/", 

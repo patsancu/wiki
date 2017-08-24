@@ -450,6 +450,7 @@
         <li class="main "><a href="#get-listening-ports-without-netstat">Get listening ports without netstat</a></li>
         <li class="main "><a href="#scan-ip-range">Scan ip range</a></li>
         <li class="main "><a href="#forward-packets">Forward packets</a></li>
+        <li class="main "><a href="#openvpn-automatic-login">OpenVPN automatic login</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -484,6 +485,24 @@ static domain_name_servers=192.168.0.1
 
 <h3 id="forward-packets">Forward packets</h3>
 <pre><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+</code></pre>
+
+<h3 id="openvpn-automatic-login">OpenVPN automatic login</h3>
+<ul>
+<li>Create file with username in the first line and password in the second, i.e. auth.txt</li>
+<li>Change the line</li>
+</ul>
+<pre><code>auth-user-pass
+
+</code></pre>
+
+<p>to</p>
+<pre><code>auth-user-pass auth.txt
+</code></pre>
+
+<p>in the .ovpn file
+* (Optional) Change the line in all the ovpn files with:</p>
+<pre><code>sed -i 's/auth-user-pass/#&amp;1\n&amp;1 auth.txt/' vpn_file.ovpn
 </code></pre></div>
         </div>
 
