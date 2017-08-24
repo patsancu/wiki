@@ -96,6 +96,18 @@ ORDER BY a.db_id,
 ```
 
 ### Generate date series
+* Generate series using **any** table as a dummy table.
+
+```sql
+create table fechas as
+select (
+    date('2017-06-30') + row_number() over (order by true)
+  )::date as fecha
+from ibc.playback limit 40
+```
+
+
+**Warning**. The date_series function thing doesn't work that well on redshift when doing joins and stuff like that. For more info, check redshift's developer guide.
 ```sql
 WITH date_series_bounds AS (
 	SELECT date('2012-12-21') as start, date('2013-08-23') as end
