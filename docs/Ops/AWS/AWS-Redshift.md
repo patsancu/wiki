@@ -1,4 +1,5 @@
-Check the [postgresql wiki page](../dev/DB/Postgres) out:
+* Check the [postgresql wiki page](../dev/DB/Postgres) out:
+* Check out [redshift developer's guide](https://awsdocs.s3.amazonaws.com/redshift/latest/redshift-dg.pdf)
 
 [List databases] (https://gist.github.com/patsancu/50ea9416c0c7ba5746d045e9b047955d)
 ### Load data into redsfhit from s3
