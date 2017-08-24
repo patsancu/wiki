@@ -462,7 +462,10 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>Check the <a href="../../dev/DB/Postgres">postgresql wiki page</a> out:</p>
+<ul>
+<li>Check the <a href="../../dev/DB/Postgres">postgresql wiki page</a> out:</li>
+<li>Check out <a href="https://awsdocs.s3.amazonaws.com/redshift/latest/redshift-dg.pdf">redshift developer's guide</a></li>
+</ul>
 <p>[List databases] (https://gist.github.com/patsancu/50ea9416c0c7ba5746d045e9b047955d)</p>
 <h3 id="load-data-into-redsfhit-from-s3">Load data into redsfhit from s3</h3>
 <p>Data can be loaded recursively.
@@ -549,6 +552,17 @@ ORDER BY a.db_id,
 </code></pre>
 
 <h3 id="generate-date-series">Generate date series</h3>
+<ul>
+<li>Generate series using <strong>any</strong> table as a dummy table.</li>
+</ul>
+<pre><code class="sql">create table fechas as
+select (
+    date('2017-06-30') + row_number() over (order by true)
+  )::date as fecha
+from ibc.playback limit 40
+</code></pre>
+
+<p><strong>Warning</strong>. The date_series function thing doesn't work that well on redshift when doing joins and stuff like that. For more info, check redshift's developer guide.</p>
 <pre><code class="sql">WITH date_series_bounds AS (
     SELECT date('2012-12-21') as start, date('2013-08-23') as end
 ), date_series AS (
