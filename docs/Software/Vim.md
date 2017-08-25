@@ -197,3 +197,10 @@ _From within NERDTree Window_
     * `O` expand selected folder recursively_
     * `I` _show/hide hidden files_
     * `C` _change root to highlighted folder_
+
+### Snippets
+#### Reverse lines
+* All
+`:g/^/m0`
+* Range (reverse only lines 100-150)
+`:100,150g/^/m99`
