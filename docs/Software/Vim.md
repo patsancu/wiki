@@ -4,7 +4,7 @@
 * [Modularize vimrc](https://www.gregjs.com/vim/2016/do-yourself-a-favor-and-modularize-your-vimrc-init-vim/)
 
 ### [Regex](http://vimregex.com/)
-#### & 
+#### &
 **&** Is replaced with the entire text matched by the search pattern when used in a
 replacement string. This is useful when you want to avoid retyping text:
 ```
@@ -66,7 +66,7 @@ MacOS
 ```
 cd ~/Library/Fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete.otf
 ```
-* In .vimrc, 
+* In .vimrc,
 ```
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 ```
@@ -129,7 +129,7 @@ Insert this line in the file
 * `:r !dir`  _reads the output of the dir command and puts it below the cursor position._
 
 
-### Editing 
+### Editing
 
 #### Normal mode
 * `:m .+1` _Move line down_
