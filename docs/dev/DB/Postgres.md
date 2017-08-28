@@ -1,3 +1,11 @@
+### Change column type without changing order
+```
+CREATE TEMP TABLE temp_table AS SELECT * FROM original_table;
+DROP TABLE original_table;
+CREATE TABLE original_table ...
+INSERT INTO original_table SELECT * FROM temp_table;
+```
+
 ### List tables
 ```sql
 SELECT * FROM pg_catalog.pg_tables
