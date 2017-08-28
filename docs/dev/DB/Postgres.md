@@ -1,4 +1,5 @@
 ### Change column type without changing order
+From [here](https://stackoverflow.com/a/36718450/2769307)
 ```
 CREATE TEMP TABLE temp_table AS SELECT * FROM original_table;
 DROP TABLE original_table;
