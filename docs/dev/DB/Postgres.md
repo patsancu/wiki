@@ -25,6 +25,6 @@ from INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'
 
 ### Capitalize first letter of each word
 ```sql
-select initcap(lower(deli.short_title)) 
+select initcap(lower(deli.short_title))
 from deli
 ```
