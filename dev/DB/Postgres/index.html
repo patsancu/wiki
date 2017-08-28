@@ -374,6 +374,14 @@
 </li>
                             
 <li >
+    <a href="../../../python/Python-date-time/">Python date time</a>
+</li>
+                            
+<li >
+    <a href="../../../python/Python-file-management/">Python file management</a>
+</li>
+                            
+<li >
     <a href="../../../python/Python-input-output/">Python input output</a>
 </li>
                             
@@ -446,12 +454,21 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#list-tables">List tables</a></li>
+        <li class="main active"><a href="#change-column-type-without-changing-order">Change column type without changing order</a></li>
+        <li class="main "><a href="#list-tables">List tables</a></li>
         <li class="main "><a href="#describe-table">Describe table</a></li>
         <li class="main "><a href="#capitalize-first-letter-of-each-word">Capitalize first letter of each word</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
+
+<h3 id="change-column-type-without-changing-order">Change column type without changing order</h3>
+<p>From <a href="https://stackoverflow.com/a/36718450/2769307">here</a></p>
+<pre><code>CREATE TEMP TABLE temp_table AS SELECT * FROM original_table;
+DROP TABLE original_table;
+CREATE TABLE original_table ...
+INSERT INTO original_table SELECT * FROM temp_table;
+</code></pre>
 
 <h3 id="list-tables">List tables</h3>
 <pre><code class="sql">SELECT * FROM pg_catalog.pg_tables
@@ -468,7 +485,7 @@ from INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'
 </code></pre>
 
 <h3 id="capitalize-first-letter-of-each-word">Capitalize first letter of each word</h3>
-<pre><code class="sql">select initcap(lower(deli.short_title)) 
+<pre><code class="sql">select initcap(lower(deli.short_title))
 from deli
 </code></pre></div>
         </div>
