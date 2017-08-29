@@ -233,3 +233,9 @@ That's it, you can push your progress now.
 ```
 
 ### [Rewrite history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
+
+
+### Ignore subsequent changes to a file without deleting it
+```
+git update-index --skip-worktree path/to/file.cfg
+```
