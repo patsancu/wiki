@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Tmux - Patrick's Wiki</title>
+        <title>Packages to install - Patrick's Wiki</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -248,16 +248,16 @@
     <a href="../mutt/">Mutt</a>
 </li>
                             
-<li >
-    <a href="../packages to install/">Packages to install</a>
+<li class="active">
+    <a href="./">Packages to install</a>
 </li>
                             
 <li >
     <a href="../sublime/">Sublime</a>
 </li>
                             
-<li class="active">
-    <a href="./">Tmux</a>
+<li >
+    <a href="../tmux/">Tmux</a>
 </li>
                         </ul>
                     </li>
@@ -441,12 +441,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../sublime/">
+                        <a rel="next" href="../mutt/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../Web/Web-browsing-tips/">
+                        <a rel="prev" href="../sublime/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -458,37 +458,19 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#build-tmux-from-scratch">Build tmux from scratch</a></li>
-        <li class="main "><a href="#configuration">Configuration</a></li>
-            <li><a href="#macos">MacOS</a></li>
-            <li><a href="#tmuxconf">~./tmux.conf</a></li>
-            <li><a href="#simple-tmux-statusline-generator">Simple tmux statusline generator</a></li>
-            <li><a href="#generate-a-fast-shell-prompt">Generate a fast shell prompt</a></li>
-        <li class="main "><a href="#cheatsheet">Cheatsheet</a></li>
-        <li class="main "><a href="#sessions">Sessions</a></li>
-        <li class="main "><a href="#plugins">Plugins</a></li>
+        <li class="main active"><a href="#howdoi">howdoi</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h3 id="build-tmux-from-scratch"><a href="https://gist.github.com/patsancu/1a169a3a2c306e498ea809e8f30fc5fd">Build tmux from scratch</a></h3>
-<h3 id="configuration">Configuration</h3>
-<h4 id="macos">MacOS</h4>
-<p>set-option -g default-command "reattach-to-user-namespace -l zsh"</p>
-<h4 id="tmuxconf"><code>~./tmux.conf</code></h4>
-<p><a href="https://gist.github.com/komasaru/5574812">Config example</a></p>
-<h4 id="simple-tmux-statusline-generator"><a href="https://github.com/edkolev/tmuxline.vim">Simple tmux statusline generator </a></h4>
-<h4 id="generate-a-fast-shell-prompt"><a href="https://github.com/edkolev/promptline.vim">Generate a fast shell prompt</a></h4>
-<h3 id="cheatsheet">Cheatsheet</h3>
-<p>https://gist.github.com/patsancu/60bfd4576af7fecd6f8b4329347a108e</p>
-<h3 id="sessions">Sessions</h3>
-<pre><code>tmux new -s session_name
-</code></pre>
-
-<p><code>^B + d</code> detach from session without killing anything
-<code>tmux attach -t session_name</code> attach to sessions</p>
-<h3 id="plugins">Plugins</h3>
-<p>https://github.com/tmux-plugins/tpm</p></div>
+<h3 id="howdoi">howdoi</h3>
+<ul>
+<li><code>sudo -H pip install howdoi</code></li>
+<li>Find quick solutions to common CLI commands</li>
+</ul>
+<pre><code>$ howdoi use find with exec
+$ find . -name &quot;*.php&quot; -exec chmod 755 {} \; -exec /bin/echo {} \; | wc -l
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

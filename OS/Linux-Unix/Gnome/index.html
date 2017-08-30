@@ -249,6 +249,10 @@
 </li>
                             
 <li >
+    <a href="../../../Software/packages to install/">Packages to install</a>
+</li>
+                            
+<li >
     <a href="../../../Software/sublime/">Sublime</a>
 </li>
                             
@@ -455,18 +459,23 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#set-monday-as-first-day-of-week-in-gnome">Set monday as first day of week in Gnome</a></li>
-        <li class="main "><a href="#assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</a></li>
-            <li><a href="#assign">Assign</a></li>
-            <li><a href="#unassign">Unassign</a></li>
-        <li class="main "><a href="#custom-launchers">Custom launchers</a></li>
+        <li class="main "><a href="#gnome-settings">Gnome settings</a></li>
+            <li><a href="#change-screenshot-directory">Change screenshot directory</a></li>
+            <li><a href="#assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</a></li>
+            <li><a href="#custom-launchers">Custom launchers</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h3 id="set-monday-as-first-day-of-week-in-gnome">Set monday as first day of week in Gnome</h3>
 <p>Edit the file ~/.xsessionrc (or bashrc or whatever)
-to contain the line 
+to contain the line
 <code>"export LC_TIME=en_GB.utf8"</code></p>
+<h2 id="gnome-settings">Gnome settings</h2>
+<h3 id="change-screenshot-directory">Change screenshot directory</h3>
+<pre><code>gsettings set org.gnome.gnome-screenshot auto-save-directory &quot;file:///home/$USER/Pictures/Screenshots/&quot;
+</code></pre>
+
 <h3 id="assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</h3>
 <h4 id="assign">Assign</h4>
 <pre><code>gsettings set org.gnome.settings-daemon.plugins.power button-suspend &quot;nothing&quot;

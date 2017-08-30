@@ -249,6 +249,10 @@
 </li>
                             
 <li >
+    <a href="../../../../Software/packages to install/">Packages to install</a>
+</li>
+                            
+<li >
     <a href="../../../../Software/sublime/">Sublime</a>
 </li>
                             
@@ -487,6 +491,7 @@
         <li class="main "><a href="#undo-commits_1">Undo commits</a></li>
         <li class="main "><a href="#rearrange-commits">Rearrange commits</a></li>
         <li class="main "><a href="#rewrite-history">Rewrite history</a></li>
+        <li class="main "><a href="#ignore-subsequent-changes-to-a-file-without-deleting-it">Ignore subsequent changes to a file without deleting it</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -684,7 +689,10 @@ git reset --hard rewrite-history  # make this branch master
 That's it, you can push your progress now.
 </code></pre>
 
-<h3 id="rewrite-history"><a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">Rewrite history</a></h3></div>
+<h3 id="rewrite-history"><a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">Rewrite history</a></h3>
+<h3 id="ignore-subsequent-changes-to-a-file-without-deleting-it">Ignore subsequent changes to a file without deleting it</h3>
+<pre><code>git update-index --skip-worktree path/to/file.cfg
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
