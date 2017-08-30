@@ -1,6 +1,6 @@
 ### Set monday as first day of week in Gnome
 Edit the file ~/.xsessionrc (or bashrc or whatever)
-to contain the line 
+to contain the line
 `"export LC_TIME=en_GB.utf8"`
 
 
