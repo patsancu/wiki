@@ -3,6 +3,11 @@ Edit the file ~/.xsessionrc (or bashrc or whatever)
 to contain the line
 `"export LC_TIME=en_GB.utf8"`
 
+## Gnome settings
+### Change screenshot directory
+```
+gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/$USER/Pictures/Screenshots/"
+```
 
 ### Assign/unassign keyboard's sleep button
 #### Assign
