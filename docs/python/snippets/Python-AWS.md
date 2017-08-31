@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-## S3
+### S3
 ```python
 import boto3
 
