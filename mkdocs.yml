@@ -2,5 +2,4 @@ site_name: Patrick's Wiki
 google_analytics: ['UA-93920193-1', 'patsancu.github.io/wiki']
 #provides a link directly to the page in your source repository
 edit_uri: edit/master/docs/
-
-
+repo_url: https://github.com/patsancu/wiki
