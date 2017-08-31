@@ -7,7 +7,7 @@ git checkout -b test-branch 56a4e5c08
 Sources: [this](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) and [this](https://gist.github.com/patsancu/b1504d8dd4bcca8130cb0d66fa2c9539)
 
 #### create-a-new-ssh-key
-See [this](../../Ops/SSH.md#create-a-new-ssh-key)
+See [this](../../../Ops/SSH.md#create-a-new-ssh-key)
 
 #### Attach key
 Login to your git repo service and paste the contents of your new pub key
