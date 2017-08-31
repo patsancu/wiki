@@ -6,7 +6,6 @@
 * [Q - text as data](https://github.com/patsancu/wiki/wiki/Python-libaries#q)
 * [Lorem ipsum generator](https://github.com/patsancu/wiki/wiki/Python-libaries#camelipsum)
 * [Blink keyboard led](https://github.com/patsancu/wiki/wiki/Python-libaries#blink-led-of-caps-key)
-* [s3 stuff](https://github.com/patsancu/wiki/wiki/Python-libaries#s3-stuff)
 
 ### Start simple python http server
 2
@@ -129,6 +128,3 @@ Southern Europe
 Eastern Asia
 ...
 ```
-
-### S3 stuff
-https://gist.github.com/patsancu/01b76f387350a0ead1f1e826889c8ac4
