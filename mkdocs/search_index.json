@@ -2662,8 +2662,18 @@
         }, 
         {
             "location": "/python/", 
-            "text": "Hitchhiker's guide to python\n\n\npip install virtualevn\n\n\n\n\n$ pip install virtualenvwrapper\n$ export WORKON_HOME=~/Envs\n$ source /usr/local/bin/virtualenvwrapper.sh\n\n\n\n\n\n\nPackaging\n\n\nexample", 
+            "text": "Hitchhiker's guide to python\n\n\npip install virtualevn\n\n\n\n\n$ pip install virtualenvwrapper\n$ export WORKON_HOME=~/Envs\n$ source /usr/local/bin/virtualenvwrapper.sh\n\n\n\n\n\n\nPackaging\n\n\nexample\n\n\n\n\n\n\n\n\nDebugging\n\n\nStyle and code analysis\n\n\n\n\npylint\n.  integrates with Vim's syntastic", 
             "title": "Home"
+        }, 
+        {
+            "location": "/python/#debugging", 
+            "text": "", 
+            "title": "Debugging"
+        }, 
+        {
+            "location": "/python/#style-and-code-analysis", 
+            "text": "pylint .  integrates with Vim's syntastic", 
+            "title": "Style and code analysis"
         }, 
         {
             "location": "/python/ipython/", 
