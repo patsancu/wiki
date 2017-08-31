@@ -706,109 +706,114 @@
             "title": "SSH Config File"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Cli-Config/", 
+            "location": "/Ops/AWS/Cli-Config/", 
             "text": "Add new profile named new_profile_name\n\n\naws configure --profile new_profile_name", 
-            "title": "AWS Cli Config"
+            "title": "Cli Config"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Cli-Config/#add-new-profile-named-new_profile_name", 
+            "location": "/Ops/AWS/Cli-Config/#add-new-profile-named-new_profile_name", 
             "text": "aws configure --profile new_profile_name", 
             "title": "Add new profile named new_profile_name"
         }, 
         {
-            "location": "/Ops/AWS/AWS-EC2/", 
+            "location": "/Ops/AWS/EC2/", 
             "text": "Get list of info aobut EBS volumes\n\n\naws ec2 describe-volumes --profile profile-name", 
-            "title": "AWS EC2"
+            "title": "EC2"
         }, 
         {
-            "location": "/Ops/AWS/AWS-EC2/#get-list-of-info-aobut-ebs-volumes", 
+            "location": "/Ops/AWS/EC2/#get-list-of-info-aobut-ebs-volumes", 
             "text": "aws ec2 describe-volumes --profile profile-name", 
             "title": "Get list of info aobut EBS volumes"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Kinesis/", 
-            "text": "AWS-CLI\n\n\nPython\n\n\n\n\nAWS CLI\n\n\nWarning\n Before using check that you have properly set the \nAWS_PROFILE\n env variable to some profile existing in \n~/.aws/credentials\n, or comfortable using the aws default profile\nas \n\n\n$ export AWS_PROFILE=analytics-storm\n\n\n\n\nGet kinesis decoded data\n\n\naws kinesis get-records --shard-iterator some_shard_hash --profile some-profile | jq \".Records [] .Data\" | tr -d '\n\"' | base64 -d\n\n\n$ aws kinesis describe-stream --stream-name stream_name --profile user2\n\n{\n    \nStreamDescription\n: {\n        \nRetentionPeriodHours\n: 24, \n        \nStreamName\n: \nstream_name\n, \n        \nShards\n: [\n            {\n                \nShardId\n: \nshardId-000000000000\n, \n                \nHashKeyRange\n: {\n                    \nEndingHashKey\n: \nwhateverhashkey\n, \n                    \nStartingHashKey\n: \n0\n\n                }, \n                \nSequenceNumberRange\n: {\n                    \nStartingSequenceNumber\n: \nwhateversequencenumber\n\n                }\n            }, \n            {\n                \nShardId\n: \nshardId-000000000001\n, \n                \nHashKeyRange\n: {\n                    \nEndingHashKey\n: \nwhateverhashke\n, \n                    \nStartingHashKey\n: \nwhatevernumber\n\n                }, \n                \nSequenceNumberRange\n: {\n                    \nStartingSequenceNumber\n: \nsomenumber\n\n                }\n            }\n        ], \n        \nStreamARN\n: \narn:aws:kinesis:region:accountNumber:stream/stream_name\n, \n        \nEnhancedMonitoring\n: [\n            {\n                \nShardLevelMetrics\n: []\n            }\n        ], \n        \nStreamStatus\n: \nACTIVE\n\n    }\n}\n\n\n\n\n$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type LATEST\n{\n    \nShardIterator\n: \nwhateversharditeratorwithnumberslettersandslashes \n\n}\n\n\n\n\n\nget shard iterator for specific date (take into account the retention policy for your kinesis service)\n\n\n$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type AT_TIMESTAMP --timestamp \n2017-05-25 08:00:00\n\n\n\n\n\n\n\n\n\nshardId is one appearing in the describe-stream command above  \n\n\n\n\n\n\nfor more info about shard-iterator-type\nhttp://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#API_GetShardIterator_RequestSyntax\n\n\n\n\n\n\n$ aws kinesis get-records --shard-iterator whateversharditeratorwithnumberslettersandslashes --limit 1 --profile user2\n{\n    \nRecords\n: [\n        {\n            \nData\n: \nsome_encoded_data\n, \n            \nPartitionKey\n: \nsome_numbers\n, \n            \nApproximateArrivalTimestamp\n: 1490964900.808, \n            \nSequenceNumber\n: \nsome_very_long_number\n\n        }\n    ], \n    \nNextShardIterator\n: \nsome_sequence_of_letters_and_numbers_and_slashes\n, \n    \nMillisBehindLatest\n: 0\n}", 
-            "title": "AWS Kinesis"
+            "location": "/Ops/AWS/Kinesis/", 
+            "text": "Python\n\n\n\n\nAWS CLI\n\n\nWarning\n Before using check that you have properly set the \nAWS_PROFILE\n env variable to some profile existing in \n~/.aws/credentials\n, or comfortable using the aws default profile\nas \n\n\n$ export AWS_PROFILE=analytics-storm\n\n\n\n\nGet kinesis decoded data\n\n\naws kinesis get-records --shard-iterator some_shard_hash --profile some-profile | jq \".Records [] .Data\" | tr -d '\n\"' | base64 -d\n\n\n$ aws kinesis describe-stream --stream-name stream_name --profile user2\n\n{\n    \nStreamDescription\n: {\n        \nRetentionPeriodHours\n: 24, \n        \nStreamName\n: \nstream_name\n, \n        \nShards\n: [\n            {\n                \nShardId\n: \nshardId-000000000000\n, \n                \nHashKeyRange\n: {\n                    \nEndingHashKey\n: \nwhateverhashkey\n, \n                    \nStartingHashKey\n: \n0\n\n                }, \n                \nSequenceNumberRange\n: {\n                    \nStartingSequenceNumber\n: \nwhateversequencenumber\n\n                }\n            }, \n            {\n                \nShardId\n: \nshardId-000000000001\n, \n                \nHashKeyRange\n: {\n                    \nEndingHashKey\n: \nwhateverhashke\n, \n                    \nStartingHashKey\n: \nwhatevernumber\n\n                }, \n                \nSequenceNumberRange\n: {\n                    \nStartingSequenceNumber\n: \nsomenumber\n\n                }\n            }\n        ], \n        \nStreamARN\n: \narn:aws:kinesis:region:accountNumber:stream/stream_name\n, \n        \nEnhancedMonitoring\n: [\n            {\n                \nShardLevelMetrics\n: []\n            }\n        ], \n        \nStreamStatus\n: \nACTIVE\n\n    }\n}\n\n\n\n\n$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type LATEST\n{\n    \nShardIterator\n: \nwhateversharditeratorwithnumberslettersandslashes \n\n}\n\n\n\n\n\nget shard iterator for specific date (take into account the retention policy for your kinesis service)\n\n\n$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type AT_TIMESTAMP --timestamp \n2017-05-25 08:00:00\n\n\n\n\n\n\n\n\n\nshardId is one appearing in the describe-stream command above  \n\n\n\n\n\n\nfor more info about shard-iterator-type\nhttp://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#API_GetShardIterator_RequestSyntax\n\n\n\n\n\n\n$ aws kinesis get-records --shard-iterator whateversharditeratorwithnumberslettersandslashes --limit 1 --profile user2\n{\n    \nRecords\n: [\n        {\n            \nData\n: \nsome_encoded_data\n, \n            \nPartitionKey\n: \nsome_numbers\n, \n            \nApproximateArrivalTimestamp\n: 1490964900.808, \n            \nSequenceNumber\n: \nsome_very_long_number\n\n        }\n    ], \n    \nNextShardIterator\n: \nsome_sequence_of_letters_and_numbers_and_slashes\n, \n    \nMillisBehindLatest\n: 0\n}", 
+            "title": "Kinesis"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Kinesis/#aws-cli", 
+            "location": "/Ops/AWS/Kinesis/#aws-cli", 
             "text": "Warning  Before using check that you have properly set the  AWS_PROFILE  env variable to some profile existing in  ~/.aws/credentials , or comfortable using the aws default profile\nas   $ export AWS_PROFILE=analytics-storm", 
             "title": "AWS CLI"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Kinesis/#get-kinesis-decoded-data", 
+            "location": "/Ops/AWS/Kinesis/#get-kinesis-decoded-data", 
             "text": "aws kinesis get-records --shard-iterator some_shard_hash --profile some-profile | jq \".Records [] .Data\" | tr -d '\n\"' | base64 -d  $ aws kinesis describe-stream --stream-name stream_name --profile user2\n\n{\n     StreamDescription : {\n         RetentionPeriodHours : 24, \n         StreamName :  stream_name , \n         Shards : [\n            {\n                 ShardId :  shardId-000000000000 , \n                 HashKeyRange : {\n                     EndingHashKey :  whateverhashkey , \n                     StartingHashKey :  0 \n                }, \n                 SequenceNumberRange : {\n                     StartingSequenceNumber :  whateversequencenumber \n                }\n            }, \n            {\n                 ShardId :  shardId-000000000001 , \n                 HashKeyRange : {\n                     EndingHashKey :  whateverhashke , \n                     StartingHashKey :  whatevernumber \n                }, \n                 SequenceNumberRange : {\n                     StartingSequenceNumber :  somenumber \n                }\n            }\n        ], \n         StreamARN :  arn:aws:kinesis:region:accountNumber:stream/stream_name , \n         EnhancedMonitoring : [\n            {\n                 ShardLevelMetrics : []\n            }\n        ], \n         StreamStatus :  ACTIVE \n    }\n}  $ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type LATEST\n{\n     ShardIterator :  whateversharditeratorwithnumberslettersandslashes  \n}  get shard iterator for specific date (take into account the retention policy for your kinesis service)  $ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type AT_TIMESTAMP --timestamp  2017-05-25 08:00:00     shardId is one appearing in the describe-stream command above      for more info about shard-iterator-type\nhttp://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#API_GetShardIterator_RequestSyntax    $ aws kinesis get-records --shard-iterator whateversharditeratorwithnumberslettersandslashes --limit 1 --profile user2\n{\n     Records : [\n        {\n             Data :  some_encoded_data , \n             PartitionKey :  some_numbers , \n             ApproximateArrivalTimestamp : 1490964900.808, \n             SequenceNumber :  some_very_long_number \n        }\n    ], \n     NextShardIterator :  some_sequence_of_letters_and_numbers_and_slashes , \n     MillisBehindLatest : 0\n}", 
             "title": "Get kinesis decoded data"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/", 
+            "location": "/Ops/AWS/Redshift/", 
             "text": "Check the \npostgresql wiki page\n out:\n\n\nCheck out \nredshift developer's guide\n\n\n\n\n[List databases] (https://gist.github.com/patsancu/50ea9416c0c7ba5746d045e9b047955d)\n\n\nLoad data into redsfhit from s3\n\n\nData can be loaded recursively.\nIf there's a folder with this structure\n\n\na/\n  b/\n    p.json.gz\n  c/\n    q.json.gz\n    r.json.gz\n\n\n\n\nCalling the copy sentence with the folder \na\n as source will copy all files under the folder recursively\n\n\ncopy schema.table_name\nfrom 's3://bucket-name/some_folder/some_file.json.gz'\n-- from 's3://bucket-name/a'\nwith credentials 'aws_access_key_id=some_access_key;ws_secret_access_key=supersupersecretkey'\n[gzip]\nformat as json 'auto'\n[region 'us-east-1']\n-- If the Amazon S3 buckets that hold the data files do not reside in the same region as your cluster, you must use the REGION parameter to specify the region in which the data is located.\n\n\n\n\nEscape strings with Escape\n\n\nRemove\n the format as csv thing\n\n\ncopy analyticsmodel.playback\nfrom :sql:source\nwith credentials :sql:redshift-credentials\ndelimiter '~'\nignoreheader as 1\n[escape]\n[truncatecolumns Truncates data in columns to the appropriate number of characters it has been specified]\n\n\n\n\nLoad into redshift with custom field ordering\n\n\nYou can specify a comma-separated list of column names to load source data fields into specific target columns.\n\nDocs\n\n\ncopy schema.table (column_a, column_b, column_c, column_d, column_e, colummn_f)\nfrom 's3://some_file.csv'\nwith credentials 'aws_access_key_id=some_access_key;ws_secret_access_key=supersupersecretkey'\nformat as csv\nignoreheader as 1\nTRUNCATECOLUMNS\n\n\n\n\nCheck errors\n\n\nselect * from stl_load_errors\norder by starttime desc;\n\n\n\n\nCheck info about permanent tables\n\n\nThe STV_TBL_PERM table contains information about the permanent tables in Amazon Redshift. More info \nhere\n\n\nselect * FROM stv_tbl_perm ;\n\n\n\n\nSize info about tables\n\n\nFirst method\n\n\nselect \ndatabase\n,\n\nschema\n || '.' || \ntable\n, \nsize\n as \nsize in Mb\n, \ntbl_rows\n as \nrows\n\nfrom svv_table_info\n\n\n\n\nSecond method\n\n\nThe query below's info  is \nnot exhaustive nor complete\n\n\nSELECT TRIM(pgdb.datname) AS DATABASE,\n      TRIM(pgn.nspname) AS SCHEMA,\n      TRIM(a.name) AS TABLE,\n      b.mbytes,\n      a.rows\nFROM (SELECT db_id,\n            id,\n            name,\n            SUM(ROWS) AS ROWS\n     FROM stv_tbl_perm a\n     GROUP BY db_id,\n              id,\n              name) AS a\n JOIN pg_class AS pgc ON pgc.oid = a.id\n JOIN pg_namespace AS pgn ON pgn.oid = pgc.relnamespace\n JOIN pg_database AS pgdb ON pgdb.oid = a.db_id\n JOIN (SELECT tbl, COUNT(*) AS mbytes FROM stv_blocklist GROUP BY tbl) b ON a.id = b.tbl\nORDER BY a.db_id,\n        a.name;\n\n\n\n\nGenerate date series\n\n\n\n\nGenerate series using \nany\n table as a dummy table.\n\n\n\n\ncreate table fechas as\nselect (\n    date('2017-06-30') + row_number() over (order by true)\n  )::date as fecha\nfrom ibc.playback limit 40\n\n\n\n\nWarning\n. The date_series function thing doesn't work that well on redshift when doing joins and stuff like that. For more info, check redshift's developer guide.\n\n\nWITH date_series_bounds AS (\n    SELECT date('2012-12-21') as start, date('2013-08-23') as end\n), date_series AS (\n    select date(days.start + days.interval)\n    from (\n        select bounds.start, generate_series(0, bounds.end - bounds.start) AS interval from date_series_bounds bounds\n    ) as days\n)\nselect * from date_series\n\n\n\n\nor\n\n\nselect current_date - (n*30 || ' minutes')::interval\nfrom generate_series (0, 100*5-1) n\n\n\n\n\nor\n\n\nselect substr(to_date('2017-06-22', 'YYYY-MM-DD') + (n || ' days')::interval, 1,10)\nfrom generate_series (0, 6) n\n\n\n\n\nList schemas\n\n\nselect *\nfrom information_schema.schemata\n\n\n\n\nCreate schema\n\n\nCREATE SCHEMA IF NOT EXISTS schema_name\n\n\nCheck data load\n\n\nselect * from STL_FILE_SCAN\nwhere name like '%screentime%'\norder by curtime desc", 
-            "title": "AWS Redshift"
+            "title": "Redshift"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#load-data-into-redsfhit-from-s3", 
+            "location": "/Ops/AWS/Redshift/#load-data-into-redsfhit-from-s3", 
             "text": "Data can be loaded recursively.\nIf there's a folder with this structure  a/\n  b/\n    p.json.gz\n  c/\n    q.json.gz\n    r.json.gz  Calling the copy sentence with the folder  a  as source will copy all files under the folder recursively  copy schema.table_name\nfrom 's3://bucket-name/some_folder/some_file.json.gz'\n-- from 's3://bucket-name/a'\nwith credentials 'aws_access_key_id=some_access_key;ws_secret_access_key=supersupersecretkey'\n[gzip]\nformat as json 'auto'\n[region 'us-east-1']\n-- If the Amazon S3 buckets that hold the data files do not reside in the same region as your cluster, you must use the REGION parameter to specify the region in which the data is located.", 
             "title": "Load data into redsfhit from s3"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#escape-strings-with-escape", 
+            "location": "/Ops/AWS/Redshift/#escape-strings-with-escape", 
             "text": "Remove  the format as csv thing  copy analyticsmodel.playback\nfrom :sql:source\nwith credentials :sql:redshift-credentials\ndelimiter '~'\nignoreheader as 1\n[escape]\n[truncatecolumns Truncates data in columns to the appropriate number of characters it has been specified]", 
             "title": "Escape strings with Escape"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#load-into-redshift-with-custom-field-ordering", 
+            "location": "/Ops/AWS/Redshift/#load-into-redshift-with-custom-field-ordering", 
             "text": "You can specify a comma-separated list of column names to load source data fields into specific target columns. Docs  copy schema.table (column_a, column_b, column_c, column_d, column_e, colummn_f)\nfrom 's3://some_file.csv'\nwith credentials 'aws_access_key_id=some_access_key;ws_secret_access_key=supersupersecretkey'\nformat as csv\nignoreheader as 1\nTRUNCATECOLUMNS", 
             "title": "Load into redshift with custom field ordering"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#check-errors", 
+            "location": "/Ops/AWS/Redshift/#check-errors", 
             "text": "select * from stl_load_errors\norder by starttime desc;", 
             "title": "Check errors"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#check-info-about-permanent-tables", 
+            "location": "/Ops/AWS/Redshift/#check-info-about-permanent-tables", 
             "text": "The STV_TBL_PERM table contains information about the permanent tables in Amazon Redshift. More info  here  select * FROM stv_tbl_perm ;", 
             "title": "Check info about permanent tables"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#size-info-about-tables", 
+            "location": "/Ops/AWS/Redshift/#size-info-about-tables", 
             "text": "", 
             "title": "Size info about tables"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#first-method", 
+            "location": "/Ops/AWS/Redshift/#first-method", 
             "text": "select  database , schema  || '.' ||  table ,  size  as  size in Mb ,  tbl_rows  as  rows \nfrom svv_table_info", 
             "title": "First method"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#second-method", 
+            "location": "/Ops/AWS/Redshift/#second-method", 
             "text": "The query below's info  is  not exhaustive nor complete  SELECT TRIM(pgdb.datname) AS DATABASE,\n      TRIM(pgn.nspname) AS SCHEMA,\n      TRIM(a.name) AS TABLE,\n      b.mbytes,\n      a.rows\nFROM (SELECT db_id,\n            id,\n            name,\n            SUM(ROWS) AS ROWS\n     FROM stv_tbl_perm a\n     GROUP BY db_id,\n              id,\n              name) AS a\n JOIN pg_class AS pgc ON pgc.oid = a.id\n JOIN pg_namespace AS pgn ON pgn.oid = pgc.relnamespace\n JOIN pg_database AS pgdb ON pgdb.oid = a.db_id\n JOIN (SELECT tbl, COUNT(*) AS mbytes FROM stv_blocklist GROUP BY tbl) b ON a.id = b.tbl\nORDER BY a.db_id,\n        a.name;", 
             "title": "Second method"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#generate-date-series", 
+            "location": "/Ops/AWS/Redshift/#generate-date-series", 
             "text": "Generate series using  any  table as a dummy table.   create table fechas as\nselect (\n    date('2017-06-30') + row_number() over (order by true)\n  )::date as fecha\nfrom ibc.playback limit 40  Warning . The date_series function thing doesn't work that well on redshift when doing joins and stuff like that. For more info, check redshift's developer guide.  WITH date_series_bounds AS (\n    SELECT date('2012-12-21') as start, date('2013-08-23') as end\n), date_series AS (\n    select date(days.start + days.interval)\n    from (\n        select bounds.start, generate_series(0, bounds.end - bounds.start) AS interval from date_series_bounds bounds\n    ) as days\n)\nselect * from date_series  or  select current_date - (n*30 || ' minutes')::interval\nfrom generate_series (0, 100*5-1) n  or  select substr(to_date('2017-06-22', 'YYYY-MM-DD') + (n || ' days')::interval, 1,10)\nfrom generate_series (0, 6) n", 
             "title": "Generate date series"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#list-schemas", 
+            "location": "/Ops/AWS/Redshift/#list-schemas", 
             "text": "select *\nfrom information_schema.schemata", 
             "title": "List schemas"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#create-schema", 
+            "location": "/Ops/AWS/Redshift/#create-schema", 
             "text": "CREATE SCHEMA IF NOT EXISTS schema_name", 
             "title": "Create schema"
         }, 
         {
-            "location": "/Ops/AWS/AWS-Redshift/#check-data-load", 
+            "location": "/Ops/AWS/Redshift/#check-data-load", 
             "text": "select * from STL_FILE_SCAN\nwhere name like '%screentime%'\norder by curtime desc", 
             "title": "Check data load"
         }, 
         {
             "location": "/Ops/AWS/S3/", 
-            "text": "Sync folders\n\n\n$ aws s3 sync s3://bucketname1/path/to/folder/2017-04-05 s3://bucketname1/path/to/folder/2017-04-05", 
+            "text": "Python\n\n\n\n\nGet s3 data, having initial date and number of days to gather\n\n\nIf there's a set of folders named after dates, \nthis\n works fine\n\n\nSync folders\n\n\n$ aws s3 sync s3://bucketname1/path/to/folder/2017-04-05 s3://bucketname1/path/to/folder/2017-04-05", 
             "title": "S3"
+        }, 
+        {
+            "location": "/Ops/AWS/S3/#get-s3-data-having-initial-date-and-number-of-days-to-gather", 
+            "text": "If there's a set of folders named after dates,  this  works fine", 
+            "title": "Get s3 data, having initial date and number of days to gather"
         }, 
         {
             "location": "/Ops/AWS/S3/#sync-folders", 
@@ -2356,311 +2361,6 @@
             "title": "Ignore subsequent changes to a file without deleting it"
         }, 
         {
-            "location": "/python/File-management/", 
-            "text": "Hidden file/folder (linux-osx)\n\n\ndef folder_is_not_hidden(p):\n    is_hidden =  p.startswith('.') #linux-osx\n    return not is_hidden\n\n\n\n\nCheck if file is folder\n\n\nos.path.isdir\n\n\n\n\nGet current working directory\n\n\nprevious_folder = os.getcwd()\n\n\n\n\nChange to folder\n\n\nos.chdir(\nsome/relative/or/absolute/path\n)", 
-            "title": "File management"
-        }, 
-        {
-            "location": "/python/File-management/#hidden-filefolder-linux-osx", 
-            "text": "def folder_is_not_hidden(p):\n    is_hidden =  p.startswith('.') #linux-osx\n    return not is_hidden", 
-            "title": "Hidden file/folder (linux-osx)"
-        }, 
-        {
-            "location": "/python/File-management/#check-if-file-is-folder", 
-            "text": "os.path.isdir", 
-            "title": "Check if file is folder"
-        }, 
-        {
-            "location": "/python/File-management/#get-current-working-directory", 
-            "text": "previous_folder = os.getcwd()", 
-            "title": "Get current working directory"
-        }, 
-        {
-            "location": "/python/File-management/#change-to-folder", 
-            "text": "os.chdir( some/relative/or/absolute/path )", 
-            "title": "Change to folder"
-        }, 
-        {
-            "location": "/python/HTTP-Verbs-and-curl-like-stuff/", 
-            "text": "Posting to endpoint\n\n\nWith requests\n\n\nExample\n\n\nimport requests\nimport json\n\ngist_token = os.getenv(\nGITHUB_GIST_TOKEN\n)\ngithub_root_api = \nhttps://api.github.com\n\ngist_post_endpoint = \n/gists\n\ngist_post_url = github_root_api + gist_post_endpoint\n\n# Format headers with token\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n# Create data dict, according to https://developer.github.com/v3/gists/#create-a-gist\ngist_dict = {\ndescription\n: \nPosted with python requests\n, \npublic\n: False, \nfiles\n: {\nsome_file_name.txt\n: {\ncontent\n: \nprint 'hello world'\n}}}\n# Put the dict data into json\njson_data = json.dumps(gist_dict)\n# Post data with a request, include token header\nresponse = requests.post(gist_post_url, headers=headers, data=json_data)\n\n# Not needed, check the results\nresponse_json = json.loads(response.content)\n\n\n\n\nWith urllib, urllib2\n\n\nimport os\nimport urllib\nimport urllib2\nimport json\n\ngist_token = os.getenv(\nGITHUB_GIST_TOKEN\n)\naccess_url = \nhttps://api.github.com/gists\n\n\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n\ndata = {\ndescription\n: \nsome gist\n, \npublic\n: False, \nfiles\n: {\nsome_file_name.txt\n: {\ncontent\n: \nprint 'hello world'\n}}}\n\njson_data = json.dumps(data)\nreq = urllib2.Request(access_url, json_data, headers)\nresponse = urllib2.urlopen(req)\nthe_page = response.read()", 
-            "title": "HTTP Verbs and curl like stuff"
-        }, 
-        {
-            "location": "/python/HTTP-Verbs-and-curl-like-stuff/#posting-to-endpoint", 
-            "text": "", 
-            "title": "Posting to endpoint"
-        }, 
-        {
-            "location": "/python/HTTP-Verbs-and-curl-like-stuff/#with-requests", 
-            "text": "Example  import requests\nimport json\n\ngist_token = os.getenv( GITHUB_GIST_TOKEN )\ngithub_root_api =  https://api.github.com \ngist_post_endpoint =  /gists \ngist_post_url = github_root_api + gist_post_endpoint\n\n# Format headers with token\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n# Create data dict, according to https://developer.github.com/v3/gists/#create-a-gist\ngist_dict = { description :  Posted with python requests ,  public : False,  files : { some_file_name.txt : { content :  print 'hello world' }}}\n# Put the dict data into json\njson_data = json.dumps(gist_dict)\n# Post data with a request, include token header\nresponse = requests.post(gist_post_url, headers=headers, data=json_data)\n\n# Not needed, check the results\nresponse_json = json.loads(response.content)", 
-            "title": "With requests"
-        }, 
-        {
-            "location": "/python/HTTP-Verbs-and-curl-like-stuff/#with-urllib-urllib2", 
-            "text": "import os\nimport urllib\nimport urllib2\nimport json\n\ngist_token = os.getenv( GITHUB_GIST_TOKEN )\naccess_url =  https://api.github.com/gists \n\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n\ndata = { description :  some gist ,  public : False,  files : { some_file_name.txt : { content :  print 'hello world' }}}\n\njson_data = json.dumps(data)\nreq = urllib2.Request(access_url, json_data, headers)\nresponse = urllib2.urlopen(req)\nthe_page = response.read()", 
-            "title": "With urllib, urllib2"
-        }, 
-        {
-            "location": "/python/Misc/", 
-            "text": "Dissassemble pytho code", 
-            "title": "Misc"
-        }, 
-        {
-            "location": "/python/Python--Snippets/", 
-            "text": "Basics\n\n\nInput/Output\n\n\nFile management\n\n\nHTTP verbs/curl-like stuff\n\n\nGenerators\n\n\nEmail function\n or \nemail CLI\n\n\nCLI option parser\n\n\nDate arithmetic\n\n\nMisc\n\n\ncsv to json\n\n\n\n\nCreate matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)", 
-            "title": "Python  Snippets"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#create-matrix", 
-            "text": "", 
-            "title": "Create matrix"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#create-matrix-of-none", 
-            "text": "A = [[ None for _ in xrange(M)] for _ in xrange(N)]", 
-            "title": "Create matrix of None"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#create-matrix-of-random-numbers", 
-            "text": "import random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]", 
-            "title": "Create matrix of random numbers"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#generator-for-lists-of-m-random-elements", 
-            "text": "import random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
-            "title": "Generator for lists of M random elements"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#flatten-list-of-lists-only-one-level-of-nesting", 
-            "text": "import itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))  [1, 2, 3, 4, 5, 6, 7, 8, 9]", 
-            "title": "Flatten list of lists (only one level of nesting)"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#flatten-json", 
-            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
-            "title": "Flatten json"
-        }, 
-        {
-            "location": "/python/Python--Snippets/#strip-punctuation-of-string", 
-            "text": "s.translate(None, string.punctuation)", 
-            "title": "Strip punctuation of string"
-        }, 
-        {
-            "location": "/python/Python-AWS/", 
-            "text": "!/usr/bin/env python\n\n\n-\n- coding: utf-8 -\n-\n\n\nS3\n\n\nimport boto3\n\nclass S3wrapper(object):\n\n    \nDocstring for S3wrapper. \n\n\n    def __init__(self):\n        # Create an S3 client\n        session = boto3.Session(profile_name='some-profile')\n        self.s3 = session.client('s3')\n\n\n    def upload(self, file_name = 'tags', bucket_name = 'some-bucket',\n            file_path = \nsome-path\n):\n\n        self.file_name = file_name\n        self.bucket_name = bucket_name\n        self.file_path = file_path\n        self.key = file_path + file_name\n\n        # Uploads the given file using a managed uploader, which will split up large\n        # files automatically and pload parts in parallel.\n        self.s3.upload_file(self.file_name, self.bucket_name, self.key)\n\n\n\n\n\nKinesis\n\n\nimport json\nimport time\nfrom boto import kinesis\n\nSTREAM_NAME=\nstream_name\n\nSTREAM_REGION=\nstream_region\n\n\n# Kinesis initialization and information\nkinesis = kinesis.connect_to_region(STREAM_REGION)\nkinesis.describe_stream(STREAM_NAME)\n\n# Put data\nc = open('sample_data.json').read()\nprint \n********************\n\nprint \nWill try to send data: \n\nprint c\nkinesis.put_record(STREAM_NAME, c, \npartitonkey\n)\nprint \nData sent\n\nprint \n********************\n\n\n# Read data\nprint \n********************\n\nprint \nWill try to read data\n\nshard_id = 'shardId-00000000001'\nshard_it = kinesis.get_shard_iterator(STREAM_NAME, shard_id, \nLATEST\n)[\nShardIterator\n]\nwhile True:\n    out = kinesis.get_records(shard_it, limit=2)\n    shard_it = out['NextShardIterator']\n    print out\n    time.sleep(0.2)\nprint \n********************\n\n\n\n\n\nimport sys\nfrom time import strftime, gmtime\nimport logging\nimport json\n\n# Boto stuff\nfrom boto import kinesis\nimport boto3\nimport botocore\n\nmax_records = 20000\n\nlogging.basicConfig(level=logging.ERROR)\n\nSTREAM_NAME=\nSTREAM_NAME\n\nSTREAM_REGION=\nus-east-1\n\n\nsession = boto3.Session(profile_name='some-profile')\nclient = session.client(service_name='kinesis')\n\nif len(sys.argv) \n 1:\n    timestamp = sys.argv[1]\nelse:\n    timestamp = \n2017-07-17T17:00:00.000-00:00\n\n\n# Get shard iterator dict\nshardId=\nshardId-000000000001\n\nd = client.get_shard_iterator(ShardIteratorType=\nAT_TIMESTAMP\n, ShardId=shardId, Timestamp=timestamp, StreamName='tvmetrix')\niterator = d.get('ShardIterator')\nnextIterator = iterator\n\n# Debug stuff files\nfile_name_debug = \ndebug_file_{}.debug\n.format(strftime(\n%Y-%m-%d_%H-%M-%S\n, gmtime()))\ndebug_file = open(file_name_debug, 'w')\nfile_name_data = \ndata_file_{}.log\n.format(strftime(\n%Y-%m-%d_%H-%M-%S\n, gmtime()))\ndata_file = open(file_name_data, 'w')\nprint \nDebug file will be: {}\n.format(file_name_debug)\nprint \nData file will be: {}\n.format(file_name_data)\n\ncounter = 0\nwhile counter \n max_records:\n    try:\n        response = client.get_records(ShardIterator=nextIterator, Limit=20)\n        logging.debug(response)\n        print response\n        debug_file.write(str(response) + '\\n')\n        records = response.get('Records')\n        nextIterator = response.get(\nNextShardIterator\n)\n        print \nThere are {} records\n.format(len(records))\n        counter += len(records)\n        for record in records:\n            print \n*\n * 10\n            print \nRecord\n\n            print \n-\n * 10\n            data = record.get('Data')\n            tokens = data.split('\\n')\n            for token in tokens:\n                data_dict = json.loads(token)\n                ### read stuff\n    except ValueError as valueError:\n        print valueError\n    except botocore.exceptions.ClientError as ce:\n        print \n*\n * 6, \nWARNING\n, \n*\n * 6\n        print ce\n        print \nLimit exceeded\n\n        print \n*\n * 6, \nWARNING\n, \n*\n * 6\n        break\ndebug_file.close()\ndata_file.close()", 
-            "title": "Python AWS"
-        }, 
-        {
-            "location": "/python/Python-AWS/#usrbinenv-python", 
-            "text": "", 
-            "title": "!/usr/bin/env python"
-        }, 
-        {
-            "location": "/python/Python-AWS/#-coding-utf-8-", 
-            "text": "", 
-            "title": "-- coding: utf-8 --"
-        }, 
-        {
-            "location": "/python/Python-AWS/#s3", 
-            "text": "import boto3\n\nclass S3wrapper(object):\n\n     Docstring for S3wrapper.  \n\n    def __init__(self):\n        # Create an S3 client\n        session = boto3.Session(profile_name='some-profile')\n        self.s3 = session.client('s3')\n\n\n    def upload(self, file_name = 'tags', bucket_name = 'some-bucket',\n            file_path =  some-path ):\n\n        self.file_name = file_name\n        self.bucket_name = bucket_name\n        self.file_path = file_path\n        self.key = file_path + file_name\n\n        # Uploads the given file using a managed uploader, which will split up large\n        # files automatically and pload parts in parallel.\n        self.s3.upload_file(self.file_name, self.bucket_name, self.key)", 
-            "title": "S3"
-        }, 
-        {
-            "location": "/python/Python-AWS/#kinesis", 
-            "text": "import json\nimport time\nfrom boto import kinesis\n\nSTREAM_NAME= stream_name \nSTREAM_REGION= stream_region \n\n# Kinesis initialization and information\nkinesis = kinesis.connect_to_region(STREAM_REGION)\nkinesis.describe_stream(STREAM_NAME)\n\n# Put data\nc = open('sample_data.json').read()\nprint  ******************** \nprint  Will try to send data:  \nprint c\nkinesis.put_record(STREAM_NAME, c,  partitonkey )\nprint  Data sent \nprint  ******************** \n\n# Read data\nprint  ******************** \nprint  Will try to read data \nshard_id = 'shardId-00000000001'\nshard_it = kinesis.get_shard_iterator(STREAM_NAME, shard_id,  LATEST )[ ShardIterator ]\nwhile True:\n    out = kinesis.get_records(shard_it, limit=2)\n    shard_it = out['NextShardIterator']\n    print out\n    time.sleep(0.2)\nprint  ********************   import sys\nfrom time import strftime, gmtime\nimport logging\nimport json\n\n# Boto stuff\nfrom boto import kinesis\nimport boto3\nimport botocore\n\nmax_records = 20000\n\nlogging.basicConfig(level=logging.ERROR)\n\nSTREAM_NAME= STREAM_NAME \nSTREAM_REGION= us-east-1 \n\nsession = boto3.Session(profile_name='some-profile')\nclient = session.client(service_name='kinesis')\n\nif len(sys.argv)   1:\n    timestamp = sys.argv[1]\nelse:\n    timestamp =  2017-07-17T17:00:00.000-00:00 \n\n# Get shard iterator dict\nshardId= shardId-000000000001 \nd = client.get_shard_iterator(ShardIteratorType= AT_TIMESTAMP , ShardId=shardId, Timestamp=timestamp, StreamName='tvmetrix')\niterator = d.get('ShardIterator')\nnextIterator = iterator\n\n# Debug stuff files\nfile_name_debug =  debug_file_{}.debug .format(strftime( %Y-%m-%d_%H-%M-%S , gmtime()))\ndebug_file = open(file_name_debug, 'w')\nfile_name_data =  data_file_{}.log .format(strftime( %Y-%m-%d_%H-%M-%S , gmtime()))\ndata_file = open(file_name_data, 'w')\nprint  Debug file will be: {} .format(file_name_debug)\nprint  Data file will be: {} .format(file_name_data)\n\ncounter = 0\nwhile counter   max_records:\n    try:\n        response = client.get_records(ShardIterator=nextIterator, Limit=20)\n        logging.debug(response)\n        print response\n        debug_file.write(str(response) + '\\n')\n        records = response.get('Records')\n        nextIterator = response.get( NextShardIterator )\n        print  There are {} records .format(len(records))\n        counter += len(records)\n        for record in records:\n            print  *  * 10\n            print  Record \n            print  -  * 10\n            data = record.get('Data')\n            tokens = data.split('\\n')\n            for token in tokens:\n                data_dict = json.loads(token)\n                ### read stuff\n    except ValueError as valueError:\n        print valueError\n    except botocore.exceptions.ClientError as ce:\n        print  *  * 6,  WARNING ,  *  * 6\n        print ce\n        print  Limit exceeded \n        print  *  * 6,  WARNING ,  *  * 6\n        break\ndebug_file.close()\ndata_file.close()", 
-            "title": "Kinesis"
-        }, 
-        {
-            "location": "/python/Python-basics/", 
-            "text": "Currying functions\n\n\nFunction that returns a function\n\n\nWith lambdas\n\n\nimport math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h\n\n\n\n\nWithout lambdas\n\n\nimport math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume", 
-            "title": "Python basics"
-        }, 
-        {
-            "location": "/python/Python-basics/#currying-functions", 
-            "text": "Function that returns a function", 
-            "title": "Currying functions"
-        }, 
-        {
-            "location": "/python/Python-basics/#with-lambdas", 
-            "text": "import math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h", 
-            "title": "With lambdas"
-        }, 
-        {
-            "location": "/python/Python-basics/#without-lambdas", 
-            "text": "import math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume", 
-            "title": "Without lambdas"
-        }, 
-        {
-            "location": "/python/Python-date-time/", 
-            "text": "Date/Time conversions\n\n\nimport datetime\nimport time\n\n# Create date from epoch\ndate = datetime.datetime.utcfromtimestamp(1489968401)\n\n# Create date from year, month, day\ndate = datetime.datetime(2017, 8, 20)\n\n# Get seconds from epoch\ntime.time()\n\n# Test things\ndatetime.datetime.utcfromtimestamp(int(time.time()))\n\n# Get tuple of year, month, ...\n## Check the structure help(datetime.datetime.timetuple)\ndate.timetuple()\n\n# Convert from tuple to epoch\ntime.mktime(p.timetuple())\n\n\n\n\nDate/time arithmetic\n\n\nimport datetime\nimport time\n\ndate = datetime.datetime(2017, 8, 20)\n# datetime.datetime(2017, 8, 20, 0, 0)\ndiff_8_days = datetime.timedelta(days = 8)\ndiff_3_minutes = datetime.timedelta(minutes = 3)\n\ndate_plus_8_days = date + diff_8_days\n# datetime.datetime(2017, 8, 28, 0, 0)\ndate_minus_3_minutes = date - diff_3_minutes\n# datetime.datetime(2017, 8, 19, 23, 57)", 
-            "title": "Python date time"
-        }, 
-        {
-            "location": "/python/Python-date-time/#datetime-conversions", 
-            "text": "import datetime\nimport time\n\n# Create date from epoch\ndate = datetime.datetime.utcfromtimestamp(1489968401)\n\n# Create date from year, month, day\ndate = datetime.datetime(2017, 8, 20)\n\n# Get seconds from epoch\ntime.time()\n\n# Test things\ndatetime.datetime.utcfromtimestamp(int(time.time()))\n\n# Get tuple of year, month, ...\n## Check the structure help(datetime.datetime.timetuple)\ndate.timetuple()\n\n# Convert from tuple to epoch\ntime.mktime(p.timetuple())", 
-            "title": "Date/Time conversions"
-        }, 
-        {
-            "location": "/python/Python-date-time/#datetime-arithmetic", 
-            "text": "import datetime\nimport time\n\ndate = datetime.datetime(2017, 8, 20)\n# datetime.datetime(2017, 8, 20, 0, 0)\ndiff_8_days = datetime.timedelta(days = 8)\ndiff_3_minutes = datetime.timedelta(minutes = 3)\n\ndate_plus_8_days = date + diff_8_days\n# datetime.datetime(2017, 8, 28, 0, 0)\ndate_minus_3_minutes = date - diff_3_minutes\n# datetime.datetime(2017, 8, 19, 23, 57)", 
-            "title": "Date/time arithmetic"
-        }, 
-        {
-            "location": "/python/Python-file-management/", 
-            "text": "Walk the tree\n\n\nReturns a tuple consisting of:\n\n the folder being traversed\n\n a list of the files immediately beneath the folder being traversed\n* a list of the folders immediately beneath the folder being traversed\n\n\nQuicktest\n\n\nimport os\n\nfor item in os.walk(\n.\n):\n    print item\n\n\n\n\nTraverse all the tree from the current folder\n\n\nfolder_tree_generator = os.walk(\n.\n)\nfor dirpath, dirnames, filenames in gen:\n\n    if len(filenames) \n 0:\n        print \n*\n * 9\n        print \nFiles contained in dirpath: {}\n.format(dirpath)\n        print \n*\n * 9\n        for filename in filenames:\n            full_file_name = dirpath + os.path.sep + filename\n            print \n{} (full path is {})\n.format(filename, full_file_name)\n\n    if len(dirnames) \n 0:\n        print \n*\n * 9\n        print \nSubdirs of dirpath: {}\n.format(dirpath)\n        print \n*\n * 9\n        for dirname in dirnames:\n            full_folder_name = dirpath + os.path.sep + dirname\n            print \n{} (full path is: {})\n.format(dirname, full_folder_name)\n            if os.path.isdir(full_folder_name):\n                print \nAnd it is!\n\n            else:\n                print \n But it's not", 
-            "title": "Python file management"
-        }, 
-        {
-            "location": "/python/Python-file-management/#walk-the-tree", 
-            "text": "Returns a tuple consisting of:  the folder being traversed  a list of the files immediately beneath the folder being traversed\n* a list of the folders immediately beneath the folder being traversed", 
-            "title": "Walk the tree"
-        }, 
-        {
-            "location": "/python/Python-file-management/#quicktest", 
-            "text": "import os\n\nfor item in os.walk( . ):\n    print item", 
-            "title": "Quicktest"
-        }, 
-        {
-            "location": "/python/Python-file-management/#traverse-all-the-tree-from-the-current-folder", 
-            "text": "folder_tree_generator = os.walk( . )\nfor dirpath, dirnames, filenames in gen:\n\n    if len(filenames)   0:\n        print  *  * 9\n        print  Files contained in dirpath: {} .format(dirpath)\n        print  *  * 9\n        for filename in filenames:\n            full_file_name = dirpath + os.path.sep + filename\n            print  {} (full path is {}) .format(filename, full_file_name)\n\n    if len(dirnames)   0:\n        print  *  * 9\n        print  Subdirs of dirpath: {} .format(dirpath)\n        print  *  * 9\n        for dirname in dirnames:\n            full_folder_name = dirpath + os.path.sep + dirname\n            print  {} (full path is: {}) .format(dirname, full_folder_name)\n            if os.path.isdir(full_folder_name):\n                print  And it is! \n            else:\n                print   But it's not", 
-            "title": "Traverse all the tree from the current folder"
-        }, 
-        {
-            "location": "/python/Python-input-output/", 
-            "text": "Read/write file\n\n\nimport sys\n\n# Read\nwith open('../first.js', 'r') as reading_file:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = list(reading_file)\n    formatted_lines = [remove_newlines(line) for line in lines]\n\n# Write\nwith open('output_file', 'w') as output_file:\n    for line in lines:\n        output_file.write(line)\n\n\n\n\nor\n\n\nwith open('output_file', 'w') as output_file:\n    output_file.writelines(lines)\n\n\n\n\nStandard input/output read and write\n\n\n#### Write to stdout\nimport sys\nsys.stdout.write(str(last_answer ))\n\n\n\n\nor\n\n\nimport sys\nwith sys.stdout as stdout:\n    sdout.write(str(last_answer))\n\n\n\n\nRead from stdin\n\n\nimport sys\nwith sys.stdin as stdin:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = [remove_newlines(line) for line in stdin]\n\n\n\n\nor\n\n\nlines = sys.stdin.readlines()\n\n\n\n\nRemove trailing and beginning newlines from string\n\n\nremove_newlines = lambda x: x.trim('\\r\\n')\n\n\n\n\nGzip\n\n\nread compressed file\n\n\nimport gzip\nwith gzip.open('file.txt.gz', 'rb') as f:\n    file_content = f.read()\n\n\n\n\ncompress file\n\n\nimport gzip\ncontent = \nLots of content here\n\nwith gzip.open('file.txt.gz', 'wb') as f:\n    f.write(content)\n\n\n\n\nMisc\n\n\nBlink led of caps key\n\n\nimport fcntl,os,time;\nexec \nfcntl.ioctl(os.open('/dev/console',os.O_NOCTTY),19250,%d);time.sleep(.5);\n*2%(4,0)", 
-            "title": "Python input output"
-        }, 
-        {
-            "location": "/python/Python-input-output/#readwrite-file", 
-            "text": "import sys\n\n# Read\nwith open('../first.js', 'r') as reading_file:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = list(reading_file)\n    formatted_lines = [remove_newlines(line) for line in lines]\n\n# Write\nwith open('output_file', 'w') as output_file:\n    for line in lines:\n        output_file.write(line)  or  with open('output_file', 'w') as output_file:\n    output_file.writelines(lines)", 
-            "title": "Read/write file"
-        }, 
-        {
-            "location": "/python/Python-input-output/#standard-inputoutput-read-and-write", 
-            "text": "#### Write to stdout\nimport sys\nsys.stdout.write(str(last_answer ))  or  import sys\nwith sys.stdout as stdout:\n    sdout.write(str(last_answer))", 
-            "title": "Standard input/output read and write"
-        }, 
-        {
-            "location": "/python/Python-input-output/#read-from-stdin", 
-            "text": "import sys\nwith sys.stdin as stdin:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = [remove_newlines(line) for line in stdin]  or  lines = sys.stdin.readlines()", 
-            "title": "Read from stdin"
-        }, 
-        {
-            "location": "/python/Python-input-output/#remove-trailing-and-beginning-newlines-from-string", 
-            "text": "remove_newlines = lambda x: x.trim('\\r\\n')", 
-            "title": "Remove trailing and beginning newlines from string"
-        }, 
-        {
-            "location": "/python/Python-input-output/#gzip", 
-            "text": "", 
-            "title": "Gzip"
-        }, 
-        {
-            "location": "/python/Python-input-output/#read-compressed-file", 
-            "text": "import gzip\nwith gzip.open('file.txt.gz', 'rb') as f:\n    file_content = f.read()", 
-            "title": "read compressed file"
-        }, 
-        {
-            "location": "/python/Python-input-output/#compress-file", 
-            "text": "import gzip\ncontent =  Lots of content here \nwith gzip.open('file.txt.gz', 'wb') as f:\n    f.write(content)", 
-            "title": "compress file"
-        }, 
-        {
-            "location": "/python/Python-input-output/#misc", 
-            "text": "", 
-            "title": "Misc"
-        }, 
-        {
-            "location": "/python/Python-input-output/#blink-led-of-caps-key", 
-            "text": "import fcntl,os,time;\nexec  fcntl.ioctl(os.open('/dev/console',os.O_NOCTTY),19250,%d);time.sleep(.5); *2%(4,0)", 
-            "title": "Blink led of caps key"
-        }, 
-        {
-            "location": "/python/Python-libaries/", 
-            "text": "Simple HTTP server\n\n\nRead parquet file\n\n\ndbms\n\n\nRequests for humans\n\n\nFaker\n\n\nQ - text as data\n\n\nLorem ipsum generator\n\n\nBlink keyboard led\n\n\n\n\nStart simple python http server\n\n\n2\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n3\n\n\n$ python3 -m http.server [port]\n\n\n\n\nRead parquet file\n\n\n$ pip install parquet\n\n\nWrites parquet file contents in plain text to \"output\" file.\n\n\nimport parquet\nimport json\n\njsons = []\noutputFile = open('output', 'w')\nwith open(\n/home/patrick/0_0_0.parquet\n) as input_file:\n    labels = ['hour_timestamp', 'region','class', 'appVersion', 'session_count']\n    for row in parquet.DictReader(input_file, columns=labels):\n        jsonObj = json.loads(json.dumps(row))\n        jsons.append(jsonObj)\n        for label in labels:\n            outputFile.write(str(jsonObj[label]))\n            outputFile.write(',')\n            outputFile.write(\n\\n\n)\n            outputFile.close()\n\n\n\n\nDB\n\n\ndbms\n\n\nDataBases Made Simpler - Uniform interface for multiple adapters.\n\n$ pip install dbms\n\n\nimport dbms\ndb = dbms.connect.oracle('cms', 'cloud_PW', \nCMSDB\n, \nhost\n) # cms cloud ingest\ncur = db.cursor()\ncur.execute('SELECT * FROM CMS_IRIS_DELIVERY where rownum \n 5')\ndeliveries = cur.fetchall()\ndeliveries[rowNum]['name of the column']\ndeliveries[0]['id']\n\n\n\n\nWeb\n\n\nPython requests - HTTP for humans\n\n\nrequests\n\n\n\nheaders = {'Content-Type': 'application/json'}\npayload = {'longUrl': 'http://www.google.it'}\nparams={'key': 'GOOGLE_URL_SHORTENER_API_KEY'}\nr = requests.post(\nhttps://www.googleapis.com/urlshortener/v1/url\n, data=json.dumps(payload), params=params, headers=headers)\nr.json()\n\n\n\n\nMore elaborate \nexample\n\n\nPlot time series with mat\n\n\nInstall\n\n\npip install matplotlib numpy\n\n\n\n\nimport matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\nplt.plot(x,y)\nplt.show()\n\n\n\n\nCamelipsum\n\n\ncli lore ipsum generator\n\n\npip install camelipsum\ncamelipsum.py NUMBER_OF_LINES\n\n\n\n\nHuman name parsing\n\n\nA simple Python module for parsing human names into their individual components.\n\n\nFaker\n\n\nGenerate random data on the fly\n\n\nfrom faker import Factory\nfake = Factory.create('fr_FR') # Localized names\n\nfor _ in range(0, 10):\n   print fake.first_name()\n   print fake.last_name()\n\n\n\n\nMore elaborate \nexample\n, with custom providers\n\n\nq\n\n\nq - text as data\n\n\n$ sudo apt-get install python-q-text-as-data\n\n\n\n\nFrom this \ndata\n\n\n-H\n flag ignores the header row, and \n-d\n flag instructs to read header fields separated by commas\n\n\n$ q -H -d \n,\n \nSELECT Region FROM Global_Superstore_Returns_2016.csv\n | head\nCentral US\nEastern Asia\nCentral US\nOceania\nOceania\nEastern Asia\nWestern Europe\nCentral US\nSouthern Europe\nEastern Asia\n...", 
-            "title": "Python libaries"
-        }, 
-        {
-            "location": "/python/Python-libaries/#start-simple-python-http-server", 
-            "text": "2  $ python -m SimpleHTTPServer [port]  3  $ python3 -m http.server [port]", 
-            "title": "Start simple python http server"
-        }, 
-        {
-            "location": "/python/Python-libaries/#read-parquet-file", 
-            "text": "$ pip install parquet  Writes parquet file contents in plain text to \"output\" file.  import parquet\nimport json\n\njsons = []\noutputFile = open('output', 'w')\nwith open( /home/patrick/0_0_0.parquet ) as input_file:\n    labels = ['hour_timestamp', 'region','class', 'appVersion', 'session_count']\n    for row in parquet.DictReader(input_file, columns=labels):\n        jsonObj = json.loads(json.dumps(row))\n        jsons.append(jsonObj)\n        for label in labels:\n            outputFile.write(str(jsonObj[label]))\n            outputFile.write(',')\n            outputFile.write( \\n )\n            outputFile.close()", 
-            "title": "Read parquet file"
-        }, 
-        {
-            "location": "/python/Python-libaries/#db", 
-            "text": "", 
-            "title": "DB"
-        }, 
-        {
-            "location": "/python/Python-libaries/#dbms", 
-            "text": "DataBases Made Simpler - Uniform interface for multiple adapters. $ pip install dbms  import dbms\ndb = dbms.connect.oracle('cms', 'cloud_PW',  CMSDB ,  host ) # cms cloud ingest\ncur = db.cursor()\ncur.execute('SELECT * FROM CMS_IRIS_DELIVERY where rownum   5')\ndeliveries = cur.fetchall()\ndeliveries[rowNum]['name of the column']\ndeliveries[0]['id']", 
-            "title": "dbms"
-        }, 
-        {
-            "location": "/python/Python-libaries/#web", 
-            "text": "", 
-            "title": "Web"
-        }, 
-        {
-            "location": "/python/Python-libaries/#python-requests-http-for-humans", 
-            "text": "requests  \nheaders = {'Content-Type': 'application/json'}\npayload = {'longUrl': 'http://www.google.it'}\nparams={'key': 'GOOGLE_URL_SHORTENER_API_KEY'}\nr = requests.post( https://www.googleapis.com/urlshortener/v1/url , data=json.dumps(payload), params=params, headers=headers)\nr.json()  More elaborate  example", 
-            "title": "Python requests - HTTP for humans"
-        }, 
-        {
-            "location": "/python/Python-libaries/#plot-time-series-with-mat", 
-            "text": "Install  pip install matplotlib numpy  import matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\nplt.plot(x,y)\nplt.show()", 
-            "title": "Plot time series with mat"
-        }, 
-        {
-            "location": "/python/Python-libaries/#camelipsum", 
-            "text": "cli lore ipsum generator  pip install camelipsum\ncamelipsum.py NUMBER_OF_LINES", 
-            "title": "Camelipsum"
-        }, 
-        {
-            "location": "/python/Python-libaries/#human-name-parsing", 
-            "text": "A simple Python module for parsing human names into their individual components.", 
-            "title": "Human name parsing"
-        }, 
-        {
-            "location": "/python/Python-libaries/#faker", 
-            "text": "Generate random data on the fly  from faker import Factory\nfake = Factory.create('fr_FR') # Localized names\n\nfor _ in range(0, 10):\n   print fake.first_name()\n   print fake.last_name()  More elaborate  example , with custom providers", 
-            "title": "Faker"
-        }, 
-        {
-            "location": "/python/Python-libaries/#q", 
-            "text": "q - text as data  $ sudo apt-get install python-q-text-as-data  From this  data  -H  flag ignores the header row, and  -d  flag instructs to read header fields separated by commas  $ q -H -d  ,   SELECT Region FROM Global_Superstore_Returns_2016.csv  | head\nCentral US\nEastern Asia\nCentral US\nOceania\nOceania\nEastern Asia\nWestern Europe\nCentral US\nSouthern Europe\nEastern Asia\n...", 
-            "title": "q"
-        }, 
-        {
-            "location": "/python/Python-resources/", 
-            "text": "The Hitchhiker\u2019s Guide to Python\n\n\nVery useful guide to working with Python\n\n\nCheatsheets\n\n\nPython madrid links\n\n\nOneliners\n\n\n\n\none\n\n\ntwo", 
-            "title": "Python resources"
-        }, 
-        {
-            "location": "/python/Python-resources/#the-hitchhikers-guide-to-python", 
-            "text": "Very useful guide to working with Python", 
-            "title": "The Hitchhiker\u2019s Guide to Python"
-        }, 
-        {
-            "location": "/python/Python-resources/#cheatsheets", 
-            "text": "", 
-            "title": "Cheatsheets"
-        }, 
-        {
-            "location": "/python/Python-resources/#python-madrid-links", 
-            "text": "", 
-            "title": "Python madrid links"
-        }, 
-        {
-            "location": "/python/Python-resources/#oneliners", 
-            "text": "one  two", 
-            "title": "Oneliners"
-        }, 
-        {
             "location": "/python/Utils/", 
             "text": "Start simple http server python\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n$ python3 -m http.server [port]\n\n\n\n\nFrom ape+cue to several files\n\n\nconvert file to flac\n\n\ncuebreakpoints CD1.cue | shntool split -o flac \nfile_name\n.flac \n\n\n\n\ncuebreakpoints sample.cue | shnsplit -o flac sample.flac;\n#add metadata\ncuetag *.cue split-track*.flac ;", 
             "title": "Utils"
@@ -2701,74 +2401,29 @@
             "title": "Reloading submodules in IPython"
         }, 
         {
-            "location": "/python/libraries/", 
-            "text": "Simple HTTP server\n\n\nRead parquet file\n\n\ndbms\n\n\nRequests for humans\n\n\nFaker\n\n\nQ - text as data\n\n\nLorem ipsum generator\n\n\nBlink keyboard led\n\n\ns3 stuff\n\n\n\n\nStart simple python http server\n\n\n2\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n3\n\n\n$ python3 -m http.server [port]\n\n\n\n\nRead parquet file\n\n\n$ pip install parquet\n\n\nWrites parquet file contents in plain text to \"output\" file.\n\n\nimport parquet\nimport json\n\njsons = []\noutputFile = open('output', 'w')\nwith open(\n/home/patrick/0_0_0.parquet\n) as input_file:\n    labels = ['hour_timestamp', 'region','class', 'appVersion', 'session_count']\n    for row in parquet.DictReader(input_file, columns=labels):\n        jsonObj = json.loads(json.dumps(row))\n        jsons.append(jsonObj)\n        for label in labels:\n            outputFile.write(str(jsonObj[label]))\n            outputFile.write(',')\n            outputFile.write(\n\\n\n)\n            outputFile.close()\n\n\n\n\nDB\n\n\ndbms\n\n\nDataBases Made Simpler - Uniform interface for multiple adapters.\n\n$ pip install dbms\n\n\nimport dbms\ndb = dbms.connect.oracle('cms', 'cloud_PW', \nCMSDB\n, \nhost\n) # cms cloud ingest\ncur = db.cursor()\ncur.execute('SELECT * FROM CMS_IRIS_DELIVERY where rownum \n 5')\ndeliveries = cur.fetchall()\ndeliveries[rowNum]['name of the column']\ndeliveries[0]['id']\n\n\n\n\nWeb\n\n\nPython requests - HTTP for humans\n\n\nrequests\n\n\n\nheaders = {'Content-Type': 'application/json'}\npayload = {'longUrl': 'http://www.google.it'}\nparams={'key': 'GOOGLE_URL_SHORTENER_API_KEY'}\nr = requests.post(\nhttps://www.googleapis.com/urlshortener/v1/url\n, data=json.dumps(payload), params=params, headers=headers)\nr.json()\n\n\n\n\nMore elaborate \nexample\n\n\nPlot time series with mat\n\n\npip install matplotlib numpy\n\n\n\n\nimport matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\n\nplt.plot(x,y)\nplt.show()\n\n\n\n#### Camelipsum\ncli lore ipsum generator\n\n\n\n\npip install camelipsum\ncamelipsum.py NUMBER_OF_LINES\n\n\n#### [Human name parsing](https://nameparser.readthedocs.io/en/latest/)\nA simple Python module for parsing human names into their individual components.\n\n#### [Faker](https://pypi.python.org/pypi/Faker)\nGenerate random data on the fly\n```python\nfrom faker import Factory\nfake = Factory.create('fr_FR') # Localized names\n\nfor _ in range(0, 10):\n   print fake.first_name()\n   print fake.last_name()\n\n\n\n\nMore elaborate \nexample\n, with custom providers\n\n\nq\n\n\nq - text as data\n\n\n$ sudo apt-get install python-q-text-as-data\n\n\n\n\nFrom this \ndata\n\n\n-H\n flag ignores the header row, and \n-d\n flag instructs to read header fields separated by commas\n\n\n$ q -H -d \n,\n \nSELECT Region FROM Global_Superstore_Returns_2016.csv\n | head\nCentral US\nEastern Asia\nCentral US\nOceania\nOceania\nEastern Asia\nWestern Europe\nCentral US\nSouthern Europe\nEastern Asia\n...\n\n\n\n\nS3 stuff\n\n\nhttps://gist.github.com/patsancu/01b76f387350a0ead1f1e826889c8ac4", 
-            "title": "Libraries"
+            "location": "/python/resources/", 
+            "text": "The Hitchhiker\u2019s Guide to Python\n\n\nVery useful guide to working with Python\n\n\nCheatsheets\n\n\nPython madrid links\n\n\nOneliners\n\n\n\n\none\n\n\ntwo", 
+            "title": "Resources"
         }, 
         {
-            "location": "/python/libraries/#start-simple-python-http-server", 
-            "text": "2  $ python -m SimpleHTTPServer [port]  3  $ python3 -m http.server [port]", 
-            "title": "Start simple python http server"
+            "location": "/python/resources/#the-hitchhikers-guide-to-python", 
+            "text": "Very useful guide to working with Python", 
+            "title": "The Hitchhiker\u2019s Guide to Python"
         }, 
         {
-            "location": "/python/libraries/#read-parquet-file", 
-            "text": "$ pip install parquet  Writes parquet file contents in plain text to \"output\" file.  import parquet\nimport json\n\njsons = []\noutputFile = open('output', 'w')\nwith open( /home/patrick/0_0_0.parquet ) as input_file:\n    labels = ['hour_timestamp', 'region','class', 'appVersion', 'session_count']\n    for row in parquet.DictReader(input_file, columns=labels):\n        jsonObj = json.loads(json.dumps(row))\n        jsons.append(jsonObj)\n        for label in labels:\n            outputFile.write(str(jsonObj[label]))\n            outputFile.write(',')\n            outputFile.write( \\n )\n            outputFile.close()", 
-            "title": "Read parquet file"
-        }, 
-        {
-            "location": "/python/libraries/#db", 
+            "location": "/python/resources/#cheatsheets", 
             "text": "", 
-            "title": "DB"
+            "title": "Cheatsheets"
         }, 
         {
-            "location": "/python/libraries/#dbms", 
-            "text": "DataBases Made Simpler - Uniform interface for multiple adapters. $ pip install dbms  import dbms\ndb = dbms.connect.oracle('cms', 'cloud_PW',  CMSDB ,  host ) # cms cloud ingest\ncur = db.cursor()\ncur.execute('SELECT * FROM CMS_IRIS_DELIVERY where rownum   5')\ndeliveries = cur.fetchall()\ndeliveries[rowNum]['name of the column']\ndeliveries[0]['id']", 
-            "title": "dbms"
-        }, 
-        {
-            "location": "/python/libraries/#web", 
+            "location": "/python/resources/#python-madrid-links", 
             "text": "", 
-            "title": "Web"
+            "title": "Python madrid links"
         }, 
         {
-            "location": "/python/libraries/#python-requests-http-for-humans", 
-            "text": "requests  \nheaders = {'Content-Type': 'application/json'}\npayload = {'longUrl': 'http://www.google.it'}\nparams={'key': 'GOOGLE_URL_SHORTENER_API_KEY'}\nr = requests.post( https://www.googleapis.com/urlshortener/v1/url , data=json.dumps(payload), params=params, headers=headers)\nr.json()  More elaborate  example", 
-            "title": "Python requests - HTTP for humans"
-        }, 
-        {
-            "location": "/python/libraries/#plot-time-series-with-mat", 
-            "text": "pip install matplotlib numpy  import matplotlib.pyplot as plt\nimport datetime\nimport numpy as np  x = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)  plt.plot(x,y)\nplt.show()  \n#### Camelipsum\ncli lore ipsum generator  pip install camelipsum\ncamelipsum.py NUMBER_OF_LINES  #### [Human name parsing](https://nameparser.readthedocs.io/en/latest/)\nA simple Python module for parsing human names into their individual components.\n\n#### [Faker](https://pypi.python.org/pypi/Faker)\nGenerate random data on the fly\n```python\nfrom faker import Factory\nfake = Factory.create('fr_FR') # Localized names\n\nfor _ in range(0, 10):\n   print fake.first_name()\n   print fake.last_name()  More elaborate  example , with custom providers", 
-            "title": "Plot time series with mat"
-        }, 
-        {
-            "location": "/python/libraries/#q", 
-            "text": "q - text as data  $ sudo apt-get install python-q-text-as-data  From this  data  -H  flag ignores the header row, and  -d  flag instructs to read header fields separated by commas  $ q -H -d  ,   SELECT Region FROM Global_Superstore_Returns_2016.csv  | head\nCentral US\nEastern Asia\nCentral US\nOceania\nOceania\nEastern Asia\nWestern Europe\nCentral US\nSouthern Europe\nEastern Asia\n...", 
-            "title": "q"
-        }, 
-        {
-            "location": "/python/libraries/#s3-stuff", 
-            "text": "https://gist.github.com/patsancu/01b76f387350a0ead1f1e826889c8ac4", 
-            "title": "S3 stuff"
-        }, 
-        {
-            "location": "/python/snippets/", 
-            "text": "Input/Output\n\n\nFile management\n\n\nHTTP verbs/curl-like stuff\n\n\nGenerators\n\n\nEmail function\n or \nemail CLI\n\n\nCLI option parser\n\n\nDate arithmetic\n\n\nMisc\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)", 
-            "title": "Snippets"
-        }, 
-        {
-            "location": "/python/snippets/#flatten-list-of-lists-only-one-level-of-nesting", 
-            "text": "import itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))  [1, 2, 3, 4, 5, 6, 7, 8, 9]", 
-            "title": "Flatten list of lists (only one level of nesting)"
-        }, 
-        {
-            "location": "/python/snippets/#flatten-json", 
-            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
-            "title": "Flatten json"
-        }, 
-        {
-            "location": "/python/snippets/#strip-punctuation-of-string", 
-            "text": "s.translate(None, string.punctuation)", 
-            "title": "Strip punctuation of string"
+            "location": "/python/resources/#oneliners", 
+            "text": "one  two", 
+            "title": "Oneliners"
         }, 
         {
             "location": "/python/Django/Django-errors/", 
@@ -2819,6 +2474,341 @@
             "location": "/python/Django/Django/#override-model-save-method", 
             "text": "class Model(model.Model):\n    image=models.ImageField(upload_to='folder')\n    thumb=models.ImageField(upload_to='folder')\n    description=models.CharField()\n\n\n    def save(self, *args, **kwargs):\n        if 'form' in kwargs:\n            form=kwargs['form']\n        else:\n            form=None\n\n        if self.pk is None and form is not None and 'image' in form.changed_data:\n            small=rescale_image(self.image,width=100,height=100)\n            self.image_small=SimpleUploadedFile(name,small_pic)\n        super(Model, self).save(*args, **kwargs)", 
             "title": "Override model save method"
+        }, 
+        {
+            "location": "/python/libraries/DB/", 
+            "text": "DB\n\n\ndbms\n\n\nDataBases Made Simpler - Uniform interface for multiple adapters.\n\n$ pip install dbms\n\n\nimport dbms\ndb = dbms.connect.oracle('cms', 'cloud_PW', \nCMSDB\n, \nhost\n) # cms cloud ingest\ncur = db.cursor()\ncur.execute('SELECT * FROM CMS_IRIS_DELIVERY where rownum \n 5')\ndeliveries = cur.fetchall()\ndeliveries[rowNum]['name of the column']\ndeliveries[0]['id']", 
+            "title": "DB"
+        }, 
+        {
+            "location": "/python/libraries/DB/#db", 
+            "text": "", 
+            "title": "DB"
+        }, 
+        {
+            "location": "/python/libraries/DB/#dbms", 
+            "text": "DataBases Made Simpler - Uniform interface for multiple adapters. $ pip install dbms  import dbms\ndb = dbms.connect.oracle('cms', 'cloud_PW',  CMSDB ,  host ) # cms cloud ingest\ncur = db.cursor()\ncur.execute('SELECT * FROM CMS_IRIS_DELIVERY where rownum   5')\ndeliveries = cur.fetchall()\ndeliveries[rowNum]['name of the column']\ndeliveries[0]['id']", 
+            "title": "dbms"
+        }, 
+        {
+            "location": "/python/libraries/Faker/", 
+            "text": "Faker\n\n\nGenerate random data on the fly\n\n\nfrom faker import Factory\nfake = Factory.create('fr_FR') # Localized names\n\nfor _ in range(0, 10):\n   print fake.first_name()\n   print fake.last_name()\n\n\n\n\nMore elaborate \nexample\n, with custom providers", 
+            "title": "Faker"
+        }, 
+        {
+            "location": "/python/libraries/Faker/#faker", 
+            "text": "Generate random data on the fly  from faker import Factory\nfake = Factory.create('fr_FR') # Localized names\n\nfor _ in range(0, 10):\n   print fake.first_name()\n   print fake.last_name()  More elaborate  example , with custom providers", 
+            "title": "Faker"
+        }, 
+        {
+            "location": "/python/libraries/Misc/", 
+            "text": "Camelipsum\n\n\ncli lore ipsum generator\n\n\npip install camelipsum\ncamelipsum.py NUMBER_OF_LINES\n\n\n\n\nHuman name parsing\n\n\nA simple Python module for parsing human names into their individual components.\n\n\nq\n\n\nq - text as data\n\n\n$ sudo apt-get install python-q-text-as-data\n\n\n\n\nFrom this \ndata\n\n\n-H\n flag ignores the header row, and \n-d\n flag instructs to read header fields separated by commas\n\n\n$ q -H -d \n,\n \nSELECT Region FROM Global_Superstore_Returns_2016.csv\n | head\nCentral US\nEastern Asia\nCentral US\nOceania\nOceania\nEastern Asia\nWestern Europe\nCentral US\nSouthern Europe\nEastern Asia\n...", 
+            "title": "Misc"
+        }, 
+        {
+            "location": "/python/libraries/Misc/#camelipsum", 
+            "text": "cli lore ipsum generator  pip install camelipsum\ncamelipsum.py NUMBER_OF_LINES", 
+            "title": "Camelipsum"
+        }, 
+        {
+            "location": "/python/libraries/Misc/#human-name-parsing", 
+            "text": "A simple Python module for parsing human names into their individual components.", 
+            "title": "Human name parsing"
+        }, 
+        {
+            "location": "/python/libraries/Misc/#q", 
+            "text": "q - text as data  $ sudo apt-get install python-q-text-as-data  From this  data  -H  flag ignores the header row, and  -d  flag instructs to read header fields separated by commas  $ q -H -d  ,   SELECT Region FROM Global_Superstore_Returns_2016.csv  | head\nCentral US\nEastern Asia\nCentral US\nOceania\nOceania\nEastern Asia\nWestern Europe\nCentral US\nSouthern Europe\nEastern Asia\n...", 
+            "title": "q"
+        }, 
+        {
+            "location": "/python/libraries/Web/", 
+            "text": "Posting to endpoint\n\n\nWith requests - HTTP for humans\n\n\nrequests\n.\nExample\n\n\nimport requests\nimport json\n\ngist_token = os.getenv(\nGITHUB_GIST_TOKEN\n)\ngithub_root_api = \nhttps://api.github.com\n\ngist_post_endpoint = \n/gists\n\ngist_post_url = github_root_api + gist_post_endpoint\n\n# Format headers with token\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n# Create data dict, according to https://developer.github.com/v3/gists/#create-a-gist\ngist_dict = {\ndescription\n: \nPosted with python requests\n, \npublic\n: False, \nfiles\n: {\nsome_file_name.txt\n: {\ncontent\n: \nprint 'hello world'\n}}}\n# Put the dict data into json\njson_data = json.dumps(gist_dict)\n# Post data with a request, include token header\nresponse = requests.post(gist_post_url, headers=headers, data=json_data)\n\n# Not needed, check the results\nresponse_json = json.loads(response.content)\n\n\n\n\nWith urllib, urllib2\n\n\nimport os\nimport urllib\nimport urllib2\nimport json\n\ngist_token = os.getenv(\nGITHUB_GIST_TOKEN\n)\naccess_url = \nhttps://api.github.com/gists\n\n\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n\ndata = {\ndescription\n: \nsome gist\n, \npublic\n: False, \nfiles\n: {\nsome_file_name.txt\n: {\ncontent\n: \nprint 'hello world'\n}}}\n\njson_data = json.dumps(data)\nreq = urllib2.Request(access_url, json_data, headers)\nresponse = urllib2.urlopen(req)\nthe_page = response.read()\n\n\n\n\nStart simple python http server\n\n\n2\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n3\n\n\n$ python3 -m http.server [port]", 
+            "title": "Web"
+        }, 
+        {
+            "location": "/python/libraries/Web/#posting-to-endpoint", 
+            "text": "", 
+            "title": "Posting to endpoint"
+        }, 
+        {
+            "location": "/python/libraries/Web/#with-requests-http-for-humans", 
+            "text": "requests .\nExample  import requests\nimport json\n\ngist_token = os.getenv( GITHUB_GIST_TOKEN )\ngithub_root_api =  https://api.github.com \ngist_post_endpoint =  /gists \ngist_post_url = github_root_api + gist_post_endpoint\n\n# Format headers with token\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n# Create data dict, according to https://developer.github.com/v3/gists/#create-a-gist\ngist_dict = { description :  Posted with python requests ,  public : False,  files : { some_file_name.txt : { content :  print 'hello world' }}}\n# Put the dict data into json\njson_data = json.dumps(gist_dict)\n# Post data with a request, include token header\nresponse = requests.post(gist_post_url, headers=headers, data=json_data)\n\n# Not needed, check the results\nresponse_json = json.loads(response.content)", 
+            "title": "With requests - HTTP for humans"
+        }, 
+        {
+            "location": "/python/libraries/Web/#with-urllib-urllib2", 
+            "text": "import os\nimport urllib\nimport urllib2\nimport json\n\ngist_token = os.getenv( GITHUB_GIST_TOKEN )\naccess_url =  https://api.github.com/gists \n\nheaders = {'Authorization': 'token {}'.format(gist_token)}\n\ndata = { description :  some gist ,  public : False,  files : { some_file_name.txt : { content :  print 'hello world' }}}\n\njson_data = json.dumps(data)\nreq = urllib2.Request(access_url, json_data, headers)\nresponse = urllib2.urlopen(req)\nthe_page = response.read()", 
+            "title": "With urllib, urllib2"
+        }, 
+        {
+            "location": "/python/libraries/Web/#start-simple-python-http-server", 
+            "text": "2  $ python -m SimpleHTTPServer [port]  3  $ python3 -m http.server [port]", 
+            "title": "Start simple python http server"
+        }, 
+        {
+            "location": "/python/libraries/matplotlib/", 
+            "text": "Plot time series with mat\n\n\npip install matplotlib numpy\n\n\n\n\nimport matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\n\nplt.plot(x,y)\nplt.show()\n```", 
+            "title": "Matplotlib"
+        }, 
+        {
+            "location": "/python/libraries/matplotlib/#plot-time-series-with-mat", 
+            "text": "pip install matplotlib numpy  import matplotlib.pyplot as plt\nimport datetime\nimport numpy as np  x = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)  plt.plot(x,y)\nplt.show()\n```", 
+            "title": "Plot time series with mat"
+        }, 
+        {
+            "location": "/python/libraries/parquet/", 
+            "text": "Read parquet file\n\n\n$ pip install parquet\n\n\nWrites parquet file contents in plain text to \"output\" file.\n\n\nimport parquet\nimport json\n\njsons = []\noutputFile = open('output', 'w')\nwith open(\n/home/patrick/0_0_0.parquet\n) as input_file:\n    labels = ['hour_timestamp', 'region','class', 'appVersion', 'session_count']\n    for row in parquet.DictReader(input_file, columns=labels):\n        jsonObj = json.loads(json.dumps(row))\n        jsons.append(jsonObj)\n        for label in labels:\n            outputFile.write(str(jsonObj[label]))\n            outputFile.write(',')\n            outputFile.write(\n\\n\n)\n            outputFile.close()", 
+            "title": "Parquet"
+        }, 
+        {
+            "location": "/python/libraries/parquet/#read-parquet-file", 
+            "text": "$ pip install parquet  Writes parquet file contents in plain text to \"output\" file.  import parquet\nimport json\n\njsons = []\noutputFile = open('output', 'w')\nwith open( /home/patrick/0_0_0.parquet ) as input_file:\n    labels = ['hour_timestamp', 'region','class', 'appVersion', 'session_count']\n    for row in parquet.DictReader(input_file, columns=labels):\n        jsonObj = json.loads(json.dumps(row))\n        jsons.append(jsonObj)\n        for label in labels:\n            outputFile.write(str(jsonObj[label]))\n            outputFile.write(',')\n            outputFile.write( \\n )\n            outputFile.close()", 
+            "title": "Read parquet file"
+        }, 
+        {
+            "location": "/python/snippets/Python-AWS/", 
+            "text": "S3\n\n\nimport boto3\n\nclass S3wrapper(object):\n\n    \nDocstring for S3wrapper. \n\n\n    def __init__(self):\n        # Create an S3 client\n        session = boto3.Session(profile_name='some-profile')\n        self.s3 = session.client('s3')\n\n\n    def upload(self, file_name = 'tags', bucket_name = 'some-bucket',\n            file_path = \nsome-path\n):\n\n        self.file_name = file_name\n        self.bucket_name = bucket_name\n        self.file_path = file_path\n        self.key = file_path + file_name\n\n        # Uploads the given file using a managed uploader, which will split up large\n        # files automatically and pload parts in parallel.\n        self.s3.upload_file(self.file_name, self.bucket_name, self.key)\n\n\n\n\n\nKinesis\n\n\nimport json\nimport time\nfrom boto import kinesis\n\nSTREAM_NAME=\nstream_name\n\nSTREAM_REGION=\nstream_region\n\n\n# Kinesis initialization and information\nkinesis = kinesis.connect_to_region(STREAM_REGION)\nkinesis.describe_stream(STREAM_NAME)\n\n# Put data\nc = open('sample_data.json').read()\nprint \n********************\n\nprint \nWill try to send data: \n\nprint c\nkinesis.put_record(STREAM_NAME, c, \npartitonkey\n)\nprint \nData sent\n\nprint \n********************\n\n\n# Read data\nprint \n********************\n\nprint \nWill try to read data\n\nshard_id = 'shardId-00000000001'\nshard_it = kinesis.get_shard_iterator(STREAM_NAME, shard_id, \nLATEST\n)[\nShardIterator\n]\nwhile True:\n    out = kinesis.get_records(shard_it, limit=2)\n    shard_it = out['NextShardIterator']\n    print out\n    time.sleep(0.2)\nprint \n********************\n\n\n\n\n\nimport sys\nfrom time import strftime, gmtime\nimport logging\nimport json\n\n# Boto stuff\nfrom boto import kinesis\nimport boto3\nimport botocore\n\nmax_records = 20000\n\nlogging.basicConfig(level=logging.ERROR)\n\nSTREAM_NAME=\nSTREAM_NAME\n\nSTREAM_REGION=\nus-east-1\n\n\nsession = boto3.Session(profile_name='some-profile')\nclient = session.client(service_name='kinesis')\n\nif len(sys.argv) \n 1:\n    timestamp = sys.argv[1]\nelse:\n    timestamp = \n2017-07-17T17:00:00.000-00:00\n\n\n# Get shard iterator dict\nshardId=\nshardId-000000000001\n\nd = client.get_shard_iterator(ShardIteratorType=\nAT_TIMESTAMP\n, ShardId=shardId, Timestamp=timestamp, StreamName='tvmetrix')\niterator = d.get('ShardIterator')\nnextIterator = iterator\n\n# Debug stuff files\nfile_name_debug = \ndebug_file_{}.debug\n.format(strftime(\n%Y-%m-%d_%H-%M-%S\n, gmtime()))\ndebug_file = open(file_name_debug, 'w')\nfile_name_data = \ndata_file_{}.log\n.format(strftime(\n%Y-%m-%d_%H-%M-%S\n, gmtime()))\ndata_file = open(file_name_data, 'w')\nprint \nDebug file will be: {}\n.format(file_name_debug)\nprint \nData file will be: {}\n.format(file_name_data)\n\ncounter = 0\nwhile counter \n max_records:\n    try:\n        response = client.get_records(ShardIterator=nextIterator, Limit=20)\n        logging.debug(response)\n        print response\n        debug_file.write(str(response) + '\\n')\n        records = response.get('Records')\n        nextIterator = response.get(\nNextShardIterator\n)\n        print \nThere are {} records\n.format(len(records))\n        counter += len(records)\n        for record in records:\n            print \n*\n * 10\n            print \nRecord\n\n            print \n-\n * 10\n            data = record.get('Data')\n            tokens = data.split('\\n')\n            for token in tokens:\n                data_dict = json.loads(token)\n                ### read stuff\n    except ValueError as valueError:\n        print valueError\n    except botocore.exceptions.ClientError as ce:\n        print \n*\n * 6, \nWARNING\n, \n*\n * 6\n        print ce\n        print \nLimit exceeded\n\n        print \n*\n * 6, \nWARNING\n, \n*\n * 6\n        break\ndebug_file.close()\ndata_file.close()", 
+            "title": "Python AWS"
+        }, 
+        {
+            "location": "/python/snippets/Python-AWS/#s3", 
+            "text": "import boto3\n\nclass S3wrapper(object):\n\n     Docstring for S3wrapper.  \n\n    def __init__(self):\n        # Create an S3 client\n        session = boto3.Session(profile_name='some-profile')\n        self.s3 = session.client('s3')\n\n\n    def upload(self, file_name = 'tags', bucket_name = 'some-bucket',\n            file_path =  some-path ):\n\n        self.file_name = file_name\n        self.bucket_name = bucket_name\n        self.file_path = file_path\n        self.key = file_path + file_name\n\n        # Uploads the given file using a managed uploader, which will split up large\n        # files automatically and pload parts in parallel.\n        self.s3.upload_file(self.file_name, self.bucket_name, self.key)", 
+            "title": "S3"
+        }, 
+        {
+            "location": "/python/snippets/Python-AWS/#kinesis", 
+            "text": "import json\nimport time\nfrom boto import kinesis\n\nSTREAM_NAME= stream_name \nSTREAM_REGION= stream_region \n\n# Kinesis initialization and information\nkinesis = kinesis.connect_to_region(STREAM_REGION)\nkinesis.describe_stream(STREAM_NAME)\n\n# Put data\nc = open('sample_data.json').read()\nprint  ******************** \nprint  Will try to send data:  \nprint c\nkinesis.put_record(STREAM_NAME, c,  partitonkey )\nprint  Data sent \nprint  ******************** \n\n# Read data\nprint  ******************** \nprint  Will try to read data \nshard_id = 'shardId-00000000001'\nshard_it = kinesis.get_shard_iterator(STREAM_NAME, shard_id,  LATEST )[ ShardIterator ]\nwhile True:\n    out = kinesis.get_records(shard_it, limit=2)\n    shard_it = out['NextShardIterator']\n    print out\n    time.sleep(0.2)\nprint  ********************   import sys\nfrom time import strftime, gmtime\nimport logging\nimport json\n\n# Boto stuff\nfrom boto import kinesis\nimport boto3\nimport botocore\n\nmax_records = 20000\n\nlogging.basicConfig(level=logging.ERROR)\n\nSTREAM_NAME= STREAM_NAME \nSTREAM_REGION= us-east-1 \n\nsession = boto3.Session(profile_name='some-profile')\nclient = session.client(service_name='kinesis')\n\nif len(sys.argv)   1:\n    timestamp = sys.argv[1]\nelse:\n    timestamp =  2017-07-17T17:00:00.000-00:00 \n\n# Get shard iterator dict\nshardId= shardId-000000000001 \nd = client.get_shard_iterator(ShardIteratorType= AT_TIMESTAMP , ShardId=shardId, Timestamp=timestamp, StreamName='tvmetrix')\niterator = d.get('ShardIterator')\nnextIterator = iterator\n\n# Debug stuff files\nfile_name_debug =  debug_file_{}.debug .format(strftime( %Y-%m-%d_%H-%M-%S , gmtime()))\ndebug_file = open(file_name_debug, 'w')\nfile_name_data =  data_file_{}.log .format(strftime( %Y-%m-%d_%H-%M-%S , gmtime()))\ndata_file = open(file_name_data, 'w')\nprint  Debug file will be: {} .format(file_name_debug)\nprint  Data file will be: {} .format(file_name_data)\n\ncounter = 0\nwhile counter   max_records:\n    try:\n        response = client.get_records(ShardIterator=nextIterator, Limit=20)\n        logging.debug(response)\n        print response\n        debug_file.write(str(response) + '\\n')\n        records = response.get('Records')\n        nextIterator = response.get( NextShardIterator )\n        print  There are {} records .format(len(records))\n        counter += len(records)\n        for record in records:\n            print  *  * 10\n            print  Record \n            print  -  * 10\n            data = record.get('Data')\n            tokens = data.split('\\n')\n            for token in tokens:\n                data_dict = json.loads(token)\n                ### read stuff\n    except ValueError as valueError:\n        print valueError\n    except botocore.exceptions.ClientError as ce:\n        print  *  * 6,  WARNING ,  *  * 6\n        print ce\n        print  Limit exceeded \n        print  *  * 6,  WARNING ,  *  * 6\n        break\ndebug_file.close()\ndata_file.close()", 
+            "title": "Kinesis"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/", 
+            "text": "Currying functions\n\n\nFunction that returns a function\n\n\nWith lambdas\n\n\nimport math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h\n\n\n\n\nWithout lambdas\n\n\nimport math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nCreate matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nMisc\n\n\nDissassemble python code\n\n\ndef myfunc(alist):\n    return len(alist)\n\n import dis\n\n dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE", 
+            "title": "Python basics"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#currying-functions", 
+            "text": "Function that returns a function", 
+            "title": "Currying functions"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#with-lambdas", 
+            "text": "import math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h", 
+            "title": "With lambdas"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#without-lambdas", 
+            "text": "import math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume", 
+            "title": "Without lambdas"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#flatten-list-of-lists-only-one-level-of-nesting", 
+            "text": "import itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))  [1, 2, 3, 4, 5, 6, 7, 8, 9]", 
+            "title": "Flatten list of lists (only one level of nesting)"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#flatten-json", 
+            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
+            "title": "Flatten json"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#strip-punctuation-of-string", 
+            "text": "s.translate(None, string.punctuation)", 
+            "title": "Strip punctuation of string"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#create-matrix", 
+            "text": "", 
+            "title": "Create matrix"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#create-matrix-of-none", 
+            "text": "A = [[ None for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of None"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#create-matrix-of-random-numbers", 
+            "text": "import random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of random numbers"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#generator-for-lists-of-m-random-elements", 
+            "text": "import random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
+            "title": "Generator for lists of M random elements"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#flatten-list-of-lists-only-one-level-of-nesting_1", 
+            "text": "import itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))  [1, 2, 3, 4, 5, 6, 7, 8, 9]", 
+            "title": "Flatten list of lists (only one level of nesting)"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#flatten-json_1", 
+            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
+            "title": "Flatten json"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#strip-punctuation-of-string_1", 
+            "text": "s.translate(None, string.punctuation)", 
+            "title": "Strip punctuation of string"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#misc", 
+            "text": "", 
+            "title": "Misc"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#dissassemble-python-code", 
+            "text": "def myfunc(alist):\n    return len(alist)  import dis  dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE", 
+            "title": "Dissassemble python code"
+        }, 
+        {
+            "location": "/python/snippets/Python-date-time/", 
+            "text": "Date/Time conversions\n\n\nimport datetime\nimport time\n\n# Create date from epoch\ndate = datetime.datetime.utcfromtimestamp(1489968401)\n\n# Create date from year, month, day\ndate = datetime.datetime(2017, 8, 20)\n\n# Get seconds from epoch\ntime.time()\n\n# Test things\ndatetime.datetime.utcfromtimestamp(int(time.time()))\n\n# Get tuple of year, month, ...\n## Check the structure help(datetime.datetime.timetuple)\ndate.timetuple()\n\n# Convert from tuple to epoch\ntime.mktime(p.timetuple())\n\n\n\n\nDate/time arithmetic\n\n\nimport datetime\nimport time\n\ndate = datetime.datetime(2017, 8, 20)\n# datetime.datetime(2017, 8, 20, 0, 0)\ndiff_8_days = datetime.timedelta(days = 8)\ndiff_3_minutes = datetime.timedelta(minutes = 3)\n\ndate_plus_8_days = date + diff_8_days\n# datetime.datetime(2017, 8, 28, 0, 0)\ndate_minus_3_minutes = date - diff_3_minutes\n# datetime.datetime(2017, 8, 19, 23, 57)", 
+            "title": "Python date time"
+        }, 
+        {
+            "location": "/python/snippets/Python-date-time/#datetime-conversions", 
+            "text": "import datetime\nimport time\n\n# Create date from epoch\ndate = datetime.datetime.utcfromtimestamp(1489968401)\n\n# Create date from year, month, day\ndate = datetime.datetime(2017, 8, 20)\n\n# Get seconds from epoch\ntime.time()\n\n# Test things\ndatetime.datetime.utcfromtimestamp(int(time.time()))\n\n# Get tuple of year, month, ...\n## Check the structure help(datetime.datetime.timetuple)\ndate.timetuple()\n\n# Convert from tuple to epoch\ntime.mktime(p.timetuple())", 
+            "title": "Date/Time conversions"
+        }, 
+        {
+            "location": "/python/snippets/Python-date-time/#datetime-arithmetic", 
+            "text": "import datetime\nimport time\n\ndate = datetime.datetime(2017, 8, 20)\n# datetime.datetime(2017, 8, 20, 0, 0)\ndiff_8_days = datetime.timedelta(days = 8)\ndiff_3_minutes = datetime.timedelta(minutes = 3)\n\ndate_plus_8_days = date + diff_8_days\n# datetime.datetime(2017, 8, 28, 0, 0)\ndate_minus_3_minutes = date - diff_3_minutes\n# datetime.datetime(2017, 8, 19, 23, 57)", 
+            "title": "Date/time arithmetic"
+        }, 
+        {
+            "location": "/python/snippets/Python-email/", 
+            "text": "Email\n\n\nOne way\n\n\n#!/usr/bin/env python\nimport smtplib\nimport sys\n\n\nGMAIL_SMTP_SERVER = \nsmtp.gmail.com\n\nGMAIL_SMTP_PORT = 587\n\nGMAIL_EMAIL = \nGMAIL_ADDRESS\n\nGMAIL_PASSWORD = \nGMAIL_PW\n\n\n\ndef initialize_smtp_server():\n    '''\n    This function initializes and greets the smtp server.\n    It logs in using the provided credentials and returns\n    the smtp server object as a result.\n    '''\n    smtpserver = smtplib.SMTP(GMAIL_SMTP_SERVER, GMAIL_SMTP_PORT)\n    smtpserver.ehlo()\n    smtpserver.starttls()\n    smtpserver.ehlo()\n    smtpserver.login(GMAIL_EMAIL, GMAIL_PASSWORD)\n    return smtpserver\n\n\ndef send_thank_you_mail(email):\n    to_email = email\n    from_email = GMAIL_EMAIL\n    subj = \nThanks for being an active commenter\n\n    # The header consists of the To and From and Subject lines\n    # separated using a newline character\n    header = \nTo:%s\\nFrom:%s\\nSubject:%s \\n\n % (to_email,\n            from_email, subj)\n    # Hard-coded templates are not best practice.\n    msg_body = \n\n    Hi %s,\n    Thank you very much for your repeated comments on our service.\n    The interaction is much appreciated.\n    Thank You.\n % email\n    content = msg_body\n    smtpserver = initialize_smtp_server()\n    smtpserver.sendmail(from_email, to_email, content)\n    smtpserver.close()\n\n\nif __name__ == \n__main__\n:\n    # for every line of input.\n    for email in sys.stdin.readlines():\n            send_thank_you_mail(email)\n\n\n\n\n\nor another, more CLI\n\n\n#!/usr/bin/env python\nimport smtplib\nimport sys\n\nfrom optparse import OptionParser\n\ndef initialize_smtp_server(smtpserver, smtpport, email, pwd):\n    '''\n    This function initializes and greets the SMTP server.\n    It logs in using the provided credentials and returns the\n    SMTP server object as a result.\n    '''\n    smtpserver = smtplib.SMTP(smtpserver, smtpport)\n    smtpserver.ehlo()\n    smtpserver.starttls()\n    smtpserver.ehlo()\n    smtpserver.login(email, pwd)\n    return smtpserver\n\n\ndef send_thank_you_mail(email, smtpserver):\n    to_email = email\n    from_email = GMAIL_EMAIL\n    subj = \nThanks for being an active commenter\n\n    # The header consists of the To and From and Subject lines\n    # separated using a newline character.\n    header = \nTo:%s\\nFrom:%s\\nSubject:%s \\n\n % (to_email,\n            from_email, subj)\n    # Hard-coded templates are not best practice.\n    msg_body = \n\n    Hi %s,\n    Thank you very much for your repeated comments on our service.\n    The interaction is much appreciated.\n    Thank You.\n % email\n    content = header + \n\\n\n + msg_body\n    smtpserver.sendmail(from_email, to_email, content)\n\n\nif __name__ == \n__main__\n:\n    usage = \nusage: %prog [options]\n\n    parser = OptionParser(usage=usage)\n    parser.add_option(\n--email\n, dest=\nemail\n,\n            help=\nemail to login to smtp server\n)\n    parser.add_option(\n--pwd\n, dest=\npwd\n,\n            help=\npassword to login to smtp server\n)\n    parser.add_option(\n--smtp-server\n, dest=\nsmtpserver\n,\n            help=\nsmtp server url\n, default=\nsmtp.gmail.com\n)\n    parser.add_option(\n--smtp-port\n, dest=\nsmtpserverport\n,\n            help=\nsmtp server port\n, default=587)\n    options, args = parser.parse_args()\n\n    if not (options.email or options.pwd):\n            parser.error(\nMust provide both an email and a password\n)\n\n    smtpserver = initialize_smtp_server(options.stmpserver,\n            options.smtpserverport, options.email, options.pwd)\n\n    # for every line of input.\n    for email in sys.stdin.readlines():\n            send_thank_you_mail(email, smtpserver)\n    smtpserver.close()", 
+            "title": "Python email"
+        }, 
+        {
+            "location": "/python/snippets/Python-email/#email", 
+            "text": "", 
+            "title": "Email"
+        }, 
+        {
+            "location": "/python/snippets/Python-email/#one-way", 
+            "text": "#!/usr/bin/env python\nimport smtplib\nimport sys\n\n\nGMAIL_SMTP_SERVER =  smtp.gmail.com \nGMAIL_SMTP_PORT = 587\n\nGMAIL_EMAIL =  GMAIL_ADDRESS \nGMAIL_PASSWORD =  GMAIL_PW \n\n\ndef initialize_smtp_server():\n    '''\n    This function initializes and greets the smtp server.\n    It logs in using the provided credentials and returns\n    the smtp server object as a result.\n    '''\n    smtpserver = smtplib.SMTP(GMAIL_SMTP_SERVER, GMAIL_SMTP_PORT)\n    smtpserver.ehlo()\n    smtpserver.starttls()\n    smtpserver.ehlo()\n    smtpserver.login(GMAIL_EMAIL, GMAIL_PASSWORD)\n    return smtpserver\n\n\ndef send_thank_you_mail(email):\n    to_email = email\n    from_email = GMAIL_EMAIL\n    subj =  Thanks for being an active commenter \n    # The header consists of the To and From and Subject lines\n    # separated using a newline character\n    header =  To:%s\\nFrom:%s\\nSubject:%s \\n  % (to_email,\n            from_email, subj)\n    # Hard-coded templates are not best practice.\n    msg_body =  \n    Hi %s,\n    Thank you very much for your repeated comments on our service.\n    The interaction is much appreciated.\n    Thank You.  % email\n    content = msg_body\n    smtpserver = initialize_smtp_server()\n    smtpserver.sendmail(from_email, to_email, content)\n    smtpserver.close()\n\n\nif __name__ ==  __main__ :\n    # for every line of input.\n    for email in sys.stdin.readlines():\n            send_thank_you_mail(email)", 
+            "title": "One way"
+        }, 
+        {
+            "location": "/python/snippets/Python-email/#or-another-more-cli", 
+            "text": "#!/usr/bin/env python\nimport smtplib\nimport sys\n\nfrom optparse import OptionParser\n\ndef initialize_smtp_server(smtpserver, smtpport, email, pwd):\n    '''\n    This function initializes and greets the SMTP server.\n    It logs in using the provided credentials and returns the\n    SMTP server object as a result.\n    '''\n    smtpserver = smtplib.SMTP(smtpserver, smtpport)\n    smtpserver.ehlo()\n    smtpserver.starttls()\n    smtpserver.ehlo()\n    smtpserver.login(email, pwd)\n    return smtpserver\n\n\ndef send_thank_you_mail(email, smtpserver):\n    to_email = email\n    from_email = GMAIL_EMAIL\n    subj =  Thanks for being an active commenter \n    # The header consists of the To and From and Subject lines\n    # separated using a newline character.\n    header =  To:%s\\nFrom:%s\\nSubject:%s \\n  % (to_email,\n            from_email, subj)\n    # Hard-coded templates are not best practice.\n    msg_body =  \n    Hi %s,\n    Thank you very much for your repeated comments on our service.\n    The interaction is much appreciated.\n    Thank You.  % email\n    content = header +  \\n  + msg_body\n    smtpserver.sendmail(from_email, to_email, content)\n\n\nif __name__ ==  __main__ :\n    usage =  usage: %prog [options] \n    parser = OptionParser(usage=usage)\n    parser.add_option( --email , dest= email ,\n            help= email to login to smtp server )\n    parser.add_option( --pwd , dest= pwd ,\n            help= password to login to smtp server )\n    parser.add_option( --smtp-server , dest= smtpserver ,\n            help= smtp server url , default= smtp.gmail.com )\n    parser.add_option( --smtp-port , dest= smtpserverport ,\n            help= smtp server port , default=587)\n    options, args = parser.parse_args()\n\n    if not (options.email or options.pwd):\n            parser.error( Must provide both an email and a password )\n\n    smtpserver = initialize_smtp_server(options.stmpserver,\n            options.smtpserverport, options.email, options.pwd)\n\n    # for every line of input.\n    for email in sys.stdin.readlines():\n            send_thank_you_mail(email, smtpserver)\n    smtpserver.close()", 
+            "title": "or another, more CLI"
+        }, 
+        {
+            "location": "/python/snippets/Python-file-management/", 
+            "text": "Walk the tree\n\n\nReturns a tuple consisting of:\n\n the folder being traversed\n\n a list of the files immediately beneath the folder being traversed\n* a list of the folders immediately beneath the folder being traversed\n\n\nQuicktest\n\n\nimport os\n\nfor item in os.walk(\n.\n):\n    print item\n\n\n\n\nTraverse all the tree from the current folder\n\n\nfolder_tree_generator = os.walk(\n.\n)\nfor dirpath, dirnames, filenames in gen:\n\n    if len(filenames) \n 0:\n        print \n*\n * 9\n        print \nFiles contained in dirpath: {}\n.format(dirpath)\n        print \n*\n * 9\n        for filename in filenames:\n            full_file_name = dirpath + os.path.sep + filename\n            print \n{} (full path is {})\n.format(filename, full_file_name)\n\n    if len(dirnames) \n 0:\n        print \n*\n * 9\n        print \nSubdirs of dirpath: {}\n.format(dirpath)\n        print \n*\n * 9\n        for dirname in dirnames:\n            full_folder_name = dirpath + os.path.sep + dirname\n            print \n{} (full path is: {})\n.format(dirname, full_folder_name)\n            if os.path.isdir(full_folder_name):\n                print \nAnd it is!\n\n            else:\n                print \n But it's not", 
+            "title": "Python file management"
+        }, 
+        {
+            "location": "/python/snippets/Python-file-management/#walk-the-tree", 
+            "text": "Returns a tuple consisting of:  the folder being traversed  a list of the files immediately beneath the folder being traversed\n* a list of the folders immediately beneath the folder being traversed", 
+            "title": "Walk the tree"
+        }, 
+        {
+            "location": "/python/snippets/Python-file-management/#quicktest", 
+            "text": "import os\n\nfor item in os.walk( . ):\n    print item", 
+            "title": "Quicktest"
+        }, 
+        {
+            "location": "/python/snippets/Python-file-management/#traverse-all-the-tree-from-the-current-folder", 
+            "text": "folder_tree_generator = os.walk( . )\nfor dirpath, dirnames, filenames in gen:\n\n    if len(filenames)   0:\n        print  *  * 9\n        print  Files contained in dirpath: {} .format(dirpath)\n        print  *  * 9\n        for filename in filenames:\n            full_file_name = dirpath + os.path.sep + filename\n            print  {} (full path is {}) .format(filename, full_file_name)\n\n    if len(dirnames)   0:\n        print  *  * 9\n        print  Subdirs of dirpath: {} .format(dirpath)\n        print  *  * 9\n        for dirname in dirnames:\n            full_folder_name = dirpath + os.path.sep + dirname\n            print  {} (full path is: {}) .format(dirname, full_folder_name)\n            if os.path.isdir(full_folder_name):\n                print  And it is! \n            else:\n                print   But it's not", 
+            "title": "Traverse all the tree from the current folder"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/", 
+            "text": "Read/write file\n\n\nimport sys\n\n# Read\nwith open('../first.js', 'r') as reading_file:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = list(reading_file)\n    formatted_lines = [remove_newlines(line) for line in lines]\n\n# Write\nwith open('output_file', 'w') as output_file:\n    for line in lines:\n        output_file.write(line)\n\n\n\n\nor\n\n\nwith open('output_file', 'w') as output_file:\n    output_file.writelines(lines)\n\n\n\n\nStandard input/output read and write\n\n\n#### Write to stdout\nimport sys\nsys.stdout.write(str(last_answer ))\n\n\n\n\nor\n\n\nimport sys\nwith sys.stdout as stdout:\n    sdout.write(str(last_answer))\n\n\n\n\nRead from stdin\n\n\nimport sys\nwith sys.stdin as stdin:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = [remove_newlines(line) for line in stdin]\n\n\n\n\nor\n\n\nlines = sys.stdin.readlines()\n\n\n\n\nRemove trailing and beginning newlines from string\n\n\nremove_newlines = lambda x: x.trim('\\r\\n')\n\n\n\n\nGzip\n\n\nread compressed file\n\n\nimport gzip\nwith gzip.open('file.txt.gz', 'rb') as f:\n    file_content = f.read()\n\n\n\n\ncompress file\n\n\nimport gzip\ncontent = \nLots of content here\n\nwith gzip.open('file.txt.gz', 'wb') as f:\n    f.write(content)\n\n\n\n\nMisc\n\n\nBlink led of caps key\n\n\nimport fcntl,os,time;\nexec \nfcntl.ioctl(os.open('/dev/console',os.O_NOCTTY),19250,%d);time.sleep(.5);\n*2%(4,0)", 
+            "title": "Python input output"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#readwrite-file", 
+            "text": "import sys\n\n# Read\nwith open('../first.js', 'r') as reading_file:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = list(reading_file)\n    formatted_lines = [remove_newlines(line) for line in lines]\n\n# Write\nwith open('output_file', 'w') as output_file:\n    for line in lines:\n        output_file.write(line)  or  with open('output_file', 'w') as output_file:\n    output_file.writelines(lines)", 
+            "title": "Read/write file"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#standard-inputoutput-read-and-write", 
+            "text": "#### Write to stdout\nimport sys\nsys.stdout.write(str(last_answer ))  or  import sys\nwith sys.stdout as stdout:\n    sdout.write(str(last_answer))", 
+            "title": "Standard input/output read and write"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#read-from-stdin", 
+            "text": "import sys\nwith sys.stdin as stdin:\n    remove_newlines = lambda x: x.replace('\\n', '')\n    lines = [remove_newlines(line) for line in stdin]  or  lines = sys.stdin.readlines()", 
+            "title": "Read from stdin"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#remove-trailing-and-beginning-newlines-from-string", 
+            "text": "remove_newlines = lambda x: x.trim('\\r\\n')", 
+            "title": "Remove trailing and beginning newlines from string"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#gzip", 
+            "text": "", 
+            "title": "Gzip"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#read-compressed-file", 
+            "text": "import gzip\nwith gzip.open('file.txt.gz', 'rb') as f:\n    file_content = f.read()", 
+            "title": "read compressed file"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#compress-file", 
+            "text": "import gzip\ncontent =  Lots of content here \nwith gzip.open('file.txt.gz', 'wb') as f:\n    f.write(content)", 
+            "title": "compress file"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#misc", 
+            "text": "", 
+            "title": "Misc"
+        }, 
+        {
+            "location": "/python/snippets/Python-input-output/#blink-led-of-caps-key", 
+            "text": "import fcntl,os,time;\nexec  fcntl.ioctl(os.open('/dev/console',os.O_NOCTTY),19250,%d);time.sleep(.5); *2%(4,0)", 
+            "title": "Blink led of caps key"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/", 
+            "text": "Create matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)", 
+            "title": "Python misc"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#create-matrix", 
+            "text": "", 
+            "title": "Create matrix"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#create-matrix-of-none", 
+            "text": "A = [[ None for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of None"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#create-matrix-of-random-numbers", 
+            "text": "import random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of random numbers"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#generator-for-lists-of-m-random-elements", 
+            "text": "import random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
+            "title": "Generator for lists of M random elements"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#flatten-list-of-lists-only-one-level-of-nesting", 
+            "text": "import itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))  [1, 2, 3, 4, 5, 6, 7, 8, 9]", 
+            "title": "Flatten list of lists (only one level of nesting)"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#flatten-json", 
+            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
+            "title": "Flatten json"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#strip-punctuation-of-string", 
+            "text": "s.translate(None, string.punctuation)", 
+            "title": "Strip punctuation of string"
+        }, 
+        {
+            "location": "/python/snippets/Python-parse-cli-options/", 
+            "text": "See \nthis page", 
+            "title": "Python parse cli options"
         }
     ]
 }

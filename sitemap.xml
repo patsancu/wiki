@@ -248,72 +248,6 @@
     
         
     <url>
-     <loc>/python/File-management/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/HTTP-Verbs-and-curl-like-stuff/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Misc/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python--Snippets/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-AWS/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-basics/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-date-time/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-file-management/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-input-output/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-libaries/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/python/Python-resources/</loc>
-     <lastmod>2017-08-31</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>/python/Utils/</loc>
      <lastmod>2017-08-31</lastmod>
      <changefreq>daily</changefreq>
@@ -332,14 +266,20 @@
     </url>
         
     <url>
-     <loc>/python/libraries/</loc>
+     <loc>/python/resources/</loc>
      <lastmod>2017-08-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/python/snippets/</loc>
-     <lastmod>2017-08-31</lastmod>
+     <loc></loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc></loc>
+     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
