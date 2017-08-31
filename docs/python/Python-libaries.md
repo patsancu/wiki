@@ -1,13 +1,4 @@
-* [Simple HTTP server](https://github.com/patsancu/wiki/wiki/Python-libaries#start-simple-python-http-server)
-* [Read parquet file](https://github.com/patsancu/wiki/wiki/Python-libaries#read-parquet-file)
-* [dbms](https://github.com/patsancu/wiki/wiki/Python-libaries#dbms)
-* [Requests for humans](https://github.com/patsancu/wiki/wiki/Python-libaries#python-requests---http-for-humans)
-* [Faker](https://github.com/patsancu/wiki/wiki/Python-libaries#faker)
-* [Q - text as data](https://github.com/patsancu/wiki/wiki/Python-libaries#q)
-* [Lorem ipsum generator](https://github.com/patsancu/wiki/wiki/Python-libaries#camelipsum)
-* [Blink keyboard led](https://github.com/patsancu/wiki/wiki/Python-libaries#blink-led-of-caps-key)
-
-### Start simple python http server
+## Start simple python http server
 2
 ```
 $ python -m SimpleHTTPServer [port]
