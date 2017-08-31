@@ -374,6 +374,10 @@
 </li>
                             
 <li >
+    <a href="../../../python/Python-AWS/">Python AWS</a>
+</li>
+                            
+<li >
     <a href="../../../python/Python-basics/">Python basics</a>
 </li>
                             
@@ -460,7 +464,6 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#aws-cli">AWS CLI</a></li>
         <li class="main "><a href="#get-kinesis-decoded-data">Get kinesis decoded data</a></li>
-        <li class="main "><a href="#python">Python</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -551,111 +554,6 @@ http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html
     &quot;MillisBehindLatest&quot;: 0
 }
 
-</code></pre>
-
-<h3 id="python">Python</h3>
-<pre><code class="python">import json
-import time
-from boto import kinesis
-
-STREAM_NAME=&quot;stream_name&quot;
-STREAM_REGION=&quot;stream_region&quot;
-
-# Kinesis initialization and information
-kinesis = kinesis.connect_to_region(STREAM_REGION)
-kinesis.describe_stream(STREAM_NAME)
-
-# Put data
-c = open('sample_data.json').read()
-print &quot;********************&quot;
-print &quot;Will try to send data: &quot;
-print c
-kinesis.put_record(STREAM_NAME, c, &quot;partitonkey&quot;)
-print &quot;Data sent&quot;
-print &quot;********************&quot;
-
-# Read data
-print &quot;********************&quot;
-print &quot;Will try to read data&quot;
-shard_id = 'shardId-00000000001'
-shard_it = kinesis.get_shard_iterator(STREAM_NAME, shard_id, &quot;LATEST&quot;)[&quot;ShardIterator&quot;]
-while True:
-    out = kinesis.get_records(shard_it, limit=2)
-    shard_it = out['NextShardIterator']
-    print out
-    time.sleep(0.2)
-print &quot;********************&quot;
-</code></pre>
-
-<pre><code class="python">import sys
-from time import strftime, gmtime
-import logging
-import json
-
-# Boto stuff
-from boto import kinesis
-import boto3
-import botocore
-
-max_records = 20000
-
-logging.basicConfig(level=logging.ERROR)
-
-STREAM_NAME=&quot;STREAM_NAME&quot;
-STREAM_REGION=&quot;us-east-1&quot;
-
-session = boto3.Session(profile_name='some-profile')
-client = session.client(service_name='kinesis')
-
-if len(sys.argv) &gt; 1:
-    timestamp = sys.argv[1]
-else:
-    timestamp = &quot;2017-07-17T17:00:00.000-00:00&quot;
-
-# Get shard iterator dict
-shardId=&quot;shardId-000000000001&quot;
-d = client.get_shard_iterator(ShardIteratorType=&quot;AT_TIMESTAMP&quot;, ShardId=shardId, Timestamp=timestamp, StreamName='tvmetrix')
-iterator = d.get('ShardIterator')
-nextIterator = iterator
-
-# Debug stuff files
-file_name_debug = &quot;debug_file_{}.debug&quot;.format(strftime(&quot;%Y-%m-%d_%H-%M-%S&quot;, gmtime()))
-debug_file = open(file_name_debug, 'w')
-file_name_data = &quot;data_file_{}.log&quot;.format(strftime(&quot;%Y-%m-%d_%H-%M-%S&quot;, gmtime()))
-data_file = open(file_name_data, 'w')
-print &quot;Debug file will be: {}&quot;.format(file_name_debug)
-print &quot;Data file will be: {}&quot;.format(file_name_data)
-
-counter = 0
-while counter &lt; max_records:
-    try:
-        response = client.get_records(ShardIterator=nextIterator, Limit=20)
-        logging.debug(response)
-        print response
-        debug_file.write(str(response) + '\n')
-        records = response.get('Records')
-        nextIterator = response.get(&quot;NextShardIterator&quot;)
-        print &quot;There are {} records&quot;.format(len(records))
-        counter += len(records)
-        for record in records:
-            print &quot;*&quot; * 10
-            print &quot;Record&quot;
-            print &quot;-&quot; * 10
-            data = record.get('Data')
-            tokens = data.split('\n')
-            for token in tokens:
-                data_dict = json.loads(token)
-                ### read stuff
-    except ValueError as valueError:
-        print valueError
-    except botocore.exceptions.ClientError as ce:
-        print &quot;*&quot; * 6, &quot;WARNING&quot;, &quot;*&quot; * 6
-        print ce
-        print &quot;Limit exceeded&quot;
-        print &quot;*&quot; * 6, &quot;WARNING&quot;, &quot;*&quot; * 6
-        break
-debug_file.close()
-data_file.close()
 </code></pre></div>
         </div>
 
