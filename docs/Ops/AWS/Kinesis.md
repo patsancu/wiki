@@ -1,6 +1,4 @@
-* [AWS-CLI](https://github.com/patsancu/wiki/wiki/AWS-Kinesis#aws-cli)
-* [Python](https://github.com/patsancu/wiki/wiki/AWS-Kinesis#python)
-
+* [Python](../../python/snippets/Python-AWS.md#kinesis)
 ### AWS CLI
 **Warning** Before using check that you have properly set the `AWS_PROFILE` env variable to some profile existing in `~/.aws/credentials`, or comfortable using the aws default profile
 as 
