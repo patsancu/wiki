@@ -57,4 +57,7 @@ $ python -m SimpleHTTPServer [port]
 $ python3 -m http.server [port]
 ```
 
-
+### Open page at browser
+import webbrowser
+webbrowser.open_new('http://www.python.org/')
+#more info at: https://docs.python.org/3.4/library/webbrowser.html
