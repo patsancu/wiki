@@ -510,6 +510,7 @@
             <li><a href="#webcam">Webcam</a></li>
             <li><a href="#change-default-app-for-magnet-links">Change default app for magnet links</a></li>
             <li><a href="#notifications">Notifications</a></li>
+            <li><a href="#get-os-version">Get OS version</a></li>
             <li><a href="#motion">Motion</a></li>
             <li><a href="#generate-random-chars">Generate random chars</a></li>
             <li><a href="#monitor-screen-locking">Monitor screen locking</a></li>
@@ -602,8 +603,8 @@ One of those files (it'll probably work with any sourced file at login) should h
 
 <p>or just execute</p>
 <h4 id="insert-unicode-characters">Insert unicode characters</h4>
-<p>Hold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter. 
-Example: 
+<p>Hold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter.
+Example:
 Hold control and shift and type U1F60F ‍😏</p>
 <h4 id="add-dictionaries-to-usrsharedict">Add dictionaries to /usr/share/dict/</h4>
 <pre><code>$ sudo apt-cache search --names-only swedish
@@ -611,7 +612,7 @@ $ sudo apt-get install wswedish
 </code></pre>
 
 <h4 id="mouse-third-button">Mouse - Third button</h4>
-<pre><code>sudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf 
+<pre><code>sudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf
 </code></pre>
 
 <p>And paste this</p>
@@ -655,10 +656,23 @@ gvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop
 <pre><code>notify-send -u critical &quot;The potato finished cooking&quot;
 </code></pre>
 
+<h3 id="get-os-version">Get OS version</h3>
+<pre><code>uname -a
+</code></pre>
+
+<p>and</p>
+<pre><code>$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 16.04.2 LTS
+Release:        16.04
+Codename:       xenial
+</code></pre>
+
 <h3 id="motion">Motion</h3>
 <h4 id="make-folders-accessible">Make folders accessible</h4>
-<pre><code>sudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion; 
-sudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/; 
+<pre><code>sudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion;
+sudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/;
 sudo mkdir -p /var/log/motion/; sudo chown -R $USER:$USER /var/log/motion/;
 </code></pre>
 
@@ -676,7 +690,7 @@ trap &quot;exit_report; exit;&quot; 0
 lockmon() {
 adddate() {
     while IFS= read ­r line; do
-      echo &quot;$(date) $line&quot; | grep &quot;boolean&quot; | sed 's/   boolean true/Screen Locked/' 
+      echo &quot;$(date) $line&quot; | grep &quot;boolean&quot; | sed 's/   boolean true/Screen Locked/'
 | sed 's/   boolean false/Screen Unlocked/'
     done
 }
