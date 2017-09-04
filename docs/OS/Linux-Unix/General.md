@@ -160,6 +160,20 @@ gvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop
 notify-send -u critical "The potato finished cooking"
 ```
 
+### Get OS version
+```
+uname -a
+```
+and
+```
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 16.04.2 LTS
+Release:        16.04
+Codename:       xenial
+```
+
 ### Motion
 #### Make folders accessible
 ```
