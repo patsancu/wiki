@@ -93,8 +93,8 @@ TZ='Europe/London'; export TZ
 or just execute
 
 #### Insert unicode characters
-Hold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter. 
-Example: 
+Hold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter.
+Example:
 Hold control and shift and type U1F60F ‍😏
 
 
@@ -109,7 +109,7 @@ $ sudo apt-get install wswedish
 #### Mouse - Third button
 
 ```
-sudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf 
+sudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf
 ```
 And paste this
 
@@ -125,7 +125,7 @@ or check this
 [wiki ubuntu](https://wiki.ubuntu.com/X/Quirks# A2-button_Mice)
 
 ### Webcam
-#### List video devices 
+#### List video devices
 * `v4l2-ctl --list-formats-ext`
 * `v4l2-ctl --list-devices`
 
@@ -177,8 +177,8 @@ Codename:       xenial
 ### Motion
 #### Make folders accessible
 ```
-sudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion; 
-sudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/; 
+sudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion;
+sudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/;
 sudo mkdir -p /var/log/motion/; sudo chown -R $USER:$USER /var/log/motion/;
 ```
 #### Configuration file
@@ -198,7 +198,7 @@ trap "exit_report; exit;" 0
 lockmon() {
 adddate() {
     while IFS= read ­r line; do
-      echo "$(date) $line" | grep "boolean" | sed 's/   boolean true/Screen Locked/' 
+      echo "$(date) $line" | grep "boolean" | sed 's/   boolean true/Screen Locked/'
 | sed 's/   boolean false/Screen Unlocked/'
     done
 }
