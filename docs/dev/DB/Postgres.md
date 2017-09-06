@@ -29,3 +29,26 @@ from INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'
 select initcap(lower(deli.short_title))
 from deli
 ```
+
+### Select top N from groups
+#### Select top 2 subcategories from each category, according to the movie screentime
+```sql
+with grouped_stuff as
+    ( select movie.category, movie.subcategory,
+    sum(movie.screentime) as total_screentime
+    from movies movie
+    where upload_date = '2017-09-18 00:00:00'
+    group by movie.subcategory, movie.category),
+ranking as
+(
+	select grouped_stuff.*,
+	rank() over
+	(
+		partition by category
+		order by total_screentime desc
+	)
+	from
+	grouped_stuff
+)
+select * from ranking where rank < 3
+```
