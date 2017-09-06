@@ -1972,7 +1972,7 @@
         }, 
         {
             "location": "/dev/DB/Postgres/", 
-            "text": "Change column type without changing order\n\n\nFrom \nhere\n\n\nCREATE TEMP TABLE temp_table AS SELECT * FROM original_table;\nDROP TABLE original_table;\nCREATE TABLE original_table ...\nINSERT INTO original_table SELECT * FROM temp_table;\n\n\n\n\nList tables\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere tablename like '%patata%' ;\n\n\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere schema like '%some_model%' ;\n\n\n\n\nDescribe table\n\n\nselect column_name, data_type, character_maximum_length\nfrom INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'\n\n\n\n\nCapitalize first letter of each word\n\n\nselect initcap(lower(deli.short_title))\nfrom deli", 
+            "text": "Change column type without changing order\n\n\nFrom \nhere\n\n\nCREATE TEMP TABLE temp_table AS SELECT * FROM original_table;\nDROP TABLE original_table;\nCREATE TABLE original_table ...\nINSERT INTO original_table SELECT * FROM temp_table;\n\n\n\n\nList tables\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere tablename like '%patata%' ;\n\n\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere schema like '%some_model%' ;\n\n\n\n\nDescribe table\n\n\nselect column_name, data_type, character_maximum_length\nfrom INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'\n\n\n\n\nCapitalize first letter of each word\n\n\nselect initcap(lower(deli.short_title))\nfrom deli\n\n\n\n\nSelect top N from groups\n\n\nSelect top 2 subcategories from each category, according to the movie screentime\n\n\nwith grouped_stuff as\n    ( select movie.category, movie.subcategory,\n    sum(movie.screentime) as total_screentime\n    from movies movie\n    where upload_date = '2017-09-18 00:00:00'\n    group by movie.subcategory, movie.category),\nranking as\n(\n    select grouped_stuff.*,\n    rank() over\n    (\n        partition by category\n        order by total_screentime desc\n    )\n    from\n    grouped_stuff\n)\nselect * from ranking where rank \n 3", 
             "title": "Postgres"
         }, 
         {
@@ -1994,6 +1994,16 @@
             "location": "/dev/DB/Postgres/#capitalize-first-letter-of-each-word", 
             "text": "select initcap(lower(deli.short_title))\nfrom deli", 
             "title": "Capitalize first letter of each word"
+        }, 
+        {
+            "location": "/dev/DB/Postgres/#select-top-n-from-groups", 
+            "text": "", 
+            "title": "Select top N from groups"
+        }, 
+        {
+            "location": "/dev/DB/Postgres/#select-top-2-subcategories-from-each-category-according-to-the-movie-screentime", 
+            "text": "with grouped_stuff as\n    ( select movie.category, movie.subcategory,\n    sum(movie.screentime) as total_screentime\n    from movies movie\n    where upload_date = '2017-09-18 00:00:00'\n    group by movie.subcategory, movie.category),\nranking as\n(\n    select grouped_stuff.*,\n    rank() over\n    (\n        partition by category\n        order by total_screentime desc\n    )\n    from\n    grouped_stuff\n)\nselect * from ranking where rank   3", 
+            "title": "Select top 2 subcategories from each category, according to the movie screentime"
         }, 
         {
             "location": "/dev/DB/sqlite/", 

@@ -500,6 +500,8 @@
         <li class="main "><a href="#list-tables">List tables</a></li>
         <li class="main "><a href="#describe-table">Describe table</a></li>
         <li class="main "><a href="#capitalize-first-letter-of-each-word">Capitalize first letter of each word</a></li>
+        <li class="main "><a href="#select-top-n-from-groups">Select top N from groups</a></li>
+            <li><a href="#select-top-2-subcategories-from-each-category-according-to-the-movie-screentime">Select top 2 subcategories from each category, according to the movie screentime</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -529,6 +531,28 @@ from INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'
 <h3 id="capitalize-first-letter-of-each-word">Capitalize first letter of each word</h3>
 <pre><code class="sql">select initcap(lower(deli.short_title))
 from deli
+</code></pre>
+
+<h3 id="select-top-n-from-groups">Select top N from groups</h3>
+<h4 id="select-top-2-subcategories-from-each-category-according-to-the-movie-screentime">Select top 2 subcategories from each category, according to the movie screentime</h4>
+<pre><code class="sql">with grouped_stuff as
+    ( select movie.category, movie.subcategory,
+    sum(movie.screentime) as total_screentime
+    from movies movie
+    where upload_date = '2017-09-18 00:00:00'
+    group by movie.subcategory, movie.category),
+ranking as
+(
+    select grouped_stuff.*,
+    rank() over
+    (
+        partition by category
+        order by total_screentime desc
+    )
+    from
+    grouped_stuff
+)
+select * from ranking where rank &lt; 3
 </code></pre></div>
         </div>
 
