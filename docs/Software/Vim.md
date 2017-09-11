@@ -3,7 +3,8 @@
 * [Vimrc omorante](https://gist.github.com/patsancu/64114dc27543e9b26b7d3180559f5975) or [this](https://github.com/spacepluk/vim-config/blob/master/vimrc)
 * [Modularize vimrc](https://www.gregjs.com/vim/2016/do-yourself-a-favor-and-modularize-your-vimrc-init-vim/)
 
-### [Regex](http://vimregex.com/)
+#### [Regex](http://vimregex.com/)
+
 #### &
 **&** Is replaced with the entire text matched by the search pattern when used in a
 replacement string. This is useful when you want to avoid retyping text:
