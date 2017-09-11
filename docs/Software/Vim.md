@@ -199,9 +199,43 @@ _From within NERDTree Window_
     * `I` _show/hide hidden files_
     * `C` _change root to highlighted folder_
 
+### Block move by patterns
+From *[Learning the vi and vim editors](http://shop.oreilly.com/product/9780596529833.do)*
+Given the file with contents:
+```
+Rh 0 "Get status of named file" "STAT"
+.Rh "SYNTAX"
+.nf
+integer*4 stat, retval
+integer*4 status(11)
+character*123 filename
+...
+retval = stat (filename, status)
+.fi
+.Rh "DESCRIPTION"
+Writes the fields of a system data structure into the
+status array.
+These fields contain (among other
+things) information about the file's location, access
+privileges, owner, and time of last modification.
+.Rh "PARAMETERS"
+.IP "\fBfilename\fR" 15n
+A character string variable or constant containing
+the Unix pathname for the file whose status you want
+to retrieve.
+You can give the ...
+```
+Suppose that you decide to move DESCRIPTION above the SYNTAX paragraph. With
+pattern matching, you can move blocks of text on all 150 pages with one command!
+```
+:g /SYNTAX/.,/DESCRIPTION/-1 move /PARAMETERS/-1
+```
+This command works as follows. First, ex finds and marks each line that matches the first pattern (i.e., that contains the word SYNTAX). Second, for each marked line, it sets . (dot, the current line) to that line, and executes the command. Using the move command, the command moves the block of lines from the current line (dot) to the line before the one containing the word DESCRIPTION (/DESCRIPTION/-1) to just before the line containing PARAMETERS (/PARAMETERS/-1).
+
 ### Snippets
 #### Reverse lines
 * All
 `:g/^/m0`
 * Range (reverse only lines 100-150)
 `:100,150g/^/m99`
+
