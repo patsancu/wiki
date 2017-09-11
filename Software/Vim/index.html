@@ -497,7 +497,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#vimrc">Vimrc</a></li>
-        <li class="main "><a href="#regex">Regex</a></li>
+            <li><a href="#regex">Regex</a></li>
             <li><a href="#_1">&amp;</a></li>
             <li><a href="#insert-a-space-between-and-the-character-that-follows-it">Insert a space between # and the character that follows it</a></li>
             <li><a href="#general">general</a></li>
@@ -516,6 +516,7 @@
         <li class="main "><a href="#plugins">Plugins</a></li>
             <li><a href="#ultisnips">Ultisnips</a></li>
             <li><a href="#nerdtree">NERDTree</a></li>
+            <li><a href="#block-move-by-patterns">Block move by patterns</a></li>
             <li><a href="#snippets">Snippets</a></li>
     </ul>
 </div></div>
@@ -526,7 +527,7 @@
 <li><a href="https://gist.github.com/patsancu/64114dc27543e9b26b7d3180559f5975">Vimrc omorante</a> or <a href="https://github.com/spacepluk/vim-config/blob/master/vimrc">this</a></li>
 <li><a href="https://www.gregjs.com/vim/2016/do-yourself-a-favor-and-modularize-your-vimrc-init-vim/">Modularize vimrc</a></li>
 </ul>
-<h3 id="regex"><a href="http://vimregex.com/">Regex</a></h3>
+<h4 id="regex"><a href="http://vimregex.com/">Regex</a></h4>
 <h4 id="_1">&amp;</h4>
 <p><strong>&amp;</strong> Is replaced with the entire text matched by the search pattern when used in a
 replacement string. This is useful when you want to avoid retyping text:</p>
@@ -735,6 +736,38 @@ $ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerli
 </ul>
 </li>
 </ul>
+<h3 id="block-move-by-patterns">Block move by patterns</h3>
+<p>From <em><a href="http://shop.oreilly.com/product/9780596529833.do">Learning the vi and vim editors</a></em>
+Given the file with contents:</p>
+<pre><code>Rh 0 &quot;Get status of named file&quot; &quot;STAT&quot;
+.Rh &quot;SYNTAX&quot;
+.nf
+integer*4 stat, retval
+integer*4 status(11)
+character*123 filename
+...
+retval = stat (filename, status)
+.fi
+.Rh &quot;DESCRIPTION&quot;
+Writes the fields of a system data structure into the
+status array.
+These fields contain (among other
+things) information about the file's location, access
+privileges, owner, and time of last modification.
+.Rh &quot;PARAMETERS&quot;
+.IP &quot;\fBfilename\fR&quot; 15n
+A character string variable or constant containing
+the Unix pathname for the file whose status you want
+to retrieve.
+You can give the ...
+</code></pre>
+
+<p>Suppose that you decide to move DESCRIPTION above the SYNTAX paragraph. With
+pattern matching, you can move blocks of text on all 150 pages with one command!</p>
+<pre><code>:g /SYNTAX/.,/DESCRIPTION/-1 move /PARAMETERS/-1
+</code></pre>
+
+<p>This command works as follows. First, ex finds and marks each line that matches the first pattern (i.e., that contains the word SYNTAX). Second, for each marked line, it sets . (dot, the current line) to that line, and executes the command. Using the move command, the command moves the block of lines from the current line (dot) to the line before the one containing the word DESCRIPTION (/DESCRIPTION/-1) to just before the line containing PARAMETERS (/PARAMETERS/-1).</p>
 <h3 id="snippets">Snippets</h3>
 <h4 id="reverse-lines">Reverse lines</h4>
 <ul>
