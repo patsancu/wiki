@@ -2576,6 +2576,16 @@
             "title": "more info at: https://docs.python.org/3.4/library/webbrowser.html"
         }, 
         {
+            "location": "/python/libraries/beautiful_soup/", 
+            "text": "Extract pdfs from website links\n\n\ndef _get_links_from_url(url):\n    # Read html from website\n    html = urllib2.urlopen(url).read()\n    sopa = BeautifulSoup(html)\n\n    pdf_links = (\n            extract_pdf_link(url, element)\n            for element in sopa.find_all(\na\n)\n            )\n    return pdf_links\n\n\ndef extract_pdf_link(url, raw_link):\n    current_link = raw_link.get('href')\n    if _is_pdf_file(current_link):\n        prefix = \n\n        if not current_link.startswith(\nhttp\n):\n            prefix = url\n        pdf_url = prefix + current_link\n        return pdf_url\n    return", 
+            "title": "Beautiful soup"
+        }, 
+        {
+            "location": "/python/libraries/beautiful_soup/#extract-pdfs-from-website-links", 
+            "text": "def _get_links_from_url(url):\n    # Read html from website\n    html = urllib2.urlopen(url).read()\n    sopa = BeautifulSoup(html)\n\n    pdf_links = (\n            extract_pdf_link(url, element)\n            for element in sopa.find_all( a )\n            )\n    return pdf_links\n\n\ndef extract_pdf_link(url, raw_link):\n    current_link = raw_link.get('href')\n    if _is_pdf_file(current_link):\n        prefix =  \n        if not current_link.startswith( http ):\n            prefix = url\n        pdf_url = prefix + current_link\n        return pdf_url\n    return", 
+            "title": "Extract pdfs from website links"
+        }, 
+        {
             "location": "/python/libraries/matplotlib/", 
             "text": "Plot time series with mat\n\n\npip install matplotlib numpy\n\n\n\n\nimport matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\n\nplt.plot(x,y)\nplt.show()\n```", 
             "title": "Matplotlib"
