@@ -21,12 +21,31 @@ public void writeFile() {
 
 ```
 ### Read file
+#### Java 7
 ```java
-public static String readFirstLineFromFile(String path) throws IOException {
-    try (BufferedReader br =
-                   new BufferedReader(new FileReader(path))) {
-        return br.readLine();
-    }
+String content = new String(Files.readAllBytes(Paths.get(fileName)));
+```
+#### Java 8
+```java
+Stream<String> lines = Files.lines(path);
+lines.forEach(line -> data.append(line).append("\n"));
+lines.close();
+```
+
+```java
+@Test
+public void givenFilePath_whenUsingFilesLines_thenFileData() {
+   String expectedData = "Hello World from fileTest.txt!!!";
+
+   Path path = Paths.get(getClass().getClassLoader()
+           .getResource("fileTest.txt").toURI());
+
+   StringBuilder data = new StringBuilder();
+   Stream<String> lines = Files.lines(path);
+   lines.forEach(line -> data.append(line).append("\n"));
+   lines.close();
+
+   Assert.assertEquals(expectedData, data.toString().trim());
 }
 ```
 
