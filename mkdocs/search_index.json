@@ -2027,7 +2027,7 @@
         }, 
         {
             "location": "/dev/Java/Java-snippets/", 
-            "text": "Sleep\n\n\n//Pause for 4 seconds\nThread.sleep(4000);\n\n\n\n\nWrite file\n\n\npublic void writeFile() {\n    try(FileOutputStream fos = newFileOutputStream(\nmovies.txt\n);\n        DataOutputStream dos = newDataOutputStream(fos)) {\n\n        dos.writeUTF(\nJava 7 Block Buster\n);\n\n    } catch(IOException e) {\n\n        // log the exception\n\n    }\n}\n\n\n\n\n\nRead file\n\n\npublic static String readFirstLineFromFile(String path) throws IOException {\n    try (BufferedReader br =\n                   new BufferedReader(new FileReader(path))) {\n        return br.readLine();\n    }\n}\n\n\n\n\nRead file extension\n\n\nhttp://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FilenameUtils.html#getExtension\n\n\nString ext1 = FilenameUtils.getExtension(\n/path/to/file/foo.txt\n); // returns \ntxt\n\nString ext2 = FilenameUtils.getExtension(\nbar.exe\n); // returns \nexe\n\n\n\n\n\n// https://mvnrepository.com/artifact/commons-io/commons-io\ncompile group: 'commons-io', name: 'commons-io', version: '2.4'\n\n\n\n\nGet file last updated date\n\n\nimport java.io.File;\nimport java.text.SimpleDateFormat;\n\npublic class GetFileLastModifiedExample\n{\n    public static void main(String[] args)\n    {\n    File file = new File(\nc:\\\\logfile.log\n);\n\n    System.out.println(\nBefore Format : \n + file.lastModified());\n\n    SimpleDateFormat sdf = new SimpleDateFormat(\nMM/dd/yyyy HH:mm:ss\n);\n\n    System.out.println(\nAfter Format : \n + sdf.format(file.lastModified()));\n    }\n}", 
+            "text": "Sleep\n\n\n//Pause for 4 seconds\nThread.sleep(4000);\n\n\n\n\nWrite file\n\n\npublic void writeFile() {\n    try(FileOutputStream fos = newFileOutputStream(\nmovies.txt\n);\n        DataOutputStream dos = newDataOutputStream(fos)) {\n\n        dos.writeUTF(\nJava 7 Block Buster\n);\n\n    } catch(IOException e) {\n\n        // log the exception\n\n    }\n}\n\n\n\n\n\nRead file\n\n\nJava 7\n\n\nString content = new String(Files.readAllBytes(Paths.get(fileName)));\n\n\n\n\nJava 8\n\n\nStream\nString\n lines = Files.lines(path);\nlines.forEach(line -\n data.append(line).append(\n\\n\n));\nlines.close();\n\n\n\n\n@Test\npublic void givenFilePath_whenUsingFilesLines_thenFileData() {\n   String expectedData = \nHello World from fileTest.txt!!!\n;\n\n   Path path = Paths.get(getClass().getClassLoader()\n           .getResource(\nfileTest.txt\n).toURI());\n\n   StringBuilder data = new StringBuilder();\n   Stream\nString\n lines = Files.lines(path);\n   lines.forEach(line -\n data.append(line).append(\n\\n\n));\n   lines.close();\n\n   Assert.assertEquals(expectedData, data.toString().trim());\n}\n\n\n\n\nRead file extension\n\n\nhttp://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FilenameUtils.html#getExtension\n\n\nString ext1 = FilenameUtils.getExtension(\n/path/to/file/foo.txt\n); // returns \ntxt\n\nString ext2 = FilenameUtils.getExtension(\nbar.exe\n); // returns \nexe\n\n\n\n\n\n// https://mvnrepository.com/artifact/commons-io/commons-io\ncompile group: 'commons-io', name: 'commons-io', version: '2.4'\n\n\n\n\nGet file last updated date\n\n\nimport java.io.File;\nimport java.text.SimpleDateFormat;\n\npublic class GetFileLastModifiedExample\n{\n    public static void main(String[] args)\n    {\n    File file = new File(\nc:\\\\logfile.log\n);\n\n    System.out.println(\nBefore Format : \n + file.lastModified());\n\n    SimpleDateFormat sdf = new SimpleDateFormat(\nMM/dd/yyyy HH:mm:ss\n);\n\n    System.out.println(\nAfter Format : \n + sdf.format(file.lastModified()));\n    }\n}", 
             "title": "Java snippets"
         }, 
         {
@@ -2042,8 +2042,18 @@
         }, 
         {
             "location": "/dev/Java/Java-snippets/#read-file", 
-            "text": "public static String readFirstLineFromFile(String path) throws IOException {\n    try (BufferedReader br =\n                   new BufferedReader(new FileReader(path))) {\n        return br.readLine();\n    }\n}", 
+            "text": "", 
             "title": "Read file"
+        }, 
+        {
+            "location": "/dev/Java/Java-snippets/#java-7", 
+            "text": "String content = new String(Files.readAllBytes(Paths.get(fileName)));", 
+            "title": "Java 7"
+        }, 
+        {
+            "location": "/dev/Java/Java-snippets/#java-8", 
+            "text": "Stream String  lines = Files.lines(path);\nlines.forEach(line -  data.append(line).append( \\n ));\nlines.close();  @Test\npublic void givenFilePath_whenUsingFilesLines_thenFileData() {\n   String expectedData =  Hello World from fileTest.txt!!! ;\n\n   Path path = Paths.get(getClass().getClassLoader()\n           .getResource( fileTest.txt ).toURI());\n\n   StringBuilder data = new StringBuilder();\n   Stream String  lines = Files.lines(path);\n   lines.forEach(line -  data.append(line).append( \\n ));\n   lines.close();\n\n   Assert.assertEquals(expectedData, data.toString().trim());\n}", 
+            "title": "Java 8"
         }, 
         {
             "location": "/dev/Java/Java-snippets/#read-file-extension", 

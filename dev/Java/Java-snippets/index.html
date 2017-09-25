@@ -503,6 +503,8 @@
         <li class="main active"><a href="#sleep">Sleep</a></li>
         <li class="main "><a href="#write-file">Write file</a></li>
         <li class="main "><a href="#read-file">Read file</a></li>
+            <li><a href="#java-7">Java 7</a></li>
+            <li><a href="#java-8">Java 8</a></li>
         <li class="main "><a href="#read-file-extension">Read file extension</a></li>
         <li class="main "><a href="#get-file-last-updated-date">Get file last updated date</a></li>
     </ul>
@@ -531,11 +533,29 @@ Thread.sleep(4000);
 </code></pre>
 
 <h3 id="read-file">Read file</h3>
-<pre><code class="java">public static String readFirstLineFromFile(String path) throws IOException {
-    try (BufferedReader br =
-                   new BufferedReader(new FileReader(path))) {
-        return br.readLine();
-    }
+<h4 id="java-7">Java 7</h4>
+<pre><code class="java">String content = new String(Files.readAllBytes(Paths.get(fileName)));
+</code></pre>
+
+<h4 id="java-8">Java 8</h4>
+<pre><code class="java">Stream&lt;String&gt; lines = Files.lines(path);
+lines.forEach(line -&gt; data.append(line).append(&quot;\n&quot;));
+lines.close();
+</code></pre>
+
+<pre><code class="java">@Test
+public void givenFilePath_whenUsingFilesLines_thenFileData() {
+   String expectedData = &quot;Hello World from fileTest.txt!!!&quot;;
+
+   Path path = Paths.get(getClass().getClassLoader()
+           .getResource(&quot;fileTest.txt&quot;).toURI());
+
+   StringBuilder data = new StringBuilder();
+   Stream&lt;String&gt; lines = Files.lines(path);
+   lines.forEach(line -&gt; data.append(line).append(&quot;\n&quot;));
+   lines.close();
+
+   Assert.assertEquals(expectedData, data.toString().trim());
 }
 </code></pre>
 
