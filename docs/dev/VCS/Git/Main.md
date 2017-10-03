@@ -239,3 +239,8 @@ That's it, you can push your progress now.
 ```
 git update-index --skip-worktree path/to/file.cfg
 ```
+
+### Show last two commits
+```
+git log -2 --stat
+```
