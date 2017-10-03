@@ -400,6 +400,16 @@ Moves recursively all files under folder "dir1" (at any level of depth) to the "
 find dir1 -type f -exec mv {} dir1 \;
 ```
 
+### Declare variables for a command
+#### Yes
+```sh
+FOO=bar bash -c 'echo $FOO'
+```
+####No
+```sh
+FOO=bar bash -c "echo $FOO"
+```
+
 ### Get duplicate lines and count
 prints duplicate lines only
 ```
