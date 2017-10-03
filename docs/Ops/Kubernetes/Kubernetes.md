@@ -16,6 +16,16 @@ kubectl config set-context $(kubectl config current-context) --namespace=<insert
 ```
 
 
+### Create deployment from some container, exposing port 8080
+####          See Generators section @https://kubernetes.io/docs/user-guide/kubectl-conventions/
+kubectl run extractor --image=miradatv/iris-analytics-information-extractor --port=8080 --generator=run-deployment/v1
+#### Get "extractor" deployment yaml config file
+kubectl get deploy extractor -o yaml
+#### Expose deployment as a service
+kubectl expose deployment extractor --type=NodePort
+#### Get "extractor" service yaml config file
+kubectl get svc extractor -o yaml
+
 ### Curl the api
 [More info](https://kubernetes.io/docs/concepts/cluster-administration/access-cluster/#accessing-the-cluster-api)
 
