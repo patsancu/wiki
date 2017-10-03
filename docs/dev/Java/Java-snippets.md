@@ -22,9 +22,46 @@ public void writeFile() {
 ```
 ### Read file
 #### Java 7
+##### Read all contents at once
 ```java
 String content = new String(Files.readAllBytes(Paths.get(fileName)));
 ```
+##### Line by line
+```
+package com.mkyong;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadTextFile {
+
+    public static void main(String[] args) throws IOException {
+
+        try {
+
+            File f = new File("src/com/mkyong/data.txt");
+
+            BufferedReader b = new BufferedReader(new FileReader(f));
+
+            String readLine = "";
+
+            System.out.println("Reading file using Buffered Reader");
+
+            while ((readLine = b.readLine()) != null) {
+                System.out.println(readLine);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+}
+```
+
 #### Java 8
 ```java
 Stream<String> lines = Files.lines(path);
