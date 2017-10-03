@@ -74,6 +74,10 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../../OS/Linux-Unix/Admin/">Admin</a>
+</li>
+            
+<li >
     <a href="../../../OS/Linux-Unix/General/">General</a>
 </li>
             
@@ -137,10 +141,6 @@
 </li>
                             
 <li >
-    <a href="../../../Ops/Kubernetes/">Kubernetes</a>
-</li>
-                            
-<li >
     <a href="../../../Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/">Mount a remote file system through ssh Using sshfs</a>
 </li>
                             
@@ -178,6 +178,20 @@
             
 <li >
     <a href="../../../Ops/AWS/S3/">S3</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Kubernetes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../Ops/Kubernetes/Kubernetes/">Kubernetes</a>
+</li>
+            
+<li >
+    <a href="../../../Ops/Kubernetes/Minikube/">Minikube</a>
 </li>
     </ul>
   </li>
@@ -310,11 +324,19 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../Java/Gradle/">Gradle</a>
+</li>
+            
+<li >
     <a href="../../Java/Java-snippets/">Java snippets</a>
 </li>
             
 <li >
     <a href="../../Java/Java/">Java</a>
+</li>
+            
+<li >
+    <a href="../../Java/Maven/">Maven</a>
 </li>
     </ul>
   </li>
@@ -501,14 +523,35 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#show-changeset-information-by-line-for-each-file">Show changeset information by line for each file</a></li>
-        <li class="main "><a href="#forget-tracked-file">Forget tracked file</a></li>
-        <li class="main "><a href="#serve-repo">Serve repo</a></li>
+        <li class="main "><a href="#delete-untracked-files-enabling-purge-extension">Delete untracked files, enabling purge extension</a></li>
+            <li><a href="#enable-purge-extension">Enable purge extension</a></li>
+            <li><a href="#purge">Purge</a></li>
+            <li><a href="#delete-untracked-files-without-purge-extension">Delete untracked files, without purge extension</a></li>
+            <li><a href="#forget-tracked-file">Forget tracked file</a></li>
+            <li><a href="#serve-repo">Serve repo</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h4 id="show-changeset-information-by-line-for-each-file">Show changeset information by line for each file</h4>
 <p><code>hg annotate -u</code></p>
+<h3 id="delete-untracked-files-enabling-purge-extension">Delete untracked files, enabling purge extension</h3>
+<p>From (here)[https://stackoverflow.com/a/1212486]</p>
+<h4 id="enable-purge-extension">Enable purge extension</h4>
+<p>Add to .hgrc this</p>
+<pre><code>[extensions]
+purge =
+</code></pre>
+
+<h4 id="purge">Purge</h4>
+<pre><code>hg purge
+</code></pre>
+
+<h4 id="delete-untracked-files-without-purge-extension">Delete untracked files, without purge extension</h4>
+<p>From (here)[https://stackoverflow.com/a/1212893]</p>
+<pre><code>hg st -un0 | xargs -0 rm
+</code></pre>
+
 <h4 id="forget-tracked-file">Forget tracked file</h4>
 <p>If file to forget is contained in .hgignore,</p>
 <p><code>$ hg forget _filename_</code></p>

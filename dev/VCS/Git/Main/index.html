@@ -74,6 +74,10 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../../../OS/Linux-Unix/Admin/">Admin</a>
+</li>
+            
+<li >
     <a href="../../../../OS/Linux-Unix/General/">General</a>
 </li>
             
@@ -137,10 +141,6 @@
 </li>
                             
 <li >
-    <a href="../../../../Ops/Kubernetes/">Kubernetes</a>
-</li>
-                            
-<li >
     <a href="../../../../Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/">Mount a remote file system through ssh Using sshfs</a>
 </li>
                             
@@ -178,6 +178,20 @@
             
 <li >
     <a href="../../../../Ops/AWS/S3/">S3</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Kubernetes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../../Ops/Kubernetes/Kubernetes/">Kubernetes</a>
+</li>
+            
+<li >
+    <a href="../../../../Ops/Kubernetes/Minikube/">Minikube</a>
 </li>
     </ul>
   </li>
@@ -310,11 +324,19 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../../Java/Gradle/">Gradle</a>
+</li>
+            
+<li >
     <a href="../../../Java/Java-snippets/">Java snippets</a>
 </li>
             
 <li >
     <a href="../../../Java/Java/">Java</a>
+</li>
+            
+<li >
+    <a href="../../../Java/Maven/">Maven</a>
 </li>
     </ul>
   </li>
@@ -534,6 +556,7 @@
         <li class="main "><a href="#rearrange-commits">Rearrange commits</a></li>
         <li class="main "><a href="#rewrite-history">Rewrite history</a></li>
         <li class="main "><a href="#ignore-subsequent-changes-to-a-file-without-deleting-it">Ignore subsequent changes to a file without deleting it</a></li>
+        <li class="main "><a href="#show-last-two-commits">Show last two commits</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -734,6 +757,10 @@ That's it, you can push your progress now.
 <h3 id="rewrite-history"><a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">Rewrite history</a></h3>
 <h3 id="ignore-subsequent-changes-to-a-file-without-deleting-it">Ignore subsequent changes to a file without deleting it</h3>
 <pre><code>git update-index --skip-worktree path/to/file.cfg
+</code></pre>
+
+<h3 id="show-last-two-commits">Show last two commits</h3>
+<pre><code>git log -2 --stat
 </code></pre></div>
         </div>
 

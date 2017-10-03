@@ -74,6 +74,10 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../../OS/Linux-Unix/Admin/">Admin</a>
+</li>
+            
+<li >
     <a href="../../../OS/Linux-Unix/General/">General</a>
 </li>
             
@@ -137,10 +141,6 @@
 </li>
                             
 <li >
-    <a href="../../Kubernetes/">Kubernetes</a>
-</li>
-                            
-<li >
     <a href="../../Mount-a-remote-file-system-through-ssh-Using-sshfs/">Mount a remote file system through ssh Using sshfs</a>
 </li>
                             
@@ -178,6 +178,20 @@
             
 <li >
     <a href="../../AWS/S3/">S3</a>
+</li>
+    </ul>
+  </li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Kubernetes</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../Kubernetes/Kubernetes/">Kubernetes</a>
+</li>
+            
+<li >
+    <a href="../../Kubernetes/Minikube/">Minikube</a>
 </li>
     </ul>
   </li>
@@ -310,11 +324,19 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../../dev/Java/Gradle/">Gradle</a>
+</li>
+            
+<li >
     <a href="../../../dev/Java/Java-snippets/">Java snippets</a>
 </li>
             
 <li >
     <a href="../../../dev/Java/Java/">Java</a>
+</li>
+            
+<li >
+    <a href="../../../dev/Java/Maven/">Maven</a>
 </li>
     </ul>
   </li>
@@ -557,6 +579,7 @@
             <li><a href="#exit-traps">Exit traps</a></li>
             <li><a href="#check-os-type">Check OS type</a></li>
             <li><a href="#flatten-directory">Flatten directory</a></li>
+            <li><a href="#declare-variables-for-a-command">Declare variables for a command</a></li>
             <li><a href="#get-duplicate-lines-and-count">Get duplicate lines and count</a></li>
             <li><a href="#geotag-pictures">Geotag pictures</a></li>
     </ul>
@@ -924,6 +947,15 @@ else
 <h3 id="flatten-directory">Flatten directory</h3>
 <p>Moves recursively all files under folder "dir1" (at any level of depth) to the "dir1" folder.</p>
 <pre><code>find dir1 -type f -exec mv {} dir1 \;
+</code></pre>
+
+<h3 id="declare-variables-for-a-command">Declare variables for a command</h3>
+<h4 id="yes">Yes</h4>
+<pre><code class="sh">FOO=bar bash -c 'echo $FOO'
+</code></pre>
+
+<h4 id="no">No</h4>
+<pre><code class="sh">FOO=bar bash -c &quot;echo $FOO&quot;
 </code></pre>
 
 <h3 id="get-duplicate-lines-and-count">Get duplicate lines and count</h3>

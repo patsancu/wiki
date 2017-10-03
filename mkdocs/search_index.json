@@ -26,6 +26,16 @@
             "title": "Tips"
         }, 
         {
+            "location": "/OS/Linux-Unix/Admin/", 
+            "text": "Add user to group\n\n\n# Add user `some_user` to `docker` group\nsudo usermod -aG docker some_user", 
+            "title": "Admin"
+        }, 
+        {
+            "location": "/OS/Linux-Unix/Admin/#add-user-to-group", 
+            "text": "# Add user `some_user` to `docker` group\nsudo usermod -aG docker some_user", 
+            "title": "Add user to group"
+        }, 
+        {
             "location": "/OS/Linux-Unix/General/", 
             "text": "Systemd\n\n\nvim /etc/systemd/system/service_name.service\n\n\n\n\n[Unit]\nDescription = making network connection up\nAfter = network.target\n[Service]\n# ExecStart can point to any executable file\nExecStart = /root/scripts/conup.sh\n[Install]\nWantedBy = multi-user.target\n\n\n\n\nCreate executable script\n\n\nvim /root/scripts/conup.sh;\nchmod +x /root/scripts/conup.sh;\n\n\n\n\nEnable service\n\n\n# systemctl enable connection.service\n\n\n\n\nBasic operations\n\n\n# systemctl start connection.service\n# systemctl stop connection.service\n\n\n\n\nGrub\n\n\nChange grub boot order\n\n\nsudo vim /etc/default/grub\n\n\n\n\nChange \nGRUB_DEFAULT\n to one of [number of entry (zero-based), 'Title'subindex]\nExamples:\n\n\n'Advanced options for Ubuntu\n'3\n2\n\n\n\n\nThen, update the grub menu\n\n\nsudo update-grub\n\n\n\n\nCheck the file \n/boot/grub/grub.cfg\n for reference\n\n\nReinstall grub\n\n\n\n\nboot from livecd\n\n\nmount partition where grub was contained (usually OS's partition)\n\n\nsudo tune2fs -L \"partition_name\" /dev/sdXX ( e.g.: /dev/sda6/ )\n\n\nsudo os-prober\n\n\nsudo grub-install --root-directory=/media/partition_name/ /dev/sda\n\n\nreboot\n\n\n\n\nCreate passwordless user programmatically\n\n\n# useradd -m -c \nSamwise the Brave\n sam  -s /bin/bash\n\n\n\n\nCreates user with home /home/sam and shell /bin/bash\n\n\nFind\n\n\n# Search all files with .old extension and delete them:\nfind / -name \n*.old\n -exec /bin/rm {} \\;\n# Search all files with size \n of 100 MB and delete them:\nfind / -size +100M -exec /bin/rm {} \\;\n# Recursively change the permissions of all directories\nfind . -type d -exec chmod 755 {} \\;\n\n\n\n\nTop\n\n\n\n\nW\n writes config changes to .toprc\n\n\nE\n cycles through memory units in the total memory info\n\n\n\n\nConfigure stuff\n\n\nChange locale\n\n\nWith \n/usr/bin/tzselect\n you can check what is the timezone your computer should be using\n\n\nsudo dpkg-reconfigure tzdata\n\nIf it doesn't work, try the following:\n\n\nWith that timezone, paste the timezone to \n~/.profile\n or \n~/.bash_profile\n, depending on your use case.\nOne of those files (it'll probably work with any sourced file at login) should have one line such as:\n\n\nTZ='Europe/London'; export TZ\n\n\n\n\nor just execute\n\n\nInsert unicode characters\n\n\nHold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter.\nExample:\nHold control and shift and type U1F60F \u200d\ud83d\ude0f\n\n\nAdd dictionaries to /usr/share/dict/\n\n\n$ sudo apt-cache search --names-only swedish\n$ sudo apt-get install wswedish\n\n\n\n\nMouse - Third button\n\n\nsudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf\n\n\n\n\nAnd paste this\n\n\nSection \nInputClass\n\n    Identifier \nmiddle button emulation class\n\n    MatchIsPointer \non\n\n    Option \nEmulate3Buttons\n \non\n\nEndSection\n\n\n\n\nor check this\n\nwiki ubuntu\n\n\nWebcam\n\n\nList video devices\n\n\n\n\nv4l2-ctl --list-formats-ext\n\n\nv4l2-ctl --list-devices\n\n\n\n\nFind resolution of webcam\n\n\n\n\nlsusb\n list usb devices, get params of webcam\n\n\nlsusb -s 003:074 -v | egrep \"Width|Height\"\n\n\n\n\ndown vote\naccepted\nI had the same problem and managed to fix it by setting the defaults for both gvfs as well as xdg.\n\n\ncheck defaults with:\n\n\nChange default app for magnet links\n\n\nThis probably will only work with gnome, kde and xfce\n\n\n#Check currently available apps\nxdg-mime query default x-scheme-handler/magnet\ngvfs-mime --query x-scheme-handler/magnet\n\n\n\n\n# Set new app\nxdg-mime default qBittorent.desktop x-scheme-handler/magnet\ngvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop\n\n\n\n\nNotifications\n\n\nnotify-send -u critical \nThe potato finished cooking\n\n\n\n\n\nGet OS version\n\n\nuname -a\n\n\n\n\nand\n\n\n$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 16.04.2 LTS\nRelease:        16.04\nCodename:       xenial\n\n\n\n\nMotion\n\n\nMake folders accessible\n\n\nsudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion;\nsudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/;\nsudo mkdir -p /var/log/motion/; sudo chown -R $USER:$USER /var/log/motion/;\n\n\n\n\nConfiguration file\n\n\n/etc/motion/motion.conf\n\n\nGenerate random chars\n\n\ntr -c -d '0123456789abcdefghijklmnopqrstuvwxyz'  \n /dev/urandom | dd bs=32 count=1 2\n/dev/null; echo\n\n\n\n\nMonitor screen locking\n\n\nexit_report(){\necho \n$(date) Monitoring Terminated.\n\n}\ntrap \nexit_report; exit;\n 0\nlockmon() {\nadddate() {\n    while IFS= read \u00adr line; do\n      echo \n$(date) $line\n | grep \nboolean\n | sed 's/   boolean true/Screen Locked/'\n| sed 's/   boolean false/Screen Unlocked/'\n    done\n}\necho \n$(date) Monitoring Started.\n\ndbus\u00admonitor \u00ad\u00adsession \ntype='signal',interface='org.gnome.ScreenSaver'\n | adddate\n}\nlockmon \n lock_screen.log\n\n\n\n\nHow to fix \u2018$MFTMirr does not match $MFT (record 0)\u2019\n\n\n\n\ninstall ntfsprogs\n\n\nsudo ntfsfix /dev/partitionName", 
             "title": "General"
@@ -451,101 +461,6 @@
             "title": "Mount"
         }, 
         {
-            "location": "/Ops/Kubernetes/", 
-            "text": "Config\n\n\nDifferent configs\n\n\nIf one wants to specify a config other than the default,you may want to run \nkubectl\n with the \n--kubeconfig\n option\n\n\nkubectl --kubeconfig ~/.kube/miniconfig get nodes\n\n\n\n\nThe default being the one stored in \n~/.kube/config\n\n\nChange default namespace\n\n\nEdit \n~/.kube/config/\n\nand change \ncontexts.context.namespace\n\n\nChanging namespace programmatically\n\n\n\n\nYou can permanently save the namespace for all subsequent kubectl commands in that context.\n\n\n\n\nkubectl config set-context $(kubectl config current-context) --namespace=\ninsert-namespace-name-here\n\n\n\n\n\nCurl the api\n\n\nMore info\n\n\nAPISERVER=$(kubectl config view | grep server | cut -f 2- -d \n:\n | tr -d \n \n)\nTOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\\t')\ncurl $APISERVER/api --header \nAuthorization: Bearer $TOKEN\n --insecure\n\n\n\n\nCheck what API endpoints the kubectl command is using\n\n\nv param is configurable\n\n\n$ ./kubectl get pods -v=6\n[...]\nGET https://subdomain.domain.com/api/v1/namespaces/default/pods\n[...]\n\n\n\n\nEnable autocompletion\n\n\nFrom \ncheatsheet\n\n\n$ source \n(kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.\n$ source \n(kubectl completion zsh)  # setup autocomplete in zsh\n\n\n\n\nExecute app on pod\n\n\nkubectl exec -ti drill-alluxio-0 -c drill -- command_path_in_remote_machine -u \njdbc:drill:drillbit=localhost;user=ps\n\n\n\n\n\nActions\n\n\nGet most of the info\n\n\nkubectl get po,svc,rc,rs,pvc --all-namespaces; \necho \nPV--No namespace for them\n; \nkubectl get pv\n\n\n\n\nGet cronjob's yaml\n\n\n# kubectl get cronjob reports-daily -n tvmetrix -o yam\n\n\nLive-edit cronjob\n\n\n# kubectl edit cronjob reports-daily -n tvmetrix\n\n\n\n\nGet logs\n\n\n$ kubectl logs --tail=1000 -f -n monitoring podname prometheus\n\n\n\n\nGet list of pods\n\n\n$ kubectl get pods\n\n\n\n\nGet list of nodes\n\n\n$ kubectl get nodes\n\n\n\n\nGet info about specific pod\n\n\n$ kubectl describe pod storm-nimbus\n\n\n\n\nKubectl remote command execution examples\n\n\nRead line 166 from json gzipped file available in an alluxio mount at /some/path/to folder\n\n\nkubectl exec -ti alluxio-master-0 -- bash -c 'alluxio fs cat /some/path/to/file.json.gz | gzip -d' | sed -n -e 166p | jq '.'", 
-            "title": "Kubernetes"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#config", 
-            "text": "", 
-            "title": "Config"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#different-configs", 
-            "text": "If one wants to specify a config other than the default,you may want to run  kubectl  with the  --kubeconfig  option  kubectl --kubeconfig ~/.kube/miniconfig get nodes  The default being the one stored in  ~/.kube/config", 
-            "title": "Different configs"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#change-default-namespace", 
-            "text": "Edit  ~/.kube/config/ \nand change  contexts.context.namespace", 
-            "title": "Change default namespace"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#changing-namespace-programmatically", 
-            "text": "You can permanently save the namespace for all subsequent kubectl commands in that context.   kubectl config set-context $(kubectl config current-context) --namespace= insert-namespace-name-here", 
-            "title": "Changing namespace programmatically"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#curl-the-api", 
-            "text": "More info  APISERVER=$(kubectl config view | grep server | cut -f 2- -d  :  | tr -d    )\nTOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\\t')\ncurl $APISERVER/api --header  Authorization: Bearer $TOKEN  --insecure", 
-            "title": "Curl the api"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#check-what-api-endpoints-the-kubectl-command-is-using", 
-            "text": "v param is configurable  $ ./kubectl get pods -v=6\n[...]\nGET https://subdomain.domain.com/api/v1/namespaces/default/pods\n[...]", 
-            "title": "Check what API endpoints the kubectl command is using"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#enable-autocompletion", 
-            "text": "From  cheatsheet  $ source  (kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.\n$ source  (kubectl completion zsh)  # setup autocomplete in zsh", 
-            "title": "Enable autocompletion"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#execute-app-on-pod", 
-            "text": "kubectl exec -ti drill-alluxio-0 -c drill -- command_path_in_remote_machine -u  jdbc:drill:drillbit=localhost;user=ps", 
-            "title": "Execute app on pod"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#actions", 
-            "text": "", 
-            "title": "Actions"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#get-most-of-the-info", 
-            "text": "kubectl get po,svc,rc,rs,pvc --all-namespaces; \necho  PV--No namespace for them ; \nkubectl get pv", 
-            "title": "Get most of the info"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#get-cronjobs-yaml", 
-            "text": "# kubectl get cronjob reports-daily -n tvmetrix -o yam", 
-            "title": "Get cronjob's yaml"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#live-edit-cronjob", 
-            "text": "# kubectl edit cronjob reports-daily -n tvmetrix", 
-            "title": "Live-edit cronjob"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#get-logs", 
-            "text": "$ kubectl logs --tail=1000 -f -n monitoring podname prometheus", 
-            "title": "Get logs"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#get-list-of-pods", 
-            "text": "$ kubectl get pods", 
-            "title": "Get list of pods"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#get-list-of-nodes", 
-            "text": "$ kubectl get nodes", 
-            "title": "Get list of nodes"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#get-info-about-specific-pod", 
-            "text": "$ kubectl describe pod storm-nimbus", 
-            "title": "Get info about specific pod"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#kubectl-remote-command-execution-examples", 
-            "text": "", 
-            "title": "Kubectl remote command execution examples"
-        }, 
-        {
-            "location": "/Ops/Kubernetes/#read-line-166-from-json-gzipped-file-available-in-an-alluxio-mount-at-somepathto-folder", 
-            "text": "kubectl exec -ti alluxio-master-0 -- bash -c 'alluxio fs cat /some/path/to/file.json.gz | gzip -d' | sed -n -e 166p | jq '.'", 
-            "title": "Read line 166 from json gzipped file available in an alluxio mount at /some/path/to folder"
-        }, 
-        {
             "location": "/Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/", 
             "text": "Install\n\n\nsudo apt-get install -y sshfs\n\n\n\n\nmake sure the following condition is met. In the local system, type (as root)\n\n\nShould return nothing\n\n\n# sudo modprobe fuse\n\n\n\n\ncreate the mount point\n\n\n$ sudo mkdir /mnt/remote\n$ sudo chown [user-name]:[group-name] /mnt/remote/\n\n\n\n\nAdd yourself to the fuse group\n\n\nadduser [your-user] fuse\n\n\n\n\nswitch to your user and mount the remote filesystem.\n\n\nsshfs remote-user@remote.server:/remote/directory /mnt/remote/\n\n\n\n\nIf you want to mount a directory other than the home directory, you can specify it after the colon. Actually, a generic sshfs command looks like this:\n\n\n$ sshfs [user@]host:[dir] mountpoint [options]\n\n\n\n\nUnmount Your Directory\n\n\nTry:\n\n\nsudo umount /mnt/remote\n\n\n\n\nor\n\n\nfusermount -u mountpoint", 
             "title": "Mount a remote file system through ssh Using sshfs"
@@ -826,6 +741,146 @@
             "title": "Sync folders"
         }, 
         {
+            "location": "/Ops/Kubernetes/Kubernetes/", 
+            "text": "Config\n\n\nDifferent configs\n\n\nIf one wants to specify a config other than the default,you may want to run \nkubectl\n with the \n--kubeconfig\n option\n\n\nkubectl --kubeconfig ~/.kube/miniconfig get nodes\n\n\n\n\nThe default being the one stored in \n~/.kube/config\n\n\nChange default namespace\n\n\nEdit \n~/.kube/config/\n\nand change \ncontexts.context.namespace\n\n\nChanging namespace programmatically\n\n\n\n\nYou can permanently save the namespace for all subsequent kubectl commands in that context.\n\n\n\n\nkubectl config set-context $(kubectl config current-context) --namespace=\ninsert-namespace-name-here\n\n\n\n\n\nCreate deployment from some container, exposing port 8080\n\n\nSee Generators section @https://kubernetes.io/docs/user-guide/kubectl-conventions/\n\n\nkubectl run extractor --image=miradatv/iris-analytics-information-extractor --port=8080 --generator=run-deployment/v1\n\n\nGet \"extractor\" deployment yaml config file\n\n\nkubectl get deploy extractor -o yaml\n\n\nExpose deployment as a service\n\n\nkubectl expose deployment extractor --type=NodePort\n\n\nGet \"extractor\" service yaml config file\n\n\nkubectl get svc extractor -o yaml\n\n\nCurl the api\n\n\nMore info\n\n\nAPISERVER=$(kubectl config view | grep server | cut -f 2- -d \n:\n | tr -d \n \n)\nTOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\\t')\ncurl $APISERVER/api --header \nAuthorization: Bearer $TOKEN\n --insecure\n\n\n\n\nCheck what API endpoints the kubectl command is using\n\n\nv param is configurable\n\n\n$ ./kubectl get pods -v=6\n[...]\nGET https://subdomain.domain.com/api/v1/namespaces/default/pods\n[...]\n\n\n\n\nEnable autocompletion\n\n\nFrom \ncheatsheet\n\n\n$ source \n(kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.\n$ source \n(kubectl completion zsh)  # setup autocomplete in zsh\n\n\n\n\nExecute app on pod\n\n\nkubectl exec -ti drill-alluxio-0 -c drill -- command_path_in_remote_machine -u \njdbc:drill:drillbit=localhost;user=ps\n\n\n\n\n\nActions\n\n\nGet most of the info\n\n\nkubectl get po,svc,rc,rs,pvc --all-namespaces; \necho \nPV--No namespace for them\n; \nkubectl get pv\n\n\n\n\nGet cronjob's yaml\n\n\n# kubectl get cronjob reports-daily -n tvmetrix -o yam\n\n\nLive-edit cronjob\n\n\n# kubectl edit cronjob reports-daily -n tvmetrix\n\n\n\n\nGet logs\n\n\n$ kubectl logs --tail=1000 -f -n monitoring podname prometheus\n\n\n\n\nGet list of pods\n\n\n$ kubectl get pods\n\n\n\n\nGet list of nodes\n\n\n$ kubectl get nodes\n\n\n\n\nGet info about specific pod\n\n\n$ kubectl describe pod storm-nimbus\n\n\n\n\nKubectl remote command execution examples\n\n\nRead line 166 from json gzipped file available in an alluxio mount at /some/path/to folder\n\n\nkubectl exec -ti alluxio-master-0 -- bash -c 'alluxio fs cat /some/path/to/file.json.gz | gzip -d' | sed -n -e 166p | jq '.'", 
+            "title": "Kubernetes"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#config", 
+            "text": "", 
+            "title": "Config"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#different-configs", 
+            "text": "If one wants to specify a config other than the default,you may want to run  kubectl  with the  --kubeconfig  option  kubectl --kubeconfig ~/.kube/miniconfig get nodes  The default being the one stored in  ~/.kube/config", 
+            "title": "Different configs"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#change-default-namespace", 
+            "text": "Edit  ~/.kube/config/ \nand change  contexts.context.namespace", 
+            "title": "Change default namespace"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#changing-namespace-programmatically", 
+            "text": "You can permanently save the namespace for all subsequent kubectl commands in that context.   kubectl config set-context $(kubectl config current-context) --namespace= insert-namespace-name-here", 
+            "title": "Changing namespace programmatically"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#create-deployment-from-some-container-exposing-port-8080", 
+            "text": "", 
+            "title": "Create deployment from some container, exposing port 8080"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#see-generators-section-httpskubernetesiodocsuser-guidekubectl-conventions", 
+            "text": "kubectl run extractor --image=miradatv/iris-analytics-information-extractor --port=8080 --generator=run-deployment/v1", 
+            "title": "See Generators section @https://kubernetes.io/docs/user-guide/kubectl-conventions/"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-extractor-deployment-yaml-config-file", 
+            "text": "kubectl get deploy extractor -o yaml", 
+            "title": "Get \"extractor\" deployment yaml config file"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#expose-deployment-as-a-service", 
+            "text": "kubectl expose deployment extractor --type=NodePort", 
+            "title": "Expose deployment as a service"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-extractor-service-yaml-config-file", 
+            "text": "kubectl get svc extractor -o yaml", 
+            "title": "Get \"extractor\" service yaml config file"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#curl-the-api", 
+            "text": "More info  APISERVER=$(kubectl config view | grep server | cut -f 2- -d  :  | tr -d    )\nTOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\\t')\ncurl $APISERVER/api --header  Authorization: Bearer $TOKEN  --insecure", 
+            "title": "Curl the api"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#check-what-api-endpoints-the-kubectl-command-is-using", 
+            "text": "v param is configurable  $ ./kubectl get pods -v=6\n[...]\nGET https://subdomain.domain.com/api/v1/namespaces/default/pods\n[...]", 
+            "title": "Check what API endpoints the kubectl command is using"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#enable-autocompletion", 
+            "text": "From  cheatsheet  $ source  (kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.\n$ source  (kubectl completion zsh)  # setup autocomplete in zsh", 
+            "title": "Enable autocompletion"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#execute-app-on-pod", 
+            "text": "kubectl exec -ti drill-alluxio-0 -c drill -- command_path_in_remote_machine -u  jdbc:drill:drillbit=localhost;user=ps", 
+            "title": "Execute app on pod"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#actions", 
+            "text": "", 
+            "title": "Actions"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-most-of-the-info", 
+            "text": "kubectl get po,svc,rc,rs,pvc --all-namespaces; \necho  PV--No namespace for them ; \nkubectl get pv", 
+            "title": "Get most of the info"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-cronjobs-yaml", 
+            "text": "# kubectl get cronjob reports-daily -n tvmetrix -o yam", 
+            "title": "Get cronjob's yaml"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#live-edit-cronjob", 
+            "text": "# kubectl edit cronjob reports-daily -n tvmetrix", 
+            "title": "Live-edit cronjob"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-logs", 
+            "text": "$ kubectl logs --tail=1000 -f -n monitoring podname prometheus", 
+            "title": "Get logs"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-list-of-pods", 
+            "text": "$ kubectl get pods", 
+            "title": "Get list of pods"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-list-of-nodes", 
+            "text": "$ kubectl get nodes", 
+            "title": "Get list of nodes"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#get-info-about-specific-pod", 
+            "text": "$ kubectl describe pod storm-nimbus", 
+            "title": "Get info about specific pod"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#kubectl-remote-command-execution-examples", 
+            "text": "", 
+            "title": "Kubectl remote command execution examples"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Kubernetes/#read-line-166-from-json-gzipped-file-available-in-an-alluxio-mount-at-somepathto-folder", 
+            "text": "kubectl exec -ti alluxio-master-0 -- bash -c 'alluxio fs cat /some/path/to/file.json.gz | gzip -d' | sed -n -e 166p | jq '.'", 
+            "title": "Read line 166 from json gzipped file available in an alluxio mount at /some/path/to folder"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Minikube/", 
+            "text": "Mount local folder mount-dir to minikube's cluster \"channels-folder\" folder\n\n\nminikube mount mount-dir:/channels-folder\n\n\n\n\nunset docker minikube stuff\n\n\neval $(minikube docker-env -u)\n\n\n\n\nset docker minikube stuff\n\n\neval $(minikube docker-env)", 
+            "title": "Minikube"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Minikube/#mount-local-folder-mount-dir-to-minikubes-cluster-channels-folder-folder", 
+            "text": "minikube mount mount-dir:/channels-folder", 
+            "title": "Mount local folder mount-dir to minikube's cluster \"channels-folder\" folder"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Minikube/#unset-docker-minikube-stuff", 
+            "text": "eval $(minikube docker-env -u)", 
+            "title": "unset docker minikube stuff"
+        }, 
+        {
+            "location": "/Ops/Kubernetes/Minikube/#set-docker-minikube-stuff", 
+            "text": "eval $(minikube docker-env)", 
+            "title": "set docker minikube stuff"
+        }, 
+        {
             "location": "/Ops/Shell/Script-building/", 
             "text": "Simple stop\n\n\necho \nPress enter to continue\n; read noing\n\n\n\n\nColorize cat output of source files\n\n\n$ pip install Pygments\n\n\nhttp://pygments.org/\n\n\nwith pygmentize -g filename\n\n\nYes no answer\n\n\ntestFile=/home/patrick/dev/master.properties\nsampleService='iris-cms-metadata-management-service'\nif [ ! -f $testFile ]; then\n  tput setaf 2\n  echo \ntest properties file $testFile is missing\n\n  tput sgr0else  tput setaf 1;\n  echo \nWill delete all data from the CMS db.\n;\n  tput sgr0  ;\n  read -r -p \nAre you sure? [y/N] \n response\n  case $response in      [yY][eE][sS]|[yY])\n    cd $sampleService;\n    gradle dropDatabase -Parchaius.url=file:$testFile ;\n    cd -;\n    ;;\n    *)\n    echo \nOK, no harm done\n;\n    ;;\n  esac\nfi\n\n\n\n\nArgument parsing\n\n\nvflag=off\nfilename=\nwhile getopts vf: opt\ndo\n    case \n$opt\n in\n      v)  vflag=on;;\n      f)  filename=\n$OPTARG\n;;\n      \\?)       # unknown flag\n          echo \n2 \\\n      \nusage: $0 [-v] [-f filename] [file ...]\n\n      exit 1;;\n    esac\ndone\nshift `expr $OPTIND - 1`\n\n\n\n\nArrays\n\n\ndistro=(\nredhat\n \ndebian\n \ngentoo\n)\necho ${distro[2]} # will print gentoo\necho ${#distro[@]} # will print array length: 3", 
             "title": "Script building"
@@ -882,7 +937,7 @@
         }, 
         {
             "location": "/Ops/Shell/Shell/", 
-            "text": "Setup a local smtpserver\n\n\n$ python -m smtpd -n -c DebuggingServer localhost:1025\n\n\n\n\nChange shell\n\n\nchsh -s /usr/local/bin/bash [username]\n\n\n\n\nExecute command without any env variable or with just a few\n\n\nzsh $ P=\nZZZ\n; echo $P\nZZZ\nzsh $ echo $PATATA\n\n$ env -i PATATA=\npatatina\n PAT=\nata\n bash\necho $ZZZ\n\n$ echo $PATATA\npatatina\n\n\n\n\nSuper simple text file creation\n\n\nDON'T USE IN EXISTING FILES, IT WILL OVERWRITE THEM\n\n\nWrite to file until EOF is written (in a single line)\n\n\n$ cat \nEOF \n p.c\nsome line\nanother line\nEOF\n$ cat p.c\nsome line\nanother line\n\n\n\n\nDouble substution\n\n\n$ foo=\nwhatever\n\n$ i=foo\n$ echo $echo ${!i}\nwhatever\n\n\n\n\nExecute process in background with lock\n\n\nExecutes process with nohup and flock\n\n\nSee \ngist\n\n\nShutdown process above\n\n\nSee \ngist\n\n\nFlock\n\n\nUse flock as in \nhere\n\n\nGet url for git repo\n\n\nxdg-open `git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\\/\\//' -e's/\\.git$//' | sed -E 's/(\\/\\/[^:]*):/\\1\\//'`\n\n\n\n\nWget\n\n\nDownload all pdfs linked in a website\n\n\nWarning:\n Even if it recreates only the pdfs, it will download \nevery\n file referenced by links\n\n\n$ wget -r -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nDownload all pdfs linked in a website, including linked websites (1 level)\n\n\n$ wget -r -l1 -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nBash-erize cli any Python object\n\n\npython-fire\n\n\nSet bash variable default value\n\n\n${parameter=default}, ${parameter:=default}\n\nThe \n:\n makes a difference only when \n$parameter\n has been declared and is null\n\n\n$ echo $var\n\n$ echo ${var:=abc}   # abc\nabc\n$ echo ${var}   # abc\nabc\n\n\n\n\n\nhttp://www.tldp.org/LDP/abs/html/parameter-substitution.html#PARAMSUBREF\n\n\nOne line to pretty separate jsons\n\n\ncurl -s localhost:7080/mappings  |  python -mjson.tool\n\n\nXargs with files with spaces on path\n\n\nls *mp3 | xargs -d '\\n' mplayer\n\n\nWord frequency of text file\n\n\ncat ~/filename.txt | tr ' ' '\\n' | sort | uniq -c | awk '{print $2\"@\"$1}'\n\n\nEgrep\n\n\n\n\nGiven a file with json lines having a field \"parentalRating\" and a number (e.g. '\"parentalRating\":\"17\"') , the following command will get the set of unique parental ratings, along with their frequencies in (frequency, key) pairs.\n\n\nThe \no\n option is to output only the strings matching the egrep regex\n\n\n\n\n$ egrep \nparentalRating\\\n:\\\n[0-9]+\n file.json -o | cut -d ':' -f 2 | tr -d '\n' | sort | uniq -c\n   1314 0\n   6209 13\n   1525 15\n   4518 17\n      3 18\n   3564 7\n\n\n\n\n\nDiff folders\n\n\nhttps://gist.github.com/37b660b98f6d29ecd1af87ffb426f380\n\n\nRecord Your Command Line Session\n\n\n\n\n$ script\n\n\nExit typing \n$ exit\n\n\nAll of your typings (and their reults) will be saved to a file named \ntypescript\n\n\n\n\nGlobstar\n\n\nTo allow double \"*\" as a recursive filepath parameter, eg\n\n\nls **/*.xml\n\n\n\n\nadd\n\n\nshopt -s globstar\n\n\n\n\nto \n.bashrc\n\n\nSubstring Removal\n\n\nDeletes shortest match of $substring from front of $string.\n\n\n${string#substring}\n\n\n\n\nDeletes longest match of $substring from front of $string.\n\n\n${string##substring}\n\n\n\n\nGet last folder of current working directoy\n\n\n$ pwd\n/home/patrick/dev/python\n$ echo ${PWD##*/}\npython\n\n\n\n\nBasic integer sequence loop\n\n\n#!/bin/bash\nfor i in `seq 1 10`;\n   do\n     echo $i\n   done\n\n\n\n\nDisplay Output as a Table\n\n\ncat /etc/passwd | column -t -s\n\n\n\n\nRepeat a Command Until It Runs Successfully\n\n\nwhile true; do ping -c 1 8.8.8.8 \n /dev/null 2\n1 \n break; done\n\n\n\n\nSuspend machine\n\n\nAs root,\n\n\n# pm-suspend\n\n\n\n\nConvert a File to Upper or Lower Case\n\n\ncat myfile | tr a-z A-Z \n output.txt\n\n\n\n\nSort Processes by Memory Usage\n\n\nps aux | sort -rnk 4\n\n\n\n\nSort Processes by CPU Usage\n\n\nps aux | sort -nk 3\n\n\n\n\nXargs example\n\n\nls /etc/*.conf | xargs -i cp {} /home/likegeeks/Desktop/out\n\n\n\n\ndd\n\n\nBasic syntax\n\n\ndd bs=4M if=/dev/sdd of=from-sd-card.img\n\n\n\n\nSee progress of dd\n\n\nsudo pkill -USR1 -n -x dd\n\n\n\n\nThis will show the progess \nin the same terminal dd was executed\n\n\nCreate File With a Specific Size\n\n\ndd if=/dev/zero of=out.txt bs=1M count=10\n\n\n\n\nShorten url with goo.gl\n\n\nThe \n$GOOGLE_SHORTEN_API_KEY\n variable needs to be set, and jq needs to be installed\n\n\nshorten(){\n    curl \nhttps://www.googleapis.com/urlshortener/v1/url?key=$GOOGLE_SHORTEN_API_KEY\n -H 'Content-Type: application/json' -d \n{'longUrl': \\\n$1\\\n}\n | jq '.id'\n}\n\n\n\n\nAutomatically press keys when condition is met\n\n\nUse expect as in \nhere\n\n\nConvert windows-encoded text file to unix-encoded\n\n\nawk 'BEGIN{RS=\n^$\n;ORS=\n;getline;gsub(\n\\r\n,\n);print\nARGV[1]}' file_name\n\n\n\n\nRead lines from file in a for loop\n\n\nFS=$'\\n'       # make newlines the only separator\nfor j in $(cat ./file_wget_med)\ndo\n    echo \n$j\n\ndone\n\n\n\n\nor\n\n\ninput=\n/path/to/txt/file\n\nwhile IFS= read -r var\ndo\n  echo \n$var\n\ndone \n \n$input\n\n\n\n\n\nDisplay info about memory\n\n\n$ sudo lshw -C memory\n\n\nOpen the current repo on a specific web repo\n\n\nmy_hgweb() {\n         if [ -d .hg ]; then\n            xdg-open http://web-repo-address/hg/${PWD##*/} \n /dev/null\n         else\n            echo Not mercurial directory\n         fi\n}\nalias hgweb=my_hgweb\n\n\n\n\nColors\n\n\nWith tput\n\n\nColors\n\n\n\n\n0 \u2013 Black.\n\n\n1 \u2013 Red.\n\n\n2 \u2013 Green.\n\n\n3 \u2013 Yellow.\n\n\n4 \u2013 Blue.\n\n\n5 \u2013 Magenta.\n\n\n6 \u2013 Cyan.\n\n\n7 \u2013 White.\nClear all options\n\n\n\n\ntput setab clear\n\n\n\n\nSet foreground color\n\n\ntput setab 6; # turquoise\n\n\n\n\nSet background color\n\n\ntput setab 2; # green\n\n\n\n\nSet bold\n\n\ntput bold;\n\n\n\n\n\n\n\n\nMore info: http://linuxcommand.org/lc3_adv_tput.php\n\n\n\n\n\n\nShow all color combinations\nhttps://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6\n\n\n\n\n\n\nUseful snippets\n\n\nFile management\n\n\nRename files in folder to sorted files\n\n\nc=0; for i in `ls`;do echo \n$i\n; c=$((c+1)); mv \n$i\n \n$c.txt\n; done\n\n\n\n\nRename files, change extesion\n\n\nfor file in *.html\ndo\n mv \n$file\n \n${file%.html}.txt\n\ndone\n\n\n\n\nGet extension of file\n\n\nfilename=$(basename \n$fullfile\n)\nextension=\n${filename##*.}\n\nfilename=\n${filename%.*}\n\n\n\n\n\nChange mac address\n\n\nsudo ifconfig eth0 down\nsudo ifconfig eth0 hw ether  xx:xx:xx:xx:xx:xx\nsudo ifconfig eth0 up\n\n\n\n\nDate\n\n\nFormat current date\n\n\n$ date +'%Y%m%d'\n\n\n\n\nAdd days to date\n\n\ndate -d +\n2 days\n\ndate -d +\n3 minutes\n\ndate -d +\n4 months\n\n\n\n\n\nFrom epoch \nseconds\n to date\n\n\n$ date -d @1463234960\nsamedi 14 mai 2016, 16:09:20 (UTC+0200)\n\n\n\n\nCombine\n\n\n$ date -d @1463234960 +\n%Y-%m-%d\n\n2016-05-14\n$ date -d \n1492/10/12 14:00:02\n +\n%Y-%m-%d %H:%M\n\n1492-10-12 14:00\n\n\n\n\nFor more info about \ndate input formats\n\n\nUseful commands\n\n\n\n\npv\n \nshow progress of command\n\n\n\n\ndd bs=4M if=/media/somedrive/raspbian-jessie.img | pv | dd of=/dev/mmcblk0\n\n\n\n\n\n\npgrep\n \nget PID by name\n\n\npkill\n \nkill process by name\n\n\ntimeout n command\n \nexecute command for n seconds\n\n\n\n\nSee calendar for previous month, next month, and three months from now\n\n\n$ ncal -3 -A 2\n\n\nEncode/decode base64 data\n\n\n$ echo patata | base64\ncGF0YXRhCg==\n$ echo patata | base64 | base64 -d\n\n\n\n\nExit traps\n\n\nReference\n\n\nExample:\n\n\n#!/bin/bash\nscratch=$(mktemp -d -t tmp.XXXXXXXXXX)\nfunction finish {\n  rm -rf \n$scratch\n\n}\ntrap finish EXIT\n\n\n\n\nCheck OS type\n\n\nif [[ \n$OSTYPE\n == \nlinux-gnu\n ]]; then\n        # ...\nelif [[ \n$OSTYPE\n == \ndarwin\n* ]]; then\n        # Mac OSX\nelif [[ \n$OSTYPE\n == \ncygwin\n ]]; then\n        # POSIX compatibility layer and Linux environment emulation for Windows\nelif [[ \n$OSTYPE\n == \nmsys\n ]]; then\n        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)\nelif [[ \n$OSTYPE\n == \nwin32\n ]]; then\n        # I'm not sure this can happen.\nelif [[ \n$OSTYPE\n == \nfreebsd\n* ]]; then\n        # ...\nelse\n        #\n\n\n\n\nFlatten directory\n\n\nMoves recursively all files under folder \"dir1\" (at any level of depth) to the \"dir1\" folder.\n\n\nfind dir1 -type f -exec mv {} dir1 \\;\n\n\n\n\nGet duplicate lines and count\n\n\nprints duplicate lines only\n\n\ncat some_file.csv | uniq -cd\n\n\n\n\nGeotag pictures\n\n\n#!/bin/bash\nlat=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lat' | tr \u00add '\n')\nlon=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lon' | tr \u00add '\n')\nexiftool \u00adGPSLongitude=$lon \u00adGPSLatitude=$lat \u00adext jpg .\n\n\n\n\nr## Prettify json\n\n\ncurl -s localhost:7080/mappings | python -mjson.tool", 
+            "text": "Setup a local smtpserver\n\n\n$ python -m smtpd -n -c DebuggingServer localhost:1025\n\n\n\n\nChange shell\n\n\nchsh -s /usr/local/bin/bash [username]\n\n\n\n\nExecute command without any env variable or with just a few\n\n\nzsh $ P=\nZZZ\n; echo $P\nZZZ\nzsh $ echo $PATATA\n\n$ env -i PATATA=\npatatina\n PAT=\nata\n bash\necho $ZZZ\n\n$ echo $PATATA\npatatina\n\n\n\n\nSuper simple text file creation\n\n\nDON'T USE IN EXISTING FILES, IT WILL OVERWRITE THEM\n\n\nWrite to file until EOF is written (in a single line)\n\n\n$ cat \nEOF \n p.c\nsome line\nanother line\nEOF\n$ cat p.c\nsome line\nanother line\n\n\n\n\nDouble substution\n\n\n$ foo=\nwhatever\n\n$ i=foo\n$ echo $echo ${!i}\nwhatever\n\n\n\n\nExecute process in background with lock\n\n\nExecutes process with nohup and flock\n\n\nSee \ngist\n\n\nShutdown process above\n\n\nSee \ngist\n\n\nFlock\n\n\nUse flock as in \nhere\n\n\nGet url for git repo\n\n\nxdg-open `git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\\/\\//' -e's/\\.git$//' | sed -E 's/(\\/\\/[^:]*):/\\1\\//'`\n\n\n\n\nWget\n\n\nDownload all pdfs linked in a website\n\n\nWarning:\n Even if it recreates only the pdfs, it will download \nevery\n file referenced by links\n\n\n$ wget -r -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nDownload all pdfs linked in a website, including linked websites (1 level)\n\n\n$ wget -r -l1 -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nBash-erize cli any Python object\n\n\npython-fire\n\n\nSet bash variable default value\n\n\n${parameter=default}, ${parameter:=default}\n\nThe \n:\n makes a difference only when \n$parameter\n has been declared and is null\n\n\n$ echo $var\n\n$ echo ${var:=abc}   # abc\nabc\n$ echo ${var}   # abc\nabc\n\n\n\n\n\nhttp://www.tldp.org/LDP/abs/html/parameter-substitution.html#PARAMSUBREF\n\n\nOne line to pretty separate jsons\n\n\ncurl -s localhost:7080/mappings  |  python -mjson.tool\n\n\nXargs with files with spaces on path\n\n\nls *mp3 | xargs -d '\\n' mplayer\n\n\nWord frequency of text file\n\n\ncat ~/filename.txt | tr ' ' '\\n' | sort | uniq -c | awk '{print $2\"@\"$1}'\n\n\nEgrep\n\n\n\n\nGiven a file with json lines having a field \"parentalRating\" and a number (e.g. '\"parentalRating\":\"17\"') , the following command will get the set of unique parental ratings, along with their frequencies in (frequency, key) pairs.\n\n\nThe \no\n option is to output only the strings matching the egrep regex\n\n\n\n\n$ egrep \nparentalRating\\\n:\\\n[0-9]+\n file.json -o | cut -d ':' -f 2 | tr -d '\n' | sort | uniq -c\n   1314 0\n   6209 13\n   1525 15\n   4518 17\n      3 18\n   3564 7\n\n\n\n\n\nDiff folders\n\n\nhttps://gist.github.com/37b660b98f6d29ecd1af87ffb426f380\n\n\nRecord Your Command Line Session\n\n\n\n\n$ script\n\n\nExit typing \n$ exit\n\n\nAll of your typings (and their reults) will be saved to a file named \ntypescript\n\n\n\n\nGlobstar\n\n\nTo allow double \"*\" as a recursive filepath parameter, eg\n\n\nls **/*.xml\n\n\n\n\nadd\n\n\nshopt -s globstar\n\n\n\n\nto \n.bashrc\n\n\nSubstring Removal\n\n\nDeletes shortest match of $substring from front of $string.\n\n\n${string#substring}\n\n\n\n\nDeletes longest match of $substring from front of $string.\n\n\n${string##substring}\n\n\n\n\nGet last folder of current working directoy\n\n\n$ pwd\n/home/patrick/dev/python\n$ echo ${PWD##*/}\npython\n\n\n\n\nBasic integer sequence loop\n\n\n#!/bin/bash\nfor i in `seq 1 10`;\n   do\n     echo $i\n   done\n\n\n\n\nDisplay Output as a Table\n\n\ncat /etc/passwd | column -t -s\n\n\n\n\nRepeat a Command Until It Runs Successfully\n\n\nwhile true; do ping -c 1 8.8.8.8 \n /dev/null 2\n1 \n break; done\n\n\n\n\nSuspend machine\n\n\nAs root,\n\n\n# pm-suspend\n\n\n\n\nConvert a File to Upper or Lower Case\n\n\ncat myfile | tr a-z A-Z \n output.txt\n\n\n\n\nSort Processes by Memory Usage\n\n\nps aux | sort -rnk 4\n\n\n\n\nSort Processes by CPU Usage\n\n\nps aux | sort -nk 3\n\n\n\n\nXargs example\n\n\nls /etc/*.conf | xargs -i cp {} /home/likegeeks/Desktop/out\n\n\n\n\ndd\n\n\nBasic syntax\n\n\ndd bs=4M if=/dev/sdd of=from-sd-card.img\n\n\n\n\nSee progress of dd\n\n\nsudo pkill -USR1 -n -x dd\n\n\n\n\nThis will show the progess \nin the same terminal dd was executed\n\n\nCreate File With a Specific Size\n\n\ndd if=/dev/zero of=out.txt bs=1M count=10\n\n\n\n\nShorten url with goo.gl\n\n\nThe \n$GOOGLE_SHORTEN_API_KEY\n variable needs to be set, and jq needs to be installed\n\n\nshorten(){\n    curl \nhttps://www.googleapis.com/urlshortener/v1/url?key=$GOOGLE_SHORTEN_API_KEY\n -H 'Content-Type: application/json' -d \n{'longUrl': \\\n$1\\\n}\n | jq '.id'\n}\n\n\n\n\nAutomatically press keys when condition is met\n\n\nUse expect as in \nhere\n\n\nConvert windows-encoded text file to unix-encoded\n\n\nawk 'BEGIN{RS=\n^$\n;ORS=\n;getline;gsub(\n\\r\n,\n);print\nARGV[1]}' file_name\n\n\n\n\nRead lines from file in a for loop\n\n\nFS=$'\\n'       # make newlines the only separator\nfor j in $(cat ./file_wget_med)\ndo\n    echo \n$j\n\ndone\n\n\n\n\nor\n\n\ninput=\n/path/to/txt/file\n\nwhile IFS= read -r var\ndo\n  echo \n$var\n\ndone \n \n$input\n\n\n\n\n\nDisplay info about memory\n\n\n$ sudo lshw -C memory\n\n\nOpen the current repo on a specific web repo\n\n\nmy_hgweb() {\n         if [ -d .hg ]; then\n            xdg-open http://web-repo-address/hg/${PWD##*/} \n /dev/null\n         else\n            echo Not mercurial directory\n         fi\n}\nalias hgweb=my_hgweb\n\n\n\n\nColors\n\n\nWith tput\n\n\nColors\n\n\n\n\n0 \u2013 Black.\n\n\n1 \u2013 Red.\n\n\n2 \u2013 Green.\n\n\n3 \u2013 Yellow.\n\n\n4 \u2013 Blue.\n\n\n5 \u2013 Magenta.\n\n\n6 \u2013 Cyan.\n\n\n7 \u2013 White.\nClear all options\n\n\n\n\ntput setab clear\n\n\n\n\nSet foreground color\n\n\ntput setab 6; # turquoise\n\n\n\n\nSet background color\n\n\ntput setab 2; # green\n\n\n\n\nSet bold\n\n\ntput bold;\n\n\n\n\n\n\n\n\nMore info: http://linuxcommand.org/lc3_adv_tput.php\n\n\n\n\n\n\nShow all color combinations\nhttps://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6\n\n\n\n\n\n\nUseful snippets\n\n\nFile management\n\n\nRename files in folder to sorted files\n\n\nc=0; for i in `ls`;do echo \n$i\n; c=$((c+1)); mv \n$i\n \n$c.txt\n; done\n\n\n\n\nRename files, change extesion\n\n\nfor file in *.html\ndo\n mv \n$file\n \n${file%.html}.txt\n\ndone\n\n\n\n\nGet extension of file\n\n\nfilename=$(basename \n$fullfile\n)\nextension=\n${filename##*.}\n\nfilename=\n${filename%.*}\n\n\n\n\n\nChange mac address\n\n\nsudo ifconfig eth0 down\nsudo ifconfig eth0 hw ether  xx:xx:xx:xx:xx:xx\nsudo ifconfig eth0 up\n\n\n\n\nDate\n\n\nFormat current date\n\n\n$ date +'%Y%m%d'\n\n\n\n\nAdd days to date\n\n\ndate -d +\n2 days\n\ndate -d +\n3 minutes\n\ndate -d +\n4 months\n\n\n\n\n\nFrom epoch \nseconds\n to date\n\n\n$ date -d @1463234960\nsamedi 14 mai 2016, 16:09:20 (UTC+0200)\n\n\n\n\nCombine\n\n\n$ date -d @1463234960 +\n%Y-%m-%d\n\n2016-05-14\n$ date -d \n1492/10/12 14:00:02\n +\n%Y-%m-%d %H:%M\n\n1492-10-12 14:00\n\n\n\n\nFor more info about \ndate input formats\n\n\nUseful commands\n\n\n\n\npv\n \nshow progress of command\n\n\n\n\ndd bs=4M if=/media/somedrive/raspbian-jessie.img | pv | dd of=/dev/mmcblk0\n\n\n\n\n\n\npgrep\n \nget PID by name\n\n\npkill\n \nkill process by name\n\n\ntimeout n command\n \nexecute command for n seconds\n\n\n\n\nSee calendar for previous month, next month, and three months from now\n\n\n$ ncal -3 -A 2\n\n\nEncode/decode base64 data\n\n\n$ echo patata | base64\ncGF0YXRhCg==\n$ echo patata | base64 | base64 -d\n\n\n\n\nExit traps\n\n\nReference\n\n\nExample:\n\n\n#!/bin/bash\nscratch=$(mktemp -d -t tmp.XXXXXXXXXX)\nfunction finish {\n  rm -rf \n$scratch\n\n}\ntrap finish EXIT\n\n\n\n\nCheck OS type\n\n\nif [[ \n$OSTYPE\n == \nlinux-gnu\n ]]; then\n        # ...\nelif [[ \n$OSTYPE\n == \ndarwin\n* ]]; then\n        # Mac OSX\nelif [[ \n$OSTYPE\n == \ncygwin\n ]]; then\n        # POSIX compatibility layer and Linux environment emulation for Windows\nelif [[ \n$OSTYPE\n == \nmsys\n ]]; then\n        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)\nelif [[ \n$OSTYPE\n == \nwin32\n ]]; then\n        # I'm not sure this can happen.\nelif [[ \n$OSTYPE\n == \nfreebsd\n* ]]; then\n        # ...\nelse\n        #\n\n\n\n\nFlatten directory\n\n\nMoves recursively all files under folder \"dir1\" (at any level of depth) to the \"dir1\" folder.\n\n\nfind dir1 -type f -exec mv {} dir1 \\;\n\n\n\n\nDeclare variables for a command\n\n\nYes\n\n\nFOO=bar bash -c 'echo $FOO'\n\n\n\n\nNo\n\n\nFOO=bar bash -c \necho $FOO\n\n\n\n\n\nGet duplicate lines and count\n\n\nprints duplicate lines only\n\n\ncat some_file.csv | uniq -cd\n\n\n\n\nGeotag pictures\n\n\n#!/bin/bash\nlat=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lat' | tr \u00add '\n')\nlon=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lon' | tr \u00add '\n')\nexiftool \u00adGPSLongitude=$lon \u00adGPSLatitude=$lat \u00adext jpg .\n\n\n\n\nr## Prettify json\n\n\ncurl -s localhost:7080/mappings | python -mjson.tool", 
             "title": "Shell"
         }, 
         {
@@ -1209,6 +1264,21 @@
             "location": "/Ops/Shell/Shell/#flatten-directory", 
             "text": "Moves recursively all files under folder \"dir1\" (at any level of depth) to the \"dir1\" folder.  find dir1 -type f -exec mv {} dir1 \\;", 
             "title": "Flatten directory"
+        }, 
+        {
+            "location": "/Ops/Shell/Shell/#declare-variables-for-a-command", 
+            "text": "", 
+            "title": "Declare variables for a command"
+        }, 
+        {
+            "location": "/Ops/Shell/Shell/#yes", 
+            "text": "FOO=bar bash -c 'echo $FOO'", 
+            "title": "Yes"
+        }, 
+        {
+            "location": "/Ops/Shell/Shell/#no", 
+            "text": "FOO=bar bash -c  echo $FOO", 
+            "title": "No"
         }, 
         {
             "location": "/Ops/Shell/Shell/#get-duplicate-lines-and-count", 
@@ -2026,8 +2096,28 @@
             "title": "Creating Tables"
         }, 
         {
+            "location": "/dev/Java/Gradle/", 
+            "text": "Copy entire folder\n\n\ntask mytest \n {\n    copy {\n        from fileTree('folder/mytest')\n        into \"mytest\"\n    }\n}\n\n\nDebug\n\n\nList folder contents\n\n\nnew File(\n${stageDir}\n).eachFile{ println it}", 
+            "title": "Gradle"
+        }, 
+        {
+            "location": "/dev/Java/Gradle/#copy-entire-folder", 
+            "text": "task mytest   {\n    copy {\n        from fileTree('folder/mytest')\n        into \"mytest\"\n    }\n}", 
+            "title": "Copy entire folder"
+        }, 
+        {
+            "location": "/dev/Java/Gradle/#debug", 
+            "text": "", 
+            "title": "Debug"
+        }, 
+        {
+            "location": "/dev/Java/Gradle/#list-folder-contents", 
+            "text": "new File( ${stageDir} ).eachFile{ println it}", 
+            "title": "List folder contents"
+        }, 
+        {
             "location": "/dev/Java/Java-snippets/", 
-            "text": "Sleep\n\n\n//Pause for 4 seconds\nThread.sleep(4000);\n\n\n\n\nWrite file\n\n\npublic void writeFile() {\n    try(FileOutputStream fos = newFileOutputStream(\nmovies.txt\n);\n        DataOutputStream dos = newDataOutputStream(fos)) {\n\n        dos.writeUTF(\nJava 7 Block Buster\n);\n\n    } catch(IOException e) {\n\n        // log the exception\n\n    }\n}\n\n\n\n\n\nRead file\n\n\nJava 7\n\n\nString content = new String(Files.readAllBytes(Paths.get(fileName)));\n\n\n\n\nJava 8\n\n\nStream\nString\n lines = Files.lines(path);\nlines.forEach(line -\n data.append(line).append(\n\\n\n));\nlines.close();\n\n\n\n\n@Test\npublic void givenFilePath_whenUsingFilesLines_thenFileData() {\n   String expectedData = \nHello World from fileTest.txt!!!\n;\n\n   Path path = Paths.get(getClass().getClassLoader()\n           .getResource(\nfileTest.txt\n).toURI());\n\n   StringBuilder data = new StringBuilder();\n   Stream\nString\n lines = Files.lines(path);\n   lines.forEach(line -\n data.append(line).append(\n\\n\n));\n   lines.close();\n\n   Assert.assertEquals(expectedData, data.toString().trim());\n}\n\n\n\n\nRead file extension\n\n\nhttp://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FilenameUtils.html#getExtension\n\n\nString ext1 = FilenameUtils.getExtension(\n/path/to/file/foo.txt\n); // returns \ntxt\n\nString ext2 = FilenameUtils.getExtension(\nbar.exe\n); // returns \nexe\n\n\n\n\n\n// https://mvnrepository.com/artifact/commons-io/commons-io\ncompile group: 'commons-io', name: 'commons-io', version: '2.4'\n\n\n\n\nGet file last updated date\n\n\nimport java.io.File;\nimport java.text.SimpleDateFormat;\n\npublic class GetFileLastModifiedExample\n{\n    public static void main(String[] args)\n    {\n    File file = new File(\nc:\\\\logfile.log\n);\n\n    System.out.println(\nBefore Format : \n + file.lastModified());\n\n    SimpleDateFormat sdf = new SimpleDateFormat(\nMM/dd/yyyy HH:mm:ss\n);\n\n    System.out.println(\nAfter Format : \n + sdf.format(file.lastModified()));\n    }\n}", 
+            "text": "Sleep\n\n\n//Pause for 4 seconds\nThread.sleep(4000);\n\n\n\n\nWrite file\n\n\npublic void writeFile() {\n    try(FileOutputStream fos = newFileOutputStream(\nmovies.txt\n);\n        DataOutputStream dos = newDataOutputStream(fos)) {\n\n        dos.writeUTF(\nJava 7 Block Buster\n);\n\n    } catch(IOException e) {\n\n        // log the exception\n\n    }\n}\n\n\n\n\n\nRead file\n\n\nJava 7\n\n\nRead all contents at once\n\n\nString content = new String(Files.readAllBytes(Paths.get(fileName)));\n\n\n\n\nLine by line\n\n\npackage com.mkyong;\n\nimport java.io.BufferedReader;\nimport java.io.File;\nimport java.io.FileReader;\nimport java.io.IOException;\n\npublic class ReadTextFile {\n\n    public static void main(String[] args) throws IOException {\n\n        try {\n\n            File f = new File(\nsrc/com/mkyong/data.txt\n);\n\n            BufferedReader b = new BufferedReader(new FileReader(f));\n\n            String readLine = \n;\n\n            System.out.println(\nReading file using Buffered Reader\n);\n\n            while ((readLine = b.readLine()) != null) {\n                System.out.println(readLine);\n            }\n\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n\n    }\n\n}\n\n\n\n\nJava 8\n\n\nStream\nString\n lines = Files.lines(path);\nlines.forEach(line -\n data.append(line).append(\n\\n\n));\nlines.close();\n\n\n\n\n@Test\npublic void givenFilePath_whenUsingFilesLines_thenFileData() {\n   String expectedData = \nHello World from fileTest.txt!!!\n;\n\n   Path path = Paths.get(getClass().getClassLoader()\n           .getResource(\nfileTest.txt\n).toURI());\n\n   StringBuilder data = new StringBuilder();\n   Stream\nString\n lines = Files.lines(path);\n   lines.forEach(line -\n data.append(line).append(\n\\n\n));\n   lines.close();\n\n   Assert.assertEquals(expectedData, data.toString().trim());\n}\n\n\n\n\nRead file extension\n\n\nhttp://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FilenameUtils.html#getExtension\n\n\nString ext1 = FilenameUtils.getExtension(\n/path/to/file/foo.txt\n); // returns \ntxt\n\nString ext2 = FilenameUtils.getExtension(\nbar.exe\n); // returns \nexe\n\n\n\n\n\n// https://mvnrepository.com/artifact/commons-io/commons-io\ncompile group: 'commons-io', name: 'commons-io', version: '2.4'\n\n\n\n\nGet file last updated date\n\n\nimport java.io.File;\nimport java.text.SimpleDateFormat;\n\npublic class GetFileLastModifiedExample\n{\n    public static void main(String[] args)\n    {\n    File file = new File(\nc:\\\\logfile.log\n);\n\n    System.out.println(\nBefore Format : \n + file.lastModified());\n\n    SimpleDateFormat sdf = new SimpleDateFormat(\nMM/dd/yyyy HH:mm:ss\n);\n\n    System.out.println(\nAfter Format : \n + sdf.format(file.lastModified()));\n    }\n}", 
             "title": "Java snippets"
         }, 
         {
@@ -2047,8 +2137,18 @@
         }, 
         {
             "location": "/dev/Java/Java-snippets/#java-7", 
-            "text": "String content = new String(Files.readAllBytes(Paths.get(fileName)));", 
+            "text": "", 
             "title": "Java 7"
+        }, 
+        {
+            "location": "/dev/Java/Java-snippets/#read-all-contents-at-once", 
+            "text": "String content = new String(Files.readAllBytes(Paths.get(fileName)));", 
+            "title": "Read all contents at once"
+        }, 
+        {
+            "location": "/dev/Java/Java-snippets/#line-by-line", 
+            "text": "package com.mkyong;\n\nimport java.io.BufferedReader;\nimport java.io.File;\nimport java.io.FileReader;\nimport java.io.IOException;\n\npublic class ReadTextFile {\n\n    public static void main(String[] args) throws IOException {\n\n        try {\n\n            File f = new File( src/com/mkyong/data.txt );\n\n            BufferedReader b = new BufferedReader(new FileReader(f));\n\n            String readLine =  ;\n\n            System.out.println( Reading file using Buffered Reader );\n\n            while ((readLine = b.readLine()) != null) {\n                System.out.println(readLine);\n            }\n\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n\n    }\n\n}", 
+            "title": "Line by line"
         }, 
         {
             "location": "/dev/Java/Java-snippets/#java-8", 
@@ -2131,6 +2231,36 @@
             "title": "Useful libraries"
         }, 
         {
+            "location": "/dev/Java/Maven/", 
+            "text": "Maven\n\n\nRun java project from CLI\n\n\nmvn exec:java -Dexec.mainClass=\ns3.pruebas.pruebas.App\n\n\n\n\n\nMaven error\n\n\ntry-with-resources is not supported in -source 1.6\n\n\nCause\n\n\nThere's no java version listed on the pom for that step/order\n\n\nSolution, (from \nhere\n ):\n\n\nbuild\n\n\n    \npluginManagement\n\n      \nplugins\n\n        \nplugin\n\n          \ngroupId\norg.apache.maven.plugins\n/groupId\n\n          \nartifactId\nmaven-compiler-plugin\n/artifactId\n\n          \nversion\n2.3.2\n/version\n\n          \nconfiguration\n\n            \nsource\n1.6\n/source\n\n            \ntarget\n1.6\n/target\n\n          \n/configuration\n\n        \n/plugin\n\n      \n/plugins\n\n    \n/pluginManagement\n\n  \n/build", 
+            "title": "Maven"
+        }, 
+        {
+            "location": "/dev/Java/Maven/#maven", 
+            "text": "", 
+            "title": "Maven"
+        }, 
+        {
+            "location": "/dev/Java/Maven/#run-java-project-from-cli", 
+            "text": "mvn exec:java -Dexec.mainClass= s3.pruebas.pruebas.App", 
+            "title": "Run java project from CLI"
+        }, 
+        {
+            "location": "/dev/Java/Maven/#maven-error", 
+            "text": "try-with-resources is not supported in -source 1.6", 
+            "title": "Maven error"
+        }, 
+        {
+            "location": "/dev/Java/Maven/#cause", 
+            "text": "There's no java version listed on the pom for that step/order", 
+            "title": "Cause"
+        }, 
+        {
+            "location": "/dev/Java/Maven/#solution-from-here", 
+            "text": "build \n\n     pluginManagement \n       plugins \n         plugin \n           groupId org.apache.maven.plugins /groupId \n           artifactId maven-compiler-plugin /artifactId \n           version 2.3.2 /version \n           configuration \n             source 1.6 /source \n             target 1.6 /target \n           /configuration \n         /plugin \n       /plugins \n     /pluginManagement \n   /build", 
+            "title": "Solution, (from here ):"
+        }, 
+        {
             "location": "/dev/Misc/Geekeries/", 
             "text": "[Draw Ascii art online interactive] (http://asciiflow.com/)", 
             "title": "Geekeries"
@@ -2147,13 +2277,33 @@
         }, 
         {
             "location": "/dev/VCS/Mercurial/", 
-            "text": "Show changeset information by line for each file\n\n\nhg annotate -u\n\n\nForget tracked file\n\n\nIf file to forget is contained in .hgignore,\n\n\n$ hg forget _filename_\n\n\nServe repo\n\n\n$ hg serve", 
+            "text": "Show changeset information by line for each file\n\n\nhg annotate -u\n\n\nDelete untracked files, enabling purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212486]\n\n\nEnable purge extension\n\n\nAdd to .hgrc this\n\n\n[extensions]\npurge =\n\n\n\n\nPurge\n\n\nhg purge\n\n\n\n\nDelete untracked files, without purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212893]\n\n\nhg st -un0 | xargs -0 rm\n\n\n\n\nForget tracked file\n\n\nIf file to forget is contained in .hgignore,\n\n\n$ hg forget _filename_\n\n\nServe repo\n\n\n$ hg serve", 
             "title": "Mercurial"
         }, 
         {
             "location": "/dev/VCS/Mercurial/#show-changeset-information-by-line-for-each-file", 
             "text": "hg annotate -u", 
             "title": "Show changeset information by line for each file"
+        }, 
+        {
+            "location": "/dev/VCS/Mercurial/#delete-untracked-files-enabling-purge-extension", 
+            "text": "From (here)[https://stackoverflow.com/a/1212486]", 
+            "title": "Delete untracked files, enabling purge extension"
+        }, 
+        {
+            "location": "/dev/VCS/Mercurial/#enable-purge-extension", 
+            "text": "Add to .hgrc this  [extensions]\npurge =", 
+            "title": "Enable purge extension"
+        }, 
+        {
+            "location": "/dev/VCS/Mercurial/#purge", 
+            "text": "hg purge", 
+            "title": "Purge"
+        }, 
+        {
+            "location": "/dev/VCS/Mercurial/#delete-untracked-files-without-purge-extension", 
+            "text": "From (here)[https://stackoverflow.com/a/1212893]  hg st -un0 | xargs -0 rm", 
+            "title": "Delete untracked files, without purge extension"
         }, 
         {
             "location": "/dev/VCS/Mercurial/#forget-tracked-file", 
@@ -2217,7 +2367,7 @@
         }, 
         {
             "location": "/dev/VCS/Git/Main/", 
-            "text": "Checkout specific commit in new branch, without messing things up too much\n\n\ngit checkout -b test-branch 56a4e5c08\n\n\n\n\nPush to ssh repo with different user (or github account)\n\n\nSources: \nthis\n and \nthis\n\n\ncreate-a-new-ssh-key\n\n\nSee \nthis\n\n\nAttach key\n\n\nLogin to your git repo service and paste the contents of your new pub key\n\n\nAdd ssh host alias\n\n\nEdit ~/.ssh/config file to add something like the following\n\n\n#Default GitHub\nHost github.com\n  HostName github.com\n  User git\n  IdentityFile ~/.ssh/id_rsa\n\n### Edit this for a different account!\nHost github-COMPANY\n  HostName github.com\n  User git\n  IdentityFile ~/.ssh/id_rsa_COMPANY\n\n\n\n\nConfigure repo to work with new host\n\n\nReplace \ngithub-COMPANY\n, \nUSERNAME\n and \nREPONAME\n with your own values\n\n\ngit remote add origin git@github-COMPANY:USERNAME/REPO_NAME.git\ngit config  github.user USERNAME\ngit push origin master\n\n\n\n\nChange repo from http(s) to git/ssh\n\n\nChange config url from \nhttps://github.com/USERNAME/REPO_NAME.git\n to \ngit@github.com/USERNAME:REPO_NAME.git\n\n\nInteractively add, skip, or split diff hunks\n\n\n$ git add -p\n\n\n\n\nShow diff of one specific commit\n\n\ngit show commit-hash-stuff\n\n\n\n\nSquash unpushed commits into one\n\n\nScenario: The last two commits are unpushed, and you want to merge them into one.\n\ngit rebase -i HEAD~2\n\nThis will open the default editor\n\n\npick hash1 Bla bla bla Commit message\npick hash2 Bla bla bla another Commit message\n\n\n\n\nLeave the first one as it is and put the second one as squash\n\n\npick hash1 Bla bla bla Commit message\nsquash hash2 Bla bla bla another Commit message\n\n\n\n\nAgain, the editor will open, to let you edit the final commit message.\nSources: \nthis\n.\n\n\nStash\n\n\nUseful\n examples \nhere\n\n\nStash the changes in a dirty working directory away\n\n\n$ git stash\n\n\n\n\nList modifications stashes\n\n\n$ git stash list\nstash@{0}: WIP on alerting: 697194d WIP\n\n\n\n\nRestore modifications\n\n\n$ git stash apply stash@{0}\n\n\n\n\nClear stash list\n\n\ngit stash clear\n\n\n\n\nDiscard changes\n\n\nDANGEROUS\n\n\n Checks out the current index for the current directory.\n\n Undo unstaged changes in tracked files. It apparently doesn't touch staged changes and leaves untracked files alone.\n\n\ngit checkout .\n\n\n\n\nGit revert changes for file\n\n\ngit checkout -- filename\n\n\n\n\nUnstage commit\n\n\ngit reset filepath\n\n\nUndo commits\n\n\nPermanently\n\n\n Reset your head to HEAD\n\ngit reset --hard\n\n\n Reset your head to wherever you want to be\n\ngit reset --hard \nthe sha1 hash\n\n\nNot permanent\n\n\ngit reset HEAD~1\n\n\nSee branch status\n\n\nSee what branch you're on and if it's synchronized or not\n\n\ngit branch -v --color\n\n\n\n\nCheck commmits ahead of current branch\n\n\ngit cherry -v\n\n\n\n\nothers\n\n\ngit log --graph --decorate --pretty=oneline --abbrev-commit --all @{upstream}^..\n\n\n\n\nExport commits as patches\n\n\nExport last n patches\n\n\n$ git format-patch -4\n0001-some-commit.patch\n0002-some-other-commit.patch\n0003-again-committing.patch\n0004-first-commit.patch\n\n\n\n\nExport last n commits as a single patch\n\n\nJust add the --stdout option\n\n\n$ git format-patch -4 --stdout \n `date +\n%Y%m%d%H%M\n`.patch\n\n\n\n\nView changes made to a file with source\n\n\n$ git log -p path/to/file\n\n\nMaking git \"forget\" about a file that was tracked but is now in .gitignore\n\n\ngitignore\n will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.\nTo stop tracking a file you need to remove it from the index. This can be achieved with this command.\n\n\n$ git rm --cached \nfile\n\n\nThe removal of the file from the head revision will happen on the next commit.\nMaking git \"forget\" about a file that was tracked but is now in \n.gitignore\n\n\nGit revert changes for file\n\n\ngit checkout -- filename\n\n\n\n\nUnstage commit\n\n\ngit reset filepath\n\n\nUndo commits\n\n\nPermanently\n\n\ngit reset --hard\n\n\nNot permanent\n\n\ngit reset HEAD~1\n\n\nRearrange commits\n\n\n\nI've used another way for a few times. In fact, it is a manual git rebase -i and it is useful when you want to rearrange several commits including squashing or splitting some of them. The main advantage is that you don't have to decide about every commit's destiny at a single moment. You'll also have all Git features available during the process unlike during a rebase. For example, you can display the log of both original and rewritten history at any time, or even do another rebase!\n\nI'll refer to the commits in the following way, so it's readable easily:\n\nC # good commit after a bad one\nB # bad commit\nA # good commit before a bad one\nYour history in the beginning looks like this:\n\nx - A - B - C\n|           |\n|           master\n|\norigin/master\nWe'll recreate it to this way:\n\nx - A - B*- C'\n|           |\n|           master\n|\norigin/master\nThis is the procedure:\n\ngit checkout B       # get working-tree to the state of commit B\ngit reset --soft A   # tell git that we are working before commit B\ngit checkout -b rewrite-history   # switch to a new branch for our alternative history\nImprove your old commit using git add (git add -i, git stash etc.) now. You can even split your old commit into two or more.\n\ngit commit           # recreate commit B (result = B*)\ngit cherry-pick C    # copy C to our new branch (result = C')\nIntermediate result:\n\nx - A - B - C\n|    \\      |\n|     \\     master\n|      \\\n|       B*- C'\n|           |\n|           rewrite-history\n|\norigin/master\nLet's finish:\n\ngit checkout master\ngit reset --hard rewrite-history  # make this branch master\nThat's it, you can push your progress now.\n\n\n\n\nRewrite history\n\n\nIgnore subsequent changes to a file without deleting it\n\n\ngit update-index --skip-worktree path/to/file.cfg", 
+            "text": "Checkout specific commit in new branch, without messing things up too much\n\n\ngit checkout -b test-branch 56a4e5c08\n\n\n\n\nPush to ssh repo with different user (or github account)\n\n\nSources: \nthis\n and \nthis\n\n\ncreate-a-new-ssh-key\n\n\nSee \nthis\n\n\nAttach key\n\n\nLogin to your git repo service and paste the contents of your new pub key\n\n\nAdd ssh host alias\n\n\nEdit ~/.ssh/config file to add something like the following\n\n\n#Default GitHub\nHost github.com\n  HostName github.com\n  User git\n  IdentityFile ~/.ssh/id_rsa\n\n### Edit this for a different account!\nHost github-COMPANY\n  HostName github.com\n  User git\n  IdentityFile ~/.ssh/id_rsa_COMPANY\n\n\n\n\nConfigure repo to work with new host\n\n\nReplace \ngithub-COMPANY\n, \nUSERNAME\n and \nREPONAME\n with your own values\n\n\ngit remote add origin git@github-COMPANY:USERNAME/REPO_NAME.git\ngit config  github.user USERNAME\ngit push origin master\n\n\n\n\nChange repo from http(s) to git/ssh\n\n\nChange config url from \nhttps://github.com/USERNAME/REPO_NAME.git\n to \ngit@github.com/USERNAME:REPO_NAME.git\n\n\nInteractively add, skip, or split diff hunks\n\n\n$ git add -p\n\n\n\n\nShow diff of one specific commit\n\n\ngit show commit-hash-stuff\n\n\n\n\nSquash unpushed commits into one\n\n\nScenario: The last two commits are unpushed, and you want to merge them into one.\n\ngit rebase -i HEAD~2\n\nThis will open the default editor\n\n\npick hash1 Bla bla bla Commit message\npick hash2 Bla bla bla another Commit message\n\n\n\n\nLeave the first one as it is and put the second one as squash\n\n\npick hash1 Bla bla bla Commit message\nsquash hash2 Bla bla bla another Commit message\n\n\n\n\nAgain, the editor will open, to let you edit the final commit message.\nSources: \nthis\n.\n\n\nStash\n\n\nUseful\n examples \nhere\n\n\nStash the changes in a dirty working directory away\n\n\n$ git stash\n\n\n\n\nList modifications stashes\n\n\n$ git stash list\nstash@{0}: WIP on alerting: 697194d WIP\n\n\n\n\nRestore modifications\n\n\n$ git stash apply stash@{0}\n\n\n\n\nClear stash list\n\n\ngit stash clear\n\n\n\n\nDiscard changes\n\n\nDANGEROUS\n\n\n Checks out the current index for the current directory.\n\n Undo unstaged changes in tracked files. It apparently doesn't touch staged changes and leaves untracked files alone.\n\n\ngit checkout .\n\n\n\n\nGit revert changes for file\n\n\ngit checkout -- filename\n\n\n\n\nUnstage commit\n\n\ngit reset filepath\n\n\nUndo commits\n\n\nPermanently\n\n\n Reset your head to HEAD\n\ngit reset --hard\n\n\n Reset your head to wherever you want to be\n\ngit reset --hard \nthe sha1 hash\n\n\nNot permanent\n\n\ngit reset HEAD~1\n\n\nSee branch status\n\n\nSee what branch you're on and if it's synchronized or not\n\n\ngit branch -v --color\n\n\n\n\nCheck commmits ahead of current branch\n\n\ngit cherry -v\n\n\n\n\nothers\n\n\ngit log --graph --decorate --pretty=oneline --abbrev-commit --all @{upstream}^..\n\n\n\n\nExport commits as patches\n\n\nExport last n patches\n\n\n$ git format-patch -4\n0001-some-commit.patch\n0002-some-other-commit.patch\n0003-again-committing.patch\n0004-first-commit.patch\n\n\n\n\nExport last n commits as a single patch\n\n\nJust add the --stdout option\n\n\n$ git format-patch -4 --stdout \n `date +\n%Y%m%d%H%M\n`.patch\n\n\n\n\nView changes made to a file with source\n\n\n$ git log -p path/to/file\n\n\nMaking git \"forget\" about a file that was tracked but is now in .gitignore\n\n\ngitignore\n will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.\nTo stop tracking a file you need to remove it from the index. This can be achieved with this command.\n\n\n$ git rm --cached \nfile\n\n\nThe removal of the file from the head revision will happen on the next commit.\nMaking git \"forget\" about a file that was tracked but is now in \n.gitignore\n\n\nGit revert changes for file\n\n\ngit checkout -- filename\n\n\n\n\nUnstage commit\n\n\ngit reset filepath\n\n\nUndo commits\n\n\nPermanently\n\n\ngit reset --hard\n\n\nNot permanent\n\n\ngit reset HEAD~1\n\n\nRearrange commits\n\n\n\nI've used another way for a few times. In fact, it is a manual git rebase -i and it is useful when you want to rearrange several commits including squashing or splitting some of them. The main advantage is that you don't have to decide about every commit's destiny at a single moment. You'll also have all Git features available during the process unlike during a rebase. For example, you can display the log of both original and rewritten history at any time, or even do another rebase!\n\nI'll refer to the commits in the following way, so it's readable easily:\n\nC # good commit after a bad one\nB # bad commit\nA # good commit before a bad one\nYour history in the beginning looks like this:\n\nx - A - B - C\n|           |\n|           master\n|\norigin/master\nWe'll recreate it to this way:\n\nx - A - B*- C'\n|           |\n|           master\n|\norigin/master\nThis is the procedure:\n\ngit checkout B       # get working-tree to the state of commit B\ngit reset --soft A   # tell git that we are working before commit B\ngit checkout -b rewrite-history   # switch to a new branch for our alternative history\nImprove your old commit using git add (git add -i, git stash etc.) now. You can even split your old commit into two or more.\n\ngit commit           # recreate commit B (result = B*)\ngit cherry-pick C    # copy C to our new branch (result = C')\nIntermediate result:\n\nx - A - B - C\n|    \\      |\n|     \\     master\n|      \\\n|       B*- C'\n|           |\n|           rewrite-history\n|\norigin/master\nLet's finish:\n\ngit checkout master\ngit reset --hard rewrite-history  # make this branch master\nThat's it, you can push your progress now.\n\n\n\n\nRewrite history\n\n\nIgnore subsequent changes to a file without deleting it\n\n\ngit update-index --skip-worktree path/to/file.cfg\n\n\n\n\nShow last two commits\n\n\ngit log -2 --stat", 
             "title": "Main"
         }, 
         {
@@ -2389,6 +2539,11 @@
             "location": "/dev/VCS/Git/Main/#ignore-subsequent-changes-to-a-file-without-deleting-it", 
             "text": "git update-index --skip-worktree path/to/file.cfg", 
             "title": "Ignore subsequent changes to a file without deleting it"
+        }, 
+        {
+            "location": "/dev/VCS/Git/Main/#show-last-two-commits", 
+            "text": "git log -2 --stat", 
+            "title": "Show last two commits"
         }, 
         {
             "location": "/python/Utils/", 
