@@ -23,7 +23,7 @@ drop user cms_int cascade;
 ```
 
 
-### create user again 
+### create user again
 ```
 create user cms_int identified by cms_int;
 grant all privileges to cms_int identified by cms_int;
@@ -39,10 +39,10 @@ GRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;
 GRANT DROP TABLESPACE, DROP ANY TABLE, DROP ANY VIEW, DROP ANY PROCEDURE,DROP ANY SYNONYM TO bakbak;
 ALTER USER bakbak QUOTA UNLIMITED ON USERS;
 GRANT UNLIMITED TABLESPACE TO bakbak;
- 
+
 GRANT CREATE ANY DIRECTORY TO bakbak;
 GRANT DROP ANY DIRECTORY TO bakbak;
- 
+
 GRANT CREATE TRIGGER TO bakbak;
 GRANT DROP ANY PROCEDURE TO bakbak;
 GRANT ALTER ANY PROCEDURE TO bakbak;
@@ -59,7 +59,7 @@ GRANT UNLIMITED TABLESPACE TO bakbak;
 GRANT DROP TABLESPACE TO bakbak;
 GRANT ALTER TABLESPACE TO bakbak;
 GRANT CREATE TABLESPACE TO bakbak;
-GRANT CREATE SESSION TO bakbak; 
+GRANT CREATE SESSION TO bakbak;
 GRANT IMP_FULL_DATABASE TO bakbak;
 GRANT EXP_FULL_DATABASE TO bakbak;
 CREATE DIRECTORY mydir AS '/home/patrick/Data/dumps_db/'; GRANT read, write on directory mydir to public;
@@ -69,7 +69,7 @@ GRANT UNLIMITED TABLESPACE TO bakbak;
 commit;
 ```
 
-Execute in bash 
+Execute in bash
 ```bash
 impdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak "EXCLUDE=TABLE:\"IN \(\'EIT_MANIFEST\',\'WH_FACT_AUDIENCE\',\'ACT_ACTIVITY\', \'REC_RECORDING\', \'REC_RECORDING_I18N\', \'ADI_FILE_IMPORT\' \)\"" logfile=data_pump_dir:expsh.log
 ### Stop job impdp
@@ -85,7 +85,7 @@ ORDER BY 1,2;
 ```sql
 SELECT *
   FROM dba_objects o, dba_datapump_jobs j
- WHERE o.owner=j.owner_name AND o.object_name=j.job_name 
+ WHERE o.owner=j.owner_name AND o.object_name=j.job_name
    AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;
 
 DROP TABLE BAKBAK.SYS_IMPORT_FULL_01;
@@ -125,14 +125,14 @@ END;
 [source](https://stackoverflow.com/a/10109416)
 ```sql
 -- Tables + Size MB
-select owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB 
-from all_tables 
+select owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB
+from all_tables
 where owner not like 'SYS%'  -- Exclude system tables.
 and num_rows > 0  -- Ignore empty Tables.
 order by MB desc -- Biggest first.;
 --Tables + Rows
 select owner, table_name, num_rows
- from all_tables 
+ from all_tables
 where owner not like 'SYS%'  -- Exclude system tables.
 and num_rows > 0  -- Ignore empty Tables.
 order by num_rows desc -- Biggest first.;
