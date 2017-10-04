@@ -137,3 +137,19 @@ where owner not like 'SYS%'  -- Exclude system tables.
 and num_rows > 0  -- Ignore empty Tables.
 order by num_rows desc -- Biggest first.;
 ```
+
+### Group by truncated date
+```
+select TRUNC(created), count(*)
+from PURCHASES
+where created >=  TO_TIMESTAMP ( '01-OCT-2017 00:00:00', 'DD-MON-YYYY HH24:MI:SS')
+group by TRUNC(created)
+```
+
+### Look for table by name
+with *system* user
+```sql
+SELECT owner, table_name
+  FROM dba_tables
+  where owner = 'da_owner'
+```
