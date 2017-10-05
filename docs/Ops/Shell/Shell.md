@@ -1,3 +1,5 @@
+### [Bash wiki](http://wiki.bash-hackers.org/syntax/redirection)
+
 ### Setup a local smtpserver
 ```shell
 $ python -m smtpd -n -c DebuggingServer localhost:1025
