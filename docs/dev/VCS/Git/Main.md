@@ -244,3 +244,12 @@ git update-index --skip-worktree path/to/file.cfg
 ```
 git log -2 --stat
 ```
+
+### Move committed but unpushed changes to another branch
+From [here](https://stackoverflow.com/a/7217912)
+```bash
+git checkout branch # to checkout the feature branch.
+git reset --hard master # to move the branch to be the same commit asmaster right now. By doing this, you lose all commits that are in the branch. Because of your rebase, all those commits should have copies onmaster, so you shouldn't actually lose anything.
+git checkout master # to checkout master.
+git reset --hard origin/master # to reset master to the state that ison the origin repo. This assumes you didn't have any unpushed changes to master. If you do, replace origin/master with the commit id you wantto reset to.
+```
