@@ -119,3 +119,22 @@ public class GetFileLastModifiedExample
     }
 }
 ```
+
+### Empty stack trace
+From [here](https://www.atlassian.com/blog/archives/if_you_use_exceptions_for_path_control_dont_fill_in_the_stac). Useful for custom exceptions, or when a quicker *error handling* is required.
+```
+/**
+* efficient exception that has no stacktrace; we use this for flow-control.
+*/
+@Immutable
+static final class ResourceNotFound extends Exception
+{
+ResourceNotFound()
+{}
+@Override
+public Throwable fillInStackTrace()
+{
+return this;
+}
+}
+```
