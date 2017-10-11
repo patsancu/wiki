@@ -527,6 +527,7 @@
             <li><a href="#change-screenshot-directory">Change screenshot directory</a></li>
             <li><a href="#assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</a></li>
             <li><a href="#custom-launchers">Custom launchers</a></li>
+            <li><a href="#disable-annoying-evince-thumbnailer">Disable annoying evince thumbnailer</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -560,6 +561,14 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Icon=/optional/path/to/icon.png
+</code></pre>
+
+<h3 id="disable-annoying-evince-thumbnailer">Disable annoying evince thumbnailer</h3>
+<ul>
+<li>From <a href="https://bugs.launchpad.net/ubuntu/+source/evince/+bug/1386120/comments/4">here</a></li>
+<li>With dconf, change the property here:</li>
+</ul>
+<pre><code>org.gnome.desktop.thumbnailers
 </code></pre></div>
         </div>
 
