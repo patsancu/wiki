@@ -529,6 +529,7 @@
             <li><a href="#java-8">Java 8</a></li>
         <li class="main "><a href="#read-file-extension">Read file extension</a></li>
         <li class="main "><a href="#get-file-last-updated-date">Get file last updated date</a></li>
+        <li class="main "><a href="#empty-stack-trace">Empty stack trace</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -643,6 +644,24 @@ public class GetFileLastModifiedExample
 
     System.out.println(&quot;After Format : &quot; + sdf.format(file.lastModified()));
     }
+}
+</code></pre>
+
+<h3 id="empty-stack-trace">Empty stack trace</h3>
+<p>From <a href="https://www.atlassian.com/blog/archives/if_you_use_exceptions_for_path_control_dont_fill_in_the_stac">here</a>. Useful for custom exceptions, or when a quicker <em>error handling</em> is required.</p>
+<pre><code>/**
+* efficient exception that has no stacktrace; we use this for flow-control.
+*/
+@Immutable
+static final class ResourceNotFound extends Exception
+{
+ResourceNotFound()
+{}
+@Override
+public Throwable fillInStackTrace()
+{
+return this;
+}
 }
 </code></pre></div>
         </div>
