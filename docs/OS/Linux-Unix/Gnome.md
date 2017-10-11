@@ -35,3 +35,10 @@ Terminal=false
 Type=Application
 Icon=/optional/path/to/icon.png
 ```
+
+### Disable annoying evince thumbnailer
+* From [here](https://bugs.launchpad.net/ubuntu/+source/evince/+bug/1386120/comments/4)
+* With dconf, change the property here:
+```
+org.gnome.desktop.thumbnailers
+```
