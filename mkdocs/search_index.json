@@ -316,6 +316,16 @@
             "title": "Rebuild font cache"
         }, 
         {
+            "location": "/OS/Linux-Unix/problems/", 
+            "text": "Home and end keys not working as expected\n\n\nFrom \nhere\n.\nInsert/uncomment this\n\n\n\\e[1~\n: beginning-of-line\n\n\\e[4~\n: end-of-line\n\n\n\n\nin the \n/etc/inputrc\n file", 
+            "title": "Problems"
+        }, 
+        {
+            "location": "/OS/Linux-Unix/problems/#home-and-end-keys-not-working-as-expected", 
+            "text": "From  here .\nInsert/uncomment this  \\e[1~ : beginning-of-line \\e[4~ : end-of-line  in the  /etc/inputrc  file", 
+            "title": "Home and end keys not working as expected"
+        }, 
+        {
             "location": "/OS/MacOS/MacOS-Apps/", 
             "text": "", 
             "title": "MacOS Apps"
@@ -1952,7 +1962,7 @@
         }, 
         {
             "location": "/Web/Web-dev-resources/", 
-            "text": "Themes\n\n\n\n\nHTML5up\n\n\nZero theme\n\n\nFree CSS\n\n\n\n\nGeojson map coordinates\n\n\nGeojson.io\n\n\nMaps\n\n\nMap themes\n\n\nhttps://snazzymaps.com/\n\n\nTangram\n\n\nCool OpenGL maps\n\n\nImages\n\n\n\n\nUpload free private images\n\n\nFreeimages\n\n\n\n\nHTTP Request \n Response Service\n\n\nWebsite to test post, get and other stuff about http requests\n\n\nJson mock api\n\n\nmyjson\n\n\nMisc\n\n\nFor the LOL\n\n\nMachine, please make super great website\n\nor, if not available, \nthis one", 
+            "text": "Themes\n\n\n\n\nHTML5up\n\n\nZero theme\n\n\nFree CSS\n\n\n\n\nGeojson map coordinates\n\n\nGeojson.io\n\n\nMaps\n\n\nMap themes\n\n\nhttps://snazzymaps.com/\n\n\nTangram\n\n\nCool OpenGL maps\n\n\nImages\n\n\n\n\nUpload free private images\n\n\nFreeimages\n\n\nFreepik\n\n\n\n\nHTTP Request \n Response Service\n\n\nWebsite to test post, get and other stuff about http requests\n\n\nJson mock api\n\n\nmyjson\n\n\nMisc\n\n\nFor the LOL\n\n\nMachine, please make super great website\n\nor, if not available, \nthis one", 
             "title": "Web dev resources"
         }, 
         {
@@ -1982,7 +1992,7 @@
         }, 
         {
             "location": "/Web/Web-dev-resources/#images", 
-            "text": "Upload free private images  Freeimages", 
+            "text": "Upload free private images  Freeimages  Freepik", 
             "title": "Images"
         }, 
         {

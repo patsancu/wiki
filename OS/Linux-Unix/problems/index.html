@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Monitor Linux Performance - Patrick's Wiki</title>
+        <title>Problems - Patrick's Wiki</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -85,16 +85,16 @@
     <a href="../Gnome/">Gnome</a>
 </li>
             
-<li class="active">
-    <a href="./">Monitor Linux Performance</a>
+<li >
+    <a href="../Monitor-Linux-Performance/">Monitor Linux Performance</a>
 </li>
             
 <li >
     <a href="../Ubuntu/">Ubuntu</a>
 </li>
             
-<li >
-    <a href="../problems/">Problems</a>
+<li class="active">
+    <a href="./">Problems</a>
 </li>
     </ul>
   </li>
@@ -504,12 +504,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../Gnome/">
+                        <a rel="next" href="../Ubuntu/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Ubuntu/">
+                        <a rel="prev" href="../../MacOS/MacOS-Apps/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -526,65 +526,19 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#vmstat">vmstat</a></li>
-        <li class="main "><a href="#lsof">lsof</a></li>
-        <li class="main "><a href="#tcpdump">Tcpdump</a></li>
-        <li class="main "><a href="#netstat">Netstat</a></li>
-        <li class="main "><a href="#htop-linux-process-monitoring">Htop – Linux Process Monitoring</a></li>
-        <li class="main "><a href="#iotop-monitor-linux-disk-io">Iotop – Monitor Linux Disk I/O</a></li>
-        <li class="main "><a href="#iostat-inputoutput-statistics">Iostat – Input/Output Statistics</a></li>
-        <li class="main "><a href="#iptraf-real-time-ip-lan-monitoring">IPTraf – Real Time IP LAN Monitoring</a></li>
-        <li class="main "><a href="#psacct-or-acct-monitor-user-activity">Psacct or Acct – Monitor User Activity</a></li>
-        <li class="main "><a href="#monit-linux-process-and-services-monitoring">Monit – Linux Process and Services Monitoring</a></li>
-        <li class="main "><a href="#nethogs-monitor-per-process-network-bandwidth">NetHogs – Monitor Per Process Network Bandwidth</a></li>
-        <li class="main "><a href="#iftop-network-bandwidth-monitoring">iftop – Network Bandwidth Monitoring</a></li>
-        <li class="main "><a href="#monitorix-system-and-network-monitoring">Monitorix – System and Network Monitoring</a></li>
-        <li class="main "><a href="#sarpwatch-ethernet-activity-monitor">SArpwatch – Ethernet Activity Monitor</a></li>
-        <li class="main "><a href="#suricata-network-security-monitoring">Suricata – Network Security Monitoring</a></li>
+        <li class="main active"><a href="#home-and-end-keys-not-working-as-expected">Home and end keys not working as expected</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h3 id="vmstat">vmstat</h3>
-<p>Linux VmStat command used to display statistics of virtual memory, kernerl threads, disks, system processes, I/O blocks, interrupts, CPU activity and much more. By default vmstat command is not available under Linux systems you need to install a package called sysstat that includes a vmstat program. The common usage of command format is.</p>
-<h3 id="lsof">lsof</h3>
-<p>Lsof command used in many Linux/Unix like system that is used to display list of all the open files and the  processes. The open files included are disk files, network sockets, pipes,
-devices and processes. One of the main reason for using this command is when a disk cannot be unmounted and displays the error that files are being used or opened. With this commmand you can easily identify which files are in use. The most common format for this command is:</p>
-<pre><code>lsof
+<h3 id="home-and-end-keys-not-working-as-expected">Home and end keys not working as expected</h3>
+<p>From <a href="https://wiki.archlinux.org/index.php/Home_and_End_keys_not_working#Readline">here</a>.
+Insert/uncomment this</p>
+<pre><code>&quot;\e[1~&quot;: beginning-of-line
+&quot;\e[4~&quot;: end-of-line
 </code></pre>
 
-<h3 id="tcpdump">Tcpdump</h3>
-<p>Tcpdump is one of the most widely used command- line network packet analyzer or packets sniffer program that is used capture or filter TCP/IP packets that received or transferred on a specific interface over a network. It option to save captured packages in a file for later analysis. tcpdump is almost available in all major Linux distributions.</p>
-<pre><code>tcpdump -i eth0
-</code></pre>
-
-<h3 id="netstat">Netstat</h3>
-<p>Netstat is a command line tool for monitoring incoming and outgoing network packets statistics as well as interface statistics. It is very useful tool for every system administrator to monitor network performance and troubleshoot network related problems.</p>
-<pre><code>netstat -a | more
-</code></pre>
-
-<h3 id="htop-linux-process-monitoring">Htop – Linux Process Monitoring</h3>
-<p>Htop is a much advanced interactive and real time Linux process monitoring tool.  This is much similar to Linux top command but it has some rich features like user friendly interface to manage process, shortcut keys, vertical and horizontal view of the processes and much more. </p>
-<h3 id="iotop-monitor-linux-disk-io">Iotop – Monitor Linux Disk I/O</h3>
-<p>Iotop is also much similar to top command and Htop program, but it has accounting function to monitor and display real time Disk I/O and processes. This tool is much useful for finding the exact process and high used disk read/writes of the processes.</p>
-<h3 id="iostat-inputoutput-statistics">Iostat – Input/Output Statistics</h3>
-<p>IoStat is simple tool that will collect and show system input and output storage device statistics.  This tool is often used to trace storage device performance issues including devices, local disks, remote disks such as NFS.</p>
-<h3 id="iptraf-real-time-ip-lan-monitoring">IPTraf – Real Time IP LAN Monitoring</h3>
-<p>IPTraf is an open source console- based real time network (IP LAN) monitoring utility for Linux. It collects a variety of information such as IP traffic monitor that passes over the network, including TCP flag information, ICMP details, TCP/UDP traffic breakdowns, TCP connection packet and byne counts. It also gathers information of general and detaled interface statistics of TCP, UDP, IP, ICMP, non-IP, IP checksum errors, interface activity etc.</p>
-<h3 id="psacct-or-acct-monitor-user-activity">Psacct or Acct – Monitor User Activity</h3>
-<p>psacct or acct tools are very useful for monitoring each users activity on the system. Both daemons runs in the background and keeps a close watch on the overall activity of each user on the system and also what resources are being consumed by them.  These tools are very useful for system administrators to track each users activity like what they are doing, what commands they issued, how much resources are used by them, how long they are active on the system etc.</p>
-<h3 id="monit-linux-process-and-services-monitoring">Monit – Linux Process and Services Monitoring</h3>
-<p>Monit is a free open source and web based process supervision utility that automatically monitors and managers system processes, programs, files, directories, permissions, checksums and filesystems.  It monitors services like Apache, MySQL, Mail, FTP, ProFTP, Nginx, SSH and so on. The system status can be viewed from the command line or using it own web interface.</p>
-<h3 id="nethogs-monitor-per-process-network-bandwidth">NetHogs – Monitor Per Process Network Bandwidth</h3>
-<p>NetHogs is an open source nice small program (similar to Linux top command) that keeps a tab on each process network activity on your system. It also keeps a track of real time network traffic bandwidth used by each program or application.</p>
-<h3 id="iftop-network-bandwidth-monitoring">iftop – Network Bandwidth Monitoring</h3>
-<p>iftop is another terminal-based free open source system monitoring utility that displays a frequently updated list of network bandwidth utilization (source and destination hosts) that passing through the network interface on your system. iftop is considered for network usage, what ‘top‘ does for CPU usage. iftop is a ‘top‘ family tool that monitor a selected interface and displays a current bandwidth usage betwee</p>
-<h3 id="monitorix-system-and-network-monitoring">Monitorix – System and Network Monitoring</h3>
-<p>Monitorix is a free lightweight utility that is designed to run and monitor system and network resources as many as possible in Linux/Unix servers. It has a built in HTTP web server that regularly collects system and network information and display them in graphs. It Monitors system load average and usage, memory allocation, disk driver health, system services, network ports, mail statistics</p>
-<h3 id="sarpwatch-ethernet-activity-monitor">SArpwatch – Ethernet Activity Monitor</h3>
-<p>Arpwatch is a kind of program that is designed to monitor Address Resolution (MAC and IP address changes) of Ethernet network traffic on a Linux network. It continuously keeps watch on Ethernet traffic and produces a log of IP and MAC address pair changes along with a timestamps on a network. It also has a feature to send an email alerts to administrator, when a pairing added or changes.  It is very useful in detecting ARP spoofing on a network.</p>
-<h3 id="suricata-network-security-monitoring">Suricata – Network Security Monitoring</h3>
-<p>Suricata is an high performance open source Network Security and Intrusion Detection and Prevention Monitoring System for Linux, FreeBSD and Windows.It was designed and owned by a non- profit foundation OISF (Open Information Security Foundation).</p></div>
+<p>in the <strong>/etc/inputrc</strong> file</p></div>
         </div>
 
         <footer class="col-md-12">
