@@ -17,6 +17,7 @@ Cool OpenGL maps
 ## Images
 * [Upload free private images](https://imagebin.ca/#!advanced)
 * [Freeimages](http://www.freeimages.com)
+* [Freepik](https://www.freepik.com)
 
 ### [HTTP Request & Response Service](https://httpbin.org/) 
 Website to test post, get and other stuff about http requests
