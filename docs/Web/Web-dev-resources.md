@@ -19,7 +19,7 @@ Cool OpenGL maps
 * [Freeimages](http://www.freeimages.com)
 * [Freepik](https://www.freepik.com)
 
-### [HTTP Request & Response Service](https://httpbin.org/) 
+### [HTTP Request & Response Service](https://httpbin.org/)
 Website to test post, get and other stuff about http requests
 
 ### Json mock api
