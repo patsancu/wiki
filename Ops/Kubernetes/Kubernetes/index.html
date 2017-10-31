@@ -576,13 +576,21 @@ and change <code>contexts.context.namespace</code></p>
 
 <h3 id="create-deployment-from-some-container-exposing-port-8080">Create deployment from some container, exposing port 8080</h3>
 <h4 id="see-generators-section-httpskubernetesiodocsuser-guidekubectl-conventions">See Generators section @https://kubernetes.io/docs/user-guide/kubectl-conventions/</h4>
-<p>kubectl run extractor --image=miradatv/iris-analytics-information-extractor --port=8080 --generator=run-deployment/v1</p>
+<pre><code>kubectl run extractor --image=miradatv/iris-analytics-information-extractor --port=8080 --generator=run-deployment/v1
+</code></pre>
+
 <h4 id="get-extractor-deployment-yaml-config-file">Get "extractor" deployment yaml config file</h4>
-<p>kubectl get deploy extractor -o yaml</p>
+<pre><code>kubectl get deploy extractor -o yaml
+</code></pre>
+
 <h4 id="expose-deployment-as-a-service">Expose deployment as a service</h4>
-<p>kubectl expose deployment extractor --type=NodePort</p>
+<pre><code>kubectl expose deployment extractor --type=NodePort
+</code></pre>
+
 <h4 id="get-extractor-service-yaml-config-file">Get "extractor" service yaml config file</h4>
-<p>kubectl get svc extractor -o yaml</p>
+<pre><code>kubectl get svc extractor -o yaml
+</code></pre>
+
 <h3 id="curl-the-api">Curl the api</h3>
 <p><a href="https://kubernetes.io/docs/concepts/cluster-administration/access-cluster/#accessing-the-cluster-api">More info</a></p>
 <pre><code>APISERVER=$(kubectl config view | grep server | cut -f 2- -d &quot;:&quot; | tr -d &quot; &quot;)
