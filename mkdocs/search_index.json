@@ -2296,6 +2296,26 @@
             "title": "Solution, (from here ):"
         }, 
         {
+            "location": "/dev/Java/Spring/", 
+            "text": "Use events in Spring\n\n\nEvents listener\n\n\nRun something when application is ready (everything is nicely loaded)\n\n\n@EventListener(ApplicationReadyEvent.class)\npublic void doSomethingAfterStartup() {\n    System.out.println(\nhello world, I have just started up\n);\n}", 
+            "title": "Spring"
+        }, 
+        {
+            "location": "/dev/Java/Spring/#use-events-in-spring", 
+            "text": "", 
+            "title": "Use events in Spring"
+        }, 
+        {
+            "location": "/dev/Java/Spring/#events-listener", 
+            "text": "", 
+            "title": "Events listener"
+        }, 
+        {
+            "location": "/dev/Java/Spring/#run-something-when-application-is-ready-everything-is-nicely-loaded", 
+            "text": "@EventListener(ApplicationReadyEvent.class)\npublic void doSomethingAfterStartup() {\n    System.out.println( hello world, I have just started up );\n}", 
+            "title": "Run something when application is ready (everything is nicely loaded)"
+        }, 
+        {
             "location": "/dev/Misc/Geekeries/", 
             "text": "[Draw Ascii art online interactive] (http://asciiflow.com/)", 
             "title": "Geekeries"
