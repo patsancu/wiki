@@ -5,7 +5,7 @@ If one wants to specify a config other than the default,you may want to run **ku
 kubectl --kubeconfig ~/.kube/miniconfig get nodes
 ```
 The default being the one stored in **~/.kube/config**
-#### Change default namespace 
+#### Change default namespace
 Edit ```~/.kube/config/```
 and change ```contexts.context.namespace```
 
@@ -70,15 +70,15 @@ kubectl exec -ti drill-alluxio-0 -c drill -- command_path_in_remote_machine -u "
 ### Actions
 #### Get most of the info
 ```
-kubectl get po,svc,rc,rs,pvc --all-namespaces; 
-echo "PV--No namespace for them"; 
+kubectl get po,svc,rc,rs,pvc --all-namespaces;
+echo "PV--No namespace for them";
 kubectl get pv
 ```
 
 ### Get cronjob's yaml
 ```# kubectl get cronjob reports-daily -n tvmetrix -o yam```
 
-### Live-edit cronjob 
+### Live-edit cronjob
 ```
 # kubectl edit cronjob reports-daily -n tvmetrix
 ```
