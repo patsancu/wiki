@@ -432,7 +432,7 @@
         }, 
         {
             "location": "/Ops/Docker/", 
-            "text": "Delete exited containers\n\n\ndocker rm -v $(docker ps -a -q -f status=exited)\n\n\n\n\nRemove dangling images\n\n\n$ docker rmi $(docker images -f \ndangling=true\n -q)", 
+            "text": "Delete exited containers\n\n\ndocker rm -v $(docker ps -a -q -f status=exited)\n\n\n\n\nRemove dangling images\n\n\n$ docker rmi $(docker images -f \ndangling=true\n -q)\n\n\n\n\nCreate user\n\n\nSimple way (alpine)\n\n\nRUN addgroup groupname \n adduser -s /bin/bash -D -G groupname username\n\n\n\n\n\nComplex way\n\n\n\n# User config\nENV UID=\n1000\n \\\n    UNAME=\ndeveloper\n \\\n    GID=\n1000\n \\\n    GNAME=\ndeveloper\n \\\n    SHELL=\n/bin/bash\n \\\n    UHOME=/home/developer\n\n# User creation stuff\nRUN apk --no-cache add sudo \\\n    \n mkdir -p \n${UHOME}\n \\\n    \n chown \n${UID}\n:\n${GID}\n \n${UHOME}\n \\\n    \n echo \n${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}\n \\\n    \n /etc/passwd \\\n    \n echo \n${UNAME}::17032:0:99999:7:::\n \n /etc/shadow \\\n    \n echo \n${UNAME} ALL=(ALL) NOPASSWD: ALL\n \n \n/etc/sudoers.d/${UNAME}\n \\\n    \n chmod 0440 \n/etc/sudoers.d/${UNAME}\n \\\n    \n echo \n${GNAME}:x:${GID}:${UNAME}\n \\\n    \n /etc/group\n\nUSER developer\nWORKDIR $UHOME\nENV ANT_HOME $UHOME/process-tools/bin", 
             "title": "Docker"
         }, 
         {
@@ -444,6 +444,21 @@
             "location": "/Ops/Docker/#remove-dangling-images", 
             "text": "$ docker rmi $(docker images -f  dangling=true  -q)", 
             "title": "Remove dangling images"
+        }, 
+        {
+            "location": "/Ops/Docker/#create-user", 
+            "text": "", 
+            "title": "Create user"
+        }, 
+        {
+            "location": "/Ops/Docker/#simple-way-alpine", 
+            "text": "RUN addgroup groupname   adduser -s /bin/bash -D -G groupname username", 
+            "title": "Simple way (alpine)"
+        }, 
+        {
+            "location": "/Ops/Docker/#complex-way", 
+            "text": "# User config\nENV UID= 1000  \\\n    UNAME= developer  \\\n    GID= 1000  \\\n    GNAME= developer  \\\n    SHELL= /bin/bash  \\\n    UHOME=/home/developer\n\n# User creation stuff\nRUN apk --no-cache add sudo \\\n      mkdir -p  ${UHOME}  \\\n      chown  ${UID} : ${GID}   ${UHOME}  \\\n      echo  ${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}  \\\n      /etc/passwd \\\n      echo  ${UNAME}::17032:0:99999:7:::    /etc/shadow \\\n      echo  ${UNAME} ALL=(ALL) NOPASSWD: ALL     /etc/sudoers.d/${UNAME}  \\\n      chmod 0440  /etc/sudoers.d/${UNAME}  \\\n      echo  ${GNAME}:x:${GID}:${UNAME}  \\\n      /etc/group\n\nUSER developer\nWORKDIR $UHOME\nENV ANT_HOME $UHOME/process-tools/bin", 
+            "title": "Complex way"
         }, 
         {
             "location": "/Ops/Encrypt-a-partition-with-DM-Crypt-LUKS/", 

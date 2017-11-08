@@ -532,6 +532,9 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#delete-exited-containers">Delete exited containers</a></li>
         <li class="main "><a href="#remove-dangling-images">Remove dangling images</a></li>
+        <li class="main "><a href="#create-user">Create user</a></li>
+            <li><a href="#simple-way-alpine">Simple way (alpine)</a></li>
+            <li><a href="#complex-way">Complex way</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -542,6 +545,39 @@
 
 <h3 id="remove-dangling-images">Remove dangling images</h3>
 <pre><code>$ docker rmi $(docker images -f &quot;dangling=true&quot; -q)
+</code></pre>
+
+<h3 id="create-user">Create user</h3>
+<h4 id="simple-way-alpine">Simple way (alpine)</h4>
+<pre><code>RUN addgroup groupname &amp;&amp; adduser -s /bin/bash -D -G groupname username
+
+</code></pre>
+
+<h4 id="complex-way">Complex way</h4>
+<pre><code>
+# User config
+ENV UID=&quot;1000&quot; \
+    UNAME=&quot;developer&quot; \
+    GID=&quot;1000&quot; \
+    GNAME=&quot;developer&quot; \
+    SHELL=&quot;/bin/bash&quot; \
+    UHOME=/home/developer
+
+# User creation stuff
+RUN apk --no-cache add sudo \
+    &amp;&amp; mkdir -p &quot;${UHOME}&quot; \
+    &amp;&amp; chown &quot;${UID}&quot;:&quot;${GID}&quot; &quot;${UHOME}&quot; \
+    &amp;&amp; echo &quot;${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}&quot; \
+    &gt;&gt; /etc/passwd \
+    &amp;&amp; echo &quot;${UNAME}::17032:0:99999:7:::&quot; &gt;&gt; /etc/shadow \
+    &amp;&amp; echo &quot;${UNAME} ALL=(ALL) NOPASSWD: ALL&quot; &gt; &quot;/etc/sudoers.d/${UNAME}&quot; \
+    &amp;&amp; chmod 0440 &quot;/etc/sudoers.d/${UNAME}&quot; \
+    &amp;&amp; echo &quot;${GNAME}:x:${GID}:${UNAME}&quot; \
+    &gt;&gt; /etc/group
+
+USER developer
+WORKDIR $UHOME
+ENV ANT_HOME $UHOME/process-tools/bin
 </code></pre></div>
         </div>
 
