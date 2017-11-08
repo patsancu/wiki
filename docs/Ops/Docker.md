@@ -9,7 +9,12 @@ $ docker rmi $(docker images -f "dangling=true" -q)
 ```
 
 ### Create user
+#### Simple way (alpine)
+```
+RUN addgroup groupname && adduser -s /bin/bash -D -G groupname username
 
+```
+#### Complex way
 ```
 
 # User config
