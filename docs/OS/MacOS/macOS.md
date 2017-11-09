@@ -8,3 +8,7 @@ sudo launchctl start com.openssh.sshd
 ### Refresh touch bar
 ```pkill "Touch Bar agent"```
 
+### Generate random string
+```
+openssl rand -base64 6
+```
