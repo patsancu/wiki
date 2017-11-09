@@ -681,8 +681,8 @@ xdg-mime query default x-scheme-handler/magnet
 gvfs-mime --query x-scheme-handler/magnet
 </code></pre>
 
-<pre><code># Set new app
-xdg-mime default qBittorent.desktop x-scheme-handler/magnet
+<pre><code># Set new app, providing it's in /usr/share/applications/
+xdg-mime default qBittorrent.desktop x-scheme-handler/magnet
 gvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop
 </code></pre>
 
