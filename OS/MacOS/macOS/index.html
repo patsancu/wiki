@@ -533,6 +533,7 @@
         <li class="main active"><a href="#restart-ssh-daemon">Restart ssh daemon</a></li>
         <li class="main "><a href="#how-to-refresh-control-strip">How to Refresh Control Strip</a></li>
         <li class="main "><a href="#refresh-touch-bar">Refresh touch bar</a></li>
+        <li class="main "><a href="#generate-random-string">Generate random string</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -545,7 +546,10 @@ sudo launchctl start com.openssh.sshd
 <h3 id="how-to-refresh-control-strip">How to Refresh Control Strip</h3>
 <p><code>killall ControlStrip</code></p>
 <h3 id="refresh-touch-bar">Refresh touch bar</h3>
-<p><code>pkill "Touch Bar agent"</code></p></div>
+<p><code>pkill "Touch Bar agent"</code></p>
+<h3 id="generate-random-string">Generate random string</h3>
+<pre><code>openssl rand -base64 6
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

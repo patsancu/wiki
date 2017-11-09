@@ -357,7 +357,7 @@
         }, 
         {
             "location": "/OS/MacOS/macOS/", 
-            "text": "Restart ssh daemon\n\n\nsudo launchctl stop com.openssh.sshd\nsudo launchctl start com.openssh.sshd\n\n\n\n\nHow to Refresh Control Strip\n\n\nkillall ControlStrip\n\n\nRefresh touch bar\n\n\npkill \"Touch Bar agent\"", 
+            "text": "Restart ssh daemon\n\n\nsudo launchctl stop com.openssh.sshd\nsudo launchctl start com.openssh.sshd\n\n\n\n\nHow to Refresh Control Strip\n\n\nkillall ControlStrip\n\n\nRefresh touch bar\n\n\npkill \"Touch Bar agent\"\n\n\nGenerate random string\n\n\nopenssl rand -base64 6", 
             "title": "macOS"
         }, 
         {
@@ -374,6 +374,11 @@
             "location": "/OS/MacOS/macOS/#refresh-touch-bar", 
             "text": "pkill \"Touch Bar agent\"", 
             "title": "Refresh touch bar"
+        }, 
+        {
+            "location": "/OS/MacOS/macOS/#generate-random-string", 
+            "text": "openssl rand -base64 6", 
+            "title": "Generate random string"
         }, 
         {
             "location": "/OS/encryption-and-hashing/GPG-PGP/", 
