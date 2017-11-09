@@ -151,8 +151,8 @@ gvfs-mime --query x-scheme-handler/magnet
 ```
 
 ```
-# Set new app
-xdg-mime default qBittorent.desktop x-scheme-handler/magnet
+# Set new app, providing it's in /usr/share/applications/
+xdg-mime default qBittorrent.desktop x-scheme-handler/magnet
 gvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop
 ```
 ### Notifications
