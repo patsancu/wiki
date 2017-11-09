@@ -530,11 +530,23 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#convert-video-to-mp3">Convert video to mp3</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h3 id="convert-video-to-mp3">Convert video to mp3</h3>
+<p>From <a href="https://askubuntu.com/a/84633">here</a></p>
+<pre><code>ffmpeg -i video.mp4 -vn \
+       -acodec libmp3lame -ac 2 -ab 160k -ar 48000 \
+        audio.mp3
+</code></pre>
+
+<p>or if you want to use Variable Bitrate Encoding (VBR):</p>
+<pre><code>ffmpeg -i video.mp4 -vn \
+       -acodec libmp3lame -ac 2 -qscale:a 4 -ar 48000 \
+        audio.mp3
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

@@ -22,8 +22,13 @@
         }, 
         {
             "location": "/OS/Tips/", 
-            "text": "", 
+            "text": "Convert video to mp3\n\n\nFrom \nhere\n\n\nffmpeg -i video.mp4 -vn \\\n       -acodec libmp3lame -ac 2 -ab 160k -ar 48000 \\\n        audio.mp3\n\n\n\n\nor if you want to use Variable Bitrate Encoding (VBR):\n\n\nffmpeg -i video.mp4 -vn \\\n       -acodec libmp3lame -ac 2 -qscale:a 4 -ar 48000 \\\n        audio.mp3", 
             "title": "Tips"
+        }, 
+        {
+            "location": "/OS/Tips/#convert-video-to-mp3", 
+            "text": "From  here  ffmpeg -i video.mp4 -vn \\\n       -acodec libmp3lame -ac 2 -ab 160k -ar 48000 \\\n        audio.mp3  or if you want to use Variable Bitrate Encoding (VBR):  ffmpeg -i video.mp4 -vn \\\n       -acodec libmp3lame -ac 2 -qscale:a 4 -ar 48000 \\\n        audio.mp3", 
+            "title": "Convert video to mp3"
         }, 
         {
             "location": "/OS/Linux-Unix/Admin/", 
