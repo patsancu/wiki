@@ -307,7 +307,7 @@
         }, 
         {
             "location": "/OS/Linux-Unix/Ubuntu/", 
-            "text": "Show notification window\n\n\nzenity --error --text=\nHellow\n --title=\nPatata\n --timeout=2\n\n\n\n\nRebuild font cache\n\n\n$ fc-cache -f -v", 
+            "text": "Show notification window\n\n\nzenity --error --text=\nHellow\n --title=\nPatata\n --timeout=2\n\n\n\n\nRebuild font cache\n\n\n$ fc-cache -f -v\n\n\n\n\nUpdate alternative\n\n\nSet another path to bin for program\n\n\nsudo update-alternatives --config java", 
             "title": "Ubuntu"
         }, 
         {
@@ -319,6 +319,11 @@
             "location": "/OS/Linux-Unix/Ubuntu/#rebuild-font-cache", 
             "text": "$ fc-cache -f -v", 
             "title": "Rebuild font cache"
+        }, 
+        {
+            "location": "/OS/Linux-Unix/Ubuntu/#update-alternative", 
+            "text": "Set another path to bin for program  sudo update-alternatives --config java", 
+            "title": "Update alternative"
         }, 
         {
             "location": "/OS/Linux-Unix/problems/", 
