@@ -2157,7 +2157,7 @@
         }, 
         {
             "location": "/dev/Java/Gradle/", 
-            "text": "Copy entire folder\n\n\ntask mytest \n {\n    copy {\n        from fileTree('folder/mytest')\n        into \"mytest\"\n    }\n}\n\n\nDebug\n\n\nList folder contents\n\n\nnew File(\n${stageDir}\n).eachFile{ println it}", 
+            "text": "Copy entire folder\n\n\ntask mytest \n {\n    copy {\n        from fileTree('folder/mytest')\n        into \"mytest\"\n    }\n}\n\n\nDebug\n\n\nList folder contents\n\n\nnew File(\n${stageDir}\n).eachFile{ println it}\n\n\n\n\nRun spring boot project with java params\n\n\nPut this in build.gradle file\n\n\nbootRun {\n    systemProperty(\nspring.config.location\n, \nsrc/main/docker/application.properties,../override.properties\n)\n}\n\n\n\n\nThen, usual run\n\n\ngradle bootrun\n\n\n\n\nRun debug\n\n\ngradle bootrun --debug-jvm", 
             "title": "Gradle"
         }, 
         {
@@ -2174,6 +2174,16 @@
             "location": "/dev/Java/Gradle/#list-folder-contents", 
             "text": "new File( ${stageDir} ).eachFile{ println it}", 
             "title": "List folder contents"
+        }, 
+        {
+            "location": "/dev/Java/Gradle/#run-spring-boot-project-with-java-params", 
+            "text": "Put this in build.gradle file  bootRun {\n    systemProperty( spring.config.location ,  src/main/docker/application.properties,../override.properties )\n}  Then, usual run  gradle bootrun", 
+            "title": "Run spring boot project with java params"
+        }, 
+        {
+            "location": "/dev/Java/Gradle/#run-debug", 
+            "text": "gradle bootrun --debug-jvm", 
+            "title": "Run debug"
         }, 
         {
             "location": "/dev/Java/Java-snippets/", 
