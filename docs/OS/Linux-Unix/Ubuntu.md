@@ -7,3 +7,10 @@ zenity --error --text="Hellow" --title="Patata" --timeout=2
 ```
 $ fc-cache -f -v
 ```
+
+### Update alternative
+Set another path to bin for program
+
+```
+sudo update-alternatives --config java
+```
