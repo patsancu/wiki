@@ -207,7 +207,7 @@ This will show the progess **in the same terminal dd was executed**
 dd if=/dev/zero of=out.txt bs=1M count=10
 ```
 
-#### Shorten url with goo.gl
+### Shorten url with goo.gl
 The `$GOOGLE_SHORTEN_API_KEY` variable needs to be set, and jq needs to be installed
 
 ```
