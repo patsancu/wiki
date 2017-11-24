@@ -227,7 +227,7 @@ awk 'BEGIN{RS="^$";ORS="";getline;gsub("\r","");print>ARGV[1]}' file_name
 ### Read lines from file in a for loop
 ```
 FS=$'\n'       # make newlines the only separator
-for j in $(cat ./file_wget_med)
+for j in "$(cat ./file_wget_med)"
 do
     echo "$j"
 done
