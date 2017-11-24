@@ -792,7 +792,7 @@ for i in `seq 1 10`;
 
 <h3 id="read-lines-from-file-in-a-for-loop">Read lines from file in a for loop</h3>
 <pre><code>FS=$'\n'       # make newlines the only separator
-for j in $(cat ./file_wget_med)
+for j in &quot;$(cat ./file_wget_med)&quot;
 do
     echo &quot;$j&quot;
 done
