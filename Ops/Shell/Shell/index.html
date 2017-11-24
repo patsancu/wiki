@@ -570,7 +570,7 @@
             <li><a href="#basic-syntax">Basic syntax</a></li>
             <li><a href="#see-progress-of-dd">See progress of dd</a></li>
             <li><a href="#create-file-with-a-specific-size">Create File With a Specific Size</a></li>
-            <li><a href="#shorten-url-with-googl">Shorten url with goo.gl</a></li>
+        <li class="main "><a href="#shorten-url-with-googl">Shorten url with goo.gl</a></li>
         <li class="main "><a href="#automatically-press-keys-when-condition-is-met">Automatically press keys when condition is met</a></li>
         <li class="main "><a href="#convert-windows-encoded-text-file-to-unix-encoded">Convert windows-encoded text file to unix-encoded</a></li>
         <li class="main "><a href="#read-lines-from-file-in-a-for-loop">Read lines from file in a for loop</a></li>
@@ -777,7 +777,7 @@ for i in `seq 1 10`;
 <pre><code>dd if=/dev/zero of=out.txt bs=1M count=10
 </code></pre>
 
-<h4 id="shorten-url-with-googl">Shorten url with goo.gl</h4>
+<h3 id="shorten-url-with-googl">Shorten url with goo.gl</h3>
 <p>The <code>$GOOGLE_SHORTEN_API_KEY</code> variable needs to be set, and jq needs to be installed</p>
 <pre><code>shorten(){
     curl &quot;https://www.googleapis.com/urlshortener/v1/url?key=$GOOGLE_SHORTEN_API_KEY&quot; -H 'Content-Type: application/json' -d &quot;{'longUrl': \&quot;$1\&quot;}&quot; | jq '.id'
