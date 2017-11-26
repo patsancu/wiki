@@ -767,7 +767,7 @@
         }, 
         {
             "location": "/Ops/Docker/Docker-Machine/", 
-            "text": "Needed config\n\n\n\n\nInstall and configure a user to use aws cli\n\n\nCreate AIM\nMore info \nhere\n\n\n\n\nCreate aws machine\n\n\ncreates a instance (default t2.micro)\n\n\ndocker-machine create --driver amazonec2 machine_name --amazonec2-region \nus-east-1\n\n\n\n\n\nLog into the machine\n\n\ndocker-machine ssh machine_name\n\n\n\n\nor, get the path to the ssh key\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' aws01\n\n\n\n\nand log with it:\n\n\nssh -i path_to_key public_dns_name\n\n\n\n\nGet instance id\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name", 
+            "text": "Needed config\n\n\n\n\nInstall and configure a user to use aws cli\n\n\nCreate AIM\nMore info \nhere\n\n\n\n\nCreate aws machine\n\n\ncreates a instance (default t2.micro)\n\n\ndocker-machine create --driver amazonec2 machine_name --amazonec2-region \nus-east-1\n\n\n\n\n\nLog into the machine\n\n\ndocker-machine ssh machine_name\n\n\n\n\nor, get the path to the ssh key\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name\n\n\n\n\nand log with it:\n\n\nssh -i path_to_key public_dns_name\n\n\n\n\nGet instance id\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name", 
             "title": "Docker Machine"
         }, 
         {
@@ -782,7 +782,7 @@
         }, 
         {
             "location": "/Ops/Docker/Docker-Machine/#log-into-the-machine", 
-            "text": "docker-machine ssh machine_name  or, get the path to the ssh key  docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' aws01  and log with it:  ssh -i path_to_key public_dns_name", 
+            "text": "docker-machine ssh machine_name  or, get the path to the ssh key  docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name  and log with it:  ssh -i path_to_key public_dns_name", 
             "title": "Log into the machine"
         }, 
         {

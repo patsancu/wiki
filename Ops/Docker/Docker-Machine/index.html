@@ -564,7 +564,7 @@ More info <a href="../../AWS/Cli-Config/">here</a></li>
 </code></pre>
 
 <p>or, get the path to the ssh key</p>
-<pre><code>docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' aws01
+<pre><code>docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name
 </code></pre>
 
 <p>and log with it:</p>
