@@ -15,7 +15,7 @@ docker-machine ssh machine_name
 ```
 or, get the path to the ssh key
 ```
-docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' aws01
+docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name
 ```
 and log with it:
 ```
