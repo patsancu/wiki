@@ -446,36 +446,6 @@
             "title": "sha256 example"
         }, 
         {
-            "location": "/Ops/Docker/", 
-            "text": "Delete exited containers\n\n\ndocker rm -v $(docker ps -a -q -f status=exited)\n\n\n\n\nRemove dangling images\n\n\n$ docker rmi $(docker images -f \ndangling=true\n -q)\n\n\n\n\nCreate user\n\n\nSimple way (alpine)\n\n\nRUN addgroup groupname \n adduser -s /bin/bash -D -G groupname username\n\n\n\n\n\nComplex way\n\n\n\n# User config\nENV UID=\n1000\n \\\n    UNAME=\ndeveloper\n \\\n    GID=\n1000\n \\\n    GNAME=\ndeveloper\n \\\n    SHELL=\n/bin/bash\n \\\n    UHOME=/home/developer\n\n# User creation stuff\nRUN apk --no-cache add sudo \\\n    \n mkdir -p \n${UHOME}\n \\\n    \n chown \n${UID}\n:\n${GID}\n \n${UHOME}\n \\\n    \n echo \n${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}\n \\\n    \n /etc/passwd \\\n    \n echo \n${UNAME}::17032:0:99999:7:::\n \n /etc/shadow \\\n    \n echo \n${UNAME} ALL=(ALL) NOPASSWD: ALL\n \n \n/etc/sudoers.d/${UNAME}\n \\\n    \n chmod 0440 \n/etc/sudoers.d/${UNAME}\n \\\n    \n echo \n${GNAME}:x:${GID}:${UNAME}\n \\\n    \n /etc/group\n\nUSER developer\nWORKDIR $UHOME\nENV ANT_HOME $UHOME/process-tools/bin", 
-            "title": "Docker"
-        }, 
-        {
-            "location": "/Ops/Docker/#delete-exited-containers", 
-            "text": "docker rm -v $(docker ps -a -q -f status=exited)", 
-            "title": "Delete exited containers"
-        }, 
-        {
-            "location": "/Ops/Docker/#remove-dangling-images", 
-            "text": "$ docker rmi $(docker images -f  dangling=true  -q)", 
-            "title": "Remove dangling images"
-        }, 
-        {
-            "location": "/Ops/Docker/#create-user", 
-            "text": "", 
-            "title": "Create user"
-        }, 
-        {
-            "location": "/Ops/Docker/#simple-way-alpine", 
-            "text": "RUN addgroup groupname   adduser -s /bin/bash -D -G groupname username", 
-            "title": "Simple way (alpine)"
-        }, 
-        {
-            "location": "/Ops/Docker/#complex-way", 
-            "text": "# User config\nENV UID= 1000  \\\n    UNAME= developer  \\\n    GID= 1000  \\\n    GNAME= developer  \\\n    SHELL= /bin/bash  \\\n    UHOME=/home/developer\n\n# User creation stuff\nRUN apk --no-cache add sudo \\\n      mkdir -p  ${UHOME}  \\\n      chown  ${UID} : ${GID}   ${UHOME}  \\\n      echo  ${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}  \\\n      /etc/passwd \\\n      echo  ${UNAME}::17032:0:99999:7:::    /etc/shadow \\\n      echo  ${UNAME} ALL=(ALL) NOPASSWD: ALL     /etc/sudoers.d/${UNAME}  \\\n      chmod 0440  /etc/sudoers.d/${UNAME}  \\\n      echo  ${GNAME}:x:${GID}:${UNAME}  \\\n      /etc/group\n\nUSER developer\nWORKDIR $UHOME\nENV ANT_HOME $UHOME/process-tools/bin", 
-            "title": "Complex way"
-        }, 
-        {
             "location": "/Ops/Encrypt-a-partition-with-DM-Crypt-LUKS/", 
             "text": "Encrypt partition\n\n\n$ sudo cryptsetup -y -v luksFormat /dev/xvdc \nWARNING!\n========\nThis will overwrite data on /dev/xvdc irrevocably.\n\nAre you sure? (Type uppercase yes): YES\nEnter passphrase: \nVerify passphrase: \nCommand successful.\n\n\n\n\nCreate mapping\n\n\ncryptsetup luksOpen /dev/xvdc backup2\n\n\n\n\nFormat partition\n\n\npv -tpreb /dev/zero | dd of=/dev/mapper/backup2 bs=128M\nmkfs.ext4 /dev/mapper/backup2\n\n\n\n\nUnmount\n\n\numount /backup2\ncryptsetup luksClose backup2\n\n\n\n\nMount\n\n\ncryptsetup luksOpen /dev/xvdc backup2\nmount /dev/mapper/backup2 /backup2", 
             "title": "Encrypt a partition with DM Crypt LUKS"
@@ -672,8 +642,13 @@
         }, 
         {
             "location": "/Ops/AWS/Cli-Config/", 
-            "text": "Add new profile named new_profile_name\n\n\naws configure --profile new_profile_name", 
+            "text": "Install aws cli\n\n\nsudo -H pip install awscli\n\n\n\n\nAdd new profile named new_profile_name\n\n\naws configure --profile new_profile_name", 
             "title": "Cli Config"
+        }, 
+        {
+            "location": "/Ops/AWS/Cli-Config/#install-aws-cli", 
+            "text": "sudo -H pip install awscli", 
+            "title": "Install aws cli"
         }, 
         {
             "location": "/Ops/AWS/Cli-Config/#add-new-profile-named-new_profile_name", 
@@ -682,13 +657,18 @@
         }, 
         {
             "location": "/Ops/AWS/EC2/", 
-            "text": "Get list of info aobut EBS volumes\n\n\naws ec2 describe-volumes --profile profile-name", 
+            "text": "Get list of info aobut EBS volumes\n\n\naws ec2 describe-volumes --profile profile-name\n\n\n\n\nGet public dns name for machines in us-east-1 region\n\n\naws ec2 --region us-east-1 describe-instances --query 'Reservations[*].Instances[*].[PublicDnsName]' | grep -v \n\\[\\|\\]\n | tr -d ' ' | tr -d '\n'", 
             "title": "EC2"
         }, 
         {
             "location": "/Ops/AWS/EC2/#get-list-of-info-aobut-ebs-volumes", 
             "text": "aws ec2 describe-volumes --profile profile-name", 
             "title": "Get list of info aobut EBS volumes"
+        }, 
+        {
+            "location": "/Ops/AWS/EC2/#get-public-dns-name-for-machines-in-us-east-1-region", 
+            "text": "aws ec2 --region us-east-1 describe-instances --query 'Reservations[*].Instances[*].[PublicDnsName]' | grep -v  \\[\\|\\]  | tr -d ' ' | tr -d ' '", 
+            "title": "Get public dns name for machines in us-east-1 region"
         }, 
         {
             "location": "/Ops/AWS/Kinesis/", 
@@ -784,6 +764,61 @@
             "location": "/Ops/AWS/S3/#sync-folders", 
             "text": "$ aws s3 sync s3://bucketname1/path/to/folder/2017-04-05 s3://bucketname1/path/to/folder/2017-04-05", 
             "title": "Sync folders"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker-Machine/", 
+            "text": "Needed config\n\n\n\n\nInstall and configure a user to use aws cli\n\n\nCreate AIM\nMore info \nhere\n\n\n\n\nCreate aws machine\n\n\ncreates a instance (default t2.micro)\n\n\ndocker-machine create --driver amazonec2 machine_name --amazonec2-region \nus-east-1\n\n\n\n\n\nLog into the machine\n\n\ndocker-machine ssh machine_name\n\n\n\n\nor, get the path to the ssh key\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' aws01\n\n\n\n\nand log with it:\n\n\nssh -i path_to_key public_dns_name\n\n\n\n\nGet instance id\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name", 
+            "title": "Docker Machine"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker-Machine/#needed-config", 
+            "text": "Install and configure a user to use aws cli  Create AIM\nMore info  here", 
+            "title": "Needed config"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker-Machine/#create-aws-machine", 
+            "text": "creates a instance (default t2.micro)  docker-machine create --driver amazonec2 machine_name --amazonec2-region  us-east-1", 
+            "title": "Create aws machine"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker-Machine/#log-into-the-machine", 
+            "text": "docker-machine ssh machine_name  or, get the path to the ssh key  docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' aws01  and log with it:  ssh -i path_to_key public_dns_name", 
+            "title": "Log into the machine"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker-Machine/#get-instance-id", 
+            "text": "docker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name", 
+            "title": "Get instance id"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker/", 
+            "text": "Delete exited containers\n\n\ndocker rm -v $(docker ps -a -q -f status=exited)\n\n\n\n\nRemove dangling images\n\n\n$ docker rmi $(docker images -f \ndangling=true\n -q)\n\n\n\n\nCreate user\n\n\nSimple way (alpine)\n\n\nRUN addgroup groupname \n adduser -s /bin/bash -D -G groupname username\n\n\n\n\n\nComplex way\n\n\n\n# User config\nENV UID=\n1000\n \\\n    UNAME=\ndeveloper\n \\\n    GID=\n1000\n \\\n    GNAME=\ndeveloper\n \\\n    SHELL=\n/bin/bash\n \\\n    UHOME=/home/developer\n\n# User creation stuff\nRUN apk --no-cache add sudo \\\n    \n mkdir -p \n${UHOME}\n \\\n    \n chown \n${UID}\n:\n${GID}\n \n${UHOME}\n \\\n    \n echo \n${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}\n \\\n    \n /etc/passwd \\\n    \n echo \n${UNAME}::17032:0:99999:7:::\n \n /etc/shadow \\\n    \n echo \n${UNAME} ALL=(ALL) NOPASSWD: ALL\n \n \n/etc/sudoers.d/${UNAME}\n \\\n    \n chmod 0440 \n/etc/sudoers.d/${UNAME}\n \\\n    \n echo \n${GNAME}:x:${GID}:${UNAME}\n \\\n    \n /etc/group\n\nUSER developer\nWORKDIR $UHOME\nENV ANT_HOME $UHOME/process-tools/bin", 
+            "title": "Docker"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker/#delete-exited-containers", 
+            "text": "docker rm -v $(docker ps -a -q -f status=exited)", 
+            "title": "Delete exited containers"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker/#remove-dangling-images", 
+            "text": "$ docker rmi $(docker images -f  dangling=true  -q)", 
+            "title": "Remove dangling images"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker/#create-user", 
+            "text": "", 
+            "title": "Create user"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker/#simple-way-alpine", 
+            "text": "RUN addgroup groupname   adduser -s /bin/bash -D -G groupname username", 
+            "title": "Simple way (alpine)"
+        }, 
+        {
+            "location": "/Ops/Docker/Docker/#complex-way", 
+            "text": "# User config\nENV UID= 1000  \\\n    UNAME= developer  \\\n    GID= 1000  \\\n    GNAME= developer  \\\n    SHELL= /bin/bash  \\\n    UHOME=/home/developer\n\n# User creation stuff\nRUN apk --no-cache add sudo \\\n      mkdir -p  ${UHOME}  \\\n      chown  ${UID} : ${GID}   ${UHOME}  \\\n      echo  ${UNAME}:x:${UID}:${GID}:${UNAME},,,:${UHOME}:${SHELL}  \\\n      /etc/passwd \\\n      echo  ${UNAME}::17032:0:99999:7:::    /etc/shadow \\\n      echo  ${UNAME} ALL=(ALL) NOPASSWD: ALL     /etc/sudoers.d/${UNAME}  \\\n      chmod 0440  /etc/sudoers.d/${UNAME}  \\\n      echo  ${GNAME}:x:${GID}:${UNAME}  \\\n      /etc/group\n\nUSER developer\nWORKDIR $UHOME\nENV ANT_HOME $UHOME/process-tools/bin", 
+            "title": "Complex way"
         }, 
         {
             "location": "/Ops/Kubernetes/Kubernetes/", 
