@@ -671,6 +671,21 @@
             "title": "Get public dns name for machines in us-east-1 region"
         }, 
         {
+            "location": "/Ops/AWS/General/", 
+            "text": "AWS endpoints\n\n\nList of AWS endpoints for service\n\n\nBlock s3\n\n\n\n\nFor some reason, it blocks requests from aws java sdk, but not for the ones made from aws cli.\n\n\nblock the following host (it works with /etc/hosts, but it's \nNOT SAFE\n):\n\n\n\n\nSOME_BUCKET_NAME.s3.amazonaws.com", 
+            "title": "General"
+        }, 
+        {
+            "location": "/Ops/AWS/General/#aws-endpoints", 
+            "text": "List of AWS endpoints for service", 
+            "title": "AWS endpoints"
+        }, 
+        {
+            "location": "/Ops/AWS/General/#block-s3", 
+            "text": "For some reason, it blocks requests from aws java sdk, but not for the ones made from aws cli.  block the following host (it works with /etc/hosts, but it's  NOT SAFE ):   SOME_BUCKET_NAME.s3.amazonaws.com", 
+            "title": "Block s3"
+        }, 
+        {
             "location": "/Ops/AWS/Kinesis/", 
             "text": "Python\n\n\n\n\nAWS CLI\n\n\nWarning\n Before using check that you have properly set the \nAWS_PROFILE\n env variable to some profile existing in \n~/.aws/credentials\n, or comfortable using the aws default profile\nas \n\n\n$ export AWS_PROFILE=analytics-storm\n\n\n\n\nGet kinesis decoded data\n\n\naws kinesis get-records --shard-iterator some_shard_hash --profile some-profile | jq \".Records [] .Data\" | tr -d '\n\"' | base64 -d\n\n\n$ aws kinesis describe-stream --stream-name stream_name --profile user2\n\n{\n    \nStreamDescription\n: {\n        \nRetentionPeriodHours\n: 24, \n        \nStreamName\n: \nstream_name\n, \n        \nShards\n: [\n            {\n                \nShardId\n: \nshardId-000000000000\n, \n                \nHashKeyRange\n: {\n                    \nEndingHashKey\n: \nwhateverhashkey\n, \n                    \nStartingHashKey\n: \n0\n\n                }, \n                \nSequenceNumberRange\n: {\n                    \nStartingSequenceNumber\n: \nwhateversequencenumber\n\n                }\n            }, \n            {\n                \nShardId\n: \nshardId-000000000001\n, \n                \nHashKeyRange\n: {\n                    \nEndingHashKey\n: \nwhateverhashke\n, \n                    \nStartingHashKey\n: \nwhatevernumber\n\n                }, \n                \nSequenceNumberRange\n: {\n                    \nStartingSequenceNumber\n: \nsomenumber\n\n                }\n            }\n        ], \n        \nStreamARN\n: \narn:aws:kinesis:region:accountNumber:stream/stream_name\n, \n        \nEnhancedMonitoring\n: [\n            {\n                \nShardLevelMetrics\n: []\n            }\n        ], \n        \nStreamStatus\n: \nACTIVE\n\n    }\n}\n\n\n\n\n$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type LATEST\n{\n    \nShardIterator\n: \nwhateversharditeratorwithnumberslettersandslashes \n\n}\n\n\n\n\n\nget shard iterator for specific date (take into account the retention policy for your kinesis service)\n\n\n$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type AT_TIMESTAMP --timestamp \n2017-05-25 08:00:00\n\n\n\n\n\n\n\n\n\nshardId is one appearing in the describe-stream command above  \n\n\n\n\n\n\nfor more info about shard-iterator-type\nhttp://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#API_GetShardIterator_RequestSyntax\n\n\n\n\n\n\n$ aws kinesis get-records --shard-iterator whateversharditeratorwithnumberslettersandslashes --limit 1 --profile user2\n{\n    \nRecords\n: [\n        {\n            \nData\n: \nsome_encoded_data\n, \n            \nPartitionKey\n: \nsome_numbers\n, \n            \nApproximateArrivalTimestamp\n: 1490964900.808, \n            \nSequenceNumber\n: \nsome_very_long_number\n\n        }\n    ], \n    \nNextShardIterator\n: \nsome_sequence_of_letters_and_numbers_and_slashes\n, \n    \nMillisBehindLatest\n: 0\n}", 
             "title": "Kinesis"
