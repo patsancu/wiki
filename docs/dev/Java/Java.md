@@ -54,6 +54,10 @@ Port: 8765
 
 More info [here](http://www.ibm.com/developerworks/library/os-eclipse-javadebug/)
 
+### Extract jar contents
+```
+jar jar xf iris-analytics-information-extractor-1.1.1.jar
+```
 
 ### Useful libraries
 [com.google.common.base.Strings](https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/base/Strings.html)
