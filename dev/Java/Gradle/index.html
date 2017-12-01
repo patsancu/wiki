@@ -554,12 +554,14 @@
                 <div class="col-md-9" role="main">
 
 <h3 id="copy-entire-folder">Copy entire folder</h3>
-<p>task mytest &lt;&lt; {
+<pre><code>task mytest &lt;&lt; {
     copy {
         from fileTree('folder/mytest')
-        into "mytest"
+        into &quot;mytest&quot;
     }
-}</p>
+}
+</code></pre>
+
 <h3 id="debug">Debug</h3>
 <h4 id="list-folder-contents">List folder contents</h4>
 <pre><code>new File(&quot;${stageDir}&quot;).eachFile{ println it}
