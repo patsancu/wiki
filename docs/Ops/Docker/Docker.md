@@ -41,3 +41,20 @@ USER developer
 WORKDIR $UHOME
 ENV ANT_HOME $UHOME/process-tools/bin
 ```
+
+### Private registry
+* Run private docker registry. *Only* works in local, because there are no installed certs.
+* Forwards container port 5000 to localhost's 8888
+```
+docker run -d -p 8888:5000 registry:2
+```
+
+### Docker commit
+* Commit a new image with name commit, tag test, author Joe Bloggs, comment.
+```
+docker commit -a "Joe Bloggs" -m "Comment" RUNNING_IMAGE_ID commit:test
+```
+* Commit a new image with name svendowideit/testimage, tag version4, with changes: a CMD command and an EXPOSE one.
+```
+docker commit --change='CMD ["apachectl", "-DFOREGROUND"]' -c "EXPOSE 80" c3f279d17e0a  svendowideit/testimage:version4
+```
