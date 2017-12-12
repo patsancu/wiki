@@ -1,6 +1,6 @@
 ### Maven
 ### Create executable jar
-In pom.xml
+* In pom.xml
 ```
 <build>
     <pluginManagement>
@@ -43,7 +43,9 @@ In pom.xml
         </plugins>
     </pluginManagement>
 </build>
-
+```
+```
+mvn clean compile assembly:single -Dmaven.test.skip=true
 ```
 #### Run java project from CLI
 ```
