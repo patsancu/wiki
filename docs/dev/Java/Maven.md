@@ -1,4 +1,50 @@
 ### Maven
+### Create executable jar
+In pom.xml
+```
+<build>
+    <pluginManagement>
+      [...]
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>s3.trying.TimeZoneStuff</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>s3.trying.TimeZoneStuff</mainClass>
+                        </manifest>
+                        </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+      [...]
+        </plugins>
+    </pluginManagement>
+</build>
+
+```
 #### Run java project from CLI
 ```
 mvn exec:java -Dexec.mainClass="s3.pruebas.pruebas.App"
