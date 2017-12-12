@@ -556,7 +556,9 @@
 
 <h3 id="maven">Maven</h3>
 <h3 id="create-executable-jar">Create executable jar</h3>
-<p>In pom.xml</p>
+<ul>
+<li>In pom.xml</li>
+</ul>
 <pre><code>&lt;build&gt;
     &lt;pluginManagement&gt;
       [...]
@@ -598,7 +600,9 @@
         &lt;/plugins&gt;
     &lt;/pluginManagement&gt;
 &lt;/build&gt;
+</code></pre>
 
+<pre><code>mvn clean compile assembly:single -Dmaven.test.skip=true
 </code></pre>
 
 <h4 id="run-java-project-from-cli">Run java project from CLI</h4>
