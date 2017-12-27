@@ -6,7 +6,7 @@ More info [here](../AWS/Cli-Config.md)
 ### Create aws machine
 creates a instance (default t2.micro)
 ```
-docker-machine create --driver amazonec2 machine_name --amazonec2-region "us-east-1"
+docker-machine create --driver amazonec2 --amazonec2-region "us-east-1" machine_name
 ```
 
 ### Log into the machine
