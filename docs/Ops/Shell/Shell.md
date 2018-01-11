@@ -270,12 +270,14 @@ alias hgweb=my_hgweb
 * 6 – Cyan.
 * 7 – White.
 Clear all options
+
 ```
 tput setab clear
+tput sgr0
 ```
 Set foreground color
 ```
-tput setab 6; # turquoise
+tput setaf 6; # turquoise
 ```
 Set background color
 ```
