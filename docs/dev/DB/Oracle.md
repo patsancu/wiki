@@ -138,6 +138,11 @@ and num_rows > 0  -- Ignore empty Tables.
 order by num_rows desc -- Biggest first.;
 ```
 
+### From string to timestamp
+```
+TO_TIMESTAMP('2016-05-14', 'YYYY-MM-DD')
+```
+
 ### Group by truncated date
 ```
 select TRUNC(created), count(*)
