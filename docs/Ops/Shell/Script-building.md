@@ -59,3 +59,6 @@ distro=("redhat" "debian" "gentoo")
 echo ${distro[2]} # will print gentoo
 echo ${#distro[@]} # will print array length: 3
 ```
+
+### Get parent folder from script
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
