@@ -11,3 +11,5 @@ $ source /usr/local/bin/virtualenvwrapper.sh
 ### Debugging
 #### Style and code analysis
 * [pylint](https://www.pylint.org/).  integrates with Vim's syntastic
+
+### [String formatting](https://pyformat.info/#simple)
