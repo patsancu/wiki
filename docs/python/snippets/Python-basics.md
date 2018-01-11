@@ -106,3 +106,26 @@ def myfunc(alist):
               6 CALL_FUNCTION            1
               9 RETURN_VALUE
 ```
+
+### Python program from CLI
+```
+#!/usr/bin/env bash
+echo "somebody" | python -c "
+import sys
+for line in sys.stdin:
+    print line
+"
+```
+
+or
+
+```
+#!/usr/bin/env bash
+
+echo "somebody" | python -c "
+import fileinput
+for line in fileinput.input():
+        print line
+"
+somebody
+```
