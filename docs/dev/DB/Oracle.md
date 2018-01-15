@@ -152,14 +152,13 @@ group by TRUNC(created)
 ```
 
 ### Look for table by name
-with *system* user
 ```sql
 SELECT owner, table_name
   FROM dba_tables
   where owner = 'da_owner'
 ```
 
-### Order rows relative to some column
+### Rank rows relative to some column
 A content has multiple genres. This will rank genres of each content (categorised according to their title).
 ```sql
 SELECT content.content_id,
