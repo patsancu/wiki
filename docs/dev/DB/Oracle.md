@@ -158,3 +158,17 @@ SELECT owner, table_name
   FROM dba_tables
   where owner = 'da_owner'
 ```
+
+### Order rows relative to some column
+A content has multiple genres. This will rank genres of each content (categorised according to their title).
+```sql
+SELECT content.content_id,
+       content.title,
+       genre.NAME,
+       Row_number() OVER ( partition BY content.title ORDER BY genre.genre_id DESC) AS ranking
+FROM   cont_av_content CONTENT
+       JOIN cont_content_genre_map cmap
+         ON content.content_id = cmap.content_id
+       JOIN cont_genre genre
+         ON genre.genre_id = cmap.genre_id
+```
