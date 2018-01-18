@@ -20,6 +20,8 @@ will create table on `/tmp/movieRegions/SOME_NUMBERS.json`
 select * from table(dfs.`/path/to/file/some_data.xsv` (type => 'text', fieldDelimiter => '~', extractHeader => true));
 ```
 
+### Query file given absolute path
+select * from dfs.`/home/patrick/dev/tvmetrix/extractor/data/liveevents/2018-01-18/liveevents_DF_2018-01-18_153010_469.json.gz` limit 20;
 
 ### Query the system
 #### Identify the Foreman
