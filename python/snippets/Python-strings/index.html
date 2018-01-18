@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Python date time - Patrick's Wiki</title>
+        <title>Python strings - Patrick's Wiki</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -504,8 +504,8 @@
     <a href="../Python-basics/">Python basics</a>
 </li>
             
-<li class="active">
-    <a href="./">Python date time</a>
+<li >
+    <a href="../Python-date-time/">Python date time</a>
 </li>
             
 <li >
@@ -528,8 +528,8 @@
     <a href="../Python-parse-cli-options/">Python parse cli options</a>
 </li>
             
-<li >
-    <a href="../Python-strings/">Python strings</a>
+<li class="active">
+    <a href="./">Python strings</a>
 </li>
     </ul>
   </li>
@@ -544,12 +544,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../Python-basics/">
+                        <a rel="next" href="../Python-parse-cli-options/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../Python-email/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -566,49 +566,67 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#datetime-conversions">Date/Time conversions</a></li>
-        <li class="main "><a href="#datetime-arithmetic">Date/time arithmetic</a></li>
+        <li class="main active"><a href="#positional-args">Positional args</a></li>
+        <li class="main "><a href="#keyword-args">Keyword args</a></li>
+        <li class="main "><a href="#getitem">Getitem</a></li>
+        <li class="main "><a href="#value-conversion">Value conversion</a></li>
+        <li class="main "><a href="#padding-and-aligning-strings">Padding and aligning strings</a></li>
+            <li><a href="#align-right">align right</a></li>
+            <li><a href="#align-left">align left</a></li>
+            <li><a href="#center-align">center align</a></li>
+        <li class="main "><a href="#truncate-string">truncate string</a></li>
+        <li class="main "><a href="#date-time">Date time</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h3 id="datetime-conversions">Date/Time conversions</h3>
-<pre><code class="python">import datetime
-import time
-
-# Create date from epoch
-date = datetime.datetime.utcfromtimestamp(1489968401)
-
-# Create date from year, month, day
-date = datetime.datetime(2017, 8, 20)
-
-# Get seconds from epoch
-time.time()
-
-# Test things
-datetime.datetime.utcfromtimestamp(int(time.time()))
-
-# Get tuple of year, month, ...
-## Check the structure help(datetime.datetime.timetuple)
-date.timetuple()
-
-# Convert from tuple to epoch
-time.mktime(p.timetuple())
+<p><a href="https://pyformat.info/#simple">Source</a></p>
+<h3 id="positional-args">Positional args</h3>
+<pre><code>'{1} {0}'.format('one', 'two')
 </code></pre>
 
-<h3 id="datetime-arithmetic">Date/time arithmetic</h3>
-<pre><code class="python">import datetime
-import time
+<h3 id="keyword-args">Keyword args</h3>
+<pre><code>'{first} {last}'.format(first='Hodor', last='Hodor!')
+</code></pre>
 
-date = datetime.datetime(2017, 8, 20)
-# datetime.datetime(2017, 8, 20, 0, 0)
-diff_8_days = datetime.timedelta(days = 8)
-diff_3_minutes = datetime.timedelta(minutes = 3)
+<h3 id="getitem">Getitem</h3>
+<pre><code>person = {'first': 'Jean-Luc', 'last': 'Picard'}
+'{p[first]} {p[last]}'.format(p=person)
+</code></pre>
 
-date_plus_8_days = date + diff_8_days
-# datetime.datetime(2017, 8, 28, 0, 0)
-date_minus_3_minutes = date - diff_3_minutes
-# datetime.datetime(2017, 8, 19, 23, 57)
+<h3 id="value-conversion">Value conversion</h3>
+<pre><code>class Data(object):
+
+    def __str__(self):
+        return 'str'
+
+    def __repr__(self):
+        return 'repr'
+
+'{0!s} {0!r}'.format(Data())
+</code></pre>
+
+<h3 id="padding-and-aligning-strings">Padding and aligning strings</h3>
+<p>where _ is the padding characer. default is space</p>
+<h4 id="align-right">align right</h4>
+<pre><code>'{:_&gt;10}'.format('test')
+______test
+</code></pre>
+
+<h4 id="align-left">align left</h4>
+<pre><code>'{:10}'.format('test')
+</code></pre>
+
+<h4 id="center-align">center align</h4>
+<pre><code>'{:^10}'.format('test')
+</code></pre>
+
+<h3 id="truncate-string">truncate string</h3>
+<pre><code>'{:.5}'.format('xylophone')
+</code></pre>
+
+<h3 id="date-time">Date time</h3>
+<pre><code>'{:%Y-%m-%d %H:%M}'.format(datetime(2001, 2, 3, 4, 5))
 </code></pre></div>
         </div>
 

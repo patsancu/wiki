@@ -324,16 +324,30 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../dev/DB/Oracle/">Oracle</a>
-</li>
-            
-<li >
     <a href="../dev/DB/Postgres/">Postgres</a>
 </li>
             
 <li >
     <a href="../dev/DB/sqlite/">Sqlite</a>
 </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Oracle</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../dev/DB/Oracle/Generic/">Generic</a>
+</li>
+            
+<li >
+    <a href="../dev/DB/Oracle/Snippets/">Snippets</a>
+</li>
+            
+<li >
+    <a href="../dev/DB/Oracle/Troubleshooting/">Troubleshooting</a>
+</li>
+    </ul>
+  </li>
     </ul>
   </li>
                             
@@ -399,6 +413,10 @@
             
 <li >
     <a href="../dev/VCS/Git/Main/">Main</a>
+</li>
+            
+<li >
+    <a href="../dev/VCS/Git/Submodules/">Submodules</a>
 </li>
     </ul>
   </li>
@@ -509,6 +527,10 @@
 <li >
     <a href="snippets/Python-parse-cli-options/">Python parse cli options</a>
 </li>
+            
+<li >
+    <a href="snippets/Python-strings/">Python strings</a>
+</li>
     </ul>
   </li>
                         </ul>
@@ -546,6 +568,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#debugging">Debugging</a></li>
             <li><a href="#style-and-code-analysis">Style and code analysis</a></li>
+        <li class="main "><a href="#string-formatting">String formatting</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -569,7 +592,8 @@ $ source /usr/local/bin/virtualenvwrapper.sh
 <h4 id="style-and-code-analysis">Style and code analysis</h4>
 <ul>
 <li><a href="https://www.pylint.org/">pylint</a>.  integrates with Vim's syntastic</li>
-</ul></div>
+</ul>
+<h3 id="string-formatting"><a href="https://pyformat.info/#simple">String formatting</a></h3></div>
         </div>
 
         <footer class="col-md-12">

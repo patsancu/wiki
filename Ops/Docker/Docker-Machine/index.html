@@ -324,16 +324,30 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../dev/DB/Oracle/">Oracle</a>
-</li>
-            
-<li >
     <a href="../../../dev/DB/Postgres/">Postgres</a>
 </li>
             
 <li >
     <a href="../../../dev/DB/sqlite/">Sqlite</a>
 </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Oracle</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../dev/DB/Oracle/Generic/">Generic</a>
+</li>
+            
+<li >
+    <a href="../../../dev/DB/Oracle/Snippets/">Snippets</a>
+</li>
+            
+<li >
+    <a href="../../../dev/DB/Oracle/Troubleshooting/">Troubleshooting</a>
+</li>
+    </ul>
+  </li>
     </ul>
   </li>
                             
@@ -399,6 +413,10 @@
             
 <li >
     <a href="../../../dev/VCS/Git/Main/">Main</a>
+</li>
+            
+<li >
+    <a href="../../../dev/VCS/Git/Submodules/">Submodules</a>
 </li>
     </ul>
   </li>
@@ -509,6 +527,10 @@
 <li >
     <a href="../../../python/snippets/Python-parse-cli-options/">Python parse cli options</a>
 </li>
+            
+<li >
+    <a href="../../../python/snippets/Python-strings/">Python strings</a>
+</li>
     </ul>
   </li>
                         </ul>
@@ -546,6 +568,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#needed-config">Needed config</a></li>
         <li class="main "><a href="#create-aws-machine">Create aws machine</a></li>
+        <li class="main "><a href="#get-env-vars-to-connect-the-docker-client-to-the-docker-engine">Get env vars to connect the Docker Client to the Docker Engine</a></li>
         <li class="main "><a href="#log-into-the-machine">Log into the machine</a></li>
         <li class="main "><a href="#get-instance-id">Get instance id</a></li>
     </ul>
@@ -555,24 +578,27 @@
 <h3 id="needed-config">Needed config</h3>
 <ul>
 <li>Install and configure a user to use aws cli</li>
-<li>Create AIM
-More info <a href="../../AWS/Cli-Config/">here</a></li>
+<li>Create AIM</li>
+<li>More info <a href="../../AWS/Cli-Config/">here</a></li>
 </ul>
 <h3 id="create-aws-machine">Create aws machine</h3>
 <p>creates a instance (default t2.micro)</p>
-<pre><code>docker-machine create --driver amazonec2 machine_name --amazonec2-region &quot;us-east-1&quot;
+<pre><code>docker-machine create --driver amazonec2 --amazonec2-region &quot;us-east-1&quot; machine_name
+</code></pre>
+
+<h3 id="get-env-vars-to-connect-the-docker-client-to-the-docker-engine">Get env vars to connect the Docker Client to the Docker Engine</h3>
+<pre><code>docker-machine env MACHINE_NAME
 </code></pre>
 
 <h3 id="log-into-the-machine">Log into the machine</h3>
 <pre><code>docker-machine ssh machine_name
 </code></pre>
 
-<p>or, get the path to the ssh key</p>
-<pre><code>docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name
-</code></pre>
-
-<p>and log with it:</p>
-<pre><code>ssh -i path_to_key public_dns_name
+<p>or, get the path to the ssh key and log with it:</p>
+<pre><code>MACHINE_USERNAME=ubuntu;
+IP_ADDRESS=$(docker-machine inspect --format='{{prettyjson .Driver.IPAddress}}' docker-machine-01 | tr -d '&quot;');
+SSH_DOCKER_MACHINE_KEYPATH=$(docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' docker-machine-01 | tr -d '&quot;');
+ssh -i $SSH_DOCKER_MACHINE_KEYPATH $MACHINE_USERNAME@$IP_ADDRESS
 </code></pre>
 
 <h3 id="get-instance-id">Get instance id</h3>

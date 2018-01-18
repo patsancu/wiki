@@ -782,22 +782,27 @@
         }, 
         {
             "location": "/Ops/Docker/Docker-Machine/", 
-            "text": "Needed config\n\n\n\n\nInstall and configure a user to use aws cli\n\n\nCreate AIM\nMore info \nhere\n\n\n\n\nCreate aws machine\n\n\ncreates a instance (default t2.micro)\n\n\ndocker-machine create --driver amazonec2 machine_name --amazonec2-region \nus-east-1\n\n\n\n\n\nLog into the machine\n\n\ndocker-machine ssh machine_name\n\n\n\n\nor, get the path to the ssh key\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name\n\n\n\n\nand log with it:\n\n\nssh -i path_to_key public_dns_name\n\n\n\n\nGet instance id\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name", 
+            "text": "Needed config\n\n\n\n\nInstall and configure a user to use aws cli\n\n\nCreate AIM\n\n\nMore info \nhere\n\n\n\n\nCreate aws machine\n\n\ncreates a instance (default t2.micro)\n\n\ndocker-machine create --driver amazonec2 --amazonec2-region \nus-east-1\n machine_name\n\n\n\n\nGet env vars to connect the Docker Client to the Docker Engine\n\n\ndocker-machine env MACHINE_NAME\n\n\n\n\nLog into the machine\n\n\ndocker-machine ssh machine_name\n\n\n\n\nor, get the path to the ssh key and log with it:\n\n\nMACHINE_USERNAME=ubuntu;\nIP_ADDRESS=$(docker-machine inspect --format='{{prettyjson .Driver.IPAddress}}' docker-machine-01 | tr -d '\n');\nSSH_DOCKER_MACHINE_KEYPATH=$(docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' docker-machine-01 | tr -d '\n');\nssh -i $SSH_DOCKER_MACHINE_KEYPATH $MACHINE_USERNAME@$IP_ADDRESS\n\n\n\n\nGet instance id\n\n\ndocker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name", 
             "title": "Docker Machine"
         }, 
         {
             "location": "/Ops/Docker/Docker-Machine/#needed-config", 
-            "text": "Install and configure a user to use aws cli  Create AIM\nMore info  here", 
+            "text": "Install and configure a user to use aws cli  Create AIM  More info  here", 
             "title": "Needed config"
         }, 
         {
             "location": "/Ops/Docker/Docker-Machine/#create-aws-machine", 
-            "text": "creates a instance (default t2.micro)  docker-machine create --driver amazonec2 machine_name --amazonec2-region  us-east-1", 
+            "text": "creates a instance (default t2.micro)  docker-machine create --driver amazonec2 --amazonec2-region  us-east-1  machine_name", 
             "title": "Create aws machine"
         }, 
         {
+            "location": "/Ops/Docker/Docker-Machine/#get-env-vars-to-connect-the-docker-client-to-the-docker-engine", 
+            "text": "docker-machine env MACHINE_NAME", 
+            "title": "Get env vars to connect the Docker Client to the Docker Engine"
+        }, 
+        {
             "location": "/Ops/Docker/Docker-Machine/#log-into-the-machine", 
-            "text": "docker-machine ssh machine_name  or, get the path to the ssh key  docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' machine_name  and log with it:  ssh -i path_to_key public_dns_name", 
+            "text": "docker-machine ssh machine_name  or, get the path to the ssh key and log with it:  MACHINE_USERNAME=ubuntu;\nIP_ADDRESS=$(docker-machine inspect --format='{{prettyjson .Driver.IPAddress}}' docker-machine-01 | tr -d ' ');\nSSH_DOCKER_MACHINE_KEYPATH=$(docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' docker-machine-01 | tr -d ' ');\nssh -i $SSH_DOCKER_MACHINE_KEYPATH $MACHINE_USERNAME@$IP_ADDRESS", 
             "title": "Log into the machine"
         }, 
         {
@@ -987,7 +992,7 @@
         }, 
         {
             "location": "/Ops/Shell/Script-building/", 
-            "text": "Simple stop\n\n\necho \nPress enter to continue\n; read noing\n\n\n\n\nColorize cat output of source files\n\n\n$ pip install Pygments\n\n\nhttp://pygments.org/\n\n\nwith pygmentize -g filename\n\n\nYes no answer\n\n\ntestFile=/home/patrick/dev/master.properties\nsampleService='iris-cms-metadata-management-service'\nif [ ! -f $testFile ]; then\n  tput setaf 2\n  echo \ntest properties file $testFile is missing\n\n  tput sgr0else  tput setaf 1;\n  echo \nWill delete all data from the CMS db.\n;\n  tput sgr0  ;\n  read -r -p \nAre you sure? [y/N] \n response\n  case $response in      [yY][eE][sS]|[yY])\n    cd $sampleService;\n    gradle dropDatabase -Parchaius.url=file:$testFile ;\n    cd -;\n    ;;\n    *)\n    echo \nOK, no harm done\n;\n    ;;\n  esac\nfi\n\n\n\n\nArgument parsing\n\n\nvflag=off\nfilename=\nwhile getopts vf: opt\ndo\n    case \n$opt\n in\n      v)  vflag=on;;\n      f)  filename=\n$OPTARG\n;;\n      \\?)       # unknown flag\n          echo \n2 \\\n      \nusage: $0 [-v] [-f filename] [file ...]\n\n      exit 1;;\n    esac\ndone\nshift `expr $OPTIND - 1`\n\n\n\n\nArrays\n\n\ndistro=(\nredhat\n \ndebian\n \ngentoo\n)\necho ${distro[2]} # will print gentoo\necho ${#distro[@]} # will print array length: 3", 
+            "text": "Simple stop\n\n\necho \nPress enter to continue\n; read noing\n\n\n\n\nColorize cat output of source files\n\n\n$ pip install Pygments\n\n\nhttp://pygments.org/\n\n\nwith pygmentize -g filename\n\n\nYes no answer\n\n\ntestFile=/home/patrick/dev/master.properties\nsampleService='iris-cms-metadata-management-service'\nif [ ! -f $testFile ]; then\n  tput setaf 2\n  echo \ntest properties file $testFile is missing\n\n  tput sgr0else  tput setaf 1;\n  echo \nWill delete all data from the CMS db.\n;\n  tput sgr0  ;\n  read -r -p \nAre you sure? [y/N] \n response\n  case $response in      [yY][eE][sS]|[yY])\n    cd $sampleService;\n    gradle dropDatabase -Parchaius.url=file:$testFile ;\n    cd -;\n    ;;\n    *)\n    echo \nOK, no harm done\n;\n    ;;\n  esac\nfi\n\n\n\n\nArgument parsing\n\n\nvflag=off\nfilename=\nwhile getopts vf: opt\ndo\n    case \n$opt\n in\n      v)  vflag=on;;\n      f)  filename=\n$OPTARG\n;;\n      \\?)       # unknown flag\n          echo \n2 \\\n      \nusage: $0 [-v] [-f filename] [file ...]\n\n      exit 1;;\n    esac\ndone\nshift `expr $OPTIND - 1`\n\n\n\n\nArrays\n\n\ndistro=(\nredhat\n \ndebian\n \ngentoo\n)\necho ${distro[2]} # will print gentoo\necho ${#distro[@]} # will print array length: 3\n\n\n\n\nGet parent folder from script\n\n\nDIR=\"$( cd \"$( dirname \"${BASH_SOURCE[0]}\" )\" \n pwd )", 
             "title": "Script building"
         }, 
         {
@@ -1016,6 +1021,11 @@
             "title": "Arrays"
         }, 
         {
+            "location": "/Ops/Shell/Script-building/#get-parent-folder-from-script", 
+            "text": "DIR=\"$( cd \"$( dirname \"${BASH_SOURCE[0]}\" )\"   pwd )", 
+            "title": "Get parent folder from script"
+        }, 
+        {
             "location": "/Ops/Shell/Scripts/", 
             "text": "Put in ~/bin\n\n\ngeneral\n\n\nbyzanz-record-window\n\n\nrecords screen as a gif\n\n\nwork\n\n\nproxymetrix", 
             "title": "Scripts"
@@ -1042,7 +1052,7 @@
         }, 
         {
             "location": "/Ops/Shell/Shell/", 
-            "text": "Bash wiki\n\n\nSetup a local smtpserver\n\n\n$ python -m smtpd -n -c DebuggingServer localhost:1025\n\n\n\n\nChange shell\n\n\nchsh -s /usr/local/bin/bash [username]\n\n\n\n\nExecute command without any env variable or with just a few\n\n\nzsh $ P=\nZZZ\n; echo $P\nZZZ\nzsh $ echo $PATATA\n\n$ env -i PATATA=\npatatina\n PAT=\nata\n bash\necho $ZZZ\n\n$ echo $PATATA\npatatina\n\n\n\n\nSuper simple text file creation\n\n\nDON'T USE IN EXISTING FILES, IT WILL OVERWRITE THEM\n\n\nWrite to file until EOF is written (in a single line)\n\n\n$ cat \nEOF \n p.c\nsome line\nanother line\nEOF\n$ cat p.c\nsome line\nanother line\n\n\n\n\nDouble substution\n\n\n$ foo=\nwhatever\n\n$ i=foo\n$ echo $echo ${!i}\nwhatever\n\n\n\n\nExecute process in background with lock\n\n\nExecutes process with nohup and flock\n\n\nSee \ngist\n\n\nShutdown process above\n\n\nSee \ngist\n\n\nFlock\n\n\nUse flock as in \nhere\n\n\nGet url for git repo\n\n\nxdg-open `git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\\/\\//' -e's/\\.git$//' | sed -E 's/(\\/\\/[^:]*):/\\1\\//'`\n\n\n\n\nWget\n\n\nDownload all pdfs linked in a website\n\n\nWarning:\n Even if it recreates only the pdfs, it will download \nevery\n file referenced by links\n\n\n$ wget -r -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nDownload all pdfs linked in a website, including linked websites (1 level)\n\n\n$ wget -r -l1 -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nBash-erize cli any Python object\n\n\npython-fire\n\n\nSet bash variable default value\n\n\n${parameter=default}, ${parameter:=default}\n\nThe \n:\n makes a difference only when \n$parameter\n has been declared and is null\n\n\n$ echo $var\n\n$ echo ${var:=abc}   # abc\nabc\n$ echo ${var}   # abc\nabc\n\n\n\n\n\nhttp://www.tldp.org/LDP/abs/html/parameter-substitution.html#PARAMSUBREF\n\n\nOne line to pretty separate jsons\n\n\ncurl -s localhost:7080/mappings  |  python -mjson.tool\n\n\nXargs with files with spaces on path\n\n\nls *mp3 | xargs -d '\\n' mplayer\n\n\nWord frequency of text file\n\n\ncat ~/filename.txt | tr ' ' '\\n' | sort | uniq -c | awk '{print $2\"@\"$1}'\n\n\nEgrep\n\n\n\n\nGiven a file with json lines having a field \"parentalRating\" and a number (e.g. '\"parentalRating\":\"17\"') , the following command will get the set of unique parental ratings, along with their frequencies in (frequency, key) pairs.\n\n\nThe \no\n option is to output only the strings matching the egrep regex\n\n\n\n\n$ egrep \nparentalRating\\\n:\\\n[0-9]+\n file.json -o | cut -d ':' -f 2 | tr -d '\n' | sort | uniq -c\n   1314 0\n   6209 13\n   1525 15\n   4518 17\n      3 18\n   3564 7\n\n\n\n\n\nDiff folders\n\n\nhttps://gist.github.com/37b660b98f6d29ecd1af87ffb426f380\n\n\nRecord Your Command Line Session\n\n\n\n\n$ script\n\n\nExit typing \n$ exit\n\n\nAll of your typings (and their reults) will be saved to a file named \ntypescript\n\n\n\n\nGlobstar\n\n\nTo allow double \"*\" as a recursive filepath parameter, eg\n\n\nls **/*.xml\n\n\n\n\nadd\n\n\nshopt -s globstar\n\n\n\n\nto \n.bashrc\n\n\nSubstring Removal\n\n\nDeletes shortest match of $substring from front of $string.\n\n\n${string#substring}\n\n\n\n\nDeletes longest match of $substring from front of $string.\n\n\n${string##substring}\n\n\n\n\nGet last folder of current working directoy\n\n\n$ pwd\n/home/patrick/dev/python\n$ echo ${PWD##*/}\npython\n\n\n\n\nBasic integer sequence loop\n\n\n#!/bin/bash\nfor i in `seq 1 10`;\n   do\n     echo $i\n   done\n\n\n\n\nDisplay Output as a Table\n\n\ncat /etc/passwd | column -t -s\n\n\n\n\nRepeat a Command Until It Runs Successfully\n\n\nwhile true; do ping -c 1 8.8.8.8 \n /dev/null 2\n1 \n break; done\n\n\n\n\nSuspend machine\n\n\nAs root,\n\n\n# pm-suspend\n\n\n\n\nConvert a File to Upper or Lower Case\n\n\ncat myfile | tr a-z A-Z \n output.txt\n\n\n\n\nSort Processes by Memory Usage\n\n\nps aux | sort -rnk 4\n\n\n\n\nSort Processes by CPU Usage\n\n\nps aux | sort -nk 3\n\n\n\n\nXargs example\n\n\nls /etc/*.conf | xargs -i cp {} /home/likegeeks/Desktop/out\n\n\n\n\ndd\n\n\nBasic syntax\n\n\ndd bs=4M if=/dev/sdd of=from-sd-card.img\n\n\n\n\nSee progress of dd\n\n\nsudo pkill -USR1 -n -x dd\n\n\n\n\nThis will show the progess \nin the same terminal dd was executed\n\n\nCreate File With a Specific Size\n\n\ndd if=/dev/zero of=out.txt bs=1M count=10\n\n\n\n\nShorten url with goo.gl\n\n\nThe \n$GOOGLE_SHORTEN_API_KEY\n variable needs to be set, and jq needs to be installed\n\n\nshorten(){\n    curl \nhttps://www.googleapis.com/urlshortener/v1/url?key=$GOOGLE_SHORTEN_API_KEY\n -H 'Content-Type: application/json' -d \n{'longUrl': \\\n$1\\\n}\n | jq '.id'\n}\n\n\n\n\nAutomatically press keys when condition is met\n\n\nUse expect as in \nhere\n\n\nConvert windows-encoded text file to unix-encoded\n\n\nawk 'BEGIN{RS=\n^$\n;ORS=\n;getline;gsub(\n\\r\n,\n);print\nARGV[1]}' file_name\n\n\n\n\nRead lines from file in a for loop\n\n\nFS=$'\\n'       # make newlines the only separator\nfor j in \n$(cat ./file_wget_med)\n\ndo\n    echo \n$j\n\ndone\n\n\n\n\nor\n\n\ninput=\n/path/to/txt/file\n\nwhile IFS= read -r var\ndo\n  echo \n$var\n\ndone \n \n$input\n\n\n\n\n\nDisplay info about memory\n\n\n$ sudo lshw -C memory\n\n\nOpen the current repo on a specific web repo\n\n\nmy_hgweb() {\n         if [ -d .hg ]; then\n            xdg-open http://web-repo-address/hg/${PWD##*/} \n /dev/null\n         else\n            echo Not mercurial directory\n         fi\n}\nalias hgweb=my_hgweb\n\n\n\n\nColors\n\n\nWith tput\n\n\nColors\n\n\n\n\n0 \u2013 Black.\n\n\n1 \u2013 Red.\n\n\n2 \u2013 Green.\n\n\n3 \u2013 Yellow.\n\n\n4 \u2013 Blue.\n\n\n5 \u2013 Magenta.\n\n\n6 \u2013 Cyan.\n\n\n7 \u2013 White.\nClear all options\n\n\n\n\ntput setab clear\n\n\n\n\nSet foreground color\n\n\ntput setab 6; # turquoise\n\n\n\n\nSet background color\n\n\ntput setab 2; # green\n\n\n\n\nSet bold\n\n\ntput bold;\n\n\n\n\n\n\n\n\nMore info: http://linuxcommand.org/lc3_adv_tput.php\n\n\n\n\n\n\nShow all color combinations\nhttps://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6\n\n\n\n\n\n\nUseful snippets\n\n\nFile management\n\n\nRename files in folder to sorted files\n\n\nc=0; for i in `ls`;do echo \n$i\n; c=$((c+1)); mv \n$i\n \n$c.txt\n; done\n\n\n\n\nRename files, change extesion\n\n\nfor file in *.html\ndo\n mv \n$file\n \n${file%.html}.txt\n\ndone\n\n\n\n\nGet extension of file\n\n\nfilename=$(basename \n$fullfile\n)\nextension=\n${filename##*.}\n\nfilename=\n${filename%.*}\n\n\n\n\n\nChange mac address\n\n\nsudo ifconfig eth0 down\nsudo ifconfig eth0 hw ether  xx:xx:xx:xx:xx:xx\nsudo ifconfig eth0 up\n\n\n\n\nDate\n\n\nFormat current date\n\n\n$ date +'%Y%m%d'\n\n\n\n\nAdd days to date\n\n\ndate -d +\n2 days\n\ndate -d +\n3 minutes\n\ndate -d +\n4 months\n\n\n\n\n\nFrom epoch \nseconds\n to date\n\n\n$ date -d @1463234960\nsamedi 14 mai 2016, 16:09:20 (UTC+0200)\n\n\n\n\nCombine\n\n\n$ date -d @1463234960 +\n%Y-%m-%d\n\n2016-05-14\n$ date -d \n1492/10/12 14:00:02\n +\n%Y-%m-%d %H:%M\n\n1492-10-12 14:00\n\n\n\n\nFor more info about \ndate input formats\n\n\nUseful commands\n\n\n\n\npv\n \nshow progress of command\n\n\n\n\ndd bs=4M if=/media/somedrive/raspbian-jessie.img | pv | dd of=/dev/mmcblk0\n\n\n\n\n\n\npgrep\n \nget PID by name\n\n\npkill\n \nkill process by name\n\n\ntimeout n command\n \nexecute command for n seconds\n\n\n\n\nSee calendar for previous month, next month, and three months from now\n\n\n$ ncal -3 -A 2\n\n\nEncode/decode base64 data\n\n\n$ echo patata | base64\ncGF0YXRhCg==\n$ echo patata | base64 | base64 -d\n\n\n\n\nExit traps\n\n\nReference\n\n\nExample:\n\n\n#!/bin/bash\nscratch=$(mktemp -d -t tmp.XXXXXXXXXX)\nfunction finish {\n  rm -rf \n$scratch\n\n}\ntrap finish EXIT\n\n\n\n\nCheck OS type\n\n\nif [[ \n$OSTYPE\n == \nlinux-gnu\n ]]; then\n        # ...\nelif [[ \n$OSTYPE\n == \ndarwin\n* ]]; then\n        # Mac OSX\nelif [[ \n$OSTYPE\n == \ncygwin\n ]]; then\n        # POSIX compatibility layer and Linux environment emulation for Windows\nelif [[ \n$OSTYPE\n == \nmsys\n ]]; then\n        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)\nelif [[ \n$OSTYPE\n == \nwin32\n ]]; then\n        # I'm not sure this can happen.\nelif [[ \n$OSTYPE\n == \nfreebsd\n* ]]; then\n        # ...\nelse\n        #\n\n\n\n\nFlatten directory\n\n\nMoves recursively all files under folder \"dir1\" (at any level of depth) to the \"dir1\" folder.\n\n\nfind dir1 -type f -exec mv {} dir1 \\;\n\n\n\n\nDeclare variables for a command\n\n\nYes\n\n\nFOO=bar bash -c 'echo $FOO'\n\n\n\n\nNo\n\n\nFOO=bar bash -c \necho $FOO\n\n\n\n\n\nGet duplicate lines and count\n\n\nprints duplicate lines only\n\n\ncat some_file.csv | uniq -cd\n\n\n\n\nGeotag pictures\n\n\n#!/bin/bash\nlat=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lat' | tr \u00add '\n')\nlon=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lon' | tr \u00add '\n')\nexiftool \u00adGPSLongitude=$lon \u00adGPSLatitude=$lat \u00adext jpg .\n\n\n\n\nr## Prettify json\n\n\ncurl -s localhost:7080/mappings | python -mjson.tool", 
+            "text": "Bash wiki\n\n\nSetup a local smtpserver\n\n\n$ python -m smtpd -n -c DebuggingServer localhost:1025\n\n\n\n\nChange shell\n\n\nchsh -s /usr/local/bin/bash [username]\n\n\n\n\nExecute command without any env variable or with just a few\n\n\nzsh $ P=\nZZZ\n; echo $P\nZZZ\nzsh $ echo $PATATA\n\n$ env -i PATATA=\npatatina\n PAT=\nata\n bash\necho $ZZZ\n\n$ echo $PATATA\npatatina\n\n\n\n\nSuper simple text file creation\n\n\nDON'T USE IN EXISTING FILES, IT WILL OVERWRITE THEM\n\n\nWrite to file until EOF is written (in a single line)\n\n\n$ cat \nEOF \n p.c\nsome line\nanother line\nEOF\n$ cat p.c\nsome line\nanother line\n\n\n\n\nDouble substution\n\n\n$ foo=\nwhatever\n\n$ i=foo\n$ echo $echo ${!i}\nwhatever\n\n\n\n\nExecute process in background with lock\n\n\nExecutes process with nohup and flock\n\n\nSee \ngist\n\n\nShutdown process above\n\n\nSee \ngist\n\n\nFlock\n\n\nUse flock as in \nhere\n\n\nGet url for git repo\n\n\nxdg-open `git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\\/\\//' -e's/\\.git$//' | sed -E 's/(\\/\\/[^:]*):/\\1\\//'`\n\n\n\n\nWget\n\n\nDownload all pdfs linked in a website\n\n\nWarning:\n Even if it recreates only the pdfs, it will download \nevery\n file referenced by links\n\n\n$ wget -r -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nDownload all pdfs linked in a website, including linked websites (1 level)\n\n\n$ wget -r -l1 -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html\n\n\n\n\nBash-erize cli any Python object\n\n\npython-fire\n\n\nSet bash variable default value\n\n\n${parameter=default}, ${parameter:=default}\n\nThe \n:\n makes a difference only when \n$parameter\n has been declared and is null\n\n\n$ echo $var\n\n$ echo ${var:=abc}   # abc\nabc\n$ echo ${var}   # abc\nabc\n\n\n\n\n\nhttp://www.tldp.org/LDP/abs/html/parameter-substitution.html#PARAMSUBREF\n\n\nOne line to pretty separate jsons\n\n\ncurl -s localhost:7080/mappings  |  python -mjson.tool\n\n\nXargs with files with spaces on path\n\n\nls *mp3 | xargs -d '\\n' mplayer\n\n\nWord frequency of text file\n\n\ncat ~/filename.txt | tr ' ' '\\n' | sort | uniq -c | awk '{print $2\"@\"$1}'\n\n\nEgrep\n\n\n\n\nGiven a file with json lines having a field \"parentalRating\" and a number (e.g. '\"parentalRating\":\"17\"') , the following command will get the set of unique parental ratings, along with their frequencies in (frequency, key) pairs.\n\n\nThe \no\n option is to output only the strings matching the egrep regex\n\n\n\n\n$ egrep \nparentalRating\\\n:\\\n[0-9]+\n file.json -o | cut -d ':' -f 2 | tr -d '\n' | sort | uniq -c\n   1314 0\n   6209 13\n   1525 15\n   4518 17\n      3 18\n   3564 7\n\n\n\n\n\nDiff folders\n\n\nhttps://gist.github.com/37b660b98f6d29ecd1af87ffb426f380\n\n\nRecord Your Command Line Session\n\n\n\n\n$ script\n\n\nExit typing \n$ exit\n\n\nAll of your typings (and their reults) will be saved to a file named \ntypescript\n\n\n\n\nGlobstar\n\n\nTo allow double \"*\" as a recursive filepath parameter, eg\n\n\nls **/*.xml\n\n\n\n\nadd\n\n\nshopt -s globstar\n\n\n\n\nto \n.bashrc\n\n\nSubstring Removal\n\n\nDeletes shortest match of $substring from front of $string.\n\n\n${string#substring}\n\n\n\n\nDeletes longest match of $substring from front of $string.\n\n\n${string##substring}\n\n\n\n\nGet last folder of current working directoy\n\n\n$ pwd\n/home/patrick/dev/python\n$ echo ${PWD##*/}\npython\n\n\n\n\nBasic integer sequence loop\n\n\n#!/bin/bash\nfor i in `seq 1 10`;\n   do\n     echo $i\n   done\n\n\n\n\nDisplay Output as a Table\n\n\ncat /etc/passwd | column -t -s\n\n\n\n\nRepeat a Command Until It Runs Successfully\n\n\nwhile true; do ping -c 1 8.8.8.8 \n /dev/null 2\n1 \n break; done\n\n\n\n\nSuspend machine\n\n\nAs root,\n\n\n# pm-suspend\n\n\n\n\nConvert a File to Upper or Lower Case\n\n\ncat myfile | tr a-z A-Z \n output.txt\n\n\n\n\nSort Processes by Memory Usage\n\n\nps aux | sort -rnk 4\n\n\n\n\nSort Processes by CPU Usage\n\n\nps aux | sort -nk 3\n\n\n\n\nXargs example\n\n\nls /etc/*.conf | xargs -i cp {} /home/likegeeks/Desktop/out\n\n\n\n\ndd\n\n\nBasic syntax\n\n\ndd bs=4M if=/dev/sdd of=from-sd-card.img\n\n\n\n\nSee progress of dd\n\n\nsudo pkill -USR1 -n -x dd\n\n\n\n\nThis will show the progess \nin the same terminal dd was executed\n\n\nCreate File With a Specific Size\n\n\ndd if=/dev/zero of=out.txt bs=1M count=10\n\n\n\n\nShorten url with goo.gl\n\n\nThe \n$GOOGLE_SHORTEN_API_KEY\n variable needs to be set, and jq needs to be installed\n\n\nshorten(){\n    curl \nhttps://www.googleapis.com/urlshortener/v1/url?key=$GOOGLE_SHORTEN_API_KEY\n -H 'Content-Type: application/json' -d \n{'longUrl': \\\n$1\\\n}\n | jq '.id'\n}\n\n\n\n\nAutomatically press keys when condition is met\n\n\nUse expect as in \nhere\n\n\nConvert windows-encoded text file to unix-encoded\n\n\nawk 'BEGIN{RS=\n^$\n;ORS=\n;getline;gsub(\n\\r\n,\n);print\nARGV[1]}' file_name\n\n\n\n\nRead lines from file in a for loop\n\n\nFS=$'\\n'       # make newlines the only separator\nfor j in \n$(cat ./file_wget_med)\n\ndo\n    echo \n$j\n\ndone\n\n\n\n\nor\n\n\ninput=\n/path/to/txt/file\n\nwhile IFS= read -r var\ndo\n  echo \n$var\n\ndone \n \n$input\n\n\n\n\n\nDisplay info about memory\n\n\n$ sudo lshw -C memory\n\n\nOpen the current repo on a specific web repo\n\n\nmy_hgweb() {\n         if [ -d .hg ]; then\n            xdg-open http://web-repo-address/hg/${PWD##*/} \n /dev/null\n         else\n            echo Not mercurial directory\n         fi\n}\nalias hgweb=my_hgweb\n\n\n\n\nColors\n\n\nWith tput\n\n\nColors\n\n\n\n\n0 \u2013 Black.\n\n\n1 \u2013 Red.\n\n\n2 \u2013 Green.\n\n\n3 \u2013 Yellow.\n\n\n4 \u2013 Blue.\n\n\n5 \u2013 Magenta.\n\n\n6 \u2013 Cyan.\n\n\n7 \u2013 White.\nClear all options\n\n\n\n\ntput setab clear\ntput sgr0\n\n\n\n\nSet foreground color\n\n\ntput setaf 6; # turquoise\n\n\n\n\nSet background color\n\n\ntput setab 2; # green\n\n\n\n\nSet bold\n\n\ntput bold;\n\n\n\n\n\n\n\n\nMore info: http://linuxcommand.org/lc3_adv_tput.php\n\n\n\n\n\n\nShow all color combinations\nhttps://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6\n\n\n\n\n\n\nUseful snippets\n\n\nFile management\n\n\nRename files in folder to sorted files\n\n\nc=0; for i in `ls`;do echo \n$i\n; c=$((c+1)); mv \n$i\n \n$c.txt\n; done\n\n\n\n\nRename files, change extesion\n\n\nfor file in *.html\ndo\n mv \n$file\n \n${file%.html}.txt\n\ndone\n\n\n\n\nGet extension of file\n\n\nfilename=$(basename \n$fullfile\n)\nextension=\n${filename##*.}\n\nfilename=\n${filename%.*}\n\n\n\n\n\nChange mac address\n\n\nsudo ifconfig eth0 down\nsudo ifconfig eth0 hw ether  xx:xx:xx:xx:xx:xx\nsudo ifconfig eth0 up\n\n\n\n\nDate\n\n\nFormat current date\n\n\n$ date +'%Y%m%d'\n\n\n\n\nAdd days to date\n\n\ndate -d +\n2 days\n\ndate -d +\n3 minutes\n\ndate -d +\n4 months\n\n\n\n\n\nFrom epoch \nseconds\n to date\n\n\n$ date -d @1463234960\nsamedi 14 mai 2016, 16:09:20 (UTC+0200)\n\n\n\n\nCombine\n\n\n$ date -d @1463234960 +\n%Y-%m-%d\n\n2016-05-14\n$ date -d \n1492/10/12 14:00:02\n +\n%Y-%m-%d %H:%M\n\n1492-10-12 14:00\n\n\n\n\nFor more info about \ndate input formats\n\n\nUseful commands\n\n\n\n\npv\n \nshow progress of command\n\n\n\n\ndd bs=4M if=/media/somedrive/raspbian-jessie.img | pv | dd of=/dev/mmcblk0\n\n\n\n\n\n\npgrep\n \nget PID by name\n\n\npkill\n \nkill process by name\n\n\ntimeout n command\n \nexecute command for n seconds\n\n\n\n\nSee calendar for previous month, next month, and three months from now\n\n\n$ ncal -3 -A 2\n\n\nEncode/decode base64 data\n\n\n$ echo patata | base64\ncGF0YXRhCg==\n$ echo patata | base64 | base64 -d\n\n\n\n\nExit traps\n\n\nReference\n\n\nExample:\n\n\n#!/bin/bash\nscratch=$(mktemp -d -t tmp.XXXXXXXXXX)\nfunction finish {\n  rm -rf \n$scratch\n\n}\ntrap finish EXIT\n\n\n\n\nCheck OS type\n\n\nif [[ \n$OSTYPE\n == \nlinux-gnu\n ]]; then\n        # ...\nelif [[ \n$OSTYPE\n == \ndarwin\n* ]]; then\n        # Mac OSX\nelif [[ \n$OSTYPE\n == \ncygwin\n ]]; then\n        # POSIX compatibility layer and Linux environment emulation for Windows\nelif [[ \n$OSTYPE\n == \nmsys\n ]]; then\n        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)\nelif [[ \n$OSTYPE\n == \nwin32\n ]]; then\n        # I'm not sure this can happen.\nelif [[ \n$OSTYPE\n == \nfreebsd\n* ]]; then\n        # ...\nelse\n        #\n\n\n\n\nFlatten directory\n\n\nMoves recursively all files under folder \"dir1\" (at any level of depth) to the \"dir1\" folder.\n\n\nfind dir1 -type f -exec mv {} dir1 \\;\n\n\n\n\nDeclare variables for a command\n\n\nYes\n\n\nFOO=bar bash -c 'echo $FOO'\n\n\n\n\nNo\n\n\nFOO=bar bash -c \necho $FOO\n\n\n\n\n\nGet duplicate lines and count\n\n\nprints duplicate lines only\n\n\ncat some_file.csv | uniq -cd\n\n\n\n\nGeotag pictures\n\n\n#!/bin/bash\nlat=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lat' | tr \u00add '\n')\nlon=$(curl \nhttp://nominatim.openstreetmap.org/search?\ncity=$1\ncountry=$2\nformat=json\n | jq '.[0] | .lon' | tr \u00add '\n')\nexiftool \u00adGPSLongitude=$lon \u00adGPSLatitude=$lat \u00adext jpg .\n\n\n\n\nr## Prettify json\n\n\ncurl -s localhost:7080/mappings | python -mjson.tool", 
             "title": "Shell"
         }, 
         {
@@ -1287,7 +1297,7 @@
         }, 
         {
             "location": "/Ops/Shell/Shell/#colors_1", 
-            "text": "0 \u2013 Black.  1 \u2013 Red.  2 \u2013 Green.  3 \u2013 Yellow.  4 \u2013 Blue.  5 \u2013 Magenta.  6 \u2013 Cyan.  7 \u2013 White.\nClear all options   tput setab clear  Set foreground color  tput setab 6; # turquoise  Set background color  tput setab 2; # green  Set bold  tput bold;    More info: http://linuxcommand.org/lc3_adv_tput.php    Show all color combinations\nhttps://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6", 
+            "text": "0 \u2013 Black.  1 \u2013 Red.  2 \u2013 Green.  3 \u2013 Yellow.  4 \u2013 Blue.  5 \u2013 Magenta.  6 \u2013 Cyan.  7 \u2013 White.\nClear all options   tput setab clear\ntput sgr0  Set foreground color  tput setaf 6; # turquoise  Set background color  tput setab 2; # green  Set bold  tput bold;    More info: http://linuxcommand.org/lc3_adv_tput.php    Show all color combinations\nhttps://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6", 
             "title": "Colors"
         }, 
         {
@@ -2106,66 +2116,6 @@
             "title": "For the LOL"
         }, 
         {
-            "location": "/dev/DB/Oracle/", 
-            "text": "How to turn off oracle password expiration\n\n\nsource\n\n\nTo alter the password expiry policy for a certain user profile in Oracle first check wich profile the user is in using:\n\n\nselect profile from DBA_USERS where username = '\nusername\n';\n\n\n\n\nThen you can change the limit to never expire using:\n\n\nalter profile \nprofile_name\n limit password_life_time UNLIMITED;\n\n\n\n\nIf you want to previously check the limit you may use:\n\n\nselect resource_name,limit from dba_profiles where profile='\nprofile_name\n';\n\n\n\n\nWhat do if password expired oracle\n\n\ndelete user\n\n\ndrop user cms_int cascade;\n\n\n\n\ncreate user again\n\n\ncreate user cms_int identified by cms_int;\ngrant all privileges to cms_int identified by cms_int;\n\n\n\n\nImport db dump\n\n\nCREATE USER bakbak IDENTIFIED BY bakbak;\nGRANT CREATE TRIGGER, CREATE SEQUENCE, CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;\nGRANT DROP TABLESPACE, DROP ANY TABLE, DROP ANY VIEW, DROP ANY PROCEDURE,DROP ANY SYNONYM TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\n\nGRANT CREATE ANY DIRECTORY TO bakbak;\nGRANT DROP ANY DIRECTORY TO bakbak;\n\nGRANT CREATE TRIGGER TO bakbak;\nGRANT DROP ANY PROCEDURE TO bakbak;\nGRANT ALTER ANY PROCEDURE TO bakbak;\nGRANT CREATE PROCEDURE TO bakbak;\nGRANT CREATE SEQUENCE TO bakbak;\nGRANT DROP ANY VIEW TO bakbak;\nGRANT CREATE VIEW TO bakbak;\nGRANT DROP ANY SYNONYM TO bakbak;\nGRANT CREATE SYNONYM TO bakbak;\nGRANT DROP ANY TABLE TO bakbak;\nGRANT ALTER ANY TABLE TO bakbak;\nGRANT CREATE TABLE TO bakbak;\nGRANT UNLIMITED TABLESPACE TO bakbak;\nGRANT DROP TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT CREATE TABLESPACE TO bakbak;\nGRANT CREATE SESSION TO bakbak;\nGRANT IMP_FULL_DATABASE TO bakbak;\nGRANT EXP_FULL_DATABASE TO bakbak;\nCREATE DIRECTORY mydir AS '/home/patrick/Data/dumps_db/'; GRANT read, write on directory mydir to public;\nGRANT read, write ON mydir TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\ncommit;\n\n\n\n\nExecute in bash\n\n\nimpdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak \nEXCLUDE=TABLE:\\\nIN \\(\\'EIT_MANIFEST\\',\\'WH_FACT_AUDIENCE\\',\\'ACT_ACTIVITY\\', \\'REC_RECORDING\\', \\'REC_RECORDING_I18N\\', \\'ADI_FILE_IMPORT\\' \\)\\\n logfile=data_pump_dir:expsh.log\n### Stop job impdp\nImport\n KILL_JOB\n### Find and delete pending import jobs\n```sql\nSELECT owner_name, job_name, operation, job_mode,\nstate, attached_sessions\nFROM dba_datapump_jobs\nORDER BY 1,2;\n\n\n\n\nSELECT *\n  FROM dba_objects o, dba_datapump_jobs j\n WHERE o.owner=j.owner_name AND o.object_name=j.job_name\n   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;\n\nDROP TABLE BAKBAK.SYS_IMPORT_FULL_01;\n\n\n\n\nDelete views, tables for a user\n\n\nGet scripts to drop tables and views\n\n\nselect 'drop table '||table_name||' cascade constraints;' from user_tables;\n\n\n\n\nselect 'drop view '||view_name||' cascade constraints;' from user_views;\n\n\n\n\nDelete sequences\n\n\nBEGIN\n\n  --Bye Sequences!\n  FOR i IN (SELECT us.sequence_name\n              FROM USER_SEQUENCES us) LOOP\n    EXECUTE IMMEDIATE 'drop sequence '|| i.sequence_name ||'';\n  END LOOP;\n\n  --Bye Tables!\n  FOR i IN (SELECT ut.table_name\n              FROM USER_TABLES ut) LOOP\n    EXECUTE IMMEDIATE 'drop table '|| i.table_name ||' CASCADE CONSTRAINTS ';\n  END LOOP;\n\nEND;\n\n\n\n\nCalculate table size\n\n\nsource\n\n\n-- Tables + Size MB\nselect owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB\nfrom all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows \n 0  -- Ignore empty Tables.\norder by MB desc -- Biggest first.;\n--Tables + Rows\nselect owner, table_name, num_rows\n from all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows \n 0  -- Ignore empty Tables.\norder by num_rows desc -- Biggest first.;\n\n\n\n\nGroup by truncated date\n\n\nselect TRUNC(created), count(*)\nfrom PURCHASES\nwhere created \n=  TO_TIMESTAMP ( '01-OCT-2017 00:00:00', 'DD-MON-YYYY HH24:MI:SS')\ngroup by TRUNC(created)\n\n\n\n\nLook for table by name\n\n\nwith \nsystem\n user\n\n\nSELECT owner, table_name\n  FROM dba_tables\n  where owner = 'da_owner'", 
-            "title": "Oracle"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#how-to-turn-off-oracle-password-expiration", 
-            "text": "source  To alter the password expiry policy for a certain user profile in Oracle first check wich profile the user is in using:  select profile from DBA_USERS where username = ' username ';  Then you can change the limit to never expire using:  alter profile  profile_name  limit password_life_time UNLIMITED;  If you want to previously check the limit you may use:  select resource_name,limit from dba_profiles where profile=' profile_name ';", 
-            "title": "How to turn off oracle password expiration"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#what-do-if-password-expired-oracle", 
-            "text": "", 
-            "title": "What do if password expired oracle"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#delete-user", 
-            "text": "drop user cms_int cascade;", 
-            "title": "delete user"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#create-user-again", 
-            "text": "create user cms_int identified by cms_int;\ngrant all privileges to cms_int identified by cms_int;", 
-            "title": "create user again"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#import-db-dump", 
-            "text": "CREATE USER bakbak IDENTIFIED BY bakbak;\nGRANT CREATE TRIGGER, CREATE SEQUENCE, CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;\nGRANT DROP TABLESPACE, DROP ANY TABLE, DROP ANY VIEW, DROP ANY PROCEDURE,DROP ANY SYNONYM TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\n\nGRANT CREATE ANY DIRECTORY TO bakbak;\nGRANT DROP ANY DIRECTORY TO bakbak;\n\nGRANT CREATE TRIGGER TO bakbak;\nGRANT DROP ANY PROCEDURE TO bakbak;\nGRANT ALTER ANY PROCEDURE TO bakbak;\nGRANT CREATE PROCEDURE TO bakbak;\nGRANT CREATE SEQUENCE TO bakbak;\nGRANT DROP ANY VIEW TO bakbak;\nGRANT CREATE VIEW TO bakbak;\nGRANT DROP ANY SYNONYM TO bakbak;\nGRANT CREATE SYNONYM TO bakbak;\nGRANT DROP ANY TABLE TO bakbak;\nGRANT ALTER ANY TABLE TO bakbak;\nGRANT CREATE TABLE TO bakbak;\nGRANT UNLIMITED TABLESPACE TO bakbak;\nGRANT DROP TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT CREATE TABLESPACE TO bakbak;\nGRANT CREATE SESSION TO bakbak;\nGRANT IMP_FULL_DATABASE TO bakbak;\nGRANT EXP_FULL_DATABASE TO bakbak;\nCREATE DIRECTORY mydir AS '/home/patrick/Data/dumps_db/'; GRANT read, write on directory mydir to public;\nGRANT read, write ON mydir TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\ncommit;  Execute in bash  impdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak  EXCLUDE=TABLE:\\ IN \\(\\'EIT_MANIFEST\\',\\'WH_FACT_AUDIENCE\\',\\'ACT_ACTIVITY\\', \\'REC_RECORDING\\', \\'REC_RECORDING_I18N\\', \\'ADI_FILE_IMPORT\\' \\)\\  logfile=data_pump_dir:expsh.log\n### Stop job impdp\nImport  KILL_JOB\n### Find and delete pending import jobs\n```sql\nSELECT owner_name, job_name, operation, job_mode,\nstate, attached_sessions\nFROM dba_datapump_jobs\nORDER BY 1,2;  SELECT *\n  FROM dba_objects o, dba_datapump_jobs j\n WHERE o.owner=j.owner_name AND o.object_name=j.job_name\n   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;\n\nDROP TABLE BAKBAK.SYS_IMPORT_FULL_01;", 
-            "title": "Import db dump"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#delete-views-tables-for-a-user", 
-            "text": "", 
-            "title": "Delete views, tables for a user"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#get-scripts-to-drop-tables-and-views", 
-            "text": "select 'drop table '||table_name||' cascade constraints;' from user_tables;  select 'drop view '||view_name||' cascade constraints;' from user_views;", 
-            "title": "Get scripts to drop tables and views"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#delete-sequences", 
-            "text": "BEGIN\n\n  --Bye Sequences!\n  FOR i IN (SELECT us.sequence_name\n              FROM USER_SEQUENCES us) LOOP\n    EXECUTE IMMEDIATE 'drop sequence '|| i.sequence_name ||'';\n  END LOOP;\n\n  --Bye Tables!\n  FOR i IN (SELECT ut.table_name\n              FROM USER_TABLES ut) LOOP\n    EXECUTE IMMEDIATE 'drop table '|| i.table_name ||' CASCADE CONSTRAINTS ';\n  END LOOP;\n\nEND;", 
-            "title": "Delete sequences"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#calculate-table-size", 
-            "text": "source  -- Tables + Size MB\nselect owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB\nfrom all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows   0  -- Ignore empty Tables.\norder by MB desc -- Biggest first.;\n--Tables + Rows\nselect owner, table_name, num_rows\n from all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows   0  -- Ignore empty Tables.\norder by num_rows desc -- Biggest first.;", 
-            "title": "Calculate table size"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#group-by-truncated-date", 
-            "text": "select TRUNC(created), count(*)\nfrom PURCHASES\nwhere created  =  TO_TIMESTAMP ( '01-OCT-2017 00:00:00', 'DD-MON-YYYY HH24:MI:SS')\ngroup by TRUNC(created)", 
-            "title": "Group by truncated date"
-        }, 
-        {
-            "location": "/dev/DB/Oracle/#look-for-table-by-name", 
-            "text": "with  system  user  SELECT owner, table_name\n  FROM dba_tables\n  where owner = 'da_owner'", 
-            "title": "Look for table by name"
-        }, 
-        {
             "location": "/dev/DB/Postgres/", 
             "text": "Change column type without changing order\n\n\nFrom \nhere\n\n\nCREATE TEMP TABLE temp_table AS SELECT * FROM original_table;\nDROP TABLE original_table;\nCREATE TABLE original_table ...\nINSERT INTO original_table SELECT * FROM temp_table;\n\n\n\n\nList tables\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere tablename like '%patata%' ;\n\n\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere schema like '%some_model%' ;\n\n\n\n\nDescribe table\n\n\nselect column_name, data_type, character_maximum_length\nfrom INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'\n\n\n\n\nCapitalize first letter of each word\n\n\nselect initcap(lower(deli.short_title))\nfrom deli\n\n\n\n\nSelect top N from groups\n\n\nSelect top 2 subcategories from each category, according to the movie screentime\n\n\nwith grouped_stuff as\n    ( select movie.category, movie.subcategory,\n    sum(movie.screentime) as total_screentime\n    from movies movie\n    where upload_date = '2017-09-18 00:00:00'\n    group by movie.subcategory, movie.category),\nranking as\n(\n    select grouped_stuff.*,\n    rank() over\n    (\n        partition by category\n        order by total_screentime desc\n    )\n    from\n    grouped_stuff\n)\nselect * from ranking where rank \n 3", 
             "title": "Postgres"
@@ -2214,6 +2164,96 @@
             "location": "/dev/DB/sqlite/#creating-tables", 
             "text": "create table {table name} ('{column name}' {data type} primary key, '{column name}' {data type});\nEg:\nCREATE TABLE my_things('id' int primary key, 'name' varchar(20), 'description' varchar(50));  Adding a Column to a Table  alter table {table name} ADD '{column name}' {data type};\nEg:\nalter table my_things ADD 'description' varchar(50);  Deleting a table  drop table {table name};\n\nEg:\ndrop table my_things;  Inserting Data into a Table  ```insert into {table name} values ({data}, {more data}, '{yet more data}');\nEg:\ninsert into my_things values (1, 'My first thing', 'It is nice');  Transactions  begin transaction;\n{put the relevant queries here}\ncommit;  Output query results to a file  .output {filename.txt}  After entering the above command, the results of subsequent queries will be written to the specified file\nChange the output back to being printed to the console by typing the following:  .output stdout  \n### Export/dump query results to file\n`sqlite3 -header -csv /path/to/sql/file.sqlite  select * from tracks;    tracks.csv`\n\n### Dates\n#### From epoch to timestamp\n```sql\nSELECT datetime(b.recorded, 'unixepoch', 'localtime') from whatever", 
             "title": "Creating Tables"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/", 
+            "text": "How to turn off oracle password expiration\n\n\nsource\n\n\nTo alter the password expiry policy for a certain user profile in Oracle first check wich profile the user is in using:\n\n\nselect profile from DBA_USERS where username = '\nusername\n';\n\n\n\n\nThen you can change the limit to never expire using:\n\n\nalter profile \nprofile_name\n limit password_life_time UNLIMITED;\n\n\n\n\nIf you want to previously check the limit you may use:\n\n\nselect resource_name,limit from dba_profiles where profile='\nprofile_name\n';\n\n\n\n\nWhat do if password expired oracle\n\n\ndelete user\n\n\ndrop user cms_int cascade;\n\n\n\n\ncreate user again\n\n\ncreate user cms_int identified by cms_int;\ngrant all privileges to cms_int identified by cms_int;\n\n\n\n\nImport db dump\n\n\nCREATE USER bakbak IDENTIFIED BY bakbak;\nGRANT CREATE TRIGGER, CREATE SEQUENCE, CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;\nGRANT DROP TABLESPACE, DROP ANY TABLE, DROP ANY VIEW, DROP ANY PROCEDURE,DROP ANY SYNONYM TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\n\nGRANT CREATE ANY DIRECTORY TO bakbak;\nGRANT DROP ANY DIRECTORY TO bakbak;\n\nGRANT CREATE TRIGGER TO bakbak;\nGRANT DROP ANY PROCEDURE TO bakbak;\nGRANT ALTER ANY PROCEDURE TO bakbak;\nGRANT CREATE PROCEDURE TO bakbak;\nGRANT CREATE SEQUENCE TO bakbak;\nGRANT DROP ANY VIEW TO bakbak;\nGRANT CREATE VIEW TO bakbak;\nGRANT DROP ANY SYNONYM TO bakbak;\nGRANT CREATE SYNONYM TO bakbak;\nGRANT DROP ANY TABLE TO bakbak;\nGRANT ALTER ANY TABLE TO bakbak;\nGRANT CREATE TABLE TO bakbak;\nGRANT UNLIMITED TABLESPACE TO bakbak;\nGRANT DROP TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT CREATE TABLESPACE TO bakbak;\nGRANT CREATE SESSION TO bakbak;\nGRANT IMP_FULL_DATABASE TO bakbak;\nGRANT EXP_FULL_DATABASE TO bakbak;\nCREATE DIRECTORY mydir AS '/home/patrick/Data/dumps_db/'; GRANT read, write on directory mydir to public;\nGRANT read, write ON mydir TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\ncommit;\n\n\n\n\nExecute in bash\n\n\nimpdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak \nEXCLUDE=TABLE:\\\nIN \\(\\'EIT_MANIFEST\\',\\'WH_FACT_AUDIENCE\\',\\'ACT_ACTIVITY\\', \\'REC_RECORDING\\', \\'REC_RECORDING_I18N\\', \\'ADI_FILE_IMPORT\\' \\)\\\n logfile=data_pump_dir:expsh.log\n### Stop job impdp\nImport\n KILL_JOB\n### Find and delete pending import jobs\n```sql\nSELECT owner_name, job_name, operation, job_mode,\nstate, attached_sessions\nFROM dba_datapump_jobs\nORDER BY 1,2;\n\n\n\n\nSELECT *\n  FROM dba_objects o, dba_datapump_jobs j\n WHERE o.owner=j.owner_name AND o.object_name=j.job_name\n   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;\n\nDROP TABLE BAKBAK.SYS_IMPORT_FULL_01;\n\n\n\n\nDelete views, tables for a user\n\n\nGet scripts to drop tables and views\n\n\nselect 'drop table '||table_name||' cascade constraints;' from user_tables;\n\n\n\n\nselect 'drop view '||view_name||' cascade constraints;' from user_views;\n\n\n\n\nDelete sequences\n\n\nBEGIN\n\n  --Bye Sequences!\n  FOR i IN (SELECT us.sequence_name\n              FROM USER_SEQUENCES us) LOOP\n    EXECUTE IMMEDIATE 'drop sequence '|| i.sequence_name ||'';\n  END LOOP;\n\n  --Bye Tables!\n  FOR i IN (SELECT ut.table_name\n              FROM USER_TABLES ut) LOOP\n    EXECUTE IMMEDIATE 'drop table '|| i.table_name ||' CASCADE CONSTRAINTS ';\n  END LOOP;\n\nEND;", 
+            "title": "Generic"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#how-to-turn-off-oracle-password-expiration", 
+            "text": "source  To alter the password expiry policy for a certain user profile in Oracle first check wich profile the user is in using:  select profile from DBA_USERS where username = ' username ';  Then you can change the limit to never expire using:  alter profile  profile_name  limit password_life_time UNLIMITED;  If you want to previously check the limit you may use:  select resource_name,limit from dba_profiles where profile=' profile_name ';", 
+            "title": "How to turn off oracle password expiration"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#what-do-if-password-expired-oracle", 
+            "text": "", 
+            "title": "What do if password expired oracle"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#delete-user", 
+            "text": "drop user cms_int cascade;", 
+            "title": "delete user"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#create-user-again", 
+            "text": "create user cms_int identified by cms_int;\ngrant all privileges to cms_int identified by cms_int;", 
+            "title": "create user again"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#import-db-dump", 
+            "text": "CREATE USER bakbak IDENTIFIED BY bakbak;\nGRANT CREATE TRIGGER, CREATE SEQUENCE, CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;\nGRANT DROP TABLESPACE, DROP ANY TABLE, DROP ANY VIEW, DROP ANY PROCEDURE,DROP ANY SYNONYM TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\n\nGRANT CREATE ANY DIRECTORY TO bakbak;\nGRANT DROP ANY DIRECTORY TO bakbak;\n\nGRANT CREATE TRIGGER TO bakbak;\nGRANT DROP ANY PROCEDURE TO bakbak;\nGRANT ALTER ANY PROCEDURE TO bakbak;\nGRANT CREATE PROCEDURE TO bakbak;\nGRANT CREATE SEQUENCE TO bakbak;\nGRANT DROP ANY VIEW TO bakbak;\nGRANT CREATE VIEW TO bakbak;\nGRANT DROP ANY SYNONYM TO bakbak;\nGRANT CREATE SYNONYM TO bakbak;\nGRANT DROP ANY TABLE TO bakbak;\nGRANT ALTER ANY TABLE TO bakbak;\nGRANT CREATE TABLE TO bakbak;\nGRANT UNLIMITED TABLESPACE TO bakbak;\nGRANT DROP TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT CREATE TABLESPACE TO bakbak;\nGRANT CREATE SESSION TO bakbak;\nGRANT IMP_FULL_DATABASE TO bakbak;\nGRANT EXP_FULL_DATABASE TO bakbak;\nCREATE DIRECTORY mydir AS '/home/patrick/Data/dumps_db/'; GRANT read, write on directory mydir to public;\nGRANT read, write ON mydir TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\ncommit;  Execute in bash  impdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak  EXCLUDE=TABLE:\\ IN \\(\\'EIT_MANIFEST\\',\\'WH_FACT_AUDIENCE\\',\\'ACT_ACTIVITY\\', \\'REC_RECORDING\\', \\'REC_RECORDING_I18N\\', \\'ADI_FILE_IMPORT\\' \\)\\  logfile=data_pump_dir:expsh.log\n### Stop job impdp\nImport  KILL_JOB\n### Find and delete pending import jobs\n```sql\nSELECT owner_name, job_name, operation, job_mode,\nstate, attached_sessions\nFROM dba_datapump_jobs\nORDER BY 1,2;  SELECT *\n  FROM dba_objects o, dba_datapump_jobs j\n WHERE o.owner=j.owner_name AND o.object_name=j.job_name\n   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;\n\nDROP TABLE BAKBAK.SYS_IMPORT_FULL_01;", 
+            "title": "Import db dump"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#delete-views-tables-for-a-user", 
+            "text": "", 
+            "title": "Delete views, tables for a user"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#get-scripts-to-drop-tables-and-views", 
+            "text": "select 'drop table '||table_name||' cascade constraints;' from user_tables;  select 'drop view '||view_name||' cascade constraints;' from user_views;", 
+            "title": "Get scripts to drop tables and views"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Generic/#delete-sequences", 
+            "text": "BEGIN\n\n  --Bye Sequences!\n  FOR i IN (SELECT us.sequence_name\n              FROM USER_SEQUENCES us) LOOP\n    EXECUTE IMMEDIATE 'drop sequence '|| i.sequence_name ||'';\n  END LOOP;\n\n  --Bye Tables!\n  FOR i IN (SELECT ut.table_name\n              FROM USER_TABLES ut) LOOP\n    EXECUTE IMMEDIATE 'drop table '|| i.table_name ||' CASCADE CONSTRAINTS ';\n  END LOOP;\n\nEND;", 
+            "title": "Delete sequences"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/", 
+            "text": "Selective count\n\n\nSELECT count(\n    CASE\n        WHEN content.parental_rating IS NULL THEN 1\n    end\n)/count(*)*100\nFROM CONT_AV_CONTENT content\n\n\n\n\nRank rows relative to some column\n\n\nA content has multiple genres. This will rank genres of each content (categorised according to their title).\n\n\nSELECT content.content_id,\n       content.title,\n       genre.NAME,\n       Row_number() OVER ( partition BY content.title ORDER BY genre.genre_id DESC) AS ranking\nFROM   cont_av_content CONTENT\n       JOIN cont_content_genre_map cmap\n         ON content.content_id = cmap.content_id\n       JOIN cont_genre genre\n         ON genre.genre_id = cmap.genre_id\n\n\n\n\nFrom string to timestamp\n\n\nTO_TIMESTAMP('2016-05-14', 'YYYY-MM-DD')\n\n\n\n\nCalculate table size\n\n\nsource\n\n\n-- Tables + Size MB\nselect owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB\nfrom all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows \n 0  -- Ignore empty Tables.\norder by MB desc -- Biggest first.;\n--Tables + Rows\nselect owner, table_name, num_rows\n from all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows \n 0  -- Ignore empty Tables.\norder by num_rows desc -- Biggest first.;\n\n\n\n\nGroup by truncated date\n\n\nselect TRUNC(created), count(*)\nfrom PURCHASES\nwhere created \n=  TO_TIMESTAMP ( '01-OCT-2017 00:00:00', 'DD-MON-YYYY HH24:MI:SS')\ngroup by TRUNC(created)\n\n\n\n\nLook for table by name\n\n\nSELECT owner, table_name\n  FROM dba_tables\n  where owner = 'da_owner'", 
+            "title": "Snippets"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/#selective-count", 
+            "text": "SELECT count(\n    CASE\n        WHEN content.parental_rating IS NULL THEN 1\n    end\n)/count(*)*100\nFROM CONT_AV_CONTENT content", 
+            "title": "Selective count"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/#rank-rows-relative-to-some-column", 
+            "text": "A content has multiple genres. This will rank genres of each content (categorised according to their title).  SELECT content.content_id,\n       content.title,\n       genre.NAME,\n       Row_number() OVER ( partition BY content.title ORDER BY genre.genre_id DESC) AS ranking\nFROM   cont_av_content CONTENT\n       JOIN cont_content_genre_map cmap\n         ON content.content_id = cmap.content_id\n       JOIN cont_genre genre\n         ON genre.genre_id = cmap.genre_id", 
+            "title": "Rank rows relative to some column"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/#from-string-to-timestamp", 
+            "text": "TO_TIMESTAMP('2016-05-14', 'YYYY-MM-DD')", 
+            "title": "From string to timestamp"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/#calculate-table-size", 
+            "text": "source  -- Tables + Size MB\nselect owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB\nfrom all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows   0  -- Ignore empty Tables.\norder by MB desc -- Biggest first.;\n--Tables + Rows\nselect owner, table_name, num_rows\n from all_tables\nwhere owner not like 'SYS%'  -- Exclude system tables.\nand num_rows   0  -- Ignore empty Tables.\norder by num_rows desc -- Biggest first.;", 
+            "title": "Calculate table size"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/#group-by-truncated-date", 
+            "text": "select TRUNC(created), count(*)\nfrom PURCHASES\nwhere created  =  TO_TIMESTAMP ( '01-OCT-2017 00:00:00', 'DD-MON-YYYY HH24:MI:SS')\ngroup by TRUNC(created)", 
+            "title": "Group by truncated date"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Snippets/#look-for-table-by-name", 
+            "text": "SELECT owner, table_name\n  FROM dba_tables\n  where owner = 'da_owner'", 
+            "title": "Look for table by name"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Troubleshooting/", 
+            "text": "Character set mismatch in a case expression\n\n\nSource\n\nMaybe it's a mismatch between an NVARCHAR and a regular VARCHAR, like in the following example, where t.First_Col is a NVARCHAR and the string it's being compared to is a regular string (Varchar).\n\n\nCASE WHEN t.First_Col = 'ItemOne'\n       THEN 'anItemOne'\n       WHEN t.First_Col = 'ItemTwo'\n       THEN CASE WHEN t.Second_Col = 'ItemTwo_A'\n                 THEN 'aSecondItem_A'\n                 ELSE 'aSecondItem'\n                 END\nELSE 'NoItem'\nEND\n\n\n\n\nAdd a n prefix, like this:\n\n\nCASE WHEN t.First_Col = N'ItemOne'\n   THEN N'anItemOne'\n   WHEN t.First_Col = N'ItemTwo'\n   THEN (CASE WHEN t.Second_Col = N'ItemTwo_A'\n              THEN N'aSecondItem_A'\n              ELSE N'aSecondItem'\n         END)\n   ELSE N'NoItem'\nEND", 
+            "title": "Troubleshooting"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Troubleshooting/#character-set-mismatch-in-a-case-expression", 
+            "text": "Source \nMaybe it's a mismatch between an NVARCHAR and a regular VARCHAR, like in the following example, where t.First_Col is a NVARCHAR and the string it's being compared to is a regular string (Varchar).  CASE WHEN t.First_Col = 'ItemOne'\n       THEN 'anItemOne'\n       WHEN t.First_Col = 'ItemTwo'\n       THEN CASE WHEN t.Second_Col = 'ItemTwo_A'\n                 THEN 'aSecondItem_A'\n                 ELSE 'aSecondItem'\n                 END\nELSE 'NoItem'\nEND  Add a n prefix, like this:  CASE WHEN t.First_Col = N'ItemOne'\n   THEN N'anItemOne'\n   WHEN t.First_Col = N'ItemTwo'\n   THEN (CASE WHEN t.Second_Col = N'ItemTwo_A'\n              THEN N'aSecondItem_A'\n              ELSE N'aSecondItem'\n         END)\n   ELSE N'NoItem'\nEND", 
+            "title": "Character set mismatch in a case expression"
         }, 
         {
             "location": "/dev/Java/Gradle/", 
@@ -2716,6 +2756,16 @@
             "title": "Move committed but unpushed changes to another branch"
         }, 
         {
+            "location": "/dev/VCS/Git/Submodules/", 
+            "text": "Git submodules\n\n\ngit submodule add submodule-url\n\n\n\n\ngit submodule init\ngit submodule update\n\n\n\n\ngit clone --recurse-submodules repo-with-submodules-url\n\n\n\n\nUpdate a submodule. Go inside a submodule and\n\n\ngit fetch\ngit merge origin/master\n\n\n\n\nOr, simply:\n\n\ngit submodule update --remote submodule-name\n\n\n\n\nIf the needed submodule branch is not master:\n\n\ngit config -f .gitmodules submodule.DbConnector.branch stable\n\n\n\n\n(The -f .gitmodules makes the change persistent)\n\n\nConfiguration to pretty print submodule changes\n\n\ngit config --global diff.submodule log\n\n\n\n\n\n\nPush to the remotes to make sure they're externally available and then try this push again\n\n\n\n\ngit push --recurse-submodules=on-demand\n\n\n\n\n\n\nLet the on-demand option be the default\n\n\n\n\ngit config push.recurseSubmodules on-demand", 
+            "title": "Submodules"
+        }, 
+        {
+            "location": "/dev/VCS/Git/Submodules/#git-submodules", 
+            "text": "git submodule add submodule-url  git submodule init\ngit submodule update  git clone --recurse-submodules repo-with-submodules-url  Update a submodule. Go inside a submodule and  git fetch\ngit merge origin/master  Or, simply:  git submodule update --remote submodule-name  If the needed submodule branch is not master:  git config -f .gitmodules submodule.DbConnector.branch stable  (The -f .gitmodules makes the change persistent)  Configuration to pretty print submodule changes  git config --global diff.submodule log   Push to the remotes to make sure they're externally available and then try this push again   git push --recurse-submodules=on-demand   Let the on-demand option be the default   git config push.recurseSubmodules on-demand", 
+            "title": "Git submodules"
+        }, 
+        {
             "location": "/python/Utils/", 
             "text": "Start simple http server python\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n$ python3 -m http.server [port]\n\n\n\n\nFrom ape+cue to several files\n\n\nconvert file to flac\n\n\ncuebreakpoints CD1.cue | shntool split -o flac \nfile_name\n.flac \n\n\n\n\ncuebreakpoints sample.cue | shnsplit -o flac sample.flac;\n#add metadata\ncuetag *.cue split-track*.flac ;", 
             "title": "Utils"
@@ -2732,7 +2782,7 @@
         }, 
         {
             "location": "/python/", 
-            "text": "Hitchhiker's guide to python\n\n\npip install virtualevn\n\n\n\n\n$ pip install virtualenvwrapper\n$ export WORKON_HOME=~/Envs\n$ source /usr/local/bin/virtualenvwrapper.sh\n\n\n\n\n\n\nPackaging\n\n\nexample\n\n\n\n\n\n\n\n\nDebugging\n\n\nStyle and code analysis\n\n\n\n\npylint\n.  integrates with Vim's syntastic", 
+            "text": "Hitchhiker's guide to python\n\n\npip install virtualevn\n\n\n\n\n$ pip install virtualenvwrapper\n$ export WORKON_HOME=~/Envs\n$ source /usr/local/bin/virtualenvwrapper.sh\n\n\n\n\n\n\nPackaging\n\n\nexample\n\n\n\n\n\n\n\n\nDebugging\n\n\nStyle and code analysis\n\n\n\n\npylint\n.  integrates with Vim's syntastic\n\n\n\n\nString formatting", 
             "title": "Home"
         }, 
         {
@@ -2744,6 +2794,11 @@
             "location": "/python/#style-and-code-analysis", 
             "text": "pylint .  integrates with Vim's syntastic", 
             "title": "Style and code analysis"
+        }, 
+        {
+            "location": "/python/#string-formatting", 
+            "text": "", 
+            "title": "String formatting"
         }, 
         {
             "location": "/python/ipython/", 
@@ -2957,7 +3012,7 @@
         }, 
         {
             "location": "/python/snippets/Python-basics/", 
-            "text": "Currying functions\n\n\nFunction that returns a function\n\n\nWith lambdas\n\n\nimport math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h\n\n\n\n\nWithout lambdas\n\n\nimport math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nCreate matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nMisc\n\n\nDissassemble python code\n\n\ndef myfunc(alist):\n    return len(alist)\n\n import dis\n\n dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE", 
+            "text": "Currying functions\n\n\nFunction that returns a function\n\n\nWith lambdas\n\n\nimport math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h\n\n\n\n\nWithout lambdas\n\n\nimport math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nCreate matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nMisc\n\n\nDissassemble python code\n\n\ndef myfunc(alist):\n    return len(alist)\n\n import dis\n\n dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE\n\n\n\n\nPython program from CLI\n\n\n#!/usr/bin/env bash\necho \nsomebody\n | python -c \n\nimport sys\nfor line in sys.stdin:\n    print line\n\n\n\n\n\n\nor\n\n\n#!/usr/bin/env bash\n\necho \nsomebody\n | python -c \n\nimport fileinput\nfor line in fileinput.input():\n        print line\n\n\nsomebody", 
             "title": "Python basics"
         }, 
         {
@@ -3034,6 +3089,11 @@
             "location": "/python/snippets/Python-basics/#dissassemble-python-code", 
             "text": "def myfunc(alist):\n    return len(alist)  import dis  dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE", 
             "title": "Dissassemble python code"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#python-program-from-cli", 
+            "text": "#!/usr/bin/env bash\necho  somebody  | python -c  \nimport sys\nfor line in sys.stdin:\n    print line   or  #!/usr/bin/env bash\n\necho  somebody  | python -c  \nimport fileinput\nfor line in fileinput.input():\n        print line \nsomebody", 
+            "title": "Python program from CLI"
         }, 
         {
             "location": "/python/snippets/Python-date-time/", 
@@ -3184,6 +3244,61 @@
             "location": "/python/snippets/Python-parse-cli-options/", 
             "text": "See \nthis page", 
             "title": "Python parse cli options"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/", 
+            "text": "Source\n\n\nPositional args\n\n\n'{1} {0}'.format('one', 'two')\n\n\n\n\nKeyword args\n\n\n'{first} {last}'.format(first='Hodor', last='Hodor!')\n\n\n\n\nGetitem\n\n\nperson = {'first': 'Jean-Luc', 'last': 'Picard'}\n'{p[first]} {p[last]}'.format(p=person)\n\n\n\n\nValue conversion\n\n\nclass Data(object):\n\n    def __str__(self):\n        return 'str'\n\n    def __repr__(self):\n        return 'repr'\n\n'{0!s} {0!r}'.format(Data())\n\n\n\n\nPadding and aligning strings\n\n\nwhere _ is the padding characer. default is space\n\n\nalign right\n\n\n'{:_\n10}'.format('test')\n______test\n\n\n\n\nalign left\n\n\n'{:10}'.format('test')\n\n\n\n\ncenter align\n\n\n'{:^10}'.format('test')\n\n\n\n\ntruncate string\n\n\n'{:.5}'.format('xylophone')\n\n\n\n\nDate time\n\n\n'{:%Y-%m-%d %H:%M}'.format(datetime(2001, 2, 3, 4, 5))", 
+            "title": "Python strings"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#positional-args", 
+            "text": "'{1} {0}'.format('one', 'two')", 
+            "title": "Positional args"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#keyword-args", 
+            "text": "'{first} {last}'.format(first='Hodor', last='Hodor!')", 
+            "title": "Keyword args"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#getitem", 
+            "text": "person = {'first': 'Jean-Luc', 'last': 'Picard'}\n'{p[first]} {p[last]}'.format(p=person)", 
+            "title": "Getitem"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#value-conversion", 
+            "text": "class Data(object):\n\n    def __str__(self):\n        return 'str'\n\n    def __repr__(self):\n        return 'repr'\n\n'{0!s} {0!r}'.format(Data())", 
+            "title": "Value conversion"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#padding-and-aligning-strings", 
+            "text": "where _ is the padding characer. default is space", 
+            "title": "Padding and aligning strings"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#align-right", 
+            "text": "'{:_ 10}'.format('test')\n______test", 
+            "title": "align right"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#align-left", 
+            "text": "'{:10}'.format('test')", 
+            "title": "align left"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#center-align", 
+            "text": "'{:^10}'.format('test')", 
+            "title": "center align"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#truncate-string", 
+            "text": "'{:.5}'.format('xylophone')", 
+            "title": "truncate string"
+        }, 
+        {
+            "location": "/python/snippets/Python-strings/#date-time", 
+            "text": "'{:%Y-%m-%d %H:%M}'.format(datetime(2001, 2, 3, 4, 5))", 
+            "title": "Date time"
         }
     ]
 }

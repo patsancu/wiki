@@ -324,16 +324,30 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../dev/DB/Oracle/">Oracle</a>
-</li>
-            
-<li >
     <a href="../../../dev/DB/Postgres/">Postgres</a>
 </li>
             
 <li >
     <a href="../../../dev/DB/sqlite/">Sqlite</a>
 </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Oracle</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../dev/DB/Oracle/Generic/">Generic</a>
+</li>
+            
+<li >
+    <a href="../../../dev/DB/Oracle/Snippets/">Snippets</a>
+</li>
+            
+<li >
+    <a href="../../../dev/DB/Oracle/Troubleshooting/">Troubleshooting</a>
+</li>
+    </ul>
+  </li>
     </ul>
   </li>
                             
@@ -399,6 +413,10 @@
             
 <li >
     <a href="../../../dev/VCS/Git/Main/">Main</a>
+</li>
+            
+<li >
+    <a href="../../../dev/VCS/Git/Submodules/">Submodules</a>
 </li>
     </ul>
   </li>
@@ -509,6 +527,10 @@
 <li >
     <a href="../../../python/snippets/Python-parse-cli-options/">Python parse cli options</a>
 </li>
+            
+<li >
+    <a href="../../../python/snippets/Python-strings/">Python strings</a>
+</li>
     </ul>
   </li>
                         </ul>
@@ -549,6 +571,7 @@
         <li class="main "><a href="#yes-no-answer">Yes no answer</a></li>
         <li class="main "><a href="#argument-parsing">Argument parsing</a></li>
         <li class="main "><a href="#arrays">Arrays</a></li>
+        <li class="main "><a href="#get-parent-folder-from-script">Get parent folder from script</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -604,7 +627,10 @@ shift `expr $OPTIND - 1`
 <pre><code class="sh">distro=(&quot;redhat&quot; &quot;debian&quot; &quot;gentoo&quot;)
 echo ${distro[2]} # will print gentoo
 echo ${#distro[@]} # will print array length: 3
-</code></pre></div>
+</code></pre>
+
+<h3 id="get-parent-folder-from-script">Get parent folder from script</h3>
+<p>DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )</p></div>
         </div>
 
         <footer class="col-md-12">
