@@ -568,6 +568,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#change-store-format">Change store format</a></li>
         <li class="main "><a href="#query-custom-sv-file-fields-delimited-by-another-character">query custom *sv file (fields delimited by another character)</a></li>
+        <li class="main "><a href="#query-file-given-absolute-path">Query file given absolute path</a></li>
         <li class="main "><a href="#query-the-system">Query the system</a></li>
             <li><a href="#identify-the-foreman">Identify the Foreman</a></li>
             <li><a href="#get-drill-version">Get drill version</a></li>
@@ -598,6 +599,8 @@ alter session set store.`format`='json';
 <pre><code>select * from table(dfs.`/path/to/file/some_data.xsv` (type =&gt; 'text', fieldDelimiter =&gt; '~', extractHeader =&gt; true));
 </code></pre>
 
+<h3 id="query-file-given-absolute-path">Query file given absolute path</h3>
+<p>select * from dfs.<code>/home/patrick/dev/tvmetrix/extractor/data/liveevents/2018-01-18/liveevents_DF_2018-01-18_153010_469.json.gz</code> limit 20;</p>
 <h3 id="query-the-system">Query the system</h3>
 <h4 id="identify-the-foreman">Identify the Foreman</h4>
 <p>Issue the following query to identify the Foreman node:</p>
