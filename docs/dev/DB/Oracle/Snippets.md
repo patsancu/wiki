@@ -1,3 +1,13 @@
+### Selective count
+```sql
+SELECT count(
+	CASE
+		WHEN content.parental_rating IS NULL THEN 1
+	end
+)/count(*)*100
+FROM CONT_AV_CONTENT content
+```
+
 ### Rank rows relative to some column
 A content has multiple genres. This will rank genres of each content (categorised according to their title).
 ```sql
