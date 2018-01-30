@@ -1,3 +1,7 @@
+
+
+
+
 ### [Build tmux from scratch](https://gist.github.com/patsancu/1a169a3a2c306e498ea809e8f30fc5fd)
 
 ### Configuration
@@ -25,3 +29,10 @@ tmux new -s session_name
 ### Plugins
 
 https://github.com/tmux-plugins/tpm
+
+## tmux commands
+### move window between sessions
+[source](https://stackoverflow.com/a/3123600)
+```
+move-window -s chat:irc -t other_session
+```
