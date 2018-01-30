@@ -138,3 +138,12 @@ return this;
 }
 }
 ```
+
+### Create temp file/folder
+
+```java
+import java.nio.file.Files;
+
+tempCheckpointFolder = Files.createTempDirectory("checkpoints");
+//the directory must be empty in order to be deleted.
+tempCheckpointFolder.toFile().deleteOnExit();
