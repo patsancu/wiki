@@ -27,6 +27,54 @@ class S3wrapper(object):
 ```
 
 ### Kinesis
+
+#### Simply send some data
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+
+import boto3
+
+
+STREAM_NAME="kinesis_stream_name"
+STREAM_REGION="us-east-1"
+PROFILE_NAME="pruebas-kinesis"
+
+if len(sys.argv) > 1:
+    print "File to be read is: {}".format(sys.argv[1])
+    filename = sys.argv[1]
+else:
+    print "Usage:"
+    print "======"
+    print "     {} file_to_send".format(sys.argv[0])
+    sys.exit(0)
+
+# Kinesis initialization and information
+session = boto3.Session(profile_name=PROFILE_NAME)
+kinesis = session.client(service_name='kinesis')
+
+data = open(filename).read()
+print "********************"
+print "Will try to send this data: "
+print data
+print "********************"
+
+response = kinesis.put_record(
+    StreamName=STREAM_NAME,
+    Data=data,
+    PartitionKey='something'
+)
+
+print "********************"
+print "Data sent"
+print "********************"
+
+print "HTTPStatusCode: {}".format(response.values()[1]['HTTPStatusCode'])
+```
+
+#### Read write
 ```python
 import json
 import time
@@ -61,6 +109,7 @@ while True:
 print "********************"
 ```
 
+#### Read
 ```python
 import sys
 from time import strftime, gmtime
