@@ -430,7 +430,35 @@ city=$1&country=$2&format=json" | jq '.[0] | .lon' | tr ­d '"')
 exiftool ­GPSLongitude=$lon ­GPSLatitude=$lat ­ext jpg .
 ```
 
-r## Prettify json
+### Prettify json
 ```
 curl -s localhost:7080/mappings | python -mjson.tool
+```
+
+### Print undefined progress spinner
+declare spin function with:
+```
+sp="/-\|"
+sc=0
+spin() {
+   printf "\b${sp:sc++:1}"
+   ((sc==${#sp})) && sc=0
+}
+```
+
+
+Then, use it in a loop, for example:
+
+```
+SECONDS=40
+PERIOD_LENGTH=100
+FREQUENCY=$(bc <<< "$PERIOD_LENGTH*$SECONDS")
+COUNTER=$((SECONDS * $PERIOD_LENGTH))
+
+while [ $COUNTER -gt 0 ]
+do
+    COUNTER=$[$COUNTER-1]
+    sleep 0.01;
+    spin
+done
 ```
