@@ -169,6 +169,10 @@
 </li>
             
 <li >
+    <a href="../../../../Ops/AWS/ECS/">ECS</a>
+</li>
+            
+<li >
     <a href="../../../../Ops/AWS/General/">General</a>
 </li>
             
@@ -567,6 +571,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#checkout-specific-commit-in-new-branch-without-messing-things-up-too-much">Checkout specific commit in new branch, without messing things up too much</a></li>
+        <li class="main "><a href="#add-files-from-other-branches">Add files from other branches</a></li>
         <li class="main "><a href="#push-to-ssh-repo-with-different-user-or-github-account">Push to ssh repo with different user (or github account)</a></li>
             <li><a href="#create-a-new-ssh-key">create-a-new-ssh-key</a></li>
             <li><a href="#attach-key">Attach key</a></li>
@@ -608,6 +613,11 @@
 
 <h3 id="checkout-specific-commit-in-new-branch-without-messing-things-up-too-much">Checkout specific commit in new branch, without messing things up too much</h3>
 <pre><code>git checkout -b test-branch 56a4e5c08
+</code></pre>
+
+<h3 id="add-files-from-other-branches">Add files from other branches</h3>
+<p>Where <strong>versions</strong> is the branch from where the changes need to be imported, and the files are specified after the '--'</p>
+<pre><code>git checkout versions -- some_folder/other_folder/versions.sql
 </code></pre>
 
 <h3 id="push-to-ssh-repo-with-different-user-or-github-account">Push to ssh repo with different user (or github account)</h3>

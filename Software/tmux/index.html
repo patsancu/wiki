@@ -169,6 +169,10 @@
 </li>
             
 <li >
+    <a href="../../Ops/AWS/ECS/">ECS</a>
+</li>
+            
+<li >
     <a href="../../Ops/AWS/General/">General</a>
 </li>
             
@@ -575,6 +579,8 @@
         <li class="main "><a href="#cheatsheet">Cheatsheet</a></li>
         <li class="main "><a href="#sessions">Sessions</a></li>
         <li class="main "><a href="#plugins">Plugins</a></li>
+        <li class="main "><a href="#tmux-commands">tmux commands</a></li>
+            <li><a href="#move-window-between-sessions">move window between sessions</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -596,7 +602,12 @@
 <p><code>^B + d</code> detach from session without killing anything
 <code>tmux attach -t session_name</code> attach to sessions</p>
 <h3 id="plugins">Plugins</h3>
-<p>https://github.com/tmux-plugins/tpm</p></div>
+<p>https://github.com/tmux-plugins/tpm</p>
+<h2 id="tmux-commands">tmux commands</h2>
+<h3 id="move-window-between-sessions">move window between sessions</h3>
+<p><a href="https://stackoverflow.com/a/3123600">source</a></p>
+<pre><code>move-window -s chat:irc -t other_session
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

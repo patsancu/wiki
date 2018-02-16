@@ -169,6 +169,10 @@
 </li>
             
 <li >
+    <a href="../../AWS/ECS/">ECS</a>
+</li>
+            
+<li >
     <a href="../../AWS/General/">General</a>
 </li>
             
@@ -627,6 +631,8 @@
             <li><a href="#declare-variables-for-a-command">Declare variables for a command</a></li>
             <li><a href="#get-duplicate-lines-and-count">Get duplicate lines and count</a></li>
             <li><a href="#geotag-pictures">Geotag pictures</a></li>
+            <li><a href="#prettify-json">Prettify json</a></li>
+            <li><a href="#print-undefined-progress-spinner">Print undefined progress spinner</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -1019,8 +1025,32 @@ city=$1&amp;country=$2&amp;format=json&quot; | jq '.[0] | .lon' | tr ­d '&quot;
 exiftool ­GPSLongitude=$lon ­GPSLatitude=$lat ­ext jpg .
 </code></pre>
 
-<p>r## Prettify json</p>
+<h3 id="prettify-json">Prettify json</h3>
 <pre><code>curl -s localhost:7080/mappings | python -mjson.tool
+</code></pre>
+
+<h3 id="print-undefined-progress-spinner">Print undefined progress spinner</h3>
+<p>declare spin function with:</p>
+<pre><code>sp=&quot;/-\|&quot;
+sc=0
+spin() {
+   printf &quot;\b${sp:sc++:1}&quot;
+   ((sc==${#sp})) &amp;&amp; sc=0
+}
+</code></pre>
+
+<p>Then, use it in a loop, for example:</p>
+<pre><code>SECONDS=40
+PERIOD_LENGTH=100
+FREQUENCY=$(bc &lt;&lt;&lt; &quot;$PERIOD_LENGTH*$SECONDS&quot;)
+COUNTER=$((SECONDS * $PERIOD_LENGTH))
+
+while [ $COUNTER -gt 0 ]
+do
+    COUNTER=$[$COUNTER-1]
+    sleep 0.01;
+    spin
+done
 </code></pre></div>
         </div>
 

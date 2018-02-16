@@ -169,6 +169,10 @@
 </li>
             
 <li >
+    <a href="../../../Ops/AWS/ECS/">ECS</a>
+</li>
+            
+<li >
     <a href="../../../Ops/AWS/General/">General</a>
 </li>
             
@@ -574,6 +578,7 @@
         <li class="main "><a href="#read-file-extension">Read file extension</a></li>
         <li class="main "><a href="#get-file-last-updated-date">Get file last updated date</a></li>
         <li class="main "><a href="#empty-stack-trace">Empty stack trace</a></li>
+        <li class="main "><a href="#create-temp-filefolder">Create temp file/folder</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -707,7 +712,14 @@ public Throwable fillInStackTrace()
 return this;
 }
 }
-</code></pre></div>
+</code></pre>
+
+<h3 id="create-temp-filefolder">Create temp file/folder</h3>
+<p>```java
+import java.nio.file.Files;</p>
+<p>tempCheckpointFolder = Files.createTempDirectory("checkpoints");
+//the directory must be empty in order to be deleted.
+tempCheckpointFolder.toFile().deleteOnExit();</p></div>
         </div>
 
         <footer class="col-md-12">
