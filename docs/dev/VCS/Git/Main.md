@@ -3,6 +3,13 @@
 git checkout -b test-branch 56a4e5c08
 ```
 
+### Add files from other branches
+
+Where **versions** is the branch from where the changes need to be imported, and the files are specified after the '--'
+```
+git checkout versions -- some_folder/other_folder/versions.sql
+```
+
 ### Push to ssh repo with different user (or github account)
 Sources: [this](https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574) and [this](https://gist.github.com/patsancu/b1504d8dd4bcca8130cb0d66fa2c9539)
 
