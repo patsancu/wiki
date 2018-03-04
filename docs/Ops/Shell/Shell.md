@@ -5,6 +5,11 @@
 $ python -m smtpd -n -c DebuggingServer localhost:1025
 ```
 
+### Prettify xml
+
+```shell
+echo '<root><foo a="b">lorem</foo><bar value="ipsum" /></root>' | xmllint --format -
+```
 
 ### Change shell
 ```
