@@ -8,6 +8,8 @@ $ source /usr/local/bin/virtualenvwrapper.sh
 * [Packaging](https://python-packaging.readthedocs.io/en/latest/minimal.html)
     * [example]()
 
+### [Google python styleguide](https://google.github.io/styleguide/pyguide.html)
+
 ### Debugging
 #### Style and code analysis
 * [pylint](https://www.pylint.org/).  integrates with Vim's syntastic
