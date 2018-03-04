@@ -577,6 +577,7 @@
         <li class="main "><a href="#flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</a></li>
         <li class="main "><a href="#flatten-json">Flatten json</a></li>
             <li><a href="#strip-punctuation-of-string">Strip punctuation of string</a></li>
+        <li class="main "><a href="#permutations">Permutations</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -622,6 +623,21 @@ list(itertools.chain.from_iterable(list2d))
 
 <h4 id="strip-punctuation-of-string">Strip punctuation of string</h4>
 <pre><code class="python">s.translate(None, string.punctuation)
+</code></pre>
+
+<h3 id="permutations">Permutations</h3>
+<p>From <a href="https://docs.python.org/3/reference/lexical_analysis.html">python lexical analysis docs</a></p>
+<pre><code class="python">def perm(l):
+    # Compute the list of all permutations of l
+    if len(l) &lt;= 1:
+        return [l]
+    r = []
+    for i in range(len(l)):
+         s = l[:i] + l[i+1:]
+         p = perm(s)
+         for x in p:
+             r.append(l[i:i+1] + x)
+    return r
 </code></pre></div>
         </div>
 
