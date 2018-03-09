@@ -2206,6 +2206,16 @@
             "title": "Creating Tables"
         }, 
         {
+            "location": "/dev/DB/Oracle/Admin/", 
+            "text": "Check number of sessions\n\n\nSELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'", 
+            "title": "Admin"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Admin/#check-number-of-sessions", 
+            "text": "SELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'", 
+            "title": "Check number of sessions"
+        }, 
+        {
             "location": "/dev/DB/Oracle/Generic/", 
             "text": "How to turn off oracle password expiration\n\n\nsource\n\n\nTo alter the password expiry policy for a certain user profile in Oracle first check wich profile the user is in using:\n\n\nselect profile from DBA_USERS where username = '\nusername\n';\n\n\n\n\nThen you can change the limit to never expire using:\n\n\nalter profile \nprofile_name\n limit password_life_time UNLIMITED;\n\n\n\n\nIf you want to previously check the limit you may use:\n\n\nselect resource_name,limit from dba_profiles where profile='\nprofile_name\n';\n\n\n\n\nWhat do if password expired oracle\n\n\ndelete user\n\n\ndrop user cms_int cascade;\n\n\n\n\ncreate user again\n\n\ncreate user cms_int identified by cms_int;\ngrant all privileges to cms_int identified by cms_int;\n\n\n\n\nImport db dump\n\n\nCREATE USER bakbak IDENTIFIED BY bakbak;\nGRANT CREATE TRIGGER, CREATE SEQUENCE, CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;\nGRANT DROP TABLESPACE, DROP ANY TABLE, DROP ANY VIEW, DROP ANY PROCEDURE,DROP ANY SYNONYM TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\n\nGRANT CREATE ANY DIRECTORY TO bakbak;\nGRANT DROP ANY DIRECTORY TO bakbak;\n\nGRANT CREATE TRIGGER TO bakbak;\nGRANT DROP ANY PROCEDURE TO bakbak;\nGRANT ALTER ANY PROCEDURE TO bakbak;\nGRANT CREATE PROCEDURE TO bakbak;\nGRANT CREATE SEQUENCE TO bakbak;\nGRANT DROP ANY VIEW TO bakbak;\nGRANT CREATE VIEW TO bakbak;\nGRANT DROP ANY SYNONYM TO bakbak;\nGRANT CREATE SYNONYM TO bakbak;\nGRANT DROP ANY TABLE TO bakbak;\nGRANT ALTER ANY TABLE TO bakbak;\nGRANT CREATE TABLE TO bakbak;\nGRANT UNLIMITED TABLESPACE TO bakbak;\nGRANT DROP TABLESPACE TO bakbak;\nGRANT ALTER TABLESPACE TO bakbak;\nGRANT CREATE TABLESPACE TO bakbak;\nGRANT CREATE SESSION TO bakbak;\nGRANT IMP_FULL_DATABASE TO bakbak;\nGRANT EXP_FULL_DATABASE TO bakbak;\nCREATE DIRECTORY mydir AS '/home/patrick/Data/dumps_db/'; GRANT read, write on directory mydir to public;\nGRANT read, write ON mydir TO bakbak;\nALTER USER bakbak QUOTA UNLIMITED ON USERS;\nGRANT UNLIMITED TABLESPACE TO bakbak;\ncommit;\n\n\n\n\nExecute in bash\n\n\nimpdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak \nEXCLUDE=TABLE:\\\nIN \\(\\'EIT_MANIFEST\\',\\'WH_FACT_AUDIENCE\\',\\'ACT_ACTIVITY\\', \\'REC_RECORDING\\', \\'REC_RECORDING_I18N\\', \\'ADI_FILE_IMPORT\\' \\)\\\n logfile=data_pump_dir:expsh.log\n### Stop job impdp\nImport\n KILL_JOB\n### Find and delete pending import jobs\n```sql\nSELECT owner_name, job_name, operation, job_mode,\nstate, attached_sessions\nFROM dba_datapump_jobs\nORDER BY 1,2;\n\n\n\n\nSELECT *\n  FROM dba_objects o, dba_datapump_jobs j\n WHERE o.owner=j.owner_name AND o.object_name=j.job_name\n   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;\n\nDROP TABLE BAKBAK.SYS_IMPORT_FULL_01;\n\n\n\n\nDelete views, tables for a user\n\n\nGet scripts to drop tables and views\n\n\nselect 'drop table '||table_name||' cascade constraints;' from user_tables;\n\n\n\n\nselect 'drop view '||view_name||' cascade constraints;' from user_views;\n\n\n\n\nDelete sequences\n\n\nBEGIN\n\n  --Bye Sequences!\n  FOR i IN (SELECT us.sequence_name\n              FROM USER_SEQUENCES us) LOOP\n    EXECUTE IMMEDIATE 'drop sequence '|| i.sequence_name ||'';\n  END LOOP;\n\n  --Bye Tables!\n  FOR i IN (SELECT ut.table_name\n              FROM USER_TABLES ut) LOOP\n    EXECUTE IMMEDIATE 'drop table '|| i.table_name ||' CASCADE CONSTRAINTS ';\n  END LOOP;\n\nEND;", 
             "title": "Generic"
@@ -2527,7 +2537,7 @@
         }, 
         {
             "location": "/dev/VCS/Mercurial/", 
-            "text": "Show changeset information by line for each file\n\n\nhg annotate -u\n\n\nDelete untracked files, enabling purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212486]\n\n\nEnable purge extension\n\n\nAdd to .hgrc this\n\n\n[extensions]\npurge =\n\n\n\n\nPurge\n\n\nhg purge\n\n\n\n\nDelete untracked files, without purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212893]\n\n\nhg st -un0 | xargs -0 rm\n\n\n\n\nForget tracked file\n\n\nIf file to forget is contained in .hgignore,\n\n\n$ hg forget _filename_\n\n\nServe repo\n\n\n$ hg serve", 
+            "text": "Show changeset information by line for each file\n\n\nhg annotate -u\n\n\nDelete untracked files, enabling purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212486]\n\n\nEnable purge extension\n\n\nAdd to .hgrc this\n\n\n[extensions]\npurge =\n\n\n\n\nPurge\n\n\nhg purge\n\n\n\n\nDelete untracked files, without purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212893]\n\n\nhg st -un0 | xargs -0 rm\n\n\n\n\nForget tracked file\n\n\nIf file to forget is contained in .hgignore,\n\n\n$ hg forget _filename_\n\n\nServe repo\n\n\n$ hg serve\n\n\nAliases\n\n\nin ~/.hgrc, under the [alias] section\n\n\nclone from a fixed url without typing it each time\n\n\nmclone = clone ssh://username@repository//srv/hg/repos/$1", 
             "title": "Mercurial"
         }, 
         {
@@ -2564,6 +2574,16 @@
             "location": "/dev/VCS/Mercurial/#serve-repo", 
             "text": "$ hg serve", 
             "title": "Serve repo"
+        }, 
+        {
+            "location": "/dev/VCS/Mercurial/#aliases", 
+            "text": "in ~/.hgrc, under the [alias] section", 
+            "title": "Aliases"
+        }, 
+        {
+            "location": "/dev/VCS/Mercurial/#clone-from-a-fixed-url-without-typing-it-each-time", 
+            "text": "mclone = clone ssh://username@repository//srv/hg/repos/$1", 
+            "title": "clone from a fixed url without typing it each time"
         }, 
         {
             "location": "/dev/VCS/Git/Git-problems/", 

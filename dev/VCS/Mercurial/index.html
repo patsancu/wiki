@@ -340,6 +340,10 @@
     <ul class="dropdown-menu">
             
 <li >
+    <a href="../../DB/Oracle/Admin/">Admin</a>
+</li>
+            
+<li >
     <a href="../../DB/Oracle/Generic/">Generic</a>
 </li>
             
@@ -577,6 +581,8 @@
             <li><a href="#delete-untracked-files-without-purge-extension">Delete untracked files, without purge extension</a></li>
             <li><a href="#forget-tracked-file">Forget tracked file</a></li>
             <li><a href="#serve-repo">Serve repo</a></li>
+        <li class="main "><a href="#aliases">Aliases</a></li>
+            <li><a href="#clone-from-a-fixed-url-without-typing-it-each-time">clone from a fixed url without typing it each time</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -604,7 +610,11 @@ purge =
 <p>If file to forget is contained in .hgignore,</p>
 <p><code>$ hg forget _filename_</code></p>
 <h4 id="serve-repo">Serve repo</h4>
-<p><code>$ hg serve</code></p></div>
+<p><code>$ hg serve</code></p>
+<h3 id="aliases">Aliases</h3>
+<p>in ~/.hgrc, under the [alias] section</p>
+<h4 id="clone-from-a-fixed-url-without-typing-it-each-time">clone from a fixed url without typing it each time</h4>
+<p>mclone = clone ssh://username@repository//srv/hg/repos/$1</p></div>
         </div>
 
         <footer class="col-md-12">
