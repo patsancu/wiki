@@ -602,6 +602,7 @@
             <li><a href="#export-last-n-patches">Export last n patches</a></li>
             <li><a href="#export-last-n-commits-as-a-single-patch">Export last n commits as a single patch</a></li>
         <li class="main "><a href="#view-changes-made-to-a-file-with-source">View changes made to a file with source</a></li>
+        <li class="main "><a href="#filter-commits-by-author">Filter commits by author</a></li>
         <li class="main "><a href="#making-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore">Making git "forget" about a file that was tracked but is now in .gitignore</a></li>
         <li class="main "><a href="#git-revert-changes-for-file_1">Git revert changes for file</a></li>
         <li class="main "><a href="#unstage-commit_1">Unstage commit</a></li>
@@ -746,6 +747,10 @@ stash@{0}: WIP on alerting: 697194d WIP
 
 <h3 id="view-changes-made-to-a-file-with-source">View changes made to a file with source</h3>
 <p><code>$ git log -p path/to/file</code></p>
+<h3 id="filter-commits-by-author">Filter commits by author</h3>
+<pre><code>git log --author john.doe
+</code></pre>
+
 <h3 id="making-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore">Making git "forget" about a file that was tracked but is now in .gitignore</h3>
 <p><em>gitignore</em> will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.
 To stop tracking a file you need to remove it from the index. This can be achieved with this command.</p>
