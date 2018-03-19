@@ -159,6 +159,11 @@ $ git format-patch -4 --stdout > `date +"%Y%m%d%H%M"`.patch
 ### View changes made to a file with source
 ```$ git log -p path/to/file```
 
+### Filter commits by author
+```
+git log --author john.doe
+```
+
 ### Making git "forget" about a file that was tracked but is now in .gitignore
 
 _gitignore_ will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.
