@@ -581,6 +581,8 @@
             <li><a href="#complex-way">Complex way</a></li>
         <li class="main "><a href="#private-registry">Private registry</a></li>
         <li class="main "><a href="#docker-commit">Docker commit</a></li>
+        <li class="main "><a href="#get-docker-containers-os">Get docker container's OS</a></li>
+            <li><a href="#not-perfect-but-still">Not perfect, but still...</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -645,6 +647,22 @@ ENV ANT_HOME $UHOME/process-tools/bin
 <li>Commit a new image with name svendowideit/testimage, tag version4, with changes: a CMD command and an EXPOSE one.</li>
 </ul>
 <pre><code>docker commit --change='CMD [&quot;apachectl&quot;, &quot;-DFOREGROUND&quot;]' -c &quot;EXPOSE 80&quot; c3f279d17e0a  svendowideit/testimage:version4
+</code></pre>
+
+<h3 id="get-docker-containers-os">Get docker container's OS</h3>
+<ul>
+<li>Info <a href="https://serverfault.com/questions/805389/">here</a>
+<strong>DO NOT USE</strong></li>
+<li><code>uname -a</code></li>
+<li>uname will tell you the kernel that's running, which is the host OS kernel (containers, unlike VM's, share the same kernel).</li>
+</ul>
+<h4 id="not-perfect-but-still">Not perfect, but still...</h4>
+<pre><code>### ubuntu
+lsb_release -sirc
+## centos
+cat /etc/issue
+### others
+cat /etc/os-release
 </code></pre></div>
         </div>
 
