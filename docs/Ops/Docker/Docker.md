@@ -58,3 +58,20 @@ docker commit -a "Joe Bloggs" -m "Comment" RUNNING_IMAGE_ID commit:test
 ```
 docker commit --change='CMD ["apachectl", "-DFOREGROUND"]' -c "EXPOSE 80" c3f279d17e0a  svendowideit/testimage:version4
 ```
+
+### Get docker container's OS
+* Info [here](https://serverfault.com/questions/805389/)
+**DO NOT USE**
+* `uname -a`
+* uname will tell you the kernel that's running, which is the host OS kernel (containers, unlike VM's, share the same kernel).
+
+#### Not perfect, but still...
+
+```
+### ubuntu
+lsb_release -sirc
+## centos
+cat /etc/issue
+### others
+cat /etc/os-release
+```
