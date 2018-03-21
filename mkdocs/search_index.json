@@ -307,7 +307,7 @@
         }, 
         {
             "location": "/OS/Linux-Unix/Ubuntu/", 
-            "text": "Show notification window\n\n\nzenity --error --text=\nHellow\n --title=\nPatata\n --timeout=2\n\n\n\n\nRebuild font cache\n\n\n$ fc-cache -f -v\n\n\n\n\nUpdate alternative\n\n\nSet another path to bin for program\n\n\nsudo update-alternatives --config java", 
+            "text": "Show notification window\n\n\nzenity --error --text=\nHellow\n --title=\nPatata\n --timeout=2\n\n\n\n\nRebuild font cache\n\n\n$ fc-cache -f -v\n\n\n\n\nUpdate alternative\n\n\nSet another path to bin for program\n\n\nsudo update-alternatives --config java\n\n\n\n\nInsert unicode char\n\n\nPress\n\nShift+Control+u\n\nthen the unicode character's code.\ne.g.\n\n\nShift+Control+u\n\n\n\n\nthen\n\n\n01b8\n\n\n\n\nto get\n\n\n\u01b8", 
             "title": "Ubuntu"
         }, 
         {
@@ -324,6 +324,11 @@
             "location": "/OS/Linux-Unix/Ubuntu/#update-alternative", 
             "text": "Set another path to bin for program  sudo update-alternatives --config java", 
             "title": "Update alternative"
+        }, 
+        {
+            "location": "/OS/Linux-Unix/Ubuntu/#insert-unicode-char", 
+            "text": "Press Shift+Control+u \nthen the unicode character's code.\ne.g.  Shift+Control+u  then  01b8  to get  \u01b8", 
+            "title": "Insert unicode char"
         }, 
         {
             "location": "/OS/Linux-Unix/problems/", 
