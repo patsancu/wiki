@@ -2222,13 +2222,18 @@
         }, 
         {
             "location": "/dev/DB/Oracle/Admin/", 
-            "text": "Check number of sessions\n\n\nSELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'", 
+            "text": "Check number of sessions\n\n\nSELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'\n\n\n\n\nChange concurrency and stuff params\n\n\nalter system set processes = 150 scope = spfile;\nalter system set sessions = 300 scope = spfile;\nalter system set transactions = 330 scope = spfile;", 
             "title": "Admin"
         }, 
         {
             "location": "/dev/DB/Oracle/Admin/#check-number-of-sessions", 
             "text": "SELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'", 
             "title": "Check number of sessions"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Admin/#change-concurrency-and-stuff-params", 
+            "text": "alter system set processes = 150 scope = spfile;\nalter system set sessions = 300 scope = spfile;\nalter system set transactions = 330 scope = spfile;", 
+            "title": "Change concurrency and stuff params"
         }, 
         {
             "location": "/dev/DB/Oracle/Generic/", 
