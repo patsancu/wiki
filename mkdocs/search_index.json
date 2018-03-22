@@ -2556,6 +2556,21 @@
             "title": "Comments that only appear in the markdown document"
         }, 
         {
+            "location": "/dev/Rabbitmq/admin/", 
+            "text": "Get rabbimqadmin\n\n\n\n\nGo to \nyour_host:your_port/cli/rabbitmqadmin\n\n\nFor example: if host is localhost and port is the default port (15672),\nit would be downloaded from \nhere\n\n\n\n\nDelete exchange on some vhost with credentials\n\n\nsudo rabbitmqadmin delete exchange --username=sdp_user --password=sdp_password name=cmsToSdpExchangeQueue --vhost=managetv", 
+            "title": "Admin"
+        }, 
+        {
+            "location": "/dev/Rabbitmq/admin/#get-rabbimqadmin", 
+            "text": "Go to  your_host:your_port/cli/rabbitmqadmin  For example: if host is localhost and port is the default port (15672),\nit would be downloaded from  here", 
+            "title": "Get rabbimqadmin"
+        }, 
+        {
+            "location": "/dev/Rabbitmq/admin/#delete-exchange-on-some-vhost-with-credentials", 
+            "text": "sudo rabbitmqadmin delete exchange --username=sdp_user --password=sdp_password name=cmsToSdpExchangeQueue --vhost=managetv", 
+            "title": "Delete exchange on some vhost with credentials"
+        }, 
+        {
             "location": "/dev/VCS/Mercurial/", 
             "text": "Show changeset information by line for each file\n\n\nhg annotate -u\n\n\nDelete untracked files, enabling purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212486]\n\n\nEnable purge extension\n\n\nAdd to .hgrc this\n\n\n[extensions]\npurge =\n\n\n\n\nPurge\n\n\nhg purge\n\n\n\n\nDelete untracked files, without purge extension\n\n\nFrom (here)[https://stackoverflow.com/a/1212893]\n\n\nhg st -un0 | xargs -0 rm\n\n\n\n\nForget tracked file\n\n\nIf file to forget is contained in .hgignore,\n\n\n$ hg forget _filename_\n\n\nServe repo\n\n\n$ hg serve\n\n\nGet particular changeset for revision\n\n\nhg log -p -r 678\n\n\n\n\nGet commits from a user\n\n\nchangeset:   324:5c78393273fe\nbranch:      some_branch\nparent:      307:f7866d748366\nuser:        Some user \nsome.user@some.company.com\n\ndate:        Thu Feb 22 13:32:50 2018 +0900\nsummary:     Some summary\n\n\n\n\nhg log --user \nsome.user@some.company.com\n\n\n\n\n\nor\n\n\nhg log --user \nsome.user\n\n\n\n\n\nAliases\n\n\nin ~/.hgrc, under the [alias] section\n\n\nclone from a fixed url without typing it each time\n\n\nmclone = clone ssh://username@repository//srv/hg/repos/$1", 
             "title": "Mercurial"
