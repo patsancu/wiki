@@ -586,6 +586,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#check-number-of-sessions">Check number of sessions</a></li>
         <li class="main "><a href="#change-concurrency-and-stuff-params">Change concurrency and stuff params</a></li>
+        <li class="main "><a href="#list-sesssions-per-pid-machine-username-etc">List sesssions per pid, machine, username, etc</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -606,6 +607,21 @@ WHERE VP.NAME = 'sessions'
 <pre><code>alter system set processes = 150 scope = spfile;
 alter system set sessions = 300 scope = spfile;
 alter system set transactions = 330 scope = spfile;
+</code></pre>
+
+<h3 id="list-sesssions-per-pid-machine-username-etc">List sesssions per pid, machine, username, etc</h3>
+<pre><code>select
+       substr(a.spid,1,9) pid,
+       substr(b.sid,1,5) sid,
+       substr(b.serial#,1,5) ser#,
+       substr(b.machine,1,6) box,
+       substr(b.username,1,10) username,
+       substr(b.osuser,1,8) os_user,
+       substr(b.program,1,30) program
+from v$session b, v$process a
+WHERE b.paddr = a.addr
+and type='USER'
+order by spid; 
 </code></pre></div>
         </div>
 

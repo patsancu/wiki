@@ -2222,7 +2222,7 @@
         }, 
         {
             "location": "/dev/DB/Oracle/Admin/", 
-            "text": "Check number of sessions\n\n\nSELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'\n\n\n\n\nChange concurrency and stuff params\n\n\nalter system set processes = 150 scope = spfile;\nalter system set sessions = 300 scope = spfile;\nalter system set transactions = 330 scope = spfile;", 
+            "text": "Check number of sessions\n\n\nSELECT\n  'Currently, '\n  || (SELECT COUNT(*) FROM V$SESSION)\n  || ' out of '\n  || VP.VALUE\n  || ' connections are used.' AS USAGE_MESSAGE\nFROM\n  V$PARAMETER VP\nWHERE VP.NAME = 'sessions'\n\n\n\n\nChange concurrency and stuff params\n\n\nalter system set processes = 150 scope = spfile;\nalter system set sessions = 300 scope = spfile;\nalter system set transactions = 330 scope = spfile;\n\n\n\n\nList sesssions per pid, machine, username, etc\n\n\nselect\n       substr(a.spid,1,9) pid,\n       substr(b.sid,1,5) sid,\n       substr(b.serial#,1,5) ser#,\n       substr(b.machine,1,6) box,\n       substr(b.username,1,10) username,\n       substr(b.osuser,1,8) os_user,\n       substr(b.program,1,30) program\nfrom v$session b, v$process a\nWHERE b.paddr = a.addr\nand type='USER'\norder by spid;", 
             "title": "Admin"
         }, 
         {
@@ -2234,6 +2234,11 @@
             "location": "/dev/DB/Oracle/Admin/#change-concurrency-and-stuff-params", 
             "text": "alter system set processes = 150 scope = spfile;\nalter system set sessions = 300 scope = spfile;\nalter system set transactions = 330 scope = spfile;", 
             "title": "Change concurrency and stuff params"
+        }, 
+        {
+            "location": "/dev/DB/Oracle/Admin/#list-sesssions-per-pid-machine-username-etc", 
+            "text": "select\n       substr(a.spid,1,9) pid,\n       substr(b.sid,1,5) sid,\n       substr(b.serial#,1,5) ser#,\n       substr(b.machine,1,6) box,\n       substr(b.username,1,10) username,\n       substr(b.osuser,1,8) os_user,\n       substr(b.program,1,30) program\nfrom v$session b, v$process a\nWHERE b.paddr = a.addr\nand type='USER'\norder by spid;", 
+            "title": "List sesssions per pid, machine, username, etc"
         }, 
         {
             "location": "/dev/DB/Oracle/Generic/", 
