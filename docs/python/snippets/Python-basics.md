@@ -129,3 +129,14 @@ for line in fileinput.input():
 "
 somebody
 ```
+
+### Generator
+#### Take n elements from a generator
+
+```python
+n = 5
+array = (x**2 for x in xrange(10))
+smaller = itertools.islice(array, n) ## get a new generator
+list(smaller) ## or a list
+>>> [0, 1, 4, 9, 16]
+```
