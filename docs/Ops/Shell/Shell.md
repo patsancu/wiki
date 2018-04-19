@@ -229,6 +229,16 @@ Use expect as in [here](https://gist.github.com/patsancu/4428820cd1f23fccbabd48f
 awk 'BEGIN{RS="^$";ORS="";getline;gsub("\r","");print>ARGV[1]}' file_name
 ```
 
+### Loop through defined array
+
+```bash
+array=( one two three )
+for i in "${array[@]}"
+do
+	echo $i
+done
+```
+
 ### Read lines from file in a for loop
 ```
 FS=$'\n'       # make newlines the only separator
