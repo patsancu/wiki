@@ -628,6 +628,7 @@
         <li class="main "><a href="#shorten-url-with-googl">Shorten url with goo.gl</a></li>
         <li class="main "><a href="#automatically-press-keys-when-condition-is-met">Automatically press keys when condition is met</a></li>
         <li class="main "><a href="#convert-windows-encoded-text-file-to-unix-encoded">Convert windows-encoded text file to unix-encoded</a></li>
+        <li class="main "><a href="#loop-through-defined-array">Loop through defined array</a></li>
         <li class="main "><a href="#read-lines-from-file-in-a-for-loop">Read lines from file in a for loop</a></li>
         <li class="main "><a href="#display-info-about-memory">Display info about memory</a></li>
         <li class="main "><a href="#open-the-current-repo-on-a-specific-web-repo">Open the current repo on a specific web repo</a></li>
@@ -849,6 +850,14 @@ for i in `seq 1 10`;
 <p>Use expect as in <a href="https://gist.github.com/patsancu/4428820cd1f23fccbabd48fefa5c85fc">here</a></p>
 <h3 id="convert-windows-encoded-text-file-to-unix-encoded">Convert windows-encoded text file to unix-encoded</h3>
 <pre><code>awk 'BEGIN{RS=&quot;^$&quot;;ORS=&quot;&quot;;getline;gsub(&quot;\r&quot;,&quot;&quot;);print&gt;ARGV[1]}' file_name
+</code></pre>
+
+<h3 id="loop-through-defined-array">Loop through defined array</h3>
+<pre><code class="bash">array=( one two three )
+for i in &quot;${array[@]}&quot;
+do
+    echo $i
+done
 </code></pre>
 
 <h3 id="read-lines-from-file-in-a-for-loop">Read lines from file in a for loop</h3>

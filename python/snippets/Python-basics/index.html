@@ -600,6 +600,8 @@
         <li class="main "><a href="#misc">Misc</a></li>
             <li><a href="#dissassemble-python-code">Dissassemble python code</a></li>
         <li class="main "><a href="#python-program-from-cli">Python program from CLI</a></li>
+        <li class="main "><a href="#generator">Generator</a></li>
+            <li><a href="#take-n-elements-from-a-generator">Take n elements from a generator</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -719,6 +721,15 @@ for line in fileinput.input():
         print line
 &quot;
 somebody
+</code></pre>
+
+<h3 id="generator">Generator</h3>
+<h4 id="take-n-elements-from-a-generator">Take n elements from a generator</h4>
+<pre><code class="python">n = 5
+array = (x**2 for x in xrange(10))
+smaller = itertools.islice(array, n) ## get a new generator
+list(smaller) ## or a list
+&gt;&gt;&gt; [0, 1, 4, 9, 16]
 </code></pre></div>
         </div>
 

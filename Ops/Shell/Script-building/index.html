@@ -590,6 +590,7 @@
         <li class="main "><a href="#argument-parsing">Argument parsing</a></li>
         <li class="main "><a href="#arrays">Arrays</a></li>
         <li class="main "><a href="#get-parent-folder-from-script">Get parent folder from script</a></li>
+        <li class="main "><a href="#split-colon-delimited-value">Split colon delimited value</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -648,7 +649,20 @@ echo ${#distro[@]} # will print array length: 3
 </code></pre>
 
 <h3 id="get-parent-folder-from-script">Get parent folder from script</h3>
-<p>DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )</p></div>
+<pre><code>DIR=&quot;$( cd &quot;$( dirname &quot;${BASH_SOURCE[0]}&quot; )&quot; &amp;&amp; pwd )
+</code></pre>
+
+<h3 id="split-colon-delimited-value">Split colon delimited value</h3>
+<p>From <a href="https://stackoverflow.com/a/918931/2769307">here</a></p>
+<pre><code class="sh">### this sets the internal field separator variable
+IFS=&quot;:&quot;
+</code></pre>
+
+<pre><code class="sh">s='Strings:With:Four:Words'
+IFS=&quot;:&quot; read -r var1 var2 var3 var4 &lt;&lt;&lt; &quot;$s&quot;
+echo &quot;[$var1] [$var2] [$var3 [$var4]&quot;
+[Strings] [With] [Four [Words]
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
