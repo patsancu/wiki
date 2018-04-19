@@ -64,3 +64,16 @@ echo ${#distro[@]} # will print array length: 3
 ```
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 ```
+
+### Split colon delimited value
+From [here](https://stackoverflow.com/a/918931/2769307)
+```sh
+### this sets the internal field separator variable
+IFS=":"
+```
+```sh
+s='Strings:With:Four:Words'
+IFS=":" read -r var1 var2 var3 var4 <<< "$s"
+echo "[$var1] [$var2] [$var3 [$var4]"
+[Strings] [With] [Four [Words]
+```
