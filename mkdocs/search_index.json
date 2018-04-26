@@ -11,6 +11,16 @@
             "title": "About me"
         }, 
         {
+            "location": "/Utils/", 
+            "text": "From ape+cue to several files\n\n\nconvert file to flac\n\n\ncuebreakpoints CD1.cue | shntool split -o flac \nfile_name\n.flac\n\n\n\n\ncuebreakpoints sample.cue | shnsplit -o flac sample.flac;\n#add metadata\ncuetag *.cue split-track*.flac ;", 
+            "title": "Utils"
+        }, 
+        {
+            "location": "/Utils/#from-apecue-to-several-files", 
+            "text": "convert file to flac  cuebreakpoints CD1.cue | shntool split -o flac  file_name .flac  cuebreakpoints sample.cue | shnsplit -o flac sample.flac;\n#add metadata\ncuetag *.cue split-track*.flac ;", 
+            "title": "From ape+cue to several files"
+        }, 
+        {
             "location": "/OS/Raspberry-Pi/", 
             "text": "Enable ssh on startup\n\n\n\n\nSource\n\n\nChange default user and password first!\n\n\n$ sudo touch /boot/ssh", 
             "title": "Raspberry Pi"
@@ -2902,7 +2912,7 @@
         }, 
         {
             "location": "/python/Utils/", 
-            "text": "Start simple http server python\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n$ python3 -m http.server [port]\n\n\n\n\nFrom ape+cue to several files\n\n\nconvert file to flac\n\n\ncuebreakpoints CD1.cue | shntool split -o flac \nfile_name\n.flac \n\n\n\n\ncuebreakpoints sample.cue | shnsplit -o flac sample.flac;\n#add metadata\ncuetag *.cue split-track*.flac ;", 
+            "text": "Start simple http server python\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n$ python3 -m http.server [port]\n\n\n\n\nProgress bar with tdqm\n\n\nfrom tqdm\n\n\n\n\ntrange(i) is a special optimised instance of tqdm(range(i)):\n\n\n# worse\nfor i in tqdm(xrange(10**6)):\n    pass\n\n# better (according to docs)\nfor i in trange(10**6):\n    pass\n\n\n\n\nManual\n\n\nwith tqdm(total=100) as pbar:\n    for i in range(10):\n        pbar.update(10)", 
             "title": "Utils"
         }, 
         {
@@ -2911,9 +2921,14 @@
             "title": "Start simple http server python"
         }, 
         {
-            "location": "/python/Utils/#from-apecue-to-several-files", 
-            "text": "convert file to flac  cuebreakpoints CD1.cue | shntool split -o flac  file_name .flac   cuebreakpoints sample.cue | shnsplit -o flac sample.flac;\n#add metadata\ncuetag *.cue split-track*.flac ;", 
-            "title": "From ape+cue to several files"
+            "location": "/python/Utils/#progress-bar-with-tdqm", 
+            "text": "from tqdm  trange(i) is a special optimised instance of tqdm(range(i)):  # worse\nfor i in tqdm(xrange(10**6)):\n    pass\n\n# better (according to docs)\nfor i in trange(10**6):\n    pass", 
+            "title": "Progress bar with tdqm"
+        }, 
+        {
+            "location": "/python/Utils/#manual", 
+            "text": "with tqdm(total=100) as pbar:\n    for i in range(10):\n        pbar.update(10)", 
+            "title": "Manual"
         }, 
         {
             "location": "/python/", 

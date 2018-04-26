@@ -57,6 +57,9 @@
                     <li >
                         <a href="../..">Home</a>
                     </li>
+                    <li >
+                        <a href="../../Utils/">Utils</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -585,7 +588,8 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#start-simple-http-server-python">Start simple http server python</a></li>
-        <li class="main "><a href="#from-apecue-to-several-files">From ape+cue to several files</a></li>
+        <li class="main "><a href="#progress-bar-with-tdqm">Progress bar with tdqm</a></li>
+            <li><a href="#manual">Manual</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -597,14 +601,24 @@
 <pre><code>$ python3 -m http.server [port]
 </code></pre>
 
-<h3 id="from-apecue-to-several-files">From ape+cue to several files</h3>
-<p>convert file to flac</p>
-<pre><code>cuebreakpoints CD1.cue | shntool split -o flac &quot;file_name&quot;.flac 
+<h3 id="progress-bar-with-tdqm">Progress bar with tdqm</h3>
+<pre><code class="python">from tqdm
 </code></pre>
 
-<pre><code>cuebreakpoints sample.cue | shnsplit -o flac sample.flac;
-#add metadata
-cuetag *.cue split-track*.flac ;
+<p>trange(i) is a special optimised instance of tqdm(range(i)):</p>
+<pre><code class="python"># worse
+for i in tqdm(xrange(10**6)):
+    pass
+
+# better (according to docs)
+for i in trange(10**6):
+    pass
+</code></pre>
+
+<h5 id="manual">Manual</h5>
+<pre><code class="python">with tqdm(total=100) as pbar:
+    for i in range(10):
+        pbar.update(10)
 </code></pre></div>
         </div>
 
