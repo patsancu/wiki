@@ -652,6 +652,7 @@
             <li><a href="#geotag-pictures">Geotag pictures</a></li>
             <li><a href="#prettify-json">Prettify json</a></li>
             <li><a href="#print-undefined-progress-spinner">Print undefined progress spinner</a></li>
+            <li><a href="#grep-highligh-matched-patterns-but-not-otherwise-change-ouput">Grep: highligh matched patterns but not otherwise change ouput</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -1082,6 +1083,10 @@ do
     sleep 0.01;
     spin
 done
+</code></pre>
+
+<h3 id="grep-highligh-matched-patterns-but-not-otherwise-change-ouput">Grep: highligh matched patterns but not otherwise change ouput</h3>
+<pre><code class="sh">grep --color=always -e &quot;^&quot; -e &quot;hello&quot; testfile
 </code></pre></div>
         </div>
 
