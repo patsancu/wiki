@@ -477,3 +477,8 @@ do
     spin
 done
 ```
+
+### Grep: highligh matched patterns but not otherwise change ouput
+```sh
+grep --color=always -e "^" -e "hello" testfile
+```
