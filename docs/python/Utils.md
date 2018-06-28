@@ -32,3 +32,8 @@ with tqdm(total=100) as pbar:
     for i in range(10):
         pbar.update(10)
 ```
+
+### Generate UUID
+```python
+python -c "import uuid; print uuid.uuid4()"
+```
