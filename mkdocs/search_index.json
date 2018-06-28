@@ -2917,7 +2917,7 @@
         }, 
         {
             "location": "/python/Utils/", 
-            "text": "Start simple http server python\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n$ python3 -m http.server [port]\n\n\n\n\nProgress bar with tdqm\n\n\nfrom tqdm\n\n\n\n\ntrange(i) is a special optimised instance of tqdm(range(i)):\n\n\n# worse\nfor i in tqdm(xrange(10**6)):\n    pass\n\n# better (according to docs)\nfor i in trange(10**6):\n    pass\n\n\n\n\nManual\n\n\nwith tqdm(total=100) as pbar:\n    for i in range(10):\n        pbar.update(10)", 
+            "text": "Start simple http server python\n\n\n$ python -m SimpleHTTPServer [port]\n\n\n\n\n$ python3 -m http.server [port]\n\n\n\n\nProgress bar with tdqm\n\n\nfrom tqdm\n\n\n\n\ntrange(i) is a special optimised instance of tqdm(range(i)):\n\n\n# worse\nfor i in tqdm(xrange(10**6)):\n    pass\n\n# better (according to docs)\nfor i in trange(10**6):\n    pass\n\n\n\n\nManual\n\n\nwith tqdm(total=100) as pbar:\n    for i in range(10):\n        pbar.update(10)\n\n\n\n\nGenerate UUID\n\n\npython -c \nimport uuid; print uuid.uuid4()", 
             "title": "Utils"
         }, 
         {
@@ -2934,6 +2934,11 @@
             "location": "/python/Utils/#manual", 
             "text": "with tqdm(total=100) as pbar:\n    for i in range(10):\n        pbar.update(10)", 
             "title": "Manual"
+        }, 
+        {
+            "location": "/python/Utils/#generate-uuid", 
+            "text": "python -c  import uuid; print uuid.uuid4()", 
+            "title": "Generate UUID"
         }, 
         {
             "location": "/python/", 

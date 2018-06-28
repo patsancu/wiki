@@ -590,6 +590,7 @@
         <li class="main active"><a href="#start-simple-http-server-python">Start simple http server python</a></li>
         <li class="main "><a href="#progress-bar-with-tdqm">Progress bar with tdqm</a></li>
             <li><a href="#manual">Manual</a></li>
+        <li class="main "><a href="#generate-uuid">Generate UUID</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -619,6 +620,10 @@ for i in trange(10**6):
 <pre><code class="python">with tqdm(total=100) as pbar:
     for i in range(10):
         pbar.update(10)
+</code></pre>
+
+<h3 id="generate-uuid">Generate UUID</h3>
+<pre><code class="python">python -c &quot;import uuid; print uuid.uuid4()&quot;
 </code></pre></div>
         </div>
 
