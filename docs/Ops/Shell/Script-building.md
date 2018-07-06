@@ -77,3 +77,13 @@ IFS=":" read -r var1 var2 var3 var4 <<< "$s"
 echo "[$var1] [$var2] [$var3 [$var4]"
 [Strings] [With] [Four [Words]
 ```
+
+### Select specific lines with sed
+#### select line 10 up to line 33
+```sh
+sed -n '10,33p' < file.txt
+```
+#### select 1st line and 3rd line
+```sh
+sed -n '1p;3p' < file.txt
+```
