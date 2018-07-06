@@ -241,20 +241,17 @@ done
 
 ### Read lines from file in a for loop
 ```
-FS=$'\n'       # make newlines the only separator
-for j in "$(cat ./file_wget_med)"
-do
-    echo "$j"
-done
-```
-or
-
-```
 input="/path/to/txt/file"
 while IFS= read -r var
 do
   echo "$var"
 done < "$input"
+```
+
+or
+
+```
+while read variable_name; do echo "JDSA $variable_name"; done < workers.txt
 ```
 
 ### Display info about memory
