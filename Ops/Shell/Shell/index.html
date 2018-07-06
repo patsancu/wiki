@@ -865,19 +865,15 @@ done
 </code></pre>
 
 <h3 id="read-lines-from-file-in-a-for-loop">Read lines from file in a for loop</h3>
-<pre><code>FS=$'\n'       # make newlines the only separator
-for j in &quot;$(cat ./file_wget_med)&quot;
-do
-    echo &quot;$j&quot;
-done
-</code></pre>
-
-<p>or</p>
 <pre><code>input=&quot;/path/to/txt/file&quot;
 while IFS= read -r var
 do
   echo &quot;$var&quot;
 done &lt; &quot;$input&quot;
+</code></pre>
+
+<p>or</p>
+<pre><code>while read variable_name; do echo &quot;JDSA $variable_name&quot;; done &lt; workers.txt
 </code></pre>
 
 <h3 id="display-info-about-memory">Display info about memory</h3>
