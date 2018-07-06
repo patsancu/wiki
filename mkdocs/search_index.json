@@ -1027,7 +1027,7 @@
         }, 
         {
             "location": "/Ops/Shell/Script-building/", 
-            "text": "Simple stop\n\n\necho \nPress enter to continue\n; read noing\n\n\n\n\nColorize cat output of source files\n\n\n$ pip install Pygments\n\n\nhttp://pygments.org/\n\n\nwith pygmentize -g filename\n\n\nYes no answer\n\n\ntestFile=/home/patrick/dev/master.properties\nsampleService='iris-cms-metadata-management-service'\nif [ ! -f $testFile ]; then\n  tput setaf 2\n  echo \ntest properties file $testFile is missing\n\n  tput sgr0else  tput setaf 1;\n  echo \nWill delete all data from the CMS db.\n;\n  tput sgr0  ;\n  read -r -p \nAre you sure? [y/N] \n response\n  case $response in      [yY][eE][sS]|[yY])\n    cd $sampleService;\n    gradle dropDatabase -Parchaius.url=file:$testFile ;\n    cd -;\n    ;;\n    *)\n    echo \nOK, no harm done\n;\n    ;;\n  esac\nfi\n\n\n\n\nArgument parsing\n\n\nvflag=off\nfilename=\nwhile getopts vf: opt\ndo\n    case \n$opt\n in\n      v)  vflag=on;;\n      f)  filename=\n$OPTARG\n;;\n      \\?)       # unknown flag\n          echo \n2 \\\n      \nusage: $0 [-v] [-f filename] [file ...]\n\n      exit 1;;\n    esac\ndone\nshift `expr $OPTIND - 1`\n\n\n\n\nArrays\n\n\ndistro=(\nredhat\n \ndebian\n \ngentoo\n)\necho ${distro[2]} # will print gentoo\necho ${#distro[@]} # will print array length: 3\n\n\n\n\nGet parent folder from script\n\n\nDIR=\n$( cd \n$( dirname \n${BASH_SOURCE[0]}\n )\n \n pwd )\n\n\n\n\nSplit colon delimited value\n\n\nFrom \nhere\n\n\n### this sets the internal field separator variable\nIFS=\n:\n\n\n\n\n\ns='Strings:With:Four:Words'\nIFS=\n:\n read -r var1 var2 var3 var4 \n \n$s\n\necho \n[$var1] [$var2] [$var3 [$var4]\n\n[Strings] [With] [Four [Words]", 
+            "text": "Simple stop\n\n\necho \nPress enter to continue\n; read noing\n\n\n\n\nColorize cat output of source files\n\n\n$ pip install Pygments\n\n\nhttp://pygments.org/\n\n\nwith pygmentize -g filename\n\n\nYes no answer\n\n\ntestFile=/home/patrick/dev/master.properties\nsampleService='iris-cms-metadata-management-service'\nif [ ! -f $testFile ]; then\n  tput setaf 2\n  echo \ntest properties file $testFile is missing\n\n  tput sgr0else  tput setaf 1;\n  echo \nWill delete all data from the CMS db.\n;\n  tput sgr0  ;\n  read -r -p \nAre you sure? [y/N] \n response\n  case $response in      [yY][eE][sS]|[yY])\n    cd $sampleService;\n    gradle dropDatabase -Parchaius.url=file:$testFile ;\n    cd -;\n    ;;\n    *)\n    echo \nOK, no harm done\n;\n    ;;\n  esac\nfi\n\n\n\n\nArgument parsing\n\n\nvflag=off\nfilename=\nwhile getopts vf: opt\ndo\n    case \n$opt\n in\n      v)  vflag=on;;\n      f)  filename=\n$OPTARG\n;;\n      \\?)       # unknown flag\n          echo \n2 \\\n      \nusage: $0 [-v] [-f filename] [file ...]\n\n      exit 1;;\n    esac\ndone\nshift `expr $OPTIND - 1`\n\n\n\n\nArrays\n\n\ndistro=(\nredhat\n \ndebian\n \ngentoo\n)\necho ${distro[2]} # will print gentoo\necho ${#distro[@]} # will print array length: 3\n\n\n\n\nGet parent folder from script\n\n\nDIR=\n$( cd \n$( dirname \n${BASH_SOURCE[0]}\n )\n \n pwd )\n\n\n\n\nSplit colon delimited value\n\n\nFrom \nhere\n\n\n### this sets the internal field separator variable\nIFS=\n:\n\n\n\n\n\ns='Strings:With:Four:Words'\nIFS=\n:\n read -r var1 var2 var3 var4 \n \n$s\n\necho \n[$var1] [$var2] [$var3 [$var4]\n\n[Strings] [With] [Four [Words]\n\n\n\n\nSelect specific lines with sed\n\n\nselect line 10 up to line 33\n\n\nsed -n '10,33p' \n file.txt\n\n\n\n\nselect 1st line and 3rd line\n\n\nsed -n '1p;3p' \n file.txt", 
             "title": "Script building"
         }, 
         {
@@ -1064,6 +1064,21 @@
             "location": "/Ops/Shell/Script-building/#split-colon-delimited-value", 
             "text": "From  here  ### this sets the internal field separator variable\nIFS= :   s='Strings:With:Four:Words'\nIFS= :  read -r var1 var2 var3 var4    $s \necho  [$var1] [$var2] [$var3 [$var4] \n[Strings] [With] [Four [Words]", 
             "title": "Split colon delimited value"
+        }, 
+        {
+            "location": "/Ops/Shell/Script-building/#select-specific-lines-with-sed", 
+            "text": "", 
+            "title": "Select specific lines with sed"
+        }, 
+        {
+            "location": "/Ops/Shell/Script-building/#select-line-10-up-to-line-33", 
+            "text": "sed -n '10,33p'   file.txt", 
+            "title": "select line 10 up to line 33"
+        }, 
+        {
+            "location": "/Ops/Shell/Script-building/#select-1st-line-and-3rd-line", 
+            "text": "sed -n '1p;3p'   file.txt", 
+            "title": "select 1st line and 3rd line"
         }, 
         {
             "location": "/Ops/Shell/Scripts/", 

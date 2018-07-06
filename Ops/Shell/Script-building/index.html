@@ -594,6 +594,9 @@
         <li class="main "><a href="#arrays">Arrays</a></li>
         <li class="main "><a href="#get-parent-folder-from-script">Get parent folder from script</a></li>
         <li class="main "><a href="#split-colon-delimited-value">Split colon delimited value</a></li>
+        <li class="main "><a href="#select-specific-lines-with-sed">Select specific lines with sed</a></li>
+            <li><a href="#select-line-10-up-to-line-33">select line 10 up to line 33</a></li>
+            <li><a href="#select-1st-line-and-3rd-line">select 1st line and 3rd line</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -665,6 +668,15 @@ IFS=&quot;:&quot;
 IFS=&quot;:&quot; read -r var1 var2 var3 var4 &lt;&lt;&lt; &quot;$s&quot;
 echo &quot;[$var1] [$var2] [$var3 [$var4]&quot;
 [Strings] [With] [Four [Words]
+</code></pre>
+
+<h3 id="select-specific-lines-with-sed">Select specific lines with sed</h3>
+<h4 id="select-line-10-up-to-line-33">select line 10 up to line 33</h4>
+<pre><code class="sh">sed -n '10,33p' &lt; file.txt
+</code></pre>
+
+<h4 id="select-1st-line-and-3rd-line">select 1st line and 3rd line</h4>
+<pre><code class="sh">sed -n '1p;3p' &lt; file.txt
 </code></pre></div>
         </div>
 
