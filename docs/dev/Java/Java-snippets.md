@@ -147,3 +147,14 @@ import java.nio.file.Files;
 tempCheckpointFolder = Files.createTempDirectory("checkpoints");
 //the directory must be empty in order to be deleted.
 tempCheckpointFolder.toFile().deleteOnExit();
+```
+
+### Compute time difference
+```java
+LocalDateTime now = LocalDateTime.now();
+boolean olderThanAday = ChronoUnit.DAYS.between(startSessionDate, now ) >= 1;
+if (olderThanAday){
+    System.out.println("The stored timestamp is older than a day")
+    startSessionDate = now;
+}
+```
