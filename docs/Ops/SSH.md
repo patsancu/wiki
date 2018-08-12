@@ -93,4 +93,4 @@ Restart daemon
 _Identity added: public_key_folder/public_key_file (public_key_folder/public_key_file)_
 
 ## SSH Config File
-[instructions](goo.gl/Rdgf0s)
+[instructions](https://goo.gl/Rdgf0s)
