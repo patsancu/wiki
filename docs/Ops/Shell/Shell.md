@@ -11,6 +11,11 @@ $ python -m smtpd -n -c DebuggingServer localhost:1025
 echo '<root><foo a="b">lorem</foo><bar value="ipsum" /></root>' | xmllint --format -
 ```
 
+#### Prettify xml and convert html entities to symbols
+```shell
+cat document.xml | xmllint --format - | python3 -c 'import html, sys; [print(html.unescape(l), end="") for l in sys.stdin]'
+```
+
 ### Change shell
 ```
 chsh -s /usr/local/bin/bash [username]
