@@ -590,6 +590,7 @@
         <li class="main active"><a href="#bash-wiki">Bash wiki</a></li>
         <li class="main "><a href="#setup-a-local-smtpserver">Setup a local smtpserver</a></li>
         <li class="main "><a href="#prettify-xml">Prettify xml</a></li>
+            <li><a href="#prettify-xml-and-convert-html-entities-to-symbols">Prettify xml and convert html entities to symbols</a></li>
         <li class="main "><a href="#change-shell">Change shell</a></li>
         <li class="main "><a href="#execute-command-without-any-env-variable-or-with-just-a-few">Execute command without any env variable or with just a few</a></li>
         <li class="main "><a href="#super-simple-text-file-creation">Super simple text file creation</a></li>
@@ -664,6 +665,10 @@
 
 <h3 id="prettify-xml">Prettify xml</h3>
 <pre><code class="shell">echo '&lt;root&gt;&lt;foo a=&quot;b&quot;&gt;lorem&lt;/foo&gt;&lt;bar value=&quot;ipsum&quot; /&gt;&lt;/root&gt;' | xmllint --format -
+</code></pre>
+
+<h4 id="prettify-xml-and-convert-html-entities-to-symbols">Prettify xml and convert html entities to symbols</h4>
+<pre><code class="shell">cat document.xml | xmllint --format - | python3 -c 'import html, sys; [print(html.unescape(l), end=&quot;&quot;) for l in sys.stdin]'
 </code></pre>
 
 <h3 id="change-shell">Change shell</h3>
