@@ -67,4 +67,4 @@ def perm(l):
 ```python
 p = "{{}} {}"
 p.format(7)
-```python
+```
