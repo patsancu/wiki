@@ -73,11 +73,6 @@ list(itertools.chain.from_iterable(list2d))
 ```
 
 
-#### Strip punctuation of string
-```python
-s.translate(None, string.punctuation)
-```
-
 ### Misc
 #### Dissassemble python code
 
