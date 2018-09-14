@@ -1,7 +1,9 @@
 ### Plot time series with mat
 ```
-pip install matplotlib numpy
+$ pip install matplotlib numpy
 ```
+
+```python
 import matplotlib.pyplot as plt
 import datetime
 import numpy as np
