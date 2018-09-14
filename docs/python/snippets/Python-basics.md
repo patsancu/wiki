@@ -140,3 +140,14 @@ smaller = itertools.islice(array, n) ## get a new generator
 list(smaller) ## or a list
 >>> [0, 1, 4, 9, 16]
 ```
+
+### Json
+#### Read json ignoring trailing commas
+```python
+import json
+from jsoncomment import JsonComment
+
+with open(filename) as data_file:
+    parser = JsonComment(json)
+    data = parser.load(data_file)
+```
