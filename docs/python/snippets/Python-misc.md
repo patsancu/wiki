@@ -62,3 +62,9 @@ def perm(l):
              r.append(l[i:i+1] + x)
     return r
 ```
+
+#### Print literal curly-braces
+```python
+p = "{{}} {}"
+p.format(7)
+```python
