@@ -53,3 +53,15 @@ def perm(l):
 p = "{{}} {}"
 p.format(7)
 ```
+
+#### Random string
+taken from [here](https://stackoverflow.com/a/2257449)
+```python
+import string, random
+N = 7
+''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+```
+cryptographically more secure version
+```python
+''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
+```
