@@ -81,6 +81,10 @@
 </li>
             
 <li >
+    <a href="../../../OS/Linux-Unix/Apps/">Apps</a>
+</li>
+            
+<li >
     <a href="../../../OS/Linux-Unix/General/">General</a>
 </li>
             
@@ -320,6 +324,10 @@
 <li >
     <a href="../../../Web/Web-dev-resources/">Web dev resources</a>
 </li>
+                            
+<li >
+    <a href="../../../Web/github/">Github</a>
+</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -462,6 +470,10 @@
 </li>
                             
 <li >
+    <a href="../../logging/">Logging</a>
+</li>
+                            
+<li >
     <a href="../../resources/">Resources</a>
 </li>
                             
@@ -550,6 +562,10 @@
 </li>
             
 <li >
+    <a href="../Python-randomness/">Python randomness</a>
+</li>
+            
+<li >
     <a href="../Python-strings/">Python strings</a>
 </li>
     </ul>
@@ -592,9 +608,10 @@
             <li><a href="#create-matrix-of-random-numbers">Create matrix of random numbers</a></li>
             <li><a href="#generator-for-lists-of-m-random-elements">Generator for lists of M random elements</a></li>
         <li class="main "><a href="#flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</a></li>
-        <li class="main "><a href="#flatten-json">Flatten json</a></li>
             <li><a href="#strip-punctuation-of-string">Strip punctuation of string</a></li>
         <li class="main "><a href="#permutations">Permutations</a></li>
+            <li><a href="#print-literal-curly-braces">Print literal curly-braces</a></li>
+            <li><a href="#random-string">Random string</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -624,20 +641,6 @@ list(itertools.chain.from_iterable(list2d))
 &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
 
-<h3 id="flatten-json">Flatten json</h3>
-<pre><code class="python">def flattenjson( b, delim ):
-    val = {}
-    for i in b.keys():
-        if isinstance( b[i], dict ):
-            get = flattenjson( b[i], delim )
-            for j in get.keys():
-                val[ i + delim + j ] = get[j]
-        else:
-            val[i] = b[i]
-
-    return val
-</code></pre>
-
 <h4 id="strip-punctuation-of-string">Strip punctuation of string</h4>
 <pre><code class="python">s.translate(None, string.punctuation)
 </code></pre>
@@ -655,6 +658,22 @@ list(itertools.chain.from_iterable(list2d))
          for x in p:
              r.append(l[i:i+1] + x)
     return r
+</code></pre>
+
+<h4 id="print-literal-curly-braces">Print literal curly-braces</h4>
+<pre><code class="python">p = &quot;{{}} {}&quot;
+p.format(7)
+</code></pre>
+
+<h4 id="random-string">Random string</h4>
+<p>taken from <a href="https://stackoverflow.com/a/2257449">here</a></p>
+<pre><code class="python">import string, random
+N = 7
+''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+</code></pre>
+
+<p>cryptographically more secure version</p>
+<pre><code class="python">''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
 </code></pre></div>
         </div>
 

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Atom - Patrick's Wiki</title>
+        <title>Github - Patrick's Wiki</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -244,89 +244,89 @@
   </li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Software <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../Alluxio/">Alluxio</a>
+    <a href="../../Software/Alluxio/">Alluxio</a>
 </li>
                             
 <li >
-    <a href="../Apache-Drill/">Apache Drill</a>
-</li>
-                            
-<li class="active">
-    <a href="./">Atom</a>
+    <a href="../../Software/Apache-Drill/">Apache Drill</a>
 </li>
                             
 <li >
-    <a href="../Guake-Terminal-–-Dual-Monitor-Edits/">Guake Terminal – Dual Monitor Edits</a>
+    <a href="../../Software/Atom/">Atom</a>
 </li>
                             
 <li >
-    <a href="../Latex/">Latex</a>
+    <a href="../../Software/Guake-Terminal-–-Dual-Monitor-Edits/">Guake Terminal – Dual Monitor Edits</a>
 </li>
                             
 <li >
-    <a href="../Multimedia/">Multimedia</a>
+    <a href="../../Software/Latex/">Latex</a>
 </li>
                             
 <li >
-    <a href="../Skype/">Skype</a>
+    <a href="../../Software/Multimedia/">Multimedia</a>
 </li>
                             
 <li >
-    <a href="../Tableau/">Tableau</a>
+    <a href="../../Software/Skype/">Skype</a>
 </li>
                             
 <li >
-    <a href="../Useful-software/">Useful software</a>
+    <a href="../../Software/Tableau/">Tableau</a>
 </li>
                             
 <li >
-    <a href="../Vim/">Vim</a>
+    <a href="../../Software/Useful-software/">Useful software</a>
 </li>
                             
 <li >
-    <a href="../VirtualBox/">VirtualBox</a>
+    <a href="../../Software/Vim/">Vim</a>
 </li>
                             
 <li >
-    <a href="../ffmpeg/">Ffmpeg</a>
+    <a href="../../Software/VirtualBox/">VirtualBox</a>
 </li>
                             
 <li >
-    <a href="../mutt/">Mutt</a>
+    <a href="../../Software/ffmpeg/">Ffmpeg</a>
 </li>
                             
 <li >
-    <a href="../packages to install/">Packages to install</a>
+    <a href="../../Software/mutt/">Mutt</a>
 </li>
                             
 <li >
-    <a href="../sublime/">Sublime</a>
+    <a href="../../Software/packages to install/">Packages to install</a>
 </li>
                             
 <li >
-    <a href="../tmux/">Tmux</a>
+    <a href="../../Software/sublime/">Sublime</a>
+</li>
+                            
+<li >
+    <a href="../../Software/tmux/">Tmux</a>
 </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../../Web/Web-browsing-tips/">Web browsing tips</a>
+    <a href="../Web-browsing-tips/">Web browsing tips</a>
 </li>
                             
 <li >
-    <a href="../../Web/Web-dev-resources/">Web dev resources</a>
+    <a href="../Web-dev-resources/">Web dev resources</a>
 </li>
                             
-<li >
-    <a href="../../Web/github/">Github</a>
+<li class="active">
+    <a href="./">Github</a>
 </li>
                         </ul>
                     </li>
@@ -581,12 +581,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../Apache-Drill/">
+                        <a rel="next" href="../Web-dev-resources/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Guake-Terminal-–-Dual-Monitor-Edits/">
+                        <a rel="prev" href="../../dev/DB/Postgres/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -603,18 +603,42 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#atom">Atom</a></li>
+        <li class="main active"><a href="#how-to-add-an-image-to-a-gist">How to add an image to a gist</a></li>
+        <li class="main "><a href="#with-https">with https</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="atom">Atom</h2>
-<p><strong>Change background colour of selected text</strong></p>
-<pre><code>  atom-text-editor::shadow .selection .region {
-
-  background-color: LightGoldenRodYellow;
-}
-</code></pre></div>
+<h1 id="how-to-add-an-image-to-a-gist"><a href="https://remarkablemark.org/blog/2016/06/16/how-to-add-image-to-gist/">How to add an image to a gist</a></h1>
+<ol>
+<li>Create or find a <a href="https://gist.github.com">gist</a> that you own.</li>
+<li>
+<p>Clone your gist (replace <code>&lt;hash&gt;</code> with your gist's hash):
+    ```sh
+    # with ssh
+    git clone git@gist.github.com:<hash>.git mygist</p>
+<h1 id="with-https">with https</h1>
+<p>git clone https://gist.github.com/<hash>.git mygist
+```</p>
+</li>
+<li>
+<p>Change to your gist’s directory:
+   <code>sh
+   cd mygist</code></p>
+</li>
+<li>
+<p>Add and commit the image:
+    <code>sh
+    git add tulip.jpg
+    git commit -m "Add tulip to gist"</code></p>
+</li>
+<li>
+<p>Update remote:
+    <code>sh
+    git push origin master</code></p>
+</li>
+</ol>
+<p>See blog <a href="https://remarkablemark.org/blog/2016/06/16/how-to-add-image-to-gist/">post</a>.</p></div>
         </div>
 
         <footer class="col-md-12">

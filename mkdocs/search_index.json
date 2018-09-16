@@ -51,6 +51,16 @@
             "title": "Add user to group"
         }, 
         {
+            "location": "/OS/Linux-Unix/Apps/", 
+            "text": "Curl\n\n\nget curl to set error code to error if it fails\n\n\ncurl --fail http://non_existing_domain.com || echo \ncurl failed\n\ncurl --fail http://example.com \n echo \ncurl succeeded!", 
+            "title": "Apps"
+        }, 
+        {
+            "location": "/OS/Linux-Unix/Apps/#curl", 
+            "text": "get curl to set error code to error if it fails  curl --fail http://non_existing_domain.com || echo  curl failed \ncurl --fail http://example.com   echo  curl succeeded!", 
+            "title": "Curl"
+        }, 
+        {
             "location": "/OS/Linux-Unix/General/", 
             "text": "Systemd\n\n\nvim /etc/systemd/system/service_name.service\n\n\n\n\n[Unit]\nDescription = making network connection up\nAfter = network.target\n[Service]\n# ExecStart can point to any executable file\nExecStart = /root/scripts/conup.sh\n[Install]\nWantedBy = multi-user.target\n\n\n\n\nCreate executable script\n\n\nvim /root/scripts/conup.sh;\nchmod +x /root/scripts/conup.sh;\n\n\n\n\nEnable service\n\n\n# systemctl enable connection.service\n\n\n\n\nBasic operations\n\n\n# systemctl start connection.service\n# systemctl stop connection.service\n\n\n\n\nGrub\n\n\nChange grub boot order\n\n\nsudo vim /etc/default/grub\n\n\n\n\nChange \nGRUB_DEFAULT\n to one of [number of entry (zero-based), 'Title'subindex]\nExamples:\n\n\n'Advanced options for Ubuntu\n'3\n2\n\n\n\n\nThen, update the grub menu\n\n\nsudo update-grub\n\n\n\n\nCheck the file \n/boot/grub/grub.cfg\n for reference\n\n\nReinstall grub\n\n\n\n\nboot from livecd\n\n\nmount partition where grub was contained (usually OS's partition)\n\n\nsudo tune2fs -L \"partition_name\" /dev/sdXX ( e.g.: /dev/sda6/ )\n\n\nsudo os-prober\n\n\nsudo grub-install --root-directory=/media/partition_name/ /dev/sda\n\n\nreboot\n\n\n\n\nCreate passwordless user programmatically\n\n\n# useradd -m -c \nSamwise the Brave\n sam  -s /bin/bash\n\n\n\n\nCreates user with home /home/sam and shell /bin/bash\n\n\nFind\n\n\n# Search all files with .old extension and delete them:\nfind / -name \n*.old\n -exec /bin/rm {} \\;\n# Search all files with size \n of 100 MB and delete them:\nfind / -size +100M -exec /bin/rm {} \\;\n# Recursively change the permissions of all directories\nfind . -type d -exec chmod 755 {} \\;\n\n\n\n\nTop\n\n\n\n\nW\n writes config changes to .toprc\n\n\nE\n cycles through memory units in the total memory info\n\n\n\n\nConfigure stuff\n\n\nChange locale\n\n\nWith \n/usr/bin/tzselect\n you can check what is the timezone your computer should be using\n\n\nsudo dpkg-reconfigure tzdata\n\nIf it doesn't work, try the following:\n\n\nWith that timezone, paste the timezone to \n~/.profile\n or \n~/.bash_profile\n, depending on your use case.\nOne of those files (it'll probably work with any sourced file at login) should have one line such as:\n\n\nTZ='Europe/London'; export TZ\n\n\n\n\nor just execute\n\n\nInsert unicode characters\n\n\nHold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter.\nExample:\nHold control and shift and type U1F60F \u200d\ud83d\ude0f\n\n\nAdd dictionaries to /usr/share/dict/\n\n\n$ sudo apt-cache search --names-only swedish\n$ sudo apt-get install wswedish\n\n\n\n\nMouse - Third button\n\n\nsudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf\n\n\n\n\nAnd paste this\n\n\nSection \nInputClass\n\n    Identifier \nmiddle button emulation class\n\n    MatchIsPointer \non\n\n    Option \nEmulate3Buttons\n \non\n\nEndSection\n\n\n\n\nor check this\n\nwiki ubuntu\n\n\nWebcam\n\n\nList video devices\n\n\n\n\nv4l2-ctl --list-formats-ext\n\n\nv4l2-ctl --list-devices\n\n\n\n\nFind resolution of webcam\n\n\n\n\nlsusb\n list usb devices, get params of webcam\n\n\nlsusb -s 003:074 -v | egrep \"Width|Height\"\n\n\n\n\ndown vote\naccepted\nI had the same problem and managed to fix it by setting the defaults for both gvfs as well as xdg.\n\n\ncheck defaults with:\n\n\nChange default app for magnet links\n\n\nThis probably will only work with gnome, kde and xfce\n\n\n#Check currently available apps\nxdg-mime query default x-scheme-handler/magnet\ngvfs-mime --query x-scheme-handler/magnet\n\n\n\n\n# Set new app, providing it's in /usr/share/applications/\nxdg-mime default qBittorrent.desktop x-scheme-handler/magnet\ngvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop\n\n\n\n\nNotifications\n\n\nnotify-send -u critical \nThe potato finished cooking\n\n\n\n\n\nGet OS version\n\n\nuname -a\n\n\n\n\nand\n\n\n$ lsb_release -a\nNo LSB modules are available.\nDistributor ID: Ubuntu\nDescription:    Ubuntu 16.04.2 LTS\nRelease:        16.04\nCodename:       xenial\n\n\n\n\nMotion\n\n\nMake folders accessible\n\n\nsudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion;\nsudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/;\nsudo mkdir -p /var/log/motion/; sudo chown -R $USER:$USER /var/log/motion/;\n\n\n\n\nConfiguration file\n\n\n/etc/motion/motion.conf\n\n\nGenerate random chars\n\n\ntr -c -d '0123456789abcdefghijklmnopqrstuvwxyz'  \n /dev/urandom | dd bs=32 count=1 2\n/dev/null; echo\n\n\n\n\nMonitor screen locking\n\n\nexit_report(){\necho \n$(date) Monitoring Terminated.\n\n}\ntrap \nexit_report; exit;\n 0\nlockmon() {\nadddate() {\n    while IFS= read \u00adr line; do\n      echo \n$(date) $line\n | grep \nboolean\n | sed 's/   boolean true/Screen Locked/'\n| sed 's/   boolean false/Screen Unlocked/'\n    done\n}\necho \n$(date) Monitoring Started.\n\ndbus\u00admonitor \u00ad\u00adsession \ntype='signal',interface='org.gnome.ScreenSaver'\n | adddate\n}\nlockmon \n lock_screen.log\n\n\n\n\nHow to fix \u2018$MFTMirr does not match $MFT (record 0)\u2019\n\n\n\n\ninstall ntfsprogs\n\n\nsudo ntfsfix /dev/partitionName", 
             "title": "General"
@@ -2216,6 +2226,21 @@
             "title": "For the LOL"
         }, 
         {
+            "location": "/Web/github/", 
+            "text": "How to add an image to a gist\n\n\n\n\nCreate or find a \ngist\n that you own.\n\n\n\n\nClone your gist (replace \nhash\n with your gist's hash):\n    ```sh\n    # with ssh\n    git clone git@gist.github.com:\n.git mygist\n\n\nwith https\n\n\ngit clone https://gist.github.com/\n.git mygist\n```\n\n\n\n\n\n\nChange to your gist\u2019s directory:\n   \nsh\n   cd mygist\n\n\n\n\n\n\nAdd and commit the image:\n    \nsh\n    git add tulip.jpg\n    git commit -m \"Add tulip to gist\"\n\n\n\n\n\n\nUpdate remote:\n    \nsh\n    git push origin master\n\n\n\n\n\n\nSee blog \npost\n.", 
+            "title": "Github"
+        }, 
+        {
+            "location": "/Web/github/#how-to-add-an-image-to-a-gist", 
+            "text": "Create or find a  gist  that you own.   Clone your gist (replace  hash  with your gist's hash):\n    ```sh\n    # with ssh\n    git clone git@gist.github.com: .git mygist", 
+            "title": "How to add an image to a gist"
+        }, 
+        {
+            "location": "/Web/github/#with-https", 
+            "text": "git clone https://gist.github.com/ .git mygist\n```    Change to your gist\u2019s directory:\n    sh\n   cd mygist    Add and commit the image:\n     sh\n    git add tulip.jpg\n    git commit -m \"Add tulip to gist\"    Update remote:\n     sh\n    git push origin master    See blog  post .", 
+            "title": "with https"
+        }, 
+        {
             "location": "/dev/DB/Postgres/", 
             "text": "Change column type without changing order\n\n\nFrom \nhere\n\n\nCREATE TEMP TABLE temp_table AS SELECT * FROM original_table;\nDROP TABLE original_table;\nCREATE TABLE original_table ...\nINSERT INTO original_table SELECT * FROM temp_table;\n\n\n\n\nList tables\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere tablename like '%patata%' ;\n\n\n\n\nSELECT * FROM pg_catalog.pg_tables\nwhere schema like '%some_model%' ;\n\n\n\n\nDescribe table\n\n\nselect column_name, data_type, character_maximum_length\nfrom INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'\n\n\n\n\nCapitalize first letter of each word\n\n\nselect initcap(lower(deli.short_title))\nfrom deli\n\n\n\n\nSelect top N from groups\n\n\nSelect top 2 subcategories from each category, according to the movie screentime\n\n\nwith grouped_stuff as\n    ( select movie.category, movie.subcategory,\n    sum(movie.screentime) as total_screentime\n    from movies movie\n    where upload_date = '2017-09-18 00:00:00'\n    group by movie.subcategory, movie.category),\nranking as\n(\n    select grouped_stuff.*,\n    rank() over\n    (\n        partition by category\n        order by total_screentime desc\n    )\n    from\n    grouped_stuff\n)\nselect * from ranking where rank \n 3", 
             "title": "Postgres"
@@ -3001,6 +3026,16 @@
             "title": "Reloading submodules in IPython"
         }, 
         {
+            "location": "/python/logging/", 
+            "text": "Typical config\n\n\nTaken from \nhere\n\n\nimport logging, logging.config\ndef setup_logging(\n    default_path='logging.yaml',\n    default_level=logging.INFO,\n    env_key='LOG_CFG'\n    ):\n    \nSetup logging configuration\n\n    \n\n    path = default_path\n    value = os.getenv(env_key, None)\n    if value:\n        path = value\n    if os.path.exists(path):\n        with open(path, 'rt') as f:\n            config = yaml.safe_load(f.read())\n        logging.config.dictConfig(config)\n    else:\n        logging.basicConfig(level=default_level)\n\n\n\n\nlogging.yaml\n could be something like\n\n\n---\nversion: 1\ndisable_existing_loggers: False\nformatters:\n    simple:\n        format: \n%(asctime)s - %(name)s - %(levelname)s - %(message)s\n\n\nhandlers:\n    console:\n        class: logging.StreamHandler\n        level: INFO\n        formatter: simple\n        stream: ext://sys.stdout\n\n    info_file_handler:\n        class: logging.handlers.RotatingFileHandler\n        level: INFO\n        formatter: simple\n        filename: logs/info.log\n        maxBytes: 2097152 # 2MB\n        backupCount: 20\n        encoding: utf8\n\n    debug_file_handler:\n        class: logging.handlers.RotatingFileHandler\n        level: DEBUG\n        formatter: simple\n        filename: logs/debug.log\n        maxBytes: 2097152 # 2MB\n        backupCount: 20\n        encoding: utf8\n\n    error_file_handler:\n        class: logging.handlers.RotatingFileHandler\n        level: ERROR\n        formatter: simple\n        filename: logs/errors.log\n        maxBytes: 10485760 # 10MB\n        backupCount: 20\n        encoding: utf8\n\nloggers:\n    get_transactions:\n        level: ERROR\n        handlers: [console]\n        propagate: no\n\nroot:\n    level: DEBUG\n    handlers: [console, debug_file_handler, info_file_handler, error_file_handler]\n\n\n\n\nCan be used like this\n\n\nimport logging\nfrom utils import setup_logging\n\nsetup_logging(default_path=\n./logging_some_module.yaml\n)\nlogger = logging.getLogger(__name__)\n\n# sets level for the urllib3 module to WARNING\nlogging.getLogger(\nurllib3\n).setLevel(logging.WARNING)", 
+            "title": "Logging"
+        }, 
+        {
+            "location": "/python/logging/#typical-config", 
+            "text": "Taken from  here  import logging, logging.config\ndef setup_logging(\n    default_path='logging.yaml',\n    default_level=logging.INFO,\n    env_key='LOG_CFG'\n    ):\n     Setup logging configuration\n\n     \n    path = default_path\n    value = os.getenv(env_key, None)\n    if value:\n        path = value\n    if os.path.exists(path):\n        with open(path, 'rt') as f:\n            config = yaml.safe_load(f.read())\n        logging.config.dictConfig(config)\n    else:\n        logging.basicConfig(level=default_level)  logging.yaml  could be something like  ---\nversion: 1\ndisable_existing_loggers: False\nformatters:\n    simple:\n        format:  %(asctime)s - %(name)s - %(levelname)s - %(message)s \n\nhandlers:\n    console:\n        class: logging.StreamHandler\n        level: INFO\n        formatter: simple\n        stream: ext://sys.stdout\n\n    info_file_handler:\n        class: logging.handlers.RotatingFileHandler\n        level: INFO\n        formatter: simple\n        filename: logs/info.log\n        maxBytes: 2097152 # 2MB\n        backupCount: 20\n        encoding: utf8\n\n    debug_file_handler:\n        class: logging.handlers.RotatingFileHandler\n        level: DEBUG\n        formatter: simple\n        filename: logs/debug.log\n        maxBytes: 2097152 # 2MB\n        backupCount: 20\n        encoding: utf8\n\n    error_file_handler:\n        class: logging.handlers.RotatingFileHandler\n        level: ERROR\n        formatter: simple\n        filename: logs/errors.log\n        maxBytes: 10485760 # 10MB\n        backupCount: 20\n        encoding: utf8\n\nloggers:\n    get_transactions:\n        level: ERROR\n        handlers: [console]\n        propagate: no\n\nroot:\n    level: DEBUG\n    handlers: [console, debug_file_handler, info_file_handler, error_file_handler]  Can be used like this  import logging\nfrom utils import setup_logging\n\nsetup_logging(default_path= ./logging_some_module.yaml )\nlogger = logging.getLogger(__name__)\n\n# sets level for the urllib3 module to WARNING\nlogging.getLogger( urllib3 ).setLevel(logging.WARNING)", 
+            "title": "Typical config"
+        }, 
+        {
             "location": "/python/resources/", 
             "text": "The Hitchhiker\u2019s Guide to Python\n\n\nVery useful guide to working with Python\n\n\nCheatsheets\n\n\nPython madrid links\n\n\nOneliners\n\n\n\n\none\n\n\ntwo", 
             "title": "Resources"
@@ -3167,12 +3202,12 @@
         }, 
         {
             "location": "/python/libraries/matplotlib/", 
-            "text": "Plot time series with mat\n\n\npip install matplotlib numpy\n\n\n\n\nimport matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\n\nplt.plot(x,y)\nplt.show()\n```", 
+            "text": "Plot time series with mat\n\n\n$ pip install matplotlib numpy\n\n\n\n\nimport matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\nplt.plot(x,y)\nplt.show()", 
             "title": "Matplotlib"
         }, 
         {
             "location": "/python/libraries/matplotlib/#plot-time-series-with-mat", 
-            "text": "pip install matplotlib numpy  import matplotlib.pyplot as plt\nimport datetime\nimport numpy as np  x = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)  plt.plot(x,y)\nplt.show()\n```", 
+            "text": "$ pip install matplotlib numpy  import matplotlib.pyplot as plt\nimport datetime\nimport numpy as np\n\nx = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])\ny = np.random.randint(100, size=x.shape)\n\nplt.plot(x,y)\nplt.show()", 
             "title": "Plot time series with mat"
         }, 
         {
@@ -3217,7 +3252,7 @@
         }, 
         {
             "location": "/python/snippets/Python-basics/", 
-            "text": "Currying functions\n\n\nFunction that returns a function\n\n\nWith lambdas\n\n\nimport math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h\n\n\n\n\nWithout lambdas\n\n\nimport math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nCreate matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nMisc\n\n\nDissassemble python code\n\n\ndef myfunc(alist):\n    return len(alist)\n\n import dis\n\n dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE\n\n\n\n\nPython program from CLI\n\n\n#!/usr/bin/env bash\necho \nsomebody\n | python -c \n\nimport sys\nfor line in sys.stdin:\n    print line\n\n\n\n\n\n\nor\n\n\n#!/usr/bin/env bash\n\necho \nsomebody\n | python -c \n\nimport fileinput\nfor line in fileinput.input():\n        print line\n\n\nsomebody\n\n\n\n\nGenerator\n\n\nTake n elements from a generator\n\n\nn = 5\narray = (x**2 for x in xrange(10))\nsmaller = itertools.islice(array, n) ## get a new generator\nlist(smaller) ## or a list\n\n [0, 1, 4, 9, 16]", 
+            "text": "Currying functions\n\n\nFunction that returns a function\n\n\nWith lambdas\n\n\nimport math\ndef make_cylinder_volume_fun(r):\n    return lambda h: math.pi * r * r * h\n\n\n\n\nWithout lambdas\n\n\nimport math\ndef make_cylinder_volume_func(r):\n    def volume(h):\n        return math.pi * r * r * h\n    return volume\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nMisc\n\n\nDissassemble python code\n\n\ndef myfunc(alist):\n    return len(alist)\n\n import dis\n\n dis.dis(my_func)\n dis.dis(myfunc)\n  2           0 LOAD_GLOBAL              0 (len)\n              3 LOAD_FAST                0 (alist)\n              6 CALL_FUNCTION            1\n              9 RETURN_VALUE\n\n\n\n\nPython program from CLI\n\n\n#!/usr/bin/env bash\necho \nsomebody\n | python -c \n\nimport sys\nfor line in sys.stdin:\n    print line\n\n\n\n\n\n\nor\n\n\n#!/usr/bin/env bash\n\necho \nsomebody\n | python -c \n\nimport fileinput\nfor line in fileinput.input():\n        print line\n\n\nsomebody\n\n\n\n\nGenerator\n\n\nTake n elements from a generator\n\n\nn = 5\narray = (x**2 for x in xrange(10))\nsmaller = itertools.islice(array, n) ## get a new generator\nlist(smaller) ## or a list\n\n [0, 1, 4, 9, 16]\n\n\n\n\nJson\n\n\nRead json ignoring trailing commas\n\n\nimport json\nfrom jsoncomment import JsonComment\n\nwith open(filename) as data_file:\n    parser = JsonComment(json)\n    data = parser.load(data_file)\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
             "title": "Python basics"
         }, 
         {
@@ -3251,39 +3286,9 @@
             "title": "Strip punctuation of string"
         }, 
         {
-            "location": "/python/snippets/Python-basics/#create-matrix", 
-            "text": "", 
-            "title": "Create matrix"
-        }, 
-        {
-            "location": "/python/snippets/Python-basics/#create-matrix-of-none", 
-            "text": "A = [[ None for _ in xrange(M)] for _ in xrange(N)]", 
-            "title": "Create matrix of None"
-        }, 
-        {
-            "location": "/python/snippets/Python-basics/#create-matrix-of-random-numbers", 
-            "text": "import random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]", 
-            "title": "Create matrix of random numbers"
-        }, 
-        {
-            "location": "/python/snippets/Python-basics/#generator-for-lists-of-m-random-elements", 
-            "text": "import random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
-            "title": "Generator for lists of M random elements"
-        }, 
-        {
             "location": "/python/snippets/Python-basics/#flatten-list-of-lists-only-one-level-of-nesting_1", 
             "text": "import itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))  [1, 2, 3, 4, 5, 6, 7, 8, 9]", 
             "title": "Flatten list of lists (only one level of nesting)"
-        }, 
-        {
-            "location": "/python/snippets/Python-basics/#flatten-json_1", 
-            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
-            "title": "Flatten json"
-        }, 
-        {
-            "location": "/python/snippets/Python-basics/#strip-punctuation-of-string_1", 
-            "text": "s.translate(None, string.punctuation)", 
-            "title": "Strip punctuation of string"
         }, 
         {
             "location": "/python/snippets/Python-basics/#misc", 
@@ -3309,6 +3314,21 @@
             "location": "/python/snippets/Python-basics/#take-n-elements-from-a-generator", 
             "text": "n = 5\narray = (x**2 for x in xrange(10))\nsmaller = itertools.islice(array, n) ## get a new generator\nlist(smaller) ## or a list  [0, 1, 4, 9, 16]", 
             "title": "Take n elements from a generator"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#json", 
+            "text": "", 
+            "title": "Json"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#read-json-ignoring-trailing-commas", 
+            "text": "import json\nfrom jsoncomment import JsonComment\n\nwith open(filename) as data_file:\n    parser = JsonComment(json)\n    data = parser.load(data_file)", 
+            "title": "Read json ignoring trailing commas"
+        }, 
+        {
+            "location": "/python/snippets/Python-basics/#flatten-json_1", 
+            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
+            "title": "Flatten json"
         }, 
         {
             "location": "/python/snippets/Python-date-time/", 
@@ -3422,7 +3442,7 @@
         }, 
         {
             "location": "/python/snippets/Python-misc/", 
-            "text": "Create matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nFlatten json\n\n\ndef flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nPermutations\n\n\nFrom \npython lexical analysis docs\n\n\ndef perm(l):\n    # Compute the list of all permutations of l\n    if len(l) \n= 1:\n        return [l]\n    r = []\n    for i in range(len(l)):\n         s = l[:i] + l[i+1:]\n         p = perm(s)\n         for x in p:\n             r.append(l[i:i+1] + x)\n    return r", 
+            "text": "Create matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)\n\n\n\n\nFlatten list of lists (only one level of nesting)\n\n\nimport itertools\nlist2d = [[1,2,3],[4,5,6], [7], [8,9]]\nlist(itertools.chain.from_iterable(list2d))\n\n [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\n\nStrip punctuation of string\n\n\ns.translate(None, string.punctuation)\n\n\n\n\nPermutations\n\n\nFrom \npython lexical analysis docs\n\n\ndef perm(l):\n    # Compute the list of all permutations of l\n    if len(l) \n= 1:\n        return [l]\n    r = []\n    for i in range(len(l)):\n         s = l[:i] + l[i+1:]\n         p = perm(s)\n         for x in p:\n             r.append(l[i:i+1] + x)\n    return r\n\n\n\n\nPrint literal curly-braces\n\n\np = \n{{}} {}\n\np.format(7)\n\n\n\n\nRandom string\n\n\ntaken from \nhere\n\n\nimport string, random\nN = 7\n''.join(random.choices(string.ascii_uppercase + string.digits, k=N))\n\n\n\n\ncryptographically more secure version\n\n\n''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))", 
             "title": "Python misc"
         }, 
         {
@@ -3451,11 +3471,6 @@
             "title": "Flatten list of lists (only one level of nesting)"
         }, 
         {
-            "location": "/python/snippets/Python-misc/#flatten-json", 
-            "text": "def flattenjson( b, delim ):\n    val = {}\n    for i in b.keys():\n        if isinstance( b[i], dict ):\n            get = flattenjson( b[i], delim )\n            for j in get.keys():\n                val[ i + delim + j ] = get[j]\n        else:\n            val[i] = b[i]\n\n    return val", 
-            "title": "Flatten json"
-        }, 
-        {
             "location": "/python/snippets/Python-misc/#strip-punctuation-of-string", 
             "text": "s.translate(None, string.punctuation)", 
             "title": "Strip punctuation of string"
@@ -3466,9 +3481,44 @@
             "title": "Permutations"
         }, 
         {
+            "location": "/python/snippets/Python-misc/#print-literal-curly-braces", 
+            "text": "p =  {{}} {} \np.format(7)", 
+            "title": "Print literal curly-braces"
+        }, 
+        {
+            "location": "/python/snippets/Python-misc/#random-string", 
+            "text": "taken from  here  import string, random\nN = 7\n''.join(random.choices(string.ascii_uppercase + string.digits, k=N))  cryptographically more secure version  ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))", 
+            "title": "Random string"
+        }, 
+        {
             "location": "/python/snippets/Python-parse-cli-options/", 
             "text": "See \nthis page", 
             "title": "Python parse cli options"
+        }, 
+        {
+            "location": "/python/snippets/Python-randomness/", 
+            "text": "Create matrix\n\n\nCreate matrix of None\n\n\nA = [[ None for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nCreate matrix of random numbers\n\n\nimport random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]\n\n\n\n\nGenerator for lists of M random elements\n\n\nimport random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
+            "title": "Python randomness"
+        }, 
+        {
+            "location": "/python/snippets/Python-randomness/#create-matrix", 
+            "text": "", 
+            "title": "Create matrix"
+        }, 
+        {
+            "location": "/python/snippets/Python-randomness/#create-matrix-of-none", 
+            "text": "A = [[ None for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of None"
+        }, 
+        {
+            "location": "/python/snippets/Python-randomness/#create-matrix-of-random-numbers", 
+            "text": "import random\nA = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]", 
+            "title": "Create matrix of random numbers"
+        }, 
+        {
+            "location": "/python/snippets/Python-randomness/#generator-for-lists-of-m-random-elements", 
+            "text": "import random\nA = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))\nfor i in A:\n    print i\n    sleep(0.2)", 
+            "title": "Generator for lists of M random elements"
         }, 
         {
             "location": "/python/snippets/Python-strings/", 

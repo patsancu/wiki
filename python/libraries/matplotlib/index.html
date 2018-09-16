@@ -81,6 +81,10 @@
 </li>
             
 <li >
+    <a href="../../../OS/Linux-Unix/Apps/">Apps</a>
+</li>
+            
+<li >
     <a href="../../../OS/Linux-Unix/General/">General</a>
 </li>
             
@@ -320,6 +324,10 @@
 <li >
     <a href="../../../Web/Web-dev-resources/">Web dev resources</a>
 </li>
+                            
+<li >
+    <a href="../../../Web/github/">Github</a>
+</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -462,6 +470,10 @@
 </li>
                             
 <li >
+    <a href="../../logging/">Logging</a>
+</li>
+                            
+<li >
     <a href="../../resources/">Resources</a>
 </li>
                             
@@ -550,6 +562,10 @@
 </li>
             
 <li >
+    <a href="../../snippets/Python-randomness/">Python randomness</a>
+</li>
+            
+<li >
     <a href="../../snippets/Python-strings/">Python strings</a>
 </li>
     </ul>
@@ -593,17 +609,19 @@
                 <div class="col-md-9" role="main">
 
 <h3 id="plot-time-series-with-mat">Plot time series with mat</h3>
-<pre><code>pip install matplotlib numpy
+<pre><code>$ pip install matplotlib numpy
 </code></pre>
 
-<p>import matplotlib.pyplot as plt
+<pre><code class="python">import matplotlib.pyplot as plt
 import datetime
-import numpy as np</p>
-<p>x = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])
-y = np.random.randint(100, size=x.shape)</p>
-<p>plt.plot(x,y)
+import numpy as np
+
+x = np.array([datetime.datetime(2013, 9, 28, i, 0) for i in range(24)])
+y = np.random.randint(100, size=x.shape)
+
+plt.plot(x,y)
 plt.show()
-```</p></div>
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

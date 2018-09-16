@@ -81,6 +81,10 @@
 </li>
             
 <li >
+    <a href="../../../OS/Linux-Unix/Apps/">Apps</a>
+</li>
+            
+<li >
     <a href="../../../OS/Linux-Unix/General/">General</a>
 </li>
             
@@ -320,6 +324,10 @@
 <li >
     <a href="../../../Web/Web-dev-resources/">Web dev resources</a>
 </li>
+                            
+<li >
+    <a href="../../../Web/github/">Github</a>
+</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -462,6 +470,10 @@
 </li>
                             
 <li >
+    <a href="../../logging/">Logging</a>
+</li>
+                            
+<li >
     <a href="../../resources/">Resources</a>
 </li>
                             
@@ -550,6 +562,10 @@
 </li>
             
 <li >
+    <a href="../Python-randomness/">Python randomness</a>
+</li>
+            
+<li >
     <a href="../Python-strings/">Python strings</a>
 </li>
     </ul>
@@ -593,18 +609,15 @@
         <li class="main "><a href="#flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</a></li>
         <li class="main "><a href="#flatten-json">Flatten json</a></li>
             <li><a href="#strip-punctuation-of-string">Strip punctuation of string</a></li>
-        <li class="main "><a href="#create-matrix">Create matrix</a></li>
-            <li><a href="#create-matrix-of-none">Create matrix of None</a></li>
-            <li><a href="#create-matrix-of-random-numbers">Create matrix of random numbers</a></li>
-            <li><a href="#generator-for-lists-of-m-random-elements">Generator for lists of M random elements</a></li>
         <li class="main "><a href="#flatten-list-of-lists-only-one-level-of-nesting_1">Flatten list of lists (only one level of nesting)</a></li>
-        <li class="main "><a href="#flatten-json_1">Flatten json</a></li>
-            <li><a href="#strip-punctuation-of-string_1">Strip punctuation of string</a></li>
         <li class="main "><a href="#misc">Misc</a></li>
             <li><a href="#dissassemble-python-code">Dissassemble python code</a></li>
         <li class="main "><a href="#python-program-from-cli">Python program from CLI</a></li>
         <li class="main "><a href="#generator">Generator</a></li>
             <li><a href="#take-n-elements-from-a-generator">Take n elements from a generator</a></li>
+        <li class="main "><a href="#json">Json</a></li>
+            <li><a href="#read-json-ignoring-trailing-commas">Read json ignoring trailing commas</a></li>
+            <li><a href="#flatten-json_1">Flatten json</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -650,47 +663,11 @@ list(itertools.chain.from_iterable(list2d))
 <pre><code class="python">s.translate(None, string.punctuation)
 </code></pre>
 
-<h3 id="create-matrix">Create matrix</h3>
-<h4 id="create-matrix-of-none">Create matrix of None</h4>
-<pre><code class="python">A = [[ None for _ in xrange(M)] for _ in xrange(N)]
-</code></pre>
-
-<h4 id="create-matrix-of-random-numbers">Create matrix of random numbers</h4>
-<pre><code class="python">import random
-A = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]
-</code></pre>
-
-<h4 id="generator-for-lists-of-m-random-elements">Generator for lists of M random elements</h4>
-<pre><code class="python">import random
-A = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))
-for i in A:
-    print i
-    sleep(0.2)
-</code></pre>
-
 <h3 id="flatten-list-of-lists-only-one-level-of-nesting_1">Flatten list of lists (only one level of nesting)</h3>
 <pre><code class="python">import itertools
 list2d = [[1,2,3],[4,5,6], [7], [8,9]]
 list(itertools.chain.from_iterable(list2d))
 &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-
-<h3 id="flatten-json_1">Flatten json</h3>
-<pre><code class="python">def flattenjson( b, delim ):
-    val = {}
-    for i in b.keys():
-        if isinstance( b[i], dict ):
-            get = flattenjson( b[i], delim )
-            for j in get.keys():
-                val[ i + delim + j ] = get[j]
-        else:
-            val[i] = b[i]
-
-    return val
-</code></pre>
-
-<h4 id="strip-punctuation-of-string_1">Strip punctuation of string</h4>
-<pre><code class="python">s.translate(None, string.punctuation)
 </code></pre>
 
 <h3 id="misc">Misc</h3>
@@ -733,6 +710,30 @@ array = (x**2 for x in xrange(10))
 smaller = itertools.islice(array, n) ## get a new generator
 list(smaller) ## or a list
 &gt;&gt;&gt; [0, 1, 4, 9, 16]
+</code></pre>
+
+<h3 id="json">Json</h3>
+<h4 id="read-json-ignoring-trailing-commas">Read json ignoring trailing commas</h4>
+<pre><code class="python">import json
+from jsoncomment import JsonComment
+
+with open(filename) as data_file:
+    parser = JsonComment(json)
+    data = parser.load(data_file)
+</code></pre>
+
+<h4 id="flatten-json_1">Flatten json</h4>
+<pre><code class="python">def flattenjson( b, delim ):
+    val = {}
+    for i in b.keys():
+        if isinstance( b[i], dict ):
+            get = flattenjson( b[i], delim )
+            for j in get.keys():
+                val[ i + delim + j ] = get[j]
+        else:
+            val[i] = b[i]
+
+    return val
 </code></pre></div>
         </div>
 
