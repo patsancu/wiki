@@ -290,3 +290,23 @@ or
 $ git push <remote_name> :<branch_name>
 ```
 
+### Cherry picking
+*extracted from (here)[https://www.previousnext.com.au/blog/intro-cherry-picking-git]*
+Supposing there's a branch, `feature/killah-branch` with the following commits
+```
+d467740 some killer feature
+2538f9f some nasty bug fixed
+b60f122 le commit pour le commit
+```
+
+and want to apply the commit that fixes a nasty bug (id: `2538f9f`) from that branch in another branch, `feature/thenextbigthing`.
+
+Go to the `feature/thenextbigthing` branch
+```
+$ git checkout `feature/thenextbigthing`
+```
+then, cherry pick the commit
+```
+$ git cherry-pick 2538f9f
+```
+You can cherry pick more than one commit (separate by space the list of commits)
