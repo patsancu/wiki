@@ -59,3 +59,36 @@ SELECT owner, table_name
   where owner = 'da_owner'
 ```
 
+
+### Round timestamp/datetime to next 5 minutes
+```sql
+with table_x as (
+ select timestamp '2010-02-19 01:25:46' t from dual union all
+ select timestamp '2010-02-19 01:40:46' from dual union all
+ select timestamp '2010-02-19 01:55:46' from dual union ALL
+ select timestamp '2010-02-19 01:19:46' from dual union ALL
+ select timestamp '2010-02-19 01:00:00' from dual union ALL
+ select timestamp '2010-02-19 01:00:01' from dual union ALL
+ select timestamp '2010-02-19 23:58:01' from dual union all
+ select timestamp '2010-02-19 02:10:46' from dual)
+select t AS input_time,
+case when mod(60*extract(minute from t)+extract(second from t),60*5) > 0
+     then t+NumToDsInterVal(60*5-mod(60*extract(minute from t)+extract(second from t),60*5),'SECOND')
+     else t end as rounded_time
+  from table_x;
+  
+  
+WITH time_table AS (
+	SELECT CAST(TO_DATE('2016-03-18 08:54:00', 'YYYY-MM-DD HH24:MI:SS') AS timestamp) t FROM dual UNION ALL
+	SELECT CAST(TO_DATE('2016-03-20 23:59:00', 'YYYY-MM-DD HH24:MI:SS') AS timestamp) t FROM dual UNION ALL
+	SELECT CAST(TO_DATE('2016-03-20 00:05:00', 'YYYY-MM-DD HH24:MI:SS') AS timestamp) t FROM dual UNION ALL
+	SELECT CAST(TO_DATE('2016-03-20 00:05:01', 'YYYY-MM-DD HH24:MI:SS') AS timestamp) t FROM dual UNION ALL
+	SELECT CAST(TO_DATE('2016-03-31 23:59:00', 'YYYY-MM-DD HH24:MI:SS') AS timestamp) t FROM dual
+)
+SELECT 
+	t AS input_time,
+	case when mod(60*extract(minute from t)+extract(second from t),60*5) > 0
+     then t+NumToDsInterVal(60*5-mod(60*extract(minute from t)+extract(second from t),60*5),'SECOND')
+     else t end as rounded_time_TO
+FROM time_table
+```
