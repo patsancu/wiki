@@ -265,3 +265,18 @@ git reset --hard master # to move the branch to be the same commit asmaster righ
 git checkout master # to checkout master.
 git reset --hard origin/master # to reset master to the state that ison the origin repo. This assumes you didn't have any unpushed changes to master. If you do, replace origin/master with the commit id you wantto reset to.
 ```
+
+### Rename a local and remote branch
+
+```bash
+## 1. Rename your local branch.
+## If you are on the branch you want to rename:
+$ git branch -m new-name
+## If you are on a different branch:
+$ git branch -m old-name new-name
+## 2. Delete the old-name remote branch and push the new-name local branch.
+$ git push origin :old-name new-name
+## 3. Reset the upstream branch for the new-name local branch.
+## Switch to the branch and then:
+$ git push origin -u new-name
+```
