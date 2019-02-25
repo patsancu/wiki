@@ -310,3 +310,34 @@ then, cherry pick the commit
 $ git cherry-pick 2538f9f
 ```
 You can cherry pick more than one commit (separate by space the list of commits)
+
+### Push uncreated (remotelly) branch
+```
+    git push -u origin feature_branch_name
+```
+
+### save stash by name
+
+```
+    git stash save -u  "good testing"
+
+```
+### list stash
+
+```
+$ git stash list
+stash@{0}: On FEAT/JIRA_FEATURE-530: good testing
+```
+
+
+### apply stash by index
+
+```
+git stash apply --index stash@{0}
+```
+
+### delete stash by index
+
+```
+git stash drop stash@{0}
+```
