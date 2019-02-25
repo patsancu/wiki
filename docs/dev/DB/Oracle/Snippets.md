@@ -92,3 +92,42 @@ SELECT
      else t end as rounded_time_TO
 FROM time_table
 ```
+
+### Split string and pick last
+```sql
+WITH some_table AS (
+	SELECT 'SOME_CITY_NAME_1' city_name FROM dual UNION ALL
+	SELECT 'BERLIN_24' FROM dual UNION ALL
+	SELECT 'MADRID_3' FROM dual UNION ALL
+	SELECT 'SOME_OTHER_CITY_NAME_2' FROM dual
+)
+SELECT city_name, SUBSTR( city_name,
+               INSTR( city_name, '_', -1 )+1 ) FROM some_table
+
+-- RESULTS
+-- CITY_NAME	SUBSTR(CITY_NAME,INSTR(CITY_NAME,'_',-1)+1)
+-- ========================================
+-- SOME_CITY_NAME_1 || 1
+-- BERLIN_24 || 24
+-- MADRID_3 || 3
+-- SOME_OTHER_CITY_NAME_2 || 2
+```
+### Split string and pick all but last
+```sql
+WITH some_table AS (
+	SELECT 'SOME_CITY_NAME_1' city_name FROM dual UNION ALL
+	SELECT 'BERLIN_24' FROM dual UNION ALL
+	SELECT 'MADRID_3' FROM dual UNION ALL
+	SELECT 'SOME_OTHER_CITY_NAME_2' FROM dual
+)
+SELECT city_name, SUBSTR( city_name,
+               0, INSTR( city_name, '_', -1 )-1 ) FROM some_table
+
+-- RESULTS
+-- CITY_NAME;SUBSTR(CITY_NAME,0,INSTR(CITY_NAME,'_',-1)-1)
+-- ========================================
+-- SOME_CITY_NAME_1;SOME_CITY_NAME
+-- BERLIN_24;BERLIN
+-- MADRID_3;MADRID
+-- SOME_OTHER_CITY_NAME_2;SOME_OTHER_CITY_NAME
+```
