@@ -158,3 +158,16 @@ if (olderThanAday){
     startSessionDate = now;
 }
 ```
+
+### Random alphanumeric string
+```<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.8</version>
+</dependency>
+```
+
+```
+RandomStringUtils.randomAlphanumeric(10);
+```
