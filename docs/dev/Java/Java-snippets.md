@@ -171,3 +171,14 @@ if (olderThanAday){
 ```
 RandomStringUtils.randomAlphanumeric(10);
 ```
+
+
+### Difference between two dates
+```
+LocalDateTime now = LocalDateTime.now();
+boolean olderThanAday = ChronoUnit.DAYS.between(startSessionDate, now ) >= 1;
+if (startSessionDate == null || olderThanAday){
+    AuthLoginResponseType response = this.serviceV12.startSession(this.username, this.password, this.locale);
+    this.sessionId = response.getResult().getValue().getSessionId();
+    startSessionDate = now;
+}```
