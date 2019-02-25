@@ -85,3 +85,18 @@ BEGIN
   END;
 END;
 ```
+
+
+### Find table with column name.sql
+```sql
+select 
+  * 
+from 
+  dba_tab_columns 
+where 
+  column_name LIKE '%POI%'
+  AND owner != 'SYS' 
+  AND owner != 'XDB'
+  AND owner != 'APEX_040000'
+  AND owner != 'MSSQL_ORACLE';
+```
