@@ -280,3 +280,13 @@ $ git push origin :old-name new-name
 ## Switch to the branch and then:
 $ git push origin -u new-name
 ```
+
+### Delete remote branch
+```bash
+$ git push <remote_name> --delete <branch_name>
+```
+or
+```bash
+$ git push <remote_name> :<branch_name>
+```
+
