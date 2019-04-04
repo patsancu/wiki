@@ -484,3 +484,18 @@ done
 ```sh
 grep --color=always -e "^" -e "hello" testfile
 ```
+
+### Random numbers
+#### zsh or bash
+- random between 0-999
+```bash
+echo $[${RANDOM}%1000]
+```
+- random between 10-20
+```bash
+$[${RANDOM}%11+10]
+```
+- random number that's N digits long
+```bash
+${(l:3::0:)${RANDOM}}
+```
