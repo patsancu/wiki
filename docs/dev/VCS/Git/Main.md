@@ -347,4 +347,4 @@ git stash drop stash@{0}
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 ```
 
-More info (here)[https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c28a]
+More info [here](https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c28a)
