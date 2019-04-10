@@ -663,6 +663,7 @@
         <li class="main "><a href="#apply-stash-by-index">apply stash by index</a></li>
         <li class="main "><a href="#delete-stash-by-index">delete stash by index</a></li>
         <li class="main "><a href="#rewrite-url-to-use-ssh-instead-of-https">Rewrite url to use ssh instead of https</a></li>
+        <li class="main "><a href="#alias-for-github">Alias for github</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -951,7 +952,11 @@ stash@{0}: On FEAT/JIRA_FEATURE-530: good testing
 <pre><code>git config --global url.&quot;git@github.com:&quot;.insteadOf &quot;https://github.com/&quot;
 </code></pre>
 
-<p>More info <a href="https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c28a">here</a></p></div>
+<p>More info <a href="https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c28a">here</a></p>
+<h3 id="alias-for-github">Alias for github</h3>
+<pre><code>git config --global url.&quot;git://github.com/&quot;.insteadOf gh:
+git clone gh:patsancu/wiki.git
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
