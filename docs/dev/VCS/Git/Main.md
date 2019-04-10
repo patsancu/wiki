@@ -341,3 +341,10 @@ git stash apply --index stash@{0}
 ```
 git stash drop stash@{0}
 ```
+
+### Rewrite url to use ssh instead of https
+```
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+```
+
+More info (here)[https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c28a]
