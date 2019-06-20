@@ -664,6 +664,7 @@
         <li class="main "><a href="#delete-stash-by-index">delete stash by index</a></li>
         <li class="main "><a href="#rewrite-url-to-use-ssh-instead-of-https">Rewrite url to use ssh instead of https</a></li>
         <li class="main "><a href="#alias-for-github">Alias for github</a></li>
+        <li class="main "><a href="#change-commit-date">Change commit date</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -751,8 +752,8 @@ stash@{0}: WIP on alerting: 697194d WIP
 
 <h3 id="discard-changes">Discard changes</h3>
 <p><strong>DANGEROUS</strong>
-* Checks out the current index for the current directory.
-* Undo unstaged changes in tracked files. It apparently doesn't touch staged changes and leaves untracked files alone.</p>
+<em> Checks out the current index for the current directory.
+</em> Undo unstaged changes in tracked files. It apparently doesn't touch staged changes and leaves untracked files alone.</p>
 <pre><code>git checkout .
 </code></pre>
 
@@ -764,9 +765,9 @@ stash@{0}: WIP on alerting: 697194d WIP
 <p><code>git reset filepath</code></p>
 <h3 id="undo-commits">Undo commits</h3>
 <p><em>Permanently</em>
-* Reset your head to HEAD
+<em> Reset your head to HEAD
 <code>git reset --hard</code>
-* Reset your head to wherever you want to be
+</em> Reset your head to wherever you want to be
 <code>git reset --hard &lt;the sha1 hash&gt;</code></p>
 <p><em>Not permanent</em></p>
 <p><code>git reset HEAD~1</code></p>
@@ -956,6 +957,30 @@ stash@{0}: On FEAT/JIRA_FEATURE-530: good testing
 <h3 id="alias-for-github">Alias for github</h3>
 <pre><code>git config --global url.&quot;git://github.com/&quot;.insteadOf gh:
 git clone gh:patsancu/wiki.git
+</code></pre>
+
+<h3 id="change-commit-date">Change commit date</h3>
+<p>Set the date of an arbitrary commit to an arbitrary or current date</p>
+<ul>
+<li>Rebase to before said commit and stop for amendment:</li>
+</ul>
+<pre><code>git rebase &lt;commit-hash&gt;^ -i
+</code></pre>
+
+<ul>
+<li>Replace pick with e (edit) on the line with that commit (the first one)
+quit the editor (ESC followed by :wq in VIM)
+Either:</li>
+</ul>
+<pre><code>GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
+</code></pre>
+
+<p>or</p>
+<pre><code>GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot;
+</code></pre>
+
+<p>Following any of these 2 options, you will want to run:</p>
+<pre><code>git rebase --continue
 </code></pre></div>
         </div>
 
@@ -965,7 +990,7 @@ git clone gh:patsancu/wiki.git
         </footer>
         <script>
             var base_url = "../../../..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../../../js/base.js" defer></script>
         <script src="../../../../search/main.js" defer></script>
