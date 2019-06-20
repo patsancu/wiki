@@ -354,3 +354,26 @@ More info [here](https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c2
 git config --global url."git://github.com/".insteadOf gh:
 git clone gh:patsancu/wiki.git
 ```
+
+### Change commit date
+Set the date of an arbitrary commit to an arbitrary or current date
+
+* Rebase to before said commit and stop for amendment:
+```
+git rebase <commit-hash>^ -i
+```
+* Replace pick with e (edit) on the line with that commit (the first one)
+quit the editor (ESC followed by :wq in VIM)
+Either:
+```
+GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"
+```
+or
+```
+GIT_COMMITTER_DATE="Mon 20 Aug 2018 20:19:19 BST" git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"
+```
+
+Following any of these 2 options, you will want to run:
+```
+git rebase --continue
+```
