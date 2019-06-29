@@ -64,3 +64,45 @@ minutes = difference.minutes
 
 print "Difference is %s year, %s months, %s days, %s hours, %s minutes " %(years, months, days, hours, minutes)
 ```
+
+### Get date time for different timezones
+```
+import datetime
+
+import pytz
+"""
+    timezone must be one of the format "Europe/Berlin"
+    returns string according to format (e.g. "%Y-%m-%dT%H:%M:%S%z")
+"""
+def get_now_for_timezone(timezone):
+    utcmoment_naive = datetime.datetime.utcnow()
+    utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
+    localDatetime = utcmoment.astimezone(pytz.timezone(timezone))
+    return localDatetime
+
+def get_now_for_timezone_plus_minutes(timezone, minutes):
+    now = get_now_for_timezone(timezone)
+    return add_minutes(now, minutes)
+
+def get_string_now_for_timezone_and_dateformat_string(timezone, dateformat):
+    localDatetime = get_now_for_timezone(timezone)
+    return localDatetime.strftime(dateformat)
+
+def add_minutes(some_date, minutes_to_add):
+    diff_45_minutes = datetime.timedelta(minutes = minutes_to_add)
+    return some_date + diff_45_minutes
+
+def get_string_now_plus_minutes_for_timezone_and_dateformat(minutes, timezone, dateformat):
+    plus_minutes = get_now_for_timezone_plus_minutes(timezone, minutes)
+    return plus_minutes.strftime(dateformat)
+
+date_format = "%Y-%m-%dT%H:%M:%S%z"
+print(get_now_for_timezone("UTC"))
+# 2019-06-28 09:53:44.435425+00:00
+print(get_now_for_timezone_plus_minutes("America/Los_Angeles", 20))
+# 2019-06-28 03:13:44.435985-07:00
+print(get_string_now_for_timezone_and_dateformat_string("UTC", date_format))
+# 2019-06-28T09:53:44+0000
+print(get_string_now_plus_minutes_for_timezone_and_dateformat(2, "Europe/Madrid", date_format))
+# 2019-06-28T11:55:44+0200
+```
