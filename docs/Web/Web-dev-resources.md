@@ -23,7 +23,7 @@ Cool OpenGL maps
 Website to test post, get and other stuff about http requests
 
 ### Json mock api
-[myjson](myjson.com)
+[myjson](http://myjson.com)
 
 
 ### Misc
