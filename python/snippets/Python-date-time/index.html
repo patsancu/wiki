@@ -619,6 +619,7 @@
         <li class="main active"><a href="#datetime-conversions">Date/Time conversions</a></li>
         <li class="main "><a href="#datetime-arithmetic">Date/time arithmetic</a></li>
         <li class="main "><a href="#difference-between-dates">Difference between dates</a></li>
+        <li class="main "><a href="#get-date-time-for-different-timezones">Get date time for different timezones</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -683,6 +684,47 @@ hours = difference.hours
 minutes = difference.minutes
 
 print &quot;Difference is %s year, %s months, %s days, %s hours, %s minutes &quot; %(years, months, days, hours, minutes)
+</code></pre>
+
+<h3 id="get-date-time-for-different-timezones">Get date time for different timezones</h3>
+<pre><code>import datetime
+
+import pytz
+&quot;&quot;&quot;
+    timezone must be one of the format &quot;Europe/Berlin&quot;
+    returns string according to format (e.g. &quot;%Y-%m-%dT%H:%M:%S%z&quot;)
+&quot;&quot;&quot;
+def get_now_for_timezone(timezone):
+    utcmoment_naive = datetime.datetime.utcnow()
+    utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
+    localDatetime = utcmoment.astimezone(pytz.timezone(timezone))
+    return localDatetime
+
+def get_now_for_timezone_plus_minutes(timezone, minutes):
+    now = get_now_for_timezone(timezone)
+    return add_minutes(now, minutes)
+
+def get_string_now_for_timezone_and_dateformat_string(timezone, dateformat):
+    localDatetime = get_now_for_timezone(timezone)
+    return localDatetime.strftime(dateformat)
+
+def add_minutes(some_date, minutes_to_add):
+    diff_45_minutes = datetime.timedelta(minutes = minutes_to_add)
+    return some_date + diff_45_minutes
+
+def get_string_now_plus_minutes_for_timezone_and_dateformat(minutes, timezone, dateformat):
+    plus_minutes = get_now_for_timezone_plus_minutes(timezone, minutes)
+    return plus_minutes.strftime(dateformat)
+
+date_format = &quot;%Y-%m-%dT%H:%M:%S%z&quot;
+print(get_now_for_timezone(&quot;UTC&quot;))
+# 2019-06-28 09:53:44.435425+00:00
+print(get_now_for_timezone_plus_minutes(&quot;America/Los_Angeles&quot;, 20))
+# 2019-06-28 03:13:44.435985-07:00
+print(get_string_now_for_timezone_and_dateformat_string(&quot;UTC&quot;, date_format))
+# 2019-06-28T09:53:44+0000
+print(get_string_now_plus_minutes_for_timezone_and_dateformat(2, &quot;Europe/Madrid&quot;, date_format))
+# 2019-06-28T11:55:44+0200
 </code></pre></div>
         </div>
 
@@ -692,7 +734,7 @@ print &quot;Difference is %s year, %s months, %s days, %s hours, %s minutes &quo
         </footer>
         <script>
             var base_url = "../../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../../../js/base.js" defer></script>
         <script src="../../../search/main.js" defer></script>
