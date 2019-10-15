@@ -77,3 +77,13 @@ There's no java version listed on the pom for that step/order
     </pluginManagement>
   </build>
 ```
+
+
+### Get project version
+```
+MVN_VERSION=$(mvn -q \
+    -Dexec.executable=echo \
+    -Dexec.args='${project.version}' \
+    --non-recursive \
+    exec:exec)
+```
