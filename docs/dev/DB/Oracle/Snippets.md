@@ -131,3 +131,17 @@ SELECT city_name, SUBSTR( city_name,
 -- MADRID_3;MADRID
 -- SOME_OTHER_CITY_NAME_2;SOME_OTHER_CITY_NAME
 ```
+
+### Compare dates with and without timezone
+
+```sql
+-- trans_time is with time zone and SUBSCRIPTION.VALID_FROM is in UTC but with no explicit timezone
+SELECT
+    *
+FROM
+    a
+JOIN
+    subscription ON a.customer_id = subscription.customer_id
+WHERE
+    a.TRANS_TIME >=	FROM_TZ( CAST(SUBSCRIPTION.VALID_FROM AS TIMESTAMP), 'UTC' )
+```
