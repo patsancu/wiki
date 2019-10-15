@@ -377,3 +377,20 @@ Following any of these 2 options, you will want to run:
 ```
 git rebase --continue
 ```
+
+### Untrack files already added to git repository based on .gitignore
+based on [this](https://web.archive.org/web/20191015080715/http://www.codeblocq.com/2016/01/Untrack-files-already-added-to-git-repository-based-on-gitignore/)
+```
+# If you wish to try what it does beforehand, add the -n or --dry-run flag to test things out.
+git rm -r --cached .
+```
+```
+git add .
+```
+```
+git commit -m ".gitignore fix"
+```
+### Untrack a specific file
+```
+git rm --cached some_file.txt
+```
