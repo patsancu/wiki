@@ -59,6 +59,12 @@ ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub
 ```
 
 ## Passwordless login to machine via SSH
+Use
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub some_user@some_host -p 22
+```
+
+or these steps:
 `ssh-keygen -t rsa (Optional)`
 
 `ssh b@B mkdir -p ~/.ssh`
