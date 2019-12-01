@@ -398,6 +398,10 @@
 </li>
             
 <li >
+    <a href="../../dev/Java/Mapstruct/">Mapstruct</a>
+</li>
+            
+<li >
     <a href="../../dev/Java/Maven/">Maven</a>
 </li>
             
@@ -690,7 +694,12 @@ and put this contents of $HOME/.ssh/config</p>
 </code></pre>
 
 <h2 id="passwordless-login-to-machine-via-ssh">Passwordless login to machine via SSH</h2>
-<p><code>ssh-keygen -t rsa (Optional)</code></p>
+<p>Use</p>
+<pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub some_user@some_host -p 22
+</code></pre>
+
+<p>or these steps:
+<code>ssh-keygen -t rsa (Optional)</code></p>
 <p><code>ssh b@B mkdir -p ~/.ssh</code></p>
 <p><code>cat ~/.ssh/id_rsa.pub | ssh b@B 'cat &gt;&gt; ~/.ssh/authorized_keys'</code></p>
 <p><code>ssh b@B</code>(should not ask for pw anymore)</p>

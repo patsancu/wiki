@@ -398,6 +398,10 @@
 </li>
             
 <li >
+    <a href="../../../Java/Mapstruct/">Mapstruct</a>
+</li>
+            
+<li >
     <a href="../../../Java/Maven/">Maven</a>
 </li>
             
@@ -625,6 +629,7 @@
         <li class="main "><a href="#round-timestampdatetime-to-next-5-minutes">Round timestamp/datetime to next 5 minutes</a></li>
         <li class="main "><a href="#split-string-and-pick-last">Split string and pick last</a></li>
         <li class="main "><a href="#split-string-and-pick-all-but-last">Split string and pick all but last</a></li>
+        <li class="main "><a href="#compare-dates-with-and-without-timezone">Compare dates with and without timezone</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -752,6 +757,18 @@ SELECT city_name, SUBSTR( city_name,
 -- BERLIN_24;BERLIN
 -- MADRID_3;MADRID
 -- SOME_OTHER_CITY_NAME_2;SOME_OTHER_CITY_NAME
+</code></pre>
+
+<h3 id="compare-dates-with-and-without-timezone">Compare dates with and without timezone</h3>
+<pre><code class="sql">-- trans_time is with time zone and SUBSCRIPTION.VALID_FROM is in UTC but with no explicit timezone
+SELECT
+    *
+FROM
+    a
+JOIN
+    subscription ON a.customer_id = subscription.customer_id
+WHERE
+    a.TRANS_TIME &gt;= FROM_TZ( CAST(SUBSCRIPTION.VALID_FROM AS TIMESTAMP), 'UTC' )
 </code></pre></div>
         </div>
 

@@ -398,6 +398,10 @@
 </li>
             
 <li >
+    <a href="../../../Java/Mapstruct/">Mapstruct</a>
+</li>
+            
+<li >
     <a href="../../../Java/Maven/">Maven</a>
 </li>
             
@@ -665,6 +669,8 @@
         <li class="main "><a href="#rewrite-url-to-use-ssh-instead-of-https">Rewrite url to use ssh instead of https</a></li>
         <li class="main "><a href="#alias-for-github">Alias for github</a></li>
         <li class="main "><a href="#change-commit-date">Change commit date</a></li>
+        <li class="main "><a href="#untrack-files-already-added-to-git-repository-based-on-gitignore">Untrack files already added to git repository based on .gitignore</a></li>
+        <li class="main "><a href="#untrack-a-specific-file">Untrack a specific file</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -981,6 +987,22 @@ Either:</li>
 
 <p>Following any of these 2 options, you will want to run:</p>
 <pre><code>git rebase --continue
+</code></pre>
+
+<h3 id="untrack-files-already-added-to-git-repository-based-on-gitignore">Untrack files already added to git repository based on .gitignore</h3>
+<p>based on <a href="https://web.archive.org/web/20191015080715/http://www.codeblocq.com/2016/01/Untrack-files-already-added-to-git-repository-based-on-gitignore/">this</a></p>
+<pre><code># If you wish to try what it does beforehand, add the -n or --dry-run flag to test things out.
+git rm -r --cached .
+</code></pre>
+
+<pre><code>git add .
+</code></pre>
+
+<pre><code>git commit -m &quot;.gitignore fix&quot;
+</code></pre>
+
+<h3 id="untrack-a-specific-file">Untrack a specific file</h3>
+<pre><code>git rm --cached some_file.txt
 </code></pre></div>
         </div>
 

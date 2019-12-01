@@ -397,6 +397,10 @@
     <a href="../Java/">Java</a>
 </li>
             
+<li >
+    <a href="../Mapstruct/">Mapstruct</a>
+</li>
+            
 <li class="active">
     <a href="./">Maven</a>
 </li>
@@ -596,7 +600,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../Java/">
+                                <a rel="next" href="../Mapstruct/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -622,6 +626,7 @@
             <li><a href="#maven-error">Maven error</a></li>
         <li class="main "><a href="#cause">Cause</a></li>
         <li class="main "><a href="#solution-from-here">Solution, (from here ):</a></li>
+        <li class="main "><a href="#get-project-version">Get project version</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -702,6 +707,14 @@
       &lt;/plugins&gt;
     &lt;/pluginManagement&gt;
   &lt;/build&gt;
+</code></pre>
+
+<h3 id="get-project-version">Get project version</h3>
+<pre><code>MVN_VERSION=$(mvn -q \
+    -Dexec.executable=echo \
+    -Dexec.args='${project.version}' \
+    --non-recursive \
+    exec:exec)
 </code></pre></div>
         </div>
 
