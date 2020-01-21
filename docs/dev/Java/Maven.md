@@ -1,4 +1,10 @@
 ### Maven
+
+Test speficic method from specific classes, ignoring failure if there are no tests
+```
+mvn test -Dtest=ZoneDaoTest#findZoneByCityIdExistingCityId -DfailIfNoTests=false
+```
+
 ### Create executable jar
 * In pom.xml
 ```
