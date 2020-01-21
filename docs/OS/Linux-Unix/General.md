@@ -15,6 +15,7 @@ ExecStart = /root/scripts/conup.sh
 WantedBy = multi-user.target
 ```
 
+
 #### Create executable script
 ```
 vim /root/scripts/conup.sh;
@@ -31,6 +32,10 @@ chmod +x /root/scripts/conup.sh;
 # systemctl start connection.service
 # systemctl stop connection.service
 ```
+
+### Shrink OS image
+Typical case is the shrinking of a RPi microsd card that was dumped to an image file
+https://web.archive.org/web/20190906231419/https://softwarebakery.com//shrinking-images-on-linux
 
 ## Grub
 ### Change grub boot order
