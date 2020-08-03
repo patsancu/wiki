@@ -9,18 +9,13 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
         <title>Misc - Patrick's Wiki</title>
-        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         <script>
@@ -35,346 +30,338 @@
     </head>
 
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-
-                <!-- Collapsed navigation -->
-                <div class="navbar-header">
-                    <!-- Expander button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../../..">Patrick's Wiki</a>
-                </div>
+                <a class="navbar-brand" href="../../..">Patrick's Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
-                <div class="navbar-collapse collapse">
+                <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="../../..">Home</a>
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Home</a>
                             </li>
-                            <li >
-                                <a href="../../../Utils/">Utils</a>
+                            <li class="navitem">
+                                <a href="../../../Utils/" class="nav-link">Utils</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">OS <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../../OS/Raspberry-Pi/">Raspberry Pi</a>
+<li>
+    <a href="../../../OS/Raspberry-Pi/" class="dropdown-item">Raspberry Pi</a>
 </li>
                                     
-<li >
-    <a href="../../../OS/Tips/">Tips</a>
+<li>
+    <a href="../../../OS/Tips/" class="dropdown-item">Tips</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Linux Unix</a>
+    <a href="#" class="dropdown-item">Linux Unix</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../OS/Linux-Unix/Admin/">Admin</a>
+<li>
+    <a href="../../../OS/Linux-Unix/Admin/" class="dropdown-item">Admin</a>
 </li>
             
-<li >
-    <a href="../../../OS/Linux-Unix/Apps/">Apps</a>
+<li>
+    <a href="../../../OS/Linux-Unix/Apps/" class="dropdown-item">Apps</a>
 </li>
             
-<li >
-    <a href="../../../OS/Linux-Unix/General/">General</a>
+<li>
+    <a href="../../../OS/Linux-Unix/General/" class="dropdown-item">General</a>
 </li>
             
-<li >
-    <a href="../../../OS/Linux-Unix/Gnome/">Gnome</a>
+<li>
+    <a href="../../../OS/Linux-Unix/Gnome/" class="dropdown-item">Gnome</a>
 </li>
             
-<li >
-    <a href="../../../OS/Linux-Unix/Monitor-Linux-Performance/">Monitor Linux Performance</a>
+<li>
+    <a href="../../../OS/Linux-Unix/Monitor-Linux-Performance/" class="dropdown-item">Monitor Linux Performance</a>
 </li>
             
-<li >
-    <a href="../../../OS/Linux-Unix/Ubuntu/">Ubuntu</a>
+<li>
+    <a href="../../../OS/Linux-Unix/Ubuntu/" class="dropdown-item">Ubuntu</a>
 </li>
             
-<li >
-    <a href="../../../OS/Linux-Unix/problems/">Problems</a>
+<li>
+    <a href="../../../OS/Linux-Unix/problems/" class="dropdown-item">Problems</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">MacOS</a>
+    <a href="#" class="dropdown-item">MacOS</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../OS/MacOS/MacOS-Apps/">MacOS Apps</a>
+<li>
+    <a href="../../../OS/MacOS/MacOS-Apps/" class="dropdown-item">MacOS Apps</a>
 </li>
             
-<li >
-    <a href="../../../OS/MacOS/macOS-config/">macOS config</a>
+<li>
+    <a href="../../../OS/MacOS/macOS-config/" class="dropdown-item">macOS config</a>
 </li>
             
-<li >
-    <a href="../../../OS/MacOS/macOS/">macOS</a>
+<li>
+    <a href="../../../OS/MacOS/macOS/" class="dropdown-item">macOS</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Windows</a>
+    <a href="#" class="dropdown-item">Windows</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../OS/Windows/Powershell/">Powershell</a>
+<li>
+    <a href="../../../OS/Windows/Powershell/" class="dropdown-item">Powershell</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Encryption and hashing</a>
+    <a href="#" class="dropdown-item">Encryption and hashing</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../OS/encryption-and-hashing/GPG-PGP/">GPG PGP</a>
+<li>
+    <a href="../../../OS/encryption-and-hashing/GPG-PGP/" class="dropdown-item">GPG PGP</a>
 </li>
             
-<li >
-    <a href="../../../OS/encryption-and-hashing/sha/">Sha</a>
+<li>
+    <a href="../../../OS/encryption-and-hashing/sha/" class="dropdown-item">Sha</a>
 </li>
     </ul>
   </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ops <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ops <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../../Ops/Encrypt-a-partition-with-DM-Crypt-LUKS/">Encrypt a partition with DM Crypt LUKS</a>
+<li>
+    <a href="../../../Ops/Encrypt-a-partition-with-DM-Crypt-LUKS/" class="dropdown-item">Encrypt a partition with DM Crypt LUKS</a>
 </li>
                                     
-<li >
-    <a href="../../../Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/">Mount a remote file system through ssh Using sshfs</a>
+<li>
+    <a href="../../../Ops/Mount-a-remote-file-system-through-ssh-Using-sshfs/" class="dropdown-item">Mount a remote file system through ssh Using sshfs</a>
 </li>
                                     
-<li >
-    <a href="../../../Ops/Network-stuff/">Network stuff</a>
+<li>
+    <a href="../../../Ops/Network-stuff/" class="dropdown-item">Network stuff</a>
 </li>
                                     
-<li >
-    <a href="../../../Ops/New-environment-from-scratch/">New environment from scratch</a>
+<li>
+    <a href="../../../Ops/New-environment-from-scratch/" class="dropdown-item">New environment from scratch</a>
 </li>
                                     
-<li >
-    <a href="../../../Ops/SSH/">SSH</a>
+<li>
+    <a href="../../../Ops/SSH/" class="dropdown-item">SSH</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">AWS</a>
+    <a href="#" class="dropdown-item">AWS</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../Ops/AWS/Cli-Config/">Cli Config</a>
+<li>
+    <a href="../../../Ops/AWS/Cli-Config/" class="dropdown-item">Cli Config</a>
 </li>
             
-<li >
-    <a href="../../../Ops/AWS/EC2/">EC2</a>
+<li>
+    <a href="../../../Ops/AWS/EC2/" class="dropdown-item">EC2</a>
 </li>
             
-<li >
-    <a href="../../../Ops/AWS/ECS/">ECS</a>
+<li>
+    <a href="../../../Ops/AWS/ECS/" class="dropdown-item">ECS</a>
 </li>
             
-<li >
-    <a href="../../../Ops/AWS/General/">General</a>
+<li>
+    <a href="../../../Ops/AWS/General/" class="dropdown-item">General</a>
 </li>
             
-<li >
-    <a href="../../../Ops/AWS/Kinesis/">Kinesis</a>
+<li>
+    <a href="../../../Ops/AWS/Kinesis/" class="dropdown-item">Kinesis</a>
 </li>
             
-<li >
-    <a href="../../../Ops/AWS/Redshift/">Redshift</a>
+<li>
+    <a href="../../../Ops/AWS/Redshift/" class="dropdown-item">Redshift</a>
 </li>
             
-<li >
-    <a href="../../../Ops/AWS/S3/">S3</a>
+<li>
+    <a href="../../../Ops/AWS/S3/" class="dropdown-item">S3</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Docker</a>
+    <a href="#" class="dropdown-item">Docker</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../Ops/Docker/Docker-Machine/">Docker Machine</a>
+<li>
+    <a href="../../../Ops/Docker/Docker-Machine/" class="dropdown-item">Docker Machine</a>
 </li>
             
-<li >
-    <a href="../../../Ops/Docker/Docker/">Docker</a>
+<li>
+    <a href="../../../Ops/Docker/Docker/" class="dropdown-item">Docker</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Kubernetes</a>
+    <a href="#" class="dropdown-item">Kubernetes</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../Ops/Kubernetes/Kubernetes/">Kubernetes</a>
+<li>
+    <a href="../../../Ops/Kubernetes/Kubernetes/" class="dropdown-item">Kubernetes</a>
 </li>
             
-<li >
-    <a href="../../../Ops/Kubernetes/Minikube/">Minikube</a>
+<li>
+    <a href="../../../Ops/Kubernetes/Minikube/" class="dropdown-item">Minikube</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Shell</a>
+    <a href="#" class="dropdown-item">Shell</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../Ops/Shell/Script-building/">Script building</a>
+<li>
+    <a href="../../../Ops/Shell/Script-building/" class="dropdown-item">Script building</a>
 </li>
             
-<li >
-    <a href="../../../Ops/Shell/Scripts/">Scripts</a>
+<li>
+    <a href="../../../Ops/Shell/Scripts/" class="dropdown-item">Scripts</a>
 </li>
             
-<li >
-    <a href="../../../Ops/Shell/Shell/">Shell</a>
+<li>
+    <a href="../../../Ops/Shell/Shell/" class="dropdown-item">Shell</a>
 </li>
     </ul>
   </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Software <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Software <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../../Software/Alluxio/">Alluxio</a>
+<li>
+    <a href="../../../Software/Alluxio/" class="dropdown-item">Alluxio</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Apache-Drill/">Apache Drill</a>
+<li>
+    <a href="../../../Software/Apache-Drill/" class="dropdown-item">Apache Drill</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Atom/">Atom</a>
+<li>
+    <a href="../../../Software/Atom/" class="dropdown-item">Atom</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Guake-Terminal-–-Dual-Monitor-Edits/">Guake Terminal – Dual Monitor Edits</a>
+<li>
+    <a href="../../../Software/Guake-Terminal-%E2%80%93-Dual-Monitor-Edits/" class="dropdown-item">Guake Terminal – Dual Monitor Edits</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Latex/">Latex</a>
+<li>
+    <a href="../../../Software/Latex/" class="dropdown-item">Latex</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Multimedia/">Multimedia</a>
+<li>
+    <a href="../../../Software/Multimedia/" class="dropdown-item">Multimedia</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Skype/">Skype</a>
+<li>
+    <a href="../../../Software/Skype/" class="dropdown-item">Skype</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Tableau/">Tableau</a>
+<li>
+    <a href="../../../Software/Tableau/" class="dropdown-item">Tableau</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Useful-software/">Useful software</a>
+<li>
+    <a href="../../../Software/Useful-software/" class="dropdown-item">Useful software</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/Vim/">Vim</a>
+<li>
+    <a href="../../../Software/Vim/" class="dropdown-item">Vim</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/VirtualBox/">VirtualBox</a>
+<li>
+    <a href="../../../Software/VirtualBox/" class="dropdown-item">VirtualBox</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/ffmpeg/">Ffmpeg</a>
+<li>
+    <a href="../../../Software/ffmpeg/" class="dropdown-item">Ffmpeg</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/mutt/">Mutt</a>
+<li>
+    <a href="../../../Software/mutt/" class="dropdown-item">Mutt</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/packages to install/">Packages to install</a>
+<li>
+    <a href="../../../Software/packages%20to%20install/" class="dropdown-item">Packages to install</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/sublime/">Sublime</a>
+<li>
+    <a href="../../../Software/sublime/" class="dropdown-item">Sublime</a>
 </li>
                                     
-<li >
-    <a href="../../../Software/tmux/">Tmux</a>
+<li>
+    <a href="../../../Software/tmux/" class="dropdown-item">Tmux</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Web <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../../Web/Web-browsing-tips/">Web browsing tips</a>
+<li>
+    <a href="../../../Web/Web-browsing-tips/" class="dropdown-item">Web browsing tips</a>
 </li>
                                     
-<li >
-    <a href="../../../Web/Web-dev-resources/">Web dev resources</a>
+<li>
+    <a href="../../../Web/Web-dev-resources/" class="dropdown-item">Web dev resources</a>
 </li>
                                     
-<li >
-    <a href="../../../Web/github/">[How to add an image to a gist](https://remarkablemark.org/blog/2016/06/16/how-to-add-image-to-gist/)</a>
+<li>
+    <a href="../../../Web/github/" class="dropdown-item">[How to add an image to a gist](https://remarkablemark.org/blog/2016/06/16/how-to-add-image-to-gist/)</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dev <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
   <li class="dropdown-submenu">
-    <a href="#">DB</a>
+    <a href="#" class="dropdown-item">DB</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/DB/Postgres/">Postgres</a>
+<li>
+    <a href="../../../dev/DB/Postgres/" class="dropdown-item">Postgres</a>
 </li>
             
-<li >
-    <a href="../../../dev/DB/sqlite/">Commands</a>
+<li>
+    <a href="../../../dev/DB/sqlite/" class="dropdown-item">Commands</a>
 </li>
             
   <li class="dropdown-submenu">
-    <a href="#">Oracle</a>
+    <a href="#" class="dropdown-item">Oracle</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/DB/Oracle/Admin/">Admin</a>
+<li>
+    <a href="../../../dev/DB/Oracle/Admin/" class="dropdown-item">Admin</a>
 </li>
             
-<li >
-    <a href="../../../dev/DB/Oracle/Generic/">Generic</a>
+<li>
+    <a href="../../../dev/DB/Oracle/Generic/" class="dropdown-item">Generic</a>
 </li>
             
-<li >
-    <a href="../../../dev/DB/Oracle/Snippets/">Snippets</a>
+<li>
+    <a href="../../../dev/DB/Oracle/Snippets/" class="dropdown-item">Snippets</a>
 </li>
             
-<li >
-    <a href="../../../dev/DB/Oracle/Troubleshooting/">Troubleshooting</a>
+<li>
+    <a href="../../../dev/DB/Oracle/Troubleshooting/" class="dropdown-item">Troubleshooting</a>
 </li>
     </ul>
   </li>
@@ -382,85 +369,85 @@
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Java</a>
+    <a href="#" class="dropdown-item">Java</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/Java/Gradle/">Gradle</a>
+<li>
+    <a href="../../../dev/Java/Gradle/" class="dropdown-item">Gradle</a>
 </li>
             
-<li >
-    <a href="../../../dev/Java/Java-snippets/">Java snippets</a>
+<li>
+    <a href="../../../dev/Java/Java-snippets/" class="dropdown-item">Java snippets</a>
 </li>
             
-<li >
-    <a href="../../../dev/Java/Java/">Java</a>
+<li>
+    <a href="../../../dev/Java/Java/" class="dropdown-item">Java</a>
 </li>
             
-<li >
-    <a href="../../../dev/Java/Mapstruct/">Mapstruct</a>
+<li>
+    <a href="../../../dev/Java/Mapstruct/" class="dropdown-item">Mapstruct</a>
 </li>
             
-<li >
-    <a href="../../../dev/Java/Maven/">Maven</a>
+<li>
+    <a href="../../../dev/Java/Maven/" class="dropdown-item">Maven</a>
 </li>
             
-<li >
-    <a href="../../../dev/Java/Spring/">Spring</a>
+<li>
+    <a href="../../../dev/Java/Spring/" class="dropdown-item">Spring</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Misc</a>
+    <a href="#" class="dropdown-item">Misc</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/Misc/Geekeries/">Geekeries</a>
+<li>
+    <a href="../../../dev/Misc/Geekeries/" class="dropdown-item">Geekeries</a>
 </li>
             
-<li >
-    <a href="../../../dev/Misc/Markdown/">Markdown</a>
+<li>
+    <a href="../../../dev/Misc/Markdown/" class="dropdown-item">Markdown</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Rabbitmq</a>
+    <a href="#" class="dropdown-item">Rabbitmq</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/Rabbitmq/admin/">Admin</a>
+<li>
+    <a href="../../../dev/Rabbitmq/admin/" class="dropdown-item">Admin</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">VCS</a>
+    <a href="#" class="dropdown-item">VCS</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/VCS/Mercurial/">Mercurial</a>
+<li>
+    <a href="../../../dev/VCS/Mercurial/" class="dropdown-item">Mercurial</a>
 </li>
             
   <li class="dropdown-submenu">
-    <a href="#">Git</a>
+    <a href="#" class="dropdown-item">Git</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../dev/VCS/Git/Git-problems/">Git problems</a>
+<li>
+    <a href="../../../dev/VCS/Git/Git-problems/" class="dropdown-item">Git problems</a>
 </li>
             
-<li >
-    <a href="../../../dev/VCS/Git/Github/">Github</a>
+<li>
+    <a href="../../../dev/VCS/Git/Github/" class="dropdown-item">Github</a>
 </li>
             
-<li >
-    <a href="../../../dev/VCS/Git/Main/">Main</a>
+<li>
+    <a href="../../../dev/VCS/Git/Main/" class="dropdown-item">Main</a>
 </li>
             
-<li >
-    <a href="../../../dev/VCS/Git/Submodules/">Submodules</a>
+<li>
+    <a href="../../../dev/VCS/Git/Submodules/" class="dropdown-item">Submodules</a>
 </li>
     </ul>
   </li>
@@ -469,123 +456,123 @@
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Python <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../">Index</a>
+<li>
+    <a href="../../" class="dropdown-item">Index</a>
 </li>
                                     
-<li >
-    <a href="../../Utils/">Utils</a>
+<li>
+    <a href="../../Utils/" class="dropdown-item">Utils</a>
 </li>
                                     
-<li >
-    <a href="../../ipython/">Ipython</a>
+<li>
+    <a href="../../ipython/" class="dropdown-item">Ipython</a>
 </li>
                                     
-<li >
-    <a href="../../logging/">Logging</a>
+<li>
+    <a href="../../logging/" class="dropdown-item">Logging</a>
 </li>
                                     
-<li >
-    <a href="../../resources/">Resources</a>
+<li>
+    <a href="../../resources/" class="dropdown-item">Resources</a>
 </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Django</a>
+    <a href="#" class="dropdown-item">Django</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../Django/Django-errors/">Django errors</a>
+<li>
+    <a href="../../Django/Django-errors/" class="dropdown-item">Django errors</a>
 </li>
             
-<li >
-    <a href="../../Django/Django/">Django</a>
+<li>
+    <a href="../../Django/Django/" class="dropdown-item">Django</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Libraries</a>
+    <a href="#" class="dropdown-item">Libraries</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../DB/">DB</a>
+<li>
+    <a href="../DB/" class="dropdown-item">DB</a>
 </li>
             
-<li >
-    <a href="../Faker/">Faker</a>
+<li>
+    <a href="../Faker/" class="dropdown-item">Faker</a>
 </li>
             
-<li class="active">
-    <a href="./">Misc</a>
+<li>
+    <a href="./" class="dropdown-item active">Misc</a>
 </li>
             
-<li >
-    <a href="../Web/">Web</a>
+<li>
+    <a href="../Web/" class="dropdown-item">Web</a>
 </li>
             
-<li >
-    <a href="../beautiful_soup/">Beautiful soup</a>
+<li>
+    <a href="../beautiful_soup/" class="dropdown-item">Beautiful soup</a>
 </li>
             
-<li >
-    <a href="../matplotlib/">Matplotlib</a>
+<li>
+    <a href="../matplotlib/" class="dropdown-item">Matplotlib</a>
 </li>
             
-<li >
-    <a href="../parquet/">Parquet</a>
+<li>
+    <a href="../parquet/" class="dropdown-item">Parquet</a>
 </li>
     </ul>
   </li>
                                     
   <li class="dropdown-submenu">
-    <a href="#">Snippets</a>
+    <a href="#" class="dropdown-item">Snippets</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../snippets/Python-AWS/">Python AWS</a>
+<li>
+    <a href="../../snippets/Python-AWS/" class="dropdown-item">Python AWS</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-Machine-Learning/">Python Machine Learning</a>
+<li>
+    <a href="../../snippets/Python-Machine-Learning/" class="dropdown-item">Python Machine Learning</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-basics/">Python basics</a>
+<li>
+    <a href="../../snippets/Python-basics/" class="dropdown-item">Python basics</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-date-time/">Python date time</a>
+<li>
+    <a href="../../snippets/Python-date-time/" class="dropdown-item">Python date time</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-email/">Python email</a>
+<li>
+    <a href="../../snippets/Python-email/" class="dropdown-item">Python email</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-file-management/">Python file management</a>
+<li>
+    <a href="../../snippets/Python-file-management/" class="dropdown-item">Python file management</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-input-output/">Python input output</a>
+<li>
+    <a href="../../snippets/Python-input-output/" class="dropdown-item">Python input output</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-misc/">Python misc</a>
+<li>
+    <a href="../../snippets/Python-misc/" class="dropdown-item">Python misc</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-parse-cli-options/">Python parse cli options</a>
+<li>
+    <a href="../../snippets/Python-parse-cli-options/" class="dropdown-item">Python parse cli options</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-randomness/">Python randomness</a>
+<li>
+    <a href="../../snippets/Python-randomness/" class="dropdown-item">Python randomness</a>
 </li>
             
-<li >
-    <a href="../../snippets/Python-strings/">Python strings</a>
+<li>
+    <a href="../../snippets/Python-strings/" class="dropdown-item">Python strings</a>
 </li>
     </ul>
   </li>
@@ -593,24 +580,24 @@
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../Faker/">
+                            <li class="nav-item">
+                                <a rel="prev" href="../Faker/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../Web/">
+                            <li class="nav-item">
+                                <a rel="next" href="../Web/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://github.com/patsancu/wiki/edit/master/docs/python/libraries/Misc.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            <li class="nav-item">
+                                <a href="https://github.com/patsancu/wiki/edit/master/docs/python/libraries/Misc.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
                     </ul>
                 </div>
@@ -618,14 +605,24 @@
         </div>
 
         <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#camelipsum">Camelipsum</a></li>
-        <li class="main "><a href="#human-name-parsing">Human name parsing</a></li>
-        <li class="main "><a href="#q">q</a></li>
-    </ul>
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            
+            
+        </ul>
+    </div>
 </div></div>
-                <div class="col-md-9" role="main">
+                    <div class="col-md-9" role="main">
 
 <h4 id="camelipsum">Camelipsum</h4>
 <p>cli lore ipsum generator</p>
@@ -655,6 +652,7 @@ Southern Europe
 Eastern Asia
 ...
 </code></pre></div>
+            </div>
         </div>
 
         <footer class="col-md-12">
@@ -663,26 +661,26 @@ Eastern Asia
         </footer>
         <script>
             var base_url = "../../..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../../js/base.js" defer></script>
         <script src="../../../search/main.js" defer></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
             </div>
             <div class="modal-body">
                 <p>
                     From here you can search these documents. Enter
                     your search terms below.
                 </p>
-                <form role="form">
+                <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
                 <div id="mkdocs-search-results"></div>
@@ -691,12 +689,12 @@ Eastern Asia
             </div>
         </div>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
             </div>
             <div class="modal-body">
               <table class="table">
