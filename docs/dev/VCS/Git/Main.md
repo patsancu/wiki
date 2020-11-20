@@ -394,3 +394,21 @@ git commit -m ".gitignore fix"
 ```
 git rm --cached some_file.txt
 ```
+
+### When pushing to some git server fails
+Could happen that there are some server-side push rules. If after changing stuff in the commit, they're still failing, this might be worth a try
+Taken from [here](https://stackoverflow.com/a/54108437)
+
+```
+# from feature branch
+git branch backup                         # create backup branch
+git reset --hard HEAD~1                   # remove the problem commit
+git cherry-pick <SHA-1 of HEAD of backup> # cherry-pick back the commit
+git push origin feature
+```
+
+### Update commmit date
+In case you want to push the same commit with a different date (maybe to trigger pipeline?)
+```
+git commit --amend --no-edit --date=\"$(date -R)\"
+```
