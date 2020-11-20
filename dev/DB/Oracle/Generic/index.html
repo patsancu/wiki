@@ -635,29 +635,24 @@
 <h3 id="how-to-turn-off-oracle-password-expiration">How to turn off oracle password expiration</h3>
 <p><a href="https://stackoverflow.com/a/6777079">source</a></p>
 <p>To alter the password expiry policy for a certain user profile in Oracle first check wich profile the user is in using:</p>
-<pre><code class="sql">select profile from DBA_USERS where username = '&lt;username&gt;';
+<pre><code class="language-sql">select profile from DBA_USERS where username = '&lt;username&gt;';
 </code></pre>
-
 <p>Then you can change the limit to never expire using:</p>
-<pre><code class="sql">alter profile &lt;profile_name&gt; limit password_life_time UNLIMITED;
+<pre><code class="language-sql">alter profile &lt;profile_name&gt; limit password_life_time UNLIMITED;
 </code></pre>
-
 <p>If you want to previously check the limit you may use:</p>
-<pre><code class="sql">select resource_name,limit from dba_profiles where profile='&lt;profile_name&gt;';
+<pre><code class="language-sql">select resource_name,limit from dba_profiles where profile='&lt;profile_name&gt;';
 </code></pre>
-
 <h2 id="what-do-if-password-expired-oracle">What do if password expired oracle</h2>
 <h3 id="delete-user">delete user</h3>
 <pre><code>drop user cms_int cascade;
 </code></pre>
-
 <h3 id="create-user-again">create user again</h3>
 <pre><code>create user cms_int identified by cms_int;
 grant all privileges to cms_int identified by cms_int;
 </code></pre>
-
 <h2 id="import-db-dump">Import db dump</h2>
-<pre><code class="sql">CREATE USER bakbak IDENTIFIED BY bakbak;
+<pre><code class="language-sql">CREATE USER bakbak IDENTIFIED BY bakbak;
 GRANT CREATE TRIGGER, CREATE SEQUENCE, CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE TABLESPACE TO bakbak;
 GRANT ALTER TABLESPACE TO bakbak;
 GRANT ALTER ANY TABLE, ALTER ANY PROCEDURE TO bakbak;
@@ -693,9 +688,8 @@ ALTER USER bakbak QUOTA UNLIMITED ON USERS;
 GRANT UNLIMITED TABLESPACE TO bakbak;
 commit;
 </code></pre>
-
 <p>Execute in bash</p>
-<pre><code class="bash">impdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak &quot;EXCLUDE=TABLE:\&quot;IN \(\'EIT_MANIFEST\',\'WH_FACT_AUDIENCE\',\'ACT_ACTIVITY\', \'REC_RECORDING\', \'REC_RECORDING_I18N\', \'ADI_FILE_IMPORT\' \)\&quot;&quot; logfile=data_pump_dir:expsh.log
+<pre><code class="language-bash">impdp bakbak/bakbak directory=mydir file=export_data.dmp remap_schema=cv_mex_mtv:bakbak &quot;EXCLUDE=TABLE:\&quot;IN \(\'EIT_MANIFEST\',\'WH_FACT_AUDIENCE\',\'ACT_ACTIVITY\', \'REC_RECORDING\', \'REC_RECORDING_I18N\', \'ADI_FILE_IMPORT\' \)\&quot;&quot; logfile=data_pump_dir:expsh.log
 ### Stop job impdp
 Import&gt; KILL_JOB
 ### Find and delete pending import jobs
@@ -705,25 +699,21 @@ state, attached_sessions
 FROM dba_datapump_jobs
 ORDER BY 1,2;
 </code></pre>
-
-<pre><code class="sql">SELECT *
+<pre><code class="language-sql">SELECT *
   FROM dba_objects o, dba_datapump_jobs j
  WHERE o.owner=j.owner_name AND o.object_name=j.job_name
    AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;
 
 DROP TABLE BAKBAK.SYS_IMPORT_FULL_01;
 </code></pre>
-
 <h3 id="delete-views-tables-for-a-user">Delete views, tables for a user</h3>
 <h4 id="get-scripts-to-drop-tables-and-views">Get scripts to drop tables and views</h4>
-<pre><code class="sql">select 'drop table '||table_name||' cascade constraints;' from user_tables;
+<pre><code class="language-sql">select 'drop table '||table_name||' cascade constraints;' from user_tables;
 </code></pre>
-
-<pre><code class="sql">select 'drop view '||view_name||' cascade constraints;' from user_views;
+<pre><code class="language-sql">select 'drop view '||view_name||' cascade constraints;' from user_views;
 </code></pre>
-
 <h3 id="delete-sequences">Delete sequences</h3>
-<pre><code class="sql">BEGIN
+<pre><code class="language-sql">BEGIN
 
   --Bye Sequences!
   FOR i IN (SELECT us.sequence_name

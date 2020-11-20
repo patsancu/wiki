@@ -626,7 +626,7 @@
                     <div class="col-md-9" role="main">
 
 <h3 id="datetime-conversions">Date/Time conversions</h3>
-<pre><code class="python">import datetime
+<pre><code class="language-python">import datetime
 import time
 
 # Create date from epoch
@@ -648,9 +648,8 @@ date.timetuple()
 # Convert from tuple to epoch
 time.mktime(p.timetuple())
 </code></pre>
-
 <h3 id="datetime-arithmetic">Date/time arithmetic</h3>
-<pre><code class="python">import datetime
+<pre><code class="language-python">import datetime
 import time
 
 date = datetime.datetime(2017, 8, 20)
@@ -663,10 +662,9 @@ date_plus_8_days = date + diff_8_days
 date_minus_3_minutes = date - diff_3_minutes
 # datetime.datetime(2017, 8, 19, 23, 57)
 </code></pre>
-
 <h3 id="difference-between-dates">Difference between dates</h3>
 <p>From <a href="https://gist.github.com/amalgjose/c767a4846d6ecaa3b6d7">here</a></p>
-<pre><code class="python">from datetime import datetime
+<pre><code class="language-python">from datetime import datetime
 from dateutil import relativedelta
 
 ##Aug 7 1989 8:10 pm
@@ -686,7 +684,6 @@ minutes = difference.minutes
 
 print &quot;Difference is %s year, %s months, %s days, %s hours, %s minutes &quot; %(years, months, days, hours, minutes)
 </code></pre>
-
 <h3 id="get-date-time-for-different-timezones">Get date time for different timezones</h3>
 <pre><code>import datetime
 

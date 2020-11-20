@@ -625,7 +625,7 @@
 <h3 id="character-set-mismatch-in-a-case-expression">Character set mismatch in a case expression</h3>
 <p><a href="https://stackoverflow.com/a/10521505">Source</a>
 Maybe it's a mismatch between an NVARCHAR and a regular VARCHAR, like in the following example, where t.First_Col is a NVARCHAR and the string it's being compared to is a regular string (Varchar).</p>
-<pre><code class="sql">CASE WHEN t.First_Col = 'ItemOne'
+<pre><code class="language-sql">CASE WHEN t.First_Col = 'ItemOne'
        THEN 'anItemOne'
        WHEN t.First_Col = 'ItemTwo'
        THEN CASE WHEN t.Second_Col = 'ItemTwo_A'
@@ -635,9 +635,8 @@ Maybe it's a mismatch between an NVARCHAR and a regular VARCHAR, like in the fol
 ELSE 'NoItem'
 END
 </code></pre>
-
 <p>Add a n prefix, like this:</p>
-<pre><code class="sql">CASE WHEN t.First_Col = N'ItemOne'
+<pre><code class="language-sql">CASE WHEN t.First_Col = N'ItemOne'
    THEN N'anItemOne'
    WHEN t.First_Col = N'ItemTwo'
    THEN (CASE WHEN t.Second_Col = N'ItemTwo_A'

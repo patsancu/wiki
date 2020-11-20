@@ -646,19 +646,16 @@
 replacement string. This is useful when you want to avoid retyping text:</p>
 <pre><code>:%s/Yazstremski/&amp;, Carl/
 </code></pre>
-
 <p>The replacement will say Yazstremski, Carl. The &amp; can also replace a variable pattern
 (as specified by a regular expression). For example, to surround each line from
 1 to 10 with parentheses, type:</p>
 <pre><code>:1,10s/.*/(&amp;)/
 </code></pre>
-
 <hr />
 <p>from <em>Learning the vi and Vim Editors, Seventh Edition by Arnold Robbins, Elbert Hannah, and Linda Lamb</em>.</p>
 <h4 id="insert-a-space-between-and-the-character-that-follows-it">Insert a space between <code>#</code> and the character that follows it</h4>
 <pre><code>:%s/#\(\w\)/# \1/g
 </code></pre>
-
 <h4 id="general">general</h4>
 <pre><code>.  any character except new line
 \s whitespace character
@@ -682,31 +679,26 @@ replacement string. This is useful when you want to avoid retyping text:</p>
 \u uppercase character
 \U non-uppercase character
 </code></pre>
-
 <h3 id="quickfix">Quickfix</h3>
 <p><code>C-w&lt;Enter&gt;</code> Open file from list</p>
 <h3 id="vim-cool-fonts">Vim cool fonts</h3>
 <p>Linux</p>
-<pre><code class="sh">$ mkdir -p ~/.local/share/fonts
+<pre><code class="language-sh">$ mkdir -p ~/.local/share/fonts
 $ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerline Nerd Font Complete.otf&quot; https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete.otf
 </code></pre>
-
 <ul>
 <li>In vimrc, set</li>
 </ul>
 <pre><code>set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 </code></pre>
-
 <p>MacOS</p>
 <pre><code>cd ~/Library/Fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerline Nerd Font Complete.otf&quot; https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20for%20Powerline%20Nerd%20Font%20Complete.otf
 </code></pre>
-
 <ul>
 <li>In .vimrc,</li>
 </ul>
 <pre><code>set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 </code></pre>
-
 <ul>
 <li>Install <a href="https://github.com/ryanoasis/vim-devicons">vim-devicons plugin</a>, <a href="https://github.com/ryanoasis/vim-devicons#set-vimdevicons-to-load-after-these-plugins">after</a> NERDTree and others</li>
 <li>Restart terminal</li>
@@ -716,7 +708,6 @@ $ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerli
 <p>Insert this line in the file</p>
 <pre><code># vim: set filetype=sh
 </code></pre>
-
 <h2 id="misc">Misc</h2>
 <p><code>:echo expand('%:p')</code> <em>print filename with full path</em></p>
 <h3 id="vim-diff">Vim diff</h3>
@@ -822,13 +813,11 @@ $ cd ~/.local/share/fonts &amp;&amp; curl -fLo &quot;Droid Sans Mono for Powerli
 </ul>
 <pre><code>let g:UltiSnipsSnippetDirectories=[&quot;~/.vim/custom_snippets&quot;]
 </code></pre>
-
 <ul>
 <li>As noted in the docs, do NOT map tab to trigger:</li>
 </ul>
 <pre><code>let g:UltiSnipsExpandTrigger=&quot;&lt;c-e&gt;&quot;
 </code></pre>
-
 <ul>
 <li>Check <a href="http://vimcasts.org/episodes/ultisnips-visual-placeholder/">Python interpolation</a></li>
 </ul>
@@ -874,12 +863,10 @@ the Unix pathname for the file whose status you want
 to retrieve.
 You can give the ...
 </code></pre>
-
 <p>Suppose that you decide to move DESCRIPTION above the SYNTAX paragraph. With
 pattern matching, you can move blocks of text on all 150 pages with one command!</p>
 <pre><code>:g /SYNTAX/.,/DESCRIPTION/-1 move /PARAMETERS/-1
 </code></pre>
-
 <p>This command works as follows. First, ex finds and marks each line that matches the first pattern (i.e., that contains the word SYNTAX). Second, for each marked line, it sets . (dot, the current line) to that line, and executes the command. Using the move command, the command moves the block of lines from the current line (dot) to the line before the one containing the word DESCRIPTION (/DESCRIPTION/-1) to just before the line containing PARAMETERS (/PARAMETERS/-1).</p>
 <h3 id="snippets">Snippets</h3>
 <h4 id="reverse-lines">Reverse lines</h4>

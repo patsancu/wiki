@@ -626,7 +626,6 @@
 <h3 id="get-list-of-info-aobut-ebs-volumes">Get list of info aobut EBS volumes</h3>
 <pre><code>aws ec2 describe-volumes --profile profile-name
 </code></pre>
-
 <h3 id="get-public-dns-name-for-machines-in-us-east-1-region">Get public dns name for machines in us-east-1 region</h3>
 <pre><code>aws ec2 --region us-east-1 describe-instances --query 'Reservations[*].Instances[*].[PublicDnsName]' | grep -v &quot;\[\|\]&quot; | tr -d ' ' | tr -d '&quot;'
 </code></pre></div>

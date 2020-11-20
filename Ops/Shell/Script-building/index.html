@@ -632,13 +632,12 @@
 <h3 id="simple-stop">Simple stop</h3>
 <pre><code>echo &quot;Press enter to continue&quot;; read noing
 </code></pre>
-
 <h3 id="colorize-cat-output-of-source-files">Colorize cat output of source files</h3>
 <p><code>$ pip install Pygments</code></p>
 <p>http://pygments.org/</p>
 <p>with pygmentize -g filename</p>
 <h3 id="yes-no-answer">Yes no answer</h3>
-<pre><code class="shell">testFile=/home/patrick/dev/master.properties
+<pre><code class="language-shell">testFile=/home/patrick/dev/master.properties
 sampleService='iris-cms-metadata-management-service'
 if [ ! -f $testFile ]; then
   tput setaf 2
@@ -658,9 +657,8 @@ if [ ! -f $testFile ]; then
   esac
 fi
 </code></pre>
-
 <h3 id="argument-parsing">Argument parsing</h3>
-<pre><code class="shell">vflag=off
+<pre><code class="language-shell">vflag=off
 filename=
 while getopts vf: opt
 do
@@ -675,36 +673,30 @@ do
 done
 shift `expr $OPTIND - 1`
 </code></pre>
-
 <h3 id="arrays">Arrays</h3>
-<pre><code class="sh">distro=(&quot;redhat&quot; &quot;debian&quot; &quot;gentoo&quot;)
+<pre><code class="language-sh">distro=(&quot;redhat&quot; &quot;debian&quot; &quot;gentoo&quot;)
 echo ${distro[2]} # will print gentoo
 echo ${#distro[@]} # will print array length: 3
 </code></pre>
-
 <h3 id="get-parent-folder-from-script">Get parent folder from script</h3>
 <pre><code>DIR=&quot;$( cd &quot;$( dirname &quot;${BASH_SOURCE[0]}&quot; )&quot; &amp;&amp; pwd )
 </code></pre>
-
 <h3 id="split-colon-delimited-value">Split colon delimited value</h3>
 <p>From <a href="https://stackoverflow.com/a/918931/2769307">here</a></p>
-<pre><code class="sh">### this sets the internal field separator variable
+<pre><code class="language-sh">### this sets the internal field separator variable
 IFS=&quot;:&quot;
 </code></pre>
-
-<pre><code class="sh">s='Strings:With:Four:Words'
+<pre><code class="language-sh">s='Strings:With:Four:Words'
 IFS=&quot;:&quot; read -r var1 var2 var3 var4 &lt;&lt;&lt; &quot;$s&quot;
 echo &quot;[$var1] [$var2] [$var3 [$var4]&quot;
 [Strings] [With] [Four [Words]
 </code></pre>
-
 <h3 id="select-specific-lines-with-sed">Select specific lines with sed</h3>
 <h4 id="select-line-10-up-to-line-33">select line 10 up to line 33</h4>
-<pre><code class="sh">sed -n '10,33p' &lt; file.txt
+<pre><code class="language-sh">sed -n '10,33p' &lt; file.txt
 </code></pre>
-
 <h4 id="select-1st-line-and-3rd-line">select 1st line and 3rd line</h4>
-<pre><code class="sh">sed -n '1p;3p' &lt; file.txt
+<pre><code class="language-sh">sed -n '1p;3p' &lt; file.txt
 </code></pre></div>
             </div>
         </div>

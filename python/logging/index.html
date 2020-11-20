@@ -624,7 +624,7 @@
 
 <h3 id="typical-config">Typical config</h3>
 <p>Taken from <a href="https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/">here</a></p>
-<pre><code class="python">import logging, logging.config
+<pre><code class="language-python">import logging, logging.config
 def setup_logging(
     default_path='logging.yaml',
     default_level=logging.INFO,
@@ -644,9 +644,8 @@ def setup_logging(
     else:
         logging.basicConfig(level=default_level)
 </code></pre>
-
 <p><code>logging.yaml</code> could be something like</p>
-<pre><code class="yaml">---
+<pre><code class="language-yaml">---
 version: 1
 disable_existing_loggers: False
 formatters:
@@ -697,9 +696,8 @@ root:
     level: DEBUG
     handlers: [console, debug_file_handler, info_file_handler, error_file_handler]
 </code></pre>
-
 <p>Can be used like this</p>
-<pre><code class="python">import logging
+<pre><code class="language-python">import logging
 from utils import setup_logging
 
 setup_logging(default_path=&quot;./logging_some_module.yaml&quot;)

@@ -665,12 +665,10 @@
 <h3 id="checkout-specific-commit-in-new-branch-without-messing-things-up-too-much">Checkout specific commit in new branch, without messing things up too much</h3>
 <pre><code>git checkout -b test-branch 56a4e5c08
 </code></pre>
-
 <h3 id="add-files-from-other-branches">Add files from other branches</h3>
 <p>Where <strong>versions</strong> is the branch from where the changes need to be imported, and the files are specified after the '--'</p>
 <pre><code>git checkout versions -- some_folder/other_folder/versions.sql
 </code></pre>
-
 <h3 id="push-to-ssh-repo-with-different-user-or-github-account">Push to ssh repo with different user (or github account)</h3>
 <p>Sources: <a href="https://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574">this</a> and <a href="https://gist.github.com/patsancu/b1504d8dd4bcca8130cb0d66fa2c9539">this</a></p>
 <h4 id="create-a-new-ssh-key">create-a-new-ssh-key</h4>
@@ -691,24 +689,20 @@ Host github-COMPANY
   User git
   IdentityFile ~/.ssh/id_rsa_COMPANY
 </code></pre>
-
 <h4 id="configure-repo-to-work-with-new-host">Configure repo to work with new host</h4>
 <p>Replace <strong>github-COMPANY</strong>, <strong>USERNAME</strong> and <strong>REPONAME</strong> with your own values</p>
 <pre><code>git remote add origin git@github-COMPANY:USERNAME/REPO_NAME.git
 git config  github.user USERNAME
 git push origin master
 </code></pre>
-
 <h3 id="change-repo-from-https-to-gitssh">Change repo from http(s) to git/ssh</h3>
 <p>Change config url from <code>https://github.com/USERNAME/REPO_NAME.git</code> to <code>git@github.com/USERNAME:REPO_NAME.git</code></p>
 <h3 id="interactively-add-skip-or-split-diff-hunks">Interactively add, skip, or split diff hunks</h3>
 <pre><code>$ git add -p
 </code></pre>
-
 <h3 id="show-diff-of-one-specific-commit">Show diff of one specific commit</h3>
-<pre><code class="bash">git show commit-hash-stuff
+<pre><code class="language-bash">git show commit-hash-stuff
 </code></pre>
-
 <h3 id="squash-unpushed-commits-into-one">Squash unpushed commits into one</h3>
 <p>Scenario: The last two commits are unpushed, and you want to merge them into one.
 <code>git rebase -i HEAD~2</code>
@@ -716,12 +710,10 @@ This will open the default editor</p>
 <pre><code>pick hash1 Bla bla bla Commit message
 pick hash2 Bla bla bla another Commit message
 </code></pre>
-
 <p>Leave the first one as it is and put the second one as squash</p>
 <pre><code>pick hash1 Bla bla bla Commit message
 squash hash2 Bla bla bla another Commit message
 </code></pre>
-
 <p>Again, the editor will open, to let you edit the final commit message.
 Sources: <a href="https://www.devroom.io/2011/07/05/git-squash-your-latests-commits-into-one/">this</a>.</p>
 <h3 id="stash"><a href="https://git-scm.com/docs/git-stash">Stash</a></h3>
@@ -729,31 +721,25 @@ Sources: <a href="https://www.devroom.io/2011/07/05/git-squash-your-latests-comm
 <h4 id="stash-the-changes-in-a-dirty-working-directory-away">Stash the changes in a dirty working directory away</h4>
 <pre><code>$ git stash
 </code></pre>
-
 <h4 id="list-modifications-stashes">List modifications stashes</h4>
 <pre><code>$ git stash list
 stash@{0}: WIP on alerting: 697194d WIP
 </code></pre>
-
 <h4 id="restore-modifications">Restore modifications</h4>
 <pre><code>$ git stash apply stash@{0}
 </code></pre>
-
 <h4 id="clear-stash-list">Clear stash list</h4>
 <pre><code>git stash clear
 </code></pre>
-
 <h3 id="discard-changes">Discard changes</h3>
 <p><strong>DANGEROUS</strong>
 * Checks out the current index for the current directory.
 * Undo unstaged changes in tracked files. It apparently doesn't touch staged changes and leaves untracked files alone.</p>
 <pre><code>git checkout .
 </code></pre>
-
 <h3 id="git-revert-changes-for-file">Git revert changes for file</h3>
 <pre><code>git checkout -- filename
 </code></pre>
-
 <h3 id="unstage-commit">Unstage commit</h3>
 <p><code>git reset filepath</code></p>
 <h3 id="undo-commits">Undo commits</h3>
@@ -768,15 +754,12 @@ stash@{0}: WIP on alerting: 697194d WIP
 <h4 id="see-what-branch-youre-on-and-if-its-synchronized-or-not">See what branch you're on and if it's synchronized or not</h4>
 <pre><code>git branch -v --color
 </code></pre>
-
 <h3 id="check-commmits-ahead-of-current-branch">Check commmits ahead of current branch</h3>
 <pre><code>git cherry -v
 </code></pre>
-
 <h4 id="others">others</h4>
 <pre><code>git log --graph --decorate --pretty=oneline --abbrev-commit --all @{upstream}^..
 </code></pre>
-
 <h3 id="export-commits-as-patches">Export commits as patches</h3>
 <h4 id="export-last-n-patches">Export last n patches</h4>
 <pre><code>$ git format-patch -4
@@ -785,18 +768,15 @@ stash@{0}: WIP on alerting: 697194d WIP
 0003-again-committing.patch
 0004-first-commit.patch
 </code></pre>
-
 <h4 id="export-last-n-commits-as-a-single-patch">Export last n commits as a single patch</h4>
 <p>Just add the --stdout option</p>
 <pre><code>$ git format-patch -4 --stdout &gt; `date +&quot;%Y%m%d%H%M&quot;`.patch
 </code></pre>
-
 <h3 id="view-changes-made-to-a-file-with-source">View changes made to a file with source</h3>
 <p><code>$ git log -p path/to/file</code></p>
 <h3 id="filter-commits-by-author">Filter commits by author</h3>
 <pre><code>git log --author john.doe
 </code></pre>
-
 <h3 id="making-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore">Making git "forget" about a file that was tracked but is now in .gitignore</h3>
 <p><em>gitignore</em> will prevent untracked files from being added (without an add -f) to the set of files tracked by git, however git will continue to track any files that are already being tracked.
 To stop tracking a file you need to remove it from the index. This can be achieved with this command.</p>
@@ -806,7 +786,6 @@ Making git "forget" about a file that was tracked but is now in <em>.gitignore</
 <h3 id="git-revert-changes-for-file_1">Git revert changes for file</h3>
 <pre><code>git checkout -- filename
 </code></pre>
-
 <h3 id="unstage-commit_1">Unstage commit</h3>
 <p><code>git reset filepath</code></p>
 <h3 id="undo-commits_1">Undo commits</h3>
@@ -863,26 +842,22 @@ git checkout master
 git reset --hard rewrite-history  # make this branch master
 That's it, you can push your progress now.
 </code></pre>
-
 <h3 id="rewrite-history"><a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">Rewrite history</a></h3>
 <h3 id="ignore-subsequent-changes-to-a-file-without-deleting-it">Ignore subsequent changes to a file without deleting it</h3>
 <pre><code>git update-index --skip-worktree path/to/file.cfg
 </code></pre>
-
 <h3 id="show-last-two-commits">Show last two commits</h3>
 <pre><code>git log -2 --stat
 </code></pre>
-
 <h3 id="move-committed-but-unpushed-changes-to-another-branch">Move committed but unpushed changes to another branch</h3>
 <p>From <a href="https://stackoverflow.com/a/7217912">here</a></p>
-<pre><code class="bash">git checkout branch # to checkout the feature branch.
+<pre><code class="language-bash">git checkout branch # to checkout the feature branch.
 git reset --hard master # to move the branch to be the same commit asmaster right now. By doing this, you lose all commits that are in the branch. Because of your rebase, all those commits should have copies onmaster, so you shouldn't actually lose anything.
 git checkout master # to checkout master.
 git reset --hard origin/master # to reset master to the state that ison the origin repo. This assumes you didn't have any unpushed changes to master. If you do, replace origin/master with the commit id you wantto reset to.
 </code></pre>
-
 <h3 id="rename-a-local-and-remote-branch">Rename a local and remote branch</h3>
-<pre><code class="bash">## 1. Rename your local branch.
+<pre><code class="language-bash">## 1. Rename your local branch.
 ## If you are on the branch you want to rename:
 $ git branch -m new-name
 ## If you are on a different branch:
@@ -893,15 +868,12 @@ $ git push origin :old-name new-name
 ## Switch to the branch and then:
 $ git push origin -u new-name
 </code></pre>
-
 <h3 id="delete-remote-branch">Delete remote branch</h3>
-<pre><code class="bash">$ git push &lt;remote_name&gt; --delete &lt;branch_name&gt;
+<pre><code class="language-bash">$ git push &lt;remote_name&gt; --delete &lt;branch_name&gt;
 </code></pre>
-
 <p>or</p>
-<pre><code class="bash">$ git push &lt;remote_name&gt; :&lt;branch_name&gt;
+<pre><code class="language-bash">$ git push &lt;remote_name&gt; :&lt;branch_name&gt;
 </code></pre>
-
 <h3 id="cherry-picking">Cherry picking</h3>
 <p><em>extracted from (here)[https://www.previousnext.com.au/blog/intro-cherry-picking-git]</em>
 Supposing there's a branch, <code>feature/killah-branch</code> with the following commits</p>
@@ -909,49 +881,39 @@ Supposing there's a branch, <code>feature/killah-branch</code> with the followin
 2538f9f some nasty bug fixed
 b60f122 le commit pour le commit
 </code></pre>
-
 <p>and want to apply the commit that fixes a nasty bug (id: <code>2538f9f</code>) from that branch in another branch, <code>feature/thenextbigthing</code>.</p>
 <p>Go to the <code>feature/thenextbigthing</code> branch</p>
 <pre><code>$ git checkout `feature/thenextbigthing`
 </code></pre>
-
 <p>then, cherry pick the commit</p>
 <pre><code>$ git cherry-pick 2538f9f
 </code></pre>
-
 <p>You can cherry pick more than one commit (separate by space the list of commits)</p>
 <h3 id="push-uncreated-remotelly-branch">Push uncreated (remotelly) branch</h3>
 <pre><code>    git push -u origin feature_branch_name
 </code></pre>
-
 <h3 id="save-stash-by-name">save stash by name</h3>
 <pre><code>    git stash save -u  &quot;good testing&quot;
 
 </code></pre>
-
 <h3 id="list-stash">list stash</h3>
 <pre><code>$ git stash list
 stash@{0}: On FEAT/JIRA_FEATURE-530: good testing
 </code></pre>
-
 <h3 id="apply-stash-by-index">apply stash by index</h3>
 <pre><code>git stash apply --index stash@{0}
 </code></pre>
-
 <h3 id="delete-stash-by-index">delete stash by index</h3>
 <pre><code>git stash drop stash@{0}
 </code></pre>
-
 <h3 id="rewrite-url-to-use-ssh-instead-of-https">Rewrite url to use ssh instead of https</h3>
 <pre><code>git config --global url.&quot;git@github.com:&quot;.insteadOf &quot;https://github.com/&quot;
 </code></pre>
-
 <p>More info <a href="https://gist.github.com/patsancu/07b9fc503675392c6b99cefa7584c28a">here</a></p>
 <h3 id="alias-for-github">Alias for github</h3>
 <pre><code>git config --global url.&quot;git://github.com/&quot;.insteadOf gh:
 git clone gh:patsancu/wiki.git
 </code></pre>
-
 <h3 id="change-commit-date">Change commit date</h3>
 <p>Set the date of an arbitrary commit to an arbitrary or current date</p>
 <ul>
@@ -959,7 +921,6 @@ git clone gh:patsancu/wiki.git
 </ul>
 <pre><code>git rebase &lt;commit-hash&gt;^ -i
 </code></pre>
-
 <ul>
 <li>Replace pick with e (edit) on the line with that commit (the first one)
 quit the editor (ESC followed by :wq in VIM)
@@ -967,31 +928,24 @@ Either:</li>
 </ul>
 <pre><code>GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
 </code></pre>
-
 <p>or</p>
 <pre><code>GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot;
 </code></pre>
-
 <p>Following any of these 2 options, you will want to run:</p>
 <pre><code>git rebase --continue
 </code></pre>
-
 <h3 id="untrack-files-already-added-to-git-repository-based-on-gitignore">Untrack files already added to git repository based on .gitignore</h3>
 <p>based on <a href="https://web.archive.org/web/20191015080715/http://www.codeblocq.com/2016/01/Untrack-files-already-added-to-git-repository-based-on-gitignore/">this</a></p>
 <pre><code># If you wish to try what it does beforehand, add the -n or --dry-run flag to test things out.
 git rm -r --cached .
 </code></pre>
-
 <pre><code>git add .
 </code></pre>
-
 <pre><code>git commit -m &quot;.gitignore fix&quot;
 </code></pre>
-
 <h3 id="untrack-a-specific-file">Untrack a specific file</h3>
 <pre><code>git rm --cached some_file.txt
 </code></pre>
-
 <h3 id="when-pushing-to-some-git-server-fails">When pushing to some git server fails</h3>
 <p>Could happen that there are some server-side push rules. If after changing stuff in the commit, they're still failing, this might be worth a try
 Taken from <a href="https://stackoverflow.com/a/54108437">here</a></p>
@@ -1001,7 +955,6 @@ git reset --hard HEAD~1                   # remove the problem commit
 git cherry-pick &lt;SHA-1 of HEAD of backup&gt; # cherry-pick back the commit
 git push origin feature
 </code></pre>
-
 <h3 id="update-commmit-date">Update commmit date</h3>
 <p>In case you want to push the same commit with a different date (maybe to trigger pipeline?)</p>
 <pre><code>git commit --amend --no-edit --date=\&quot;$(date -R)\&quot;

@@ -635,16 +635,13 @@
 <pre><code>[extensions]
 purge =
 </code></pre>
-
 <h4 id="purge">Purge</h4>
 <pre><code>hg purge
 </code></pre>
-
 <h4 id="delete-untracked-files-without-purge-extension">Delete untracked files, without purge extension</h4>
 <p>From (here)[https://stackoverflow.com/a/1212893]</p>
 <pre><code>hg st -un0 | xargs -0 rm
 </code></pre>
-
 <h4 id="forget-tracked-file">Forget tracked file</h4>
 <p>If file to forget is contained in .hgignore,</p>
 <p><code>$ hg forget _filename_</code></p>
@@ -653,7 +650,6 @@ purge =
 <h3 id="get-particular-changeset-for-revision">Get particular changeset for revision</h3>
 <pre><code>hg log -p -r 678
 </code></pre>
-
 <h3 id="get-commits-from-a-user">Get commits from a user</h3>
 <pre><code>changeset:   324:5c78393273fe
 branch:      some_branch
@@ -662,14 +658,11 @@ user:        Some user &lt;some.user@some.company.com&gt;
 date:        Thu Feb 22 13:32:50 2018 +0900
 summary:     Some summary
 </code></pre>
-
 <pre><code>hg log --user &quot;&lt;some.user@some.company.com&gt;&quot;
 </code></pre>
-
 <p>or</p>
 <pre><code>hg log --user &quot;some.user&quot;
 </code></pre>
-
 <h3 id="aliases">Aliases</h3>
 <p>in ~/.hgrc, under the [alias] section</p>
 <h4 id="clone-from-a-fixed-url-without-typing-it-each-time">clone from a fixed url without typing it each time</h4>

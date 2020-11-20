@@ -640,7 +640,6 @@
 <p>If one wants to specify a config other than the default,you may want to run <strong>kubectl</strong> with the <code>--kubeconfig</code> option</p>
 <pre><code>kubectl --kubeconfig ~/.kube/miniconfig get nodes
 </code></pre>
-
 <p>The default being the one stored in <strong>~/.kube/config</strong></p>
 <h4 id="change-default-namespace">Change default namespace</h4>
 <p>Edit <code>~/.kube/config/</code>
@@ -651,31 +650,25 @@ and change <code>contexts.context.namespace</code></p>
 </ul>
 <pre><code>kubectl config set-context $(kubectl config current-context) --namespace=&lt;insert-namespace-name-here&gt;
 </code></pre>
-
 <h3 id="create-deployment-from-some-container-exposing-port-8080">Create deployment from some container, exposing port 8080</h3>
 <h4 id="see-generators-section-httpskubernetesiodocsuser-guidekubectl-conventions">See Generators section @https://kubernetes.io/docs/user-guide/kubectl-conventions/</h4>
 <pre><code>kubectl run extractor --image=miradatv/iris-analytics-information-extractor --port=8080 --generator=run-deployment/v1
 </code></pre>
-
 <h4 id="get-extractor-deployment-yaml-config-file">Get "extractor" deployment yaml config file</h4>
 <pre><code>kubectl get deploy extractor -o yaml
 </code></pre>
-
 <h4 id="expose-deployment-as-a-service">Expose deployment as a service</h4>
 <pre><code>kubectl expose deployment extractor --type=NodePort
 </code></pre>
-
 <h4 id="get-extractor-service-yaml-config-file">Get "extractor" service yaml config file</h4>
 <pre><code>kubectl get svc extractor -o yaml
 </code></pre>
-
 <h3 id="curl-the-api">Curl the api</h3>
 <p><a href="https://kubernetes.io/docs/concepts/cluster-administration/access-cluster/#accessing-the-cluster-api">More info</a></p>
 <pre><code>APISERVER=$(kubectl config view | grep server | cut -f 2- -d &quot;:&quot; | tr -d &quot; &quot;)
 TOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t')
 curl $APISERVER/api --header &quot;Authorization: Bearer $TOKEN&quot; --insecure
 </code></pre>
-
 <h3 id="check-what-api-endpoints-the-kubectl-command-is-using">Check what API endpoints the kubectl command is using</h3>
 <p>v param is configurable</p>
 <pre><code>$ ./kubectl get pods -v=6
@@ -683,46 +676,37 @@ curl $APISERVER/api --header &quot;Authorization: Bearer $TOKEN&quot; --insecure
 GET https://subdomain.domain.com/api/v1/namespaces/default/pods
 [...]
 </code></pre>
-
 <h3 id="enable-autocompletion">Enable autocompletion</h3>
 <p>From <a href="https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/">cheatsheet</a></p>
 <pre><code>$ source &lt;(kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.
 $ source &lt;(kubectl completion zsh)  # setup autocomplete in zsh
 </code></pre>
-
 <h3 id="execute-app-on-pod">Execute app on pod</h3>
 <pre><code>kubectl exec -ti drill-alluxio-0 -c drill -- command_path_in_remote_machine -u &quot;jdbc:drill:drillbit=localhost;user=ps&quot;
 </code></pre>
-
 <h3 id="actions">Actions</h3>
 <h4 id="get-most-of-the-info">Get most of the info</h4>
 <pre><code>kubectl get po,svc,rc,rs,pvc --all-namespaces;
 echo &quot;PV--No namespace for them&quot;;
 kubectl get pv
 </code></pre>
-
 <h3 id="get-cronjobs-yaml">Get cronjob's yaml</h3>
 <p><code># kubectl get cronjob reports-daily -n tvmetrix -o yam</code></p>
 <h3 id="live-edit-cronjob">Live-edit cronjob</h3>
 <pre><code># kubectl edit cronjob reports-daily -n tvmetrix
 </code></pre>
-
 <h4 id="get-logs">Get logs</h4>
 <pre><code>$ kubectl logs --tail=1000 -f -n monitoring podname prometheus
 </code></pre>
-
 <h4 id="get-list-of-pods">Get list of pods</h4>
 <pre><code>$ kubectl get pods
 </code></pre>
-
 <h4 id="get-list-of-nodes">Get list of nodes</h4>
 <pre><code>$ kubectl get nodes
 </code></pre>
-
 <h4 id="get-info-about-specific-pod">Get info about specific pod</h4>
 <pre><code>$ kubectl describe pod storm-nimbus
 </code></pre>
-
 <h2 id="kubectl-remote-command-execution-examples">Kubectl remote command execution examples</h2>
 <h3 id="read-line-166-from-json-gzipped-file-available-in-an-alluxio-mount-at-somepathto-folder">Read line 166 from json gzipped file available in an alluxio mount at /some/path/to folder</h3>
 <pre><code>kubectl exec -ti alluxio-master-0 -- bash -c 'alluxio fs cat /some/path/to/file.json.gz | gzip -d' | sed -n -e 166p | jq '.'

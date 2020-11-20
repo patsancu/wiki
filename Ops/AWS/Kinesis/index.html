@@ -629,9 +629,8 @@
 <h3 id="aws-cli">AWS CLI</h3>
 <p><strong>Warning</strong> Before using check that you have properly set the <code>AWS_PROFILE</code> env variable to some profile existing in <code>~/.aws/credentials</code>, or comfortable using the aws default profile
 as </p>
-<pre><code class="shell">$ export AWS_PROFILE=analytics-storm
+<pre><code class="language-shell">$ export AWS_PROFILE=analytics-storm
 </code></pre>
-
 <h3 id="get-kinesis-decoded-data">Get kinesis decoded data</h3>
 <p>aws kinesis get-records --shard-iterator some_shard_hash --profile some-profile | jq ".Records [] .Data" | tr -d '
 "' | base64 -d</p>
@@ -673,18 +672,15 @@ as </p>
     }
 }
 </code></pre>
-
 <pre><code>$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type LATEST
 {
     &quot;ShardIterator&quot;: &quot;whateversharditeratorwithnumberslettersandslashes &quot;
 }
 
 </code></pre>
-
 <p>get shard iterator for specific date (take into account the retention policy for your kinesis service)</p>
 <pre><code>$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type AT_TIMESTAMP --timestamp &quot;2017-05-25 08:00:00&quot;
 </code></pre>
-
 <ul>
 <li>
 <p>shardId is one appearing in the describe-stream command above  </p>

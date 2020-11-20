@@ -636,22 +636,18 @@
 <p>creates a instance (default t2.micro)</p>
 <pre><code>docker-machine create --driver amazonec2 --amazonec2-region &quot;us-east-1&quot; machine_name
 </code></pre>
-
 <h3 id="get-env-vars-to-connect-the-docker-client-to-the-docker-engine">Get env vars to connect the Docker Client to the Docker Engine</h3>
 <pre><code>docker-machine env MACHINE_NAME
 </code></pre>
-
 <h3 id="log-into-the-machine">Log into the machine</h3>
 <pre><code>docker-machine ssh machine_name
 </code></pre>
-
 <p>or, get the path to the ssh key and log with it:</p>
 <pre><code>MACHINE_USERNAME=ubuntu;
 IP_ADDRESS=$(docker-machine inspect --format='{{prettyjson .Driver.IPAddress}}' docker-machine-01 | tr -d '&quot;');
 SSH_DOCKER_MACHINE_KEYPATH=$(docker-machine inspect --format='{{prettyjson .Driver.SSHKeyPath}}' docker-machine-01 | tr -d '&quot;');
 ssh -i $SSH_DOCKER_MACHINE_KEYPATH $MACHINE_USERNAME@$IP_ADDRESS
 </code></pre>
-
 <h3 id="get-instance-id">Get instance id</h3>
 <pre><code>docker-machine inspect --format='{{prettyjson .Driver.InstanceId}}' machine_name
 </code></pre></div>

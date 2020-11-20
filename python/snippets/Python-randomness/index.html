@@ -624,16 +624,14 @@
 
 <h3 id="create-matrix">Create matrix</h3>
 <h4 id="create-matrix-of-none">Create matrix of None</h4>
-<pre><code class="python">A = [[ None for _ in xrange(M)] for _ in xrange(N)]
+<pre><code class="language-python">A = [[ None for _ in xrange(M)] for _ in xrange(N)]
 </code></pre>
-
 <h4 id="create-matrix-of-random-numbers">Create matrix of random numbers</h4>
-<pre><code class="python">import random
+<pre><code class="language-python">import random
 A = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]
 </code></pre>
-
 <h4 id="generator-for-lists-of-m-random-elements">Generator for lists of M random elements</h4>
-<pre><code class="python">import random
+<pre><code class="language-python">import random
 A = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))
 for i in A:
     print i

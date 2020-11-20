@@ -626,7 +626,7 @@
                     <div class="col-md-9" role="main">
 
 <h3 id="readwrite-file">Read/write file</h3>
-<pre><code class="python">import sys
+<pre><code class="language-python">import sys
 
 # Read
 with open('../first.js', 'r') as reading_file:
@@ -639,56 +639,47 @@ with open('output_file', 'w') as output_file:
     for line in lines:
         output_file.write(line)
 </code></pre>
-
 <p>or</p>
 <pre><code>with open('output_file', 'w') as output_file:
     output_file.writelines(lines)
 </code></pre>
-
 <h3 id="standard-inputoutput-read-and-write">Standard input/output read and write</h3>
-<pre><code class="python">#### Write to stdout
+<pre><code class="language-python">#### Write to stdout
 import sys
 sys.stdout.write(str(last_answer ))
 </code></pre>
-
 <p>or</p>
-<pre><code class="python">import sys
+<pre><code class="language-python">import sys
 with sys.stdout as stdout:
     sdout.write(str(last_answer))
 </code></pre>
-
 <h4 id="read-from-stdin">Read from stdin</h4>
-<pre><code class="python">import sys
+<pre><code class="language-python">import sys
 with sys.stdin as stdin:
     remove_newlines = lambda x: x.replace('\n', '')
     lines = [remove_newlines(line) for line in stdin]
 </code></pre>
-
 <p>or</p>
-<pre><code class="python">lines = sys.stdin.readlines()
+<pre><code class="language-python">lines = sys.stdin.readlines()
 </code></pre>
-
 <h3 id="remove-trailing-and-beginning-newlines-from-string">Remove trailing and beginning newlines from string</h3>
-<pre><code class="python">remove_newlines = lambda x: x.trim('\r\n')
+<pre><code class="language-python">remove_newlines = lambda x: x.trim('\r\n')
 </code></pre>
-
 <h4 id="gzip">Gzip</h4>
 <h5 id="read-compressed-file">read compressed file</h5>
-<pre><code class="python">import gzip
+<pre><code class="language-python">import gzip
 with gzip.open('file.txt.gz', 'rb') as f:
     file_content = f.read()
 </code></pre>
-
 <h5 id="compress-file">compress file</h5>
-<pre><code class="python">import gzip
+<pre><code class="language-python">import gzip
 content = &quot;Lots of content here&quot;
 with gzip.open('file.txt.gz', 'wb') as f:
     f.write(content)
 </code></pre>
-
 <h3 id="misc">Misc</h3>
 <h4 id="blink-led-of-caps-key">Blink led of caps key</h4>
-<pre><code class="python">import fcntl,os,time;
+<pre><code class="language-python">import fcntl,os,time;
 exec &quot;fcntl.ioctl(os.open('/dev/console',os.O_NOCTTY),19250,%d);time.sleep(.5);&quot;*2%(4,0)
 </code></pre></div>
             </div>

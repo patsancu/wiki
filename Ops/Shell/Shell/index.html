@@ -665,23 +665,19 @@
 
 <h3 id="bash-wiki"><a href="http://wiki.bash-hackers.org/syntax/redirection">Bash wiki</a></h3>
 <h3 id="setup-a-local-smtpserver">Setup a local smtpserver</h3>
-<pre><code class="shell">$ python -m smtpd -n -c DebuggingServer localhost:1025
+<pre><code class="language-shell">$ python -m smtpd -n -c DebuggingServer localhost:1025
 </code></pre>
-
 <h3 id="prettify-xml">Prettify xml</h3>
-<pre><code class="shell">echo '&lt;root&gt;&lt;foo a=&quot;b&quot;&gt;lorem&lt;/foo&gt;&lt;bar value=&quot;ipsum&quot; /&gt;&lt;/root&gt;' | xmllint --format -
+<pre><code class="language-shell">echo '&lt;root&gt;&lt;foo a=&quot;b&quot;&gt;lorem&lt;/foo&gt;&lt;bar value=&quot;ipsum&quot; /&gt;&lt;/root&gt;' | xmllint --format -
 </code></pre>
-
 <h4 id="prettify-xml-and-convert-html-entities-to-symbols">Prettify xml and convert html entities to symbols</h4>
-<pre><code class="shell">cat document.xml | xmllint --format - | python3 -c 'import html, sys; [print(html.unescape(l), end=&quot;&quot;) for l in sys.stdin]'
+<pre><code class="language-shell">cat document.xml | xmllint --format - | python3 -c 'import html, sys; [print(html.unescape(l), end=&quot;&quot;) for l in sys.stdin]'
 </code></pre>
-
 <h3 id="change-shell">Change shell</h3>
 <pre><code>chsh -s /usr/local/bin/bash [username]
 </code></pre>
-
 <h3 id="execute-command-without-any-env-variable-or-with-just-a-few">Execute command without any env variable or with just a few</h3>
-<pre><code class="bash">zsh $ P=&quot;ZZZ&quot;; echo $P
+<pre><code class="language-bash">zsh $ P=&quot;ZZZ&quot;; echo $P
 ZZZ
 zsh $ echo $PATATA
 
@@ -691,7 +687,6 @@ echo $ZZZ
 $ echo $PATATA
 patatina
 </code></pre>
-
 <h3 id="super-simple-text-file-creation">Super simple text file creation</h3>
 <h4 id="dont-use-in-existing-files-it-will-overwrite-them"><em>DON'T USE IN EXISTING FILES, IT WILL OVERWRITE THEM</em></h4>
 <p>Write to file until EOF is written (in a single line)</p>
@@ -703,14 +698,12 @@ $ cat p.c
 some line
 another line
 </code></pre>
-
 <h3 id="double-substution">Double substution</h3>
-<pre><code class="sh">$ foo=&quot;whatever&quot;
+<pre><code class="language-sh">$ foo=&quot;whatever&quot;
 $ i=foo
 $ echo $echo ${!i}
 whatever
 </code></pre>
-
 <h3 id="execute-process-in-background-with-lock">Execute process in background with lock</h3>
 <h4 id="executes-process-with-nohup-and-flock">Executes process with nohup and flock</h4>
 <p>See <a href="https://gist.github.com/patsancu/e8cd32a81b9dcd7e6ae9ee9ebe78d779">gist</a></p>
@@ -721,23 +714,20 @@ whatever
 <h3 id="get-url-for-git-repo">Get url for git repo</h3>
 <pre><code>xdg-open `git remote -v | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\/\//' -e's/\.git$//' | sed -E 's/(\/\/[^:]*):/\1\//'`
 </code></pre>
-
 <h3 id="wget">Wget</h3>
 <h4 id="download-all-pdfs-linked-in-a-website">Download all pdfs linked in a website</h4>
 <p><strong>Warning:</strong> Even if it recreates only the pdfs, it will download <em>every</em> file referenced by links</p>
 <pre><code>$ wget -r -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html
 </code></pre>
-
 <h4 id="download-all-pdfs-linked-in-a-website-including-linked-websites-1-level">Download all pdfs linked in a website, including linked websites (1 level)</h4>
 <pre><code>$ wget -r -l1 -A.pdf http://people.seas.harvard.edu/~minilek/cs229r/fall15/lec.html
 </code></pre>
-
 <h3 id="bash-erize-cli-any-python-object">Bash-erize cli any Python object</h3>
 <p><a href="https://github.com/google/python-fire/blob/master/doc/using-cli.md">python-fire</a></p>
 <h3 id="set-bash-variable-default-value"><a href="http://www.tldp.org/LDP/abs/html/parameter-substitution.html#PARAMSUBREF">Set bash variable default value</a></h3>
 <p><code>${parameter=default}, ${parameter:=default}</code>
 The <strong>:</strong> makes a difference only when <strong>$parameter</strong> has been declared and is null</p>
-<pre><code class="sh">$ echo $var
+<pre><code class="language-sh">$ echo $var
 
 $ echo ${var:=abc}   # abc
 abc
@@ -745,7 +735,6 @@ $ echo ${var}   # abc
 abc
 
 </code></pre>
-
 <p>http://www.tldp.org/LDP/abs/html/parameter-substitution.html#PARAMSUBREF</p>
 <h3 id="one-line-to-pretty-separate-jsons">One line to pretty separate jsons</h3>
 <p><code>curl -s localhost:7080/mappings  |  python -mjson.tool</code></p>
@@ -767,7 +756,6 @@ abc
    3564 7
 
 </code></pre>
-
 <h3 id="diff-folders">Diff folders</h3>
 <p>https://gist.github.com/37b660b98f6d29ecd1af87ffb426f380</p>
 <h3 id="record-your-command-line-session">Record Your Command Line Session</h3>
@@ -780,28 +768,23 @@ abc
 <p>To allow double "*" as a recursive filepath parameter, eg</p>
 <pre><code>ls **/*.xml
 </code></pre>
-
 <p>add</p>
 <pre><code>shopt -s globstar
 </code></pre>
-
 <p>to <strong>.bashrc</strong></p>
 <h3 id="substring-removal">Substring Removal</h3>
 <h4 id="deletes-shortest-match-of-substring-from-front-of-string">Deletes shortest match of $substring from front of $string.</h4>
 <pre><code>${string#substring}
 </code></pre>
-
 <h4 id="deletes-longest-match-of-substring-from-front-of-string">Deletes longest match of $substring from front of $string.</h4>
 <pre><code>${string##substring}
 </code></pre>
-
 <h4 id="get-last-folder-of-current-working-directoy">Get last folder of current working directoy</h4>
 <pre><code>$ pwd
 /home/patrick/dev/python
 $ echo ${PWD##*/}
 python
 </code></pre>
-
 <h3 id="basic-integer-sequence-loop">Basic integer sequence loop</h3>
 <pre><code>#!/bin/bash
 for i in `seq 1 10`;
@@ -809,71 +792,57 @@ for i in `seq 1 10`;
      echo $i
    done
 </code></pre>
-
 <h3 id="display-output-as-a-table">Display Output as a Table</h3>
 <pre><code>cat /etc/passwd | column -t -s
 </code></pre>
-
 <h3 id="repeat-a-command-until-it-runs-successfully">Repeat a Command Until It Runs Successfully</h3>
 <pre><code>while true; do ping -c 1 8.8.8.8 &gt; /dev/null 2&gt;&amp;1 &amp;&amp; break; done
 </code></pre>
-
 <h3 id="suspend-machine">Suspend machine</h3>
 <p>As root,</p>
 <pre><code># pm-suspend
 </code></pre>
-
 <h3 id="convert-a-file-to-upper-or-lower-case">Convert a File to Upper or Lower Case</h3>
 <pre><code>cat myfile | tr a-z A-Z &gt; output.txt
 </code></pre>
-
 <h3 id="sort-processes-by-memory-usage">Sort Processes by Memory Usage</h3>
 <pre><code>ps aux | sort -rnk 4
 </code></pre>
-
 <h3 id="sort-processes-by-cpu-usage">Sort Processes by CPU Usage</h3>
 <pre><code>ps aux | sort -nk 3
 </code></pre>
-
 <h3 id="xargs-example">Xargs example</h3>
 <pre><code>ls /etc/*.conf | xargs -i cp {} /home/likegeeks/Desktop/out
 </code></pre>
-
 <h3 id="dd">dd</h3>
 <h4 id="basic-syntax">Basic syntax</h4>
 <pre><code>dd bs=4M if=/dev/sdd of=from-sd-card.img
 </code></pre>
-
 <h4 id="see-progress-of-dd">See progress of dd</h4>
 <pre><code>sudo pkill -USR1 -n -x dd
 </code></pre>
-
 <p>This will show the progess <strong>in the same terminal dd was executed</strong></p>
 <h4 id="create-file-with-a-specific-size">Create File With a Specific Size</h4>
 <pre><code>dd if=/dev/zero of=out.txt bs=1M count=10
 </code></pre>
-
 <h3 id="shorten-url-with-googl">Shorten url with goo.gl</h3>
 <p>The <code>$GOOGLE_SHORTEN_API_KEY</code> variable needs to be set, and jq needs to be installed</p>
 <pre><code>shorten(){
     curl &quot;https://www.googleapis.com/urlshortener/v1/url?key=$GOOGLE_SHORTEN_API_KEY&quot; -H 'Content-Type: application/json' -d &quot;{'longUrl': \&quot;$1\&quot;}&quot; | jq '.id'
 }
 </code></pre>
-
 <h3 id="automatically-press-keys-when-condition-is-met">Automatically press keys when condition is met</h3>
 <p>Use expect as in <a href="https://gist.github.com/patsancu/4428820cd1f23fccbabd48fefa5c85fc">here</a></p>
 <h3 id="convert-windows-encoded-text-file-to-unix-encoded">Convert windows-encoded text file to unix-encoded</h3>
 <pre><code>awk 'BEGIN{RS=&quot;^$&quot;;ORS=&quot;&quot;;getline;gsub(&quot;\r&quot;,&quot;&quot;);print&gt;ARGV[1]}' file_name
 </code></pre>
-
 <h3 id="loop-through-defined-array">Loop through defined array</h3>
-<pre><code class="bash">array=( one two three )
+<pre><code class="language-bash">array=( one two three )
 for i in &quot;${array[@]}&quot;
 do
     echo $i
 done
 </code></pre>
-
 <h3 id="read-lines-from-file-in-a-for-loop">Read lines from file in a for loop</h3>
 <pre><code>input=&quot;/path/to/txt/file&quot;
 while IFS= read -r var
@@ -881,11 +850,9 @@ do
   echo &quot;$var&quot;
 done &lt; &quot;$input&quot;
 </code></pre>
-
 <p>or</p>
 <pre><code>while read variable_name; do echo &quot;JDSA $variable_name&quot;; done &lt; workers.txt
 </code></pre>
-
 <h3 id="display-info-about-memory">Display info about memory</h3>
 <p><code>$ sudo lshw -C memory</code></p>
 <h3 id="open-the-current-repo-on-a-specific-web-repo">Open the current repo on a specific web repo</h3>
@@ -898,7 +865,6 @@ done &lt; &quot;$input&quot;
 }
 alias hgweb=my_hgweb
 </code></pre>
-
 <h3 id="colors">Colors</h3>
 <h4 id="with-tput">With tput</h4>
 <h5 id="colors_1">Colors</h5>
@@ -916,19 +882,15 @@ Clear all options</li>
 <pre><code>tput setab clear
 tput sgr0
 </code></pre>
-
 <p>Set foreground color</p>
 <pre><code>tput setaf 6; # turquoise
 </code></pre>
-
 <p>Set background color</p>
 <pre><code>tput setab 2; # green
 </code></pre>
-
 <p>Set bold</p>
 <pre><code>tput bold;
 </code></pre>
-
 <ul>
 <li>
 <p>More info: http://linuxcommand.org/lc3_adv_tput.php</p>
@@ -943,49 +905,41 @@ https://gist.github.com/patsancu/44fcdb7d7d195add5bc87e4aa5df88c6</p>
 <h4 id="rename-files-in-folder-to-sorted-files">Rename files in folder to sorted files</h4>
 <pre><code>c=0; for i in `ls`;do echo &quot;$i&quot;; c=$((c+1)); mv &quot;$i&quot; &quot;$c.txt&quot;; done
 </code></pre>
-
 <h4 id="rename-files-change-extesion">Rename files, change extesion</h4>
-<pre><code class="sh">for file in *.html
+<pre><code class="language-sh">for file in *.html
 do
  mv &quot;$file&quot; &quot;${file%.html}.txt&quot;
 done
 </code></pre>
-
 <h4 id="get-extension-of-file">Get extension of file</h4>
 <pre><code>filename=$(basename &quot;$fullfile&quot;)
 extension=&quot;${filename##*.}&quot;
 filename=&quot;${filename%.*}&quot;
 </code></pre>
-
 <h4 id="change-mac-address">Change mac address</h4>
 <pre><code>sudo ifconfig eth0 down
 sudo ifconfig eth0 hw ether  xx:xx:xx:xx:xx:xx
 sudo ifconfig eth0 up
 </code></pre>
-
 <h3 id="date">Date</h3>
 <h4 id="format-current-date">Format current date</h4>
 <pre><code>$ date +'%Y%m%d'
 </code></pre>
-
 <h3 id="add-days-to-date">Add days to date</h3>
-<pre><code class="shell">date -d +&quot;2 days&quot;
+<pre><code class="language-shell">date -d +&quot;2 days&quot;
 date -d +&quot;3 minutes&quot;
 date -d +&quot;4 months&quot;
 </code></pre>
-
 <h4 id="from-epoch-seconds-to-date">From epoch <strong>seconds</strong> to date</h4>
 <pre><code>$ date -d @1463234960
 samedi 14 mai 2016, 16:09:20 (UTC+0200)
 </code></pre>
-
 <h4 id="combine">Combine</h4>
 <pre><code>$ date -d @1463234960 +&quot;%Y-%m-%d&quot;
 2016-05-14
 $ date -d &quot;1492/10/12 14:00:02&quot; +&quot;%Y-%m-%d %H:%M&quot;
 1492-10-12 14:00
 </code></pre>
-
 <p>For more info about <a href="https://www.gnu.org/software/coreutils/manual/html_node/Date-input-formats.html#Date-input-formats">date input formats</a></p>
 <h3 id="useful-commands">Useful commands</h3>
 <ul>
@@ -993,7 +947,6 @@ $ date -d &quot;1492/10/12 14:00:02&quot; +&quot;%Y-%m-%d %H:%M&quot;
 </ul>
 <pre><code>dd bs=4M if=/media/somedrive/raspbian-jessie.img | pv | dd of=/dev/mmcblk0
 </code></pre>
-
 <ul>
 <li><strong>pgrep</strong> <em>get PID by name</em></li>
 <li><strong>pkill</strong> <em>kill process by name</em></li>
@@ -1006,18 +959,16 @@ $ date -d &quot;1492/10/12 14:00:02&quot; +&quot;%Y-%m-%d %H:%M&quot;
 cGF0YXRhCg==
 $ echo patata | base64 | base64 -d
 </code></pre>
-
 <h3 id="exit-traps">Exit traps</h3>
 <p><a href="https://web-beta.archive.org/web/20170317022944/http://redsymbol.net/articles/bash-exit-traps/">Reference</a></p>
 <p>Example:</p>
-<pre><code class="sh">#!/bin/bash
+<pre><code class="language-sh">#!/bin/bash
 scratch=$(mktemp -d -t tmp.XXXXXXXXXX)
 function finish {
   rm -rf &quot;$scratch&quot;
 }
 trap finish EXIT
 </code></pre>
-
 <h3 id="check-os-type">Check OS type</h3>
 <pre><code>if [[ &quot;$OSTYPE&quot; == &quot;linux-gnu&quot; ]]; then
         # ...
@@ -1034,26 +985,21 @@ elif [[ &quot;$OSTYPE&quot; == &quot;freebsd&quot;* ]]; then
 else
         #
 </code></pre>
-
 <h3 id="flatten-directory">Flatten directory</h3>
 <p>Moves recursively all files under folder "dir1" (at any level of depth) to the "dir1" folder.</p>
 <pre><code>find dir1 -type f -exec mv {} dir1 \;
 </code></pre>
-
 <h3 id="declare-variables-for-a-command">Declare variables for a command</h3>
 <h4 id="yes">Yes</h4>
-<pre><code class="sh">FOO=bar bash -c 'echo $FOO'
+<pre><code class="language-sh">FOO=bar bash -c 'echo $FOO'
 </code></pre>
-
 <h4 id="no">No</h4>
-<pre><code class="sh">FOO=bar bash -c &quot;echo $FOO&quot;
+<pre><code class="language-sh">FOO=bar bash -c &quot;echo $FOO&quot;
 </code></pre>
-
 <h3 id="get-duplicate-lines-and-count">Get duplicate lines and count</h3>
 <p>prints duplicate lines only</p>
 <pre><code>cat some_file.csv | uniq -cd
 </code></pre>
-
 <h3 id="geotag-pictures">Geotag pictures</h3>
 <pre><code>#!/bin/bash
 lat=$(curl &quot;http://nominatim.openstreetmap.org/search?
@@ -1062,11 +1008,9 @@ lon=$(curl &quot;http://nominatim.openstreetmap.org/search?
 city=$1&amp;country=$2&amp;format=json&quot; | jq '.[0] | .lon' | tr ­d '&quot;')
 exiftool ­GPSLongitude=$lon ­GPSLatitude=$lat ­ext jpg .
 </code></pre>
-
 <h3 id="prettify-json">Prettify json</h3>
 <pre><code>curl -s localhost:7080/mappings | python -mjson.tool
 </code></pre>
-
 <h3 id="print-undefined-progress-spinner">Print undefined progress spinner</h3>
 <p>declare spin function with:</p>
 <pre><code>sp=&quot;/-\|&quot;
@@ -1076,7 +1020,6 @@ spin() {
    ((sc==${#sp})) &amp;&amp; sc=0
 }
 </code></pre>
-
 <p>Then, use it in a loop, for example:</p>
 <pre><code>SECONDS=40
 PERIOD_LENGTH=100
@@ -1090,29 +1033,25 @@ do
     spin
 done
 </code></pre>
-
 <h3 id="grep-highligh-matched-patterns-but-not-otherwise-change-ouput">Grep: highligh matched patterns but not otherwise change ouput</h3>
-<pre><code class="sh">grep --color=always -e &quot;^&quot; -e &quot;hello&quot; testfile
+<pre><code class="language-sh">grep --color=always -e &quot;^&quot; -e &quot;hello&quot; testfile
 </code></pre>
-
 <h3 id="random-numbers">Random numbers</h3>
 <h4 id="zsh-or-bash">zsh or bash</h4>
 <ul>
 <li>random between 0-999</li>
 </ul>
-<pre><code class="bash">echo $[${RANDOM}%1000]
+<pre><code class="language-bash">echo $[${RANDOM}%1000]
 </code></pre>
-
 <ul>
 <li>random between 10-20</li>
 </ul>
-<pre><code class="bash">$[${RANDOM}%11+10]
+<pre><code class="language-bash">$[${RANDOM}%11+10]
 </code></pre>
-
 <ul>
 <li>random number that's N digits long</li>
 </ul>
-<pre><code class="bash">${(l:3::0:)${RANDOM}}
+<pre><code class="language-bash">${(l:3::0:)${RANDOM}}
 </code></pre></div>
             </div>
         </div>

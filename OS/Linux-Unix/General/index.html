@@ -631,7 +631,6 @@
 <h3 id="systemd">Systemd</h3>
 <pre><code>vim /etc/systemd/system/service_name.service
 </code></pre>
-
 <pre><code>[Unit]
 Description = making network connection up
 After = network.target
@@ -641,21 +640,17 @@ ExecStart = /root/scripts/conup.sh
 [Install]
 WantedBy = multi-user.target
 </code></pre>
-
 <h4 id="create-executable-script">Create executable script</h4>
 <pre><code>vim /root/scripts/conup.sh;
 chmod +x /root/scripts/conup.sh;
 </code></pre>
-
 <h4 id="enable-service">Enable service</h4>
 <pre><code># systemctl enable connection.service
 </code></pre>
-
 <h4 id="basic-operations">Basic operations</h4>
 <pre><code># systemctl start connection.service
 # systemctl stop connection.service
 </code></pre>
-
 <h3 id="shrink-os-image">Shrink OS image</h3>
 <p>Typical case is the shrinking of a RPi microsd card that was dumped to an image file
 https://web.archive.org/web/20190906231419/https://softwarebakery.com//shrinking-images-on-linux</p>
@@ -663,17 +658,14 @@ https://web.archive.org/web/20190906231419/https://softwarebakery.com//shrinking
 <h3 id="change-grub-boot-order">Change grub boot order</h3>
 <pre><code>sudo vim /etc/default/grub
 </code></pre>
-
 <p>Change <strong>GRUB_DEFAULT</strong> to one of [number of entry (zero-based), 'Title'subindex]
 Examples:</p>
 <pre><code>'Advanced options for Ubuntu&gt;'3
 2
 </code></pre>
-
 <p>Then, update the grub menu</p>
 <pre><code>sudo update-grub
 </code></pre>
-
 <p>Check the file <code>/boot/grub/grub.cfg</code> for reference</p>
 <h3 id="reinstall-grub">Reinstall grub</h3>
 <ul>
@@ -687,17 +679,15 @@ Examples:</p>
 <h3 id="create-passwordless-user-programmatically">Create passwordless user programmatically</h3>
 <pre><code># useradd -m -c &quot;Samwise the Brave&quot; sam  -s /bin/bash
 </code></pre>
-
 <p>Creates user with home /home/sam and shell /bin/bash</p>
 <h3 id="find">Find</h3>
-<pre><code class="sh"># Search all files with .old extension and delete them:
+<pre><code class="language-sh"># Search all files with .old extension and delete them:
 find / -name &quot;*.old&quot; -exec /bin/rm {} \;
 # Search all files with size &gt; of 100 MB and delete them:
 find / -size +100M -exec /bin/rm {} \;
 # Recursively change the permissions of all directories
 find . -type d -exec chmod 755 {} \;
 </code></pre>
-
 <h3 id="top">Top</h3>
 <ul>
 <li><strong>W</strong> writes config changes to .toprc</li>
@@ -712,7 +702,6 @@ If it doesn't work, try the following:</p>
 One of those files (it'll probably work with any sourced file at login) should have one line such as:</p>
 <pre><code>TZ='Europe/London'; export TZ
 </code></pre>
-
 <p>or just execute</p>
 <h4 id="insert-unicode-characters">Insert unicode characters</h4>
 <p>Hold down the shift and control keys while typing the letter u and the hex values of the Unicode character you wish to enter.
@@ -722,11 +711,9 @@ Hold control and shift and type U1F60F ‍😏</p>
 <pre><code>$ sudo apt-cache search --names-only swedish
 $ sudo apt-get install wswedish
 </code></pre>
-
 <h4 id="mouse-third-button">Mouse - Third button</h4>
 <pre><code>sudo vim /usr/share/X11/xorg.conf.d/middle-mouse-button.conf
 </code></pre>
-
 <p>And paste this</p>
 <pre><code>Section &quot;InputClass&quot;
     Identifier &quot;middle button emulation class&quot;
@@ -734,7 +721,6 @@ $ sudo apt-get install wswedish
     Option &quot;Emulate3Buttons&quot; &quot;on&quot;
 EndSection
 </code></pre>
-
 <p>or check this
 <a href="https://wiki.ubuntu.com/X/Quirks# A2-button_Mice">wiki ubuntu</a></p>
 <h3 id="webcam">Webcam</h3>
@@ -758,20 +744,16 @@ I had the same problem and managed to fix it by setting the defaults for both gv
 xdg-mime query default x-scheme-handler/magnet
 gvfs-mime --query x-scheme-handler/magnet
 </code></pre>
-
 <pre><code># Set new app, providing it's in /usr/share/applications/
 xdg-mime default qBittorrent.desktop x-scheme-handler/magnet
 gvfs-mime --set x-scheme-handler/magnet qBittorrent.desktop
 </code></pre>
-
 <h3 id="notifications">Notifications</h3>
 <pre><code>notify-send -u critical &quot;The potato finished cooking&quot;
 </code></pre>
-
 <h3 id="get-os-version">Get OS version</h3>
 <pre><code>uname -a
 </code></pre>
-
 <p>and</p>
 <pre><code>$ lsb_release -a
 No LSB modules are available.
@@ -780,20 +762,17 @@ Description:    Ubuntu 16.04.2 LTS
 Release:        16.04
 Codename:       xenial
 </code></pre>
-
 <h3 id="motion">Motion</h3>
 <h4 id="make-folders-accessible">Make folders accessible</h4>
 <pre><code>sudo mkdir -p /var/run/motion; sudo chown -R $USER:$USER /var/run/motion;
 sudo mkdir -p /etc/motion/; sudo chown -R $USER:$USER /etc/motion/;
 sudo mkdir -p /var/log/motion/; sudo chown -R $USER:$USER /var/log/motion/;
 </code></pre>
-
 <h4 id="configuration-file">Configuration file</h4>
 <p><code>/etc/motion/motion.conf</code></p>
 <h3 id="generate-random-chars">Generate random chars</h3>
-<pre><code class="shell">tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz'  &lt; /dev/urandom | dd bs=32 count=1 2&gt;/dev/null; echo
+<pre><code class="language-shell">tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz'  &lt; /dev/urandom | dd bs=32 count=1 2&gt;/dev/null; echo
 </code></pre>
-
 <h3 id="monitor-screen-locking">Monitor screen locking</h3>
 <pre><code>exit_report(){
 echo &quot;$(date) Monitoring Terminated.&quot;
@@ -811,7 +790,6 @@ dbus­monitor ­­session &quot;type='signal',interface='org.gnome.ScreenSaver'&
 }
 lockmon &gt;&gt; lock_screen.log
 </code></pre>
-
 <h3 id="how-to-fix-mftmirr-does-not-match-mft-record-0">How to fix ‘$MFTMirr does not match $MFT (record 0)’</h3>
 <ul>
 <li>install ntfsprogs</li>

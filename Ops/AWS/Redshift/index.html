@@ -645,9 +645,8 @@ If there's a folder with this structure</p>
     q.json.gz
     r.json.gz
 </code></pre>
-
 <p>Calling the copy sentence with the folder <strong>a</strong> as source will copy all files under the folder recursively</p>
-<pre><code class="sql">copy schema.table_name
+<pre><code class="language-sql">copy schema.table_name
 from 's3://bucket-name/some_folder/some_file.json.gz'
 -- from 's3://bucket-name/a'
 with credentials 'aws_access_key_id=some_access_key;ws_secret_access_key=supersupersecretkey'
@@ -656,7 +655,6 @@ format as json 'auto'
 [region 'us-east-1']
 -- If the Amazon S3 buckets that hold the data files do not reside in the same region as your cluster, you must use the REGION parameter to specify the region in which the data is located.
 </code></pre>
-
 <h4 id="escape-strings-with-escape">Escape strings with Escape</h4>
 <p><strong>Remove</strong> the format as csv thing</p>
 <pre><code>copy analyticsmodel.playback
@@ -667,38 +665,33 @@ ignoreheader as 1
 [escape]
 [truncatecolumns Truncates data in columns to the appropriate number of characters it has been specified]
 </code></pre>
-
 <h3 id="load-into-redshift-with-custom-field-ordering">Load into redshift with custom field ordering</h3>
 <p>You can specify a comma-separated list of column names to load source data fields into specific target columns.
 <a href="http://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-column-mapping.html">Docs</a></p>
-<pre><code class="sql">copy schema.table (column_a, column_b, column_c, column_d, column_e, colummn_f)
+<pre><code class="language-sql">copy schema.table (column_a, column_b, column_c, column_d, column_e, colummn_f)
 from 's3://some_file.csv'
 with credentials 'aws_access_key_id=some_access_key;ws_secret_access_key=supersupersecretkey'
 format as csv
 ignoreheader as 1
 TRUNCATECOLUMNS
 </code></pre>
-
 <h3 id="check-errors">Check errors</h3>
-<pre><code class="sql">select * from stl_load_errors
+<pre><code class="language-sql">select * from stl_load_errors
 order by starttime desc;
 </code></pre>
-
 <h3 id="check-info-about-permanent-tables">Check info about permanent tables</h3>
 <p>The STV_TBL_PERM table contains information about the permanent tables in Amazon Redshift. More info <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_STV_TBL_PERM.html">here</a></p>
-<pre><code class="sql">select * FROM stv_tbl_perm ;
+<pre><code class="language-sql">select * FROM stv_tbl_perm ;
 </code></pre>
-
 <h3 id="size-info-about-tables">Size info about tables</h3>
 <h4 id="first-method">First method</h4>
-<pre><code class="sql">select &quot;database&quot;,
+<pre><code class="language-sql">select &quot;database&quot;,
 &quot;schema&quot; || '.' || &quot;table&quot;, &quot;size&quot; as &quot;size in Mb&quot;, &quot;tbl_rows&quot; as &quot;rows&quot;
 from svv_table_info
 </code></pre>
-
 <h4 id="second-method">Second method</h4>
 <p>The query below's info  is <strong>not exhaustive nor complete</strong></p>
-<pre><code class="sql">SELECT TRIM(pgdb.datname) AS DATABASE,
+<pre><code class="language-sql">SELECT TRIM(pgdb.datname) AS DATABASE,
       TRIM(pgn.nspname) AS SCHEMA,
       TRIM(a.name) AS TABLE,
       b.mbytes,
@@ -718,20 +711,18 @@ FROM (SELECT db_id,
 ORDER BY a.db_id,
         a.name;
 </code></pre>
-
 <h3 id="generate-date-series">Generate date series</h3>
 <ul>
 <li>Generate series using <strong>any</strong> table as a dummy table.</li>
 </ul>
-<pre><code class="sql">create table fechas as
+<pre><code class="language-sql">create table fechas as
 select (
     date('2017-06-30') + row_number() over (order by true)
   )::date as fecha
 from ibc.playback limit 40
 </code></pre>
-
 <p><strong>Warning</strong>. The date_series function thing doesn't work that well on redshift when doing joins and stuff like that. For more info, check redshift's developer guide.</p>
-<pre><code class="sql">WITH date_series_bounds AS (
+<pre><code class="language-sql">WITH date_series_bounds AS (
     SELECT date('2012-12-21') as start, date('2013-08-23') as end
 ), date_series AS (
     select date(days.start + days.interval)
@@ -741,26 +732,22 @@ from ibc.playback limit 40
 )
 select * from date_series
 </code></pre>
-
 <p>or</p>
-<pre><code class="sql">select current_date - (n*30 || ' minutes')::interval
+<pre><code class="language-sql">select current_date - (n*30 || ' minutes')::interval
 from generate_series (0, 100*5-1) n
 </code></pre>
-
 <p>or</p>
-<pre><code class="sql">select substr(to_date('2017-06-22', 'YYYY-MM-DD') + (n || ' days')::interval, 1,10)
+<pre><code class="language-sql">select substr(to_date('2017-06-22', 'YYYY-MM-DD') + (n || ' days')::interval, 1,10)
 from generate_series (0, 6) n
 </code></pre>
-
 <h3 id="list-schemas">List schemas</h3>
-<pre><code class="sql">select *
+<pre><code class="language-sql">select *
 from information_schema.schemata
 </code></pre>
-
 <h3 id="create-schema">Create schema</h3>
 <p><code>CREATE SCHEMA IF NOT EXISTS schema_name</code></p>
 <h3 id="check-data-load"><a href="http://docs.aws.amazon.com/redshift/latest/dg/r_STL_FILE_SCAN.html">Check data load</a></h3>
-<pre><code class="sql">select * from STL_FILE_SCAN
+<pre><code class="language-sql">select * from STL_FILE_SCAN
 where name like '%screentime%'
 order by curtime desc
 </code></pre></div>

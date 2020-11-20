@@ -630,20 +630,16 @@
 <h3 id="generate-keys">Generate keys</h3>
 <pre><code>$ gpg --gen-key
 </code></pre>
-
 <h3 id="encryption">Encryption</h3>
 <pre><code>$ gpg --encrypt --sign --armor -r recipient_email -r my@email.com file_to_encrypt
 </code></pre>
-
 <h3 id="decrypt">Decrypt</h3>
 <pre><code>$ gpg --output path/to/decrypted/file file_to_encrypt.asc
 </code></pre>
-
 <h3 id="create-subkey">Create subkey</h3>
 <h4 id="backup-files">Backup files</h4>
 <pre><code>$ umask 077; tar -cf $HOME/gnupg-backup.tar -C $HOME .gnupg
 </code></pre>
-
 <h4 id="find-key-and-edit-it">Find key and edit it</h4>
 <p>gpg --list-keys yourname
 gpg --edit-key 

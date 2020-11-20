@@ -636,26 +636,21 @@
 <pre><code>find . -path &quot;*/migrations/*.py&quot; -not -name &quot;__init__.py&quot; -delete
 find . -path &quot;*/migrations/*.pyc&quot;  -delete
 </code></pre>
-
 <h3 id="drop-the-current-database-or-delete-the-dbsqlite3-if-it-is-your-case">Drop the current database, or delete the db.sqlite3 if it is your case.</h3>
 <pre><code>rm db.sqlite3
 </code></pre>
-
 <h3 id="create-the-initial-migrations-and-generate-the-database-schema">Create the initial migrations and generate the database schema:</h3>
 <pre><code>python manage.py makemigrations
 python manage.py migrate
 </code></pre>
-
 <h3 id="sendmail-debug">Sendmail debug</h3>
 <p>For debugging purposes you could setup a local smtpserver with this command:</p>
 <pre><code>python -m smtpd -n -c DebuggingServer localhost:1025
 </code></pre>
-
 <p>and adjust your mail settings accordingly:</p>
 <pre><code>EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 </code></pre>
-
 <h3 id="basics">Basics</h3>
 <p><code>django-admin startproject mysite</code></p>
 <p><code>python manage.py startapp polls</code></p>
@@ -664,7 +659,7 @@ EMAIL_PORT = 1025
 <p><code>python manage.py makemigrations</code></p>
 <p><code>python manage.py migrate</code></p>
 <h3 id="override-model-save-method">Override model save method</h3>
-<pre><code class="python">class Model(model.Model):
+<pre><code class="language-python">class Model(model.Model):
     image=models.ImageField(upload_to='folder')
     thumb=models.ImageField(upload_to='folder')
     description=models.CharField()

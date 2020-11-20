@@ -629,38 +629,30 @@
 <h2 id="git-submodules"><a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">Git submodules</a></h2>
 <pre><code>git submodule add submodule-url
 </code></pre>
-
 <pre><code>git submodule init
 git submodule update
 </code></pre>
-
 <pre><code>git clone --recurse-submodules repo-with-submodules-url
 </code></pre>
-
 <p>Update a submodule. Go inside a submodule and</p>
 <pre><code>git fetch
 git merge origin/master
 </code></pre>
-
 <p>Or, simply:</p>
 <pre><code>git submodule update --remote submodule-name
 </code></pre>
-
 <p>If the needed submodule branch is not master:</p>
 <pre><code>git config -f .gitmodules submodule.DbConnector.branch stable
 </code></pre>
-
 <p>(The -f .gitmodules makes the change persistent)</p>
 <p>Configuration to pretty print submodule changes</p>
 <pre><code>git config --global diff.submodule log
 </code></pre>
-
 <ul>
 <li>Push to the remotes to make sure they're externally available and then try this push again</li>
 </ul>
 <pre><code>git push --recurse-submodules=on-demand
 </code></pre>
-
 <ul>
 <li>Let the on-demand option be the default</li>
 </ul>

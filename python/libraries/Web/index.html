@@ -633,7 +633,7 @@
 <h4 id="with-requests-http-for-humans">With requests - HTTP for humans</h4>
 <p><a href="https://github.com/kennethreitz/requests">requests</a>.
 Example</p>
-<pre><code class="python">import requests
+<pre><code class="language-python">import requests
 import json
 
 gist_token = os.getenv(&quot;GITHUB_GIST_TOKEN&quot;)
@@ -653,9 +653,8 @@ response = requests.post(gist_post_url, headers=headers, data=json_data)
 # Not needed, check the results
 response_json = json.loads(response.content)
 </code></pre>
-
 <h4 id="with-urllib-urllib2">With urllib, urllib2</h4>
-<pre><code class="python">import os
+<pre><code class="language-python">import os
 import urllib
 import urllib2
 import json
@@ -672,16 +671,13 @@ req = urllib2.Request(access_url, json_data, headers)
 response = urllib2.urlopen(req)
 the_page = response.read()
 </code></pre>
-
 <h3 id="start-simple-python-http-server">Start simple python http server</h3>
 <p>2</p>
 <pre><code>$ python -m SimpleHTTPServer [port]
 </code></pre>
-
 <p>3</p>
 <pre><code>$ python3 -m http.server [port]
 </code></pre>
-
 <h3 id="open-page-at-browser">Open page at browser</h3>
 <p>import webbrowser
 webbrowser.open_new('http://www.python.org/')</p>

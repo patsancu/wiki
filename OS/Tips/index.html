@@ -628,7 +628,6 @@
        -acodec libmp3lame -ac 2 -ab 160k -ar 48000 \
         audio.mp3
 </code></pre>
-
 <p>or if you want to use Variable Bitrate Encoding (VBR):</p>
 <pre><code>ffmpeg -i video.mp4 -vn \
        -acodec libmp3lame -ac 2 -qscale:a 4 -ar 48000 \

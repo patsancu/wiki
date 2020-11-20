@@ -625,7 +625,7 @@
 <h3 id="mapstruct-abstract-mapper-injected-in-junit-test">Mapstruct abstract mapper injected in JUnit test</h3>
 <p>Mockito can inject it.
 Just define the mapper as a Mockito spy, by getting the real mapper</p>
-<pre><code class="java">@Spy
+<pre><code class="language-java">@Spy
 private XMapper xMapper = Mappers.getMapper(XMapper.class);
 
 @InjectMocks
