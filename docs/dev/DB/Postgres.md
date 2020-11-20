@@ -6,6 +6,20 @@ DROP TABLE original_table;
 CREATE TABLE original_table ...
 INSERT INTO original_table SELECT * FROM temp_table;
 ```
+### Search column which has value in range
+
+```sql
+SELECT
+    a.created, b.*
+FROM
+    table_b b
+LEFT JOIN table_a a
+ON a.p_uuid = b.pv_production_uuid
+WHERE
+--  a.created >= '2020-10-01'::date
+--  and a.created <= '2020-10-21'::date
+    a.created BETWEEN '2020-10-01'::date and '2020-10-21'::date
+```
 
 ### List tables
 ```sql
