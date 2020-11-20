@@ -4,6 +4,10 @@ Test speficic method from specific classes, ignoring failure if there are no tes
 ```
 mvn test -Dtest=ZoneDaoTest#findZoneByCityIdExistingCityId -DfailIfNoTests=false
 ```
+### Find duplicated dependencies
+```
+mvn dependency:analyze-duplicate
+```
 
 ### Create executable jar
 * In pom.xml
