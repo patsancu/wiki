@@ -682,6 +682,18 @@ N = 7
 
 <p>cryptographically more secure version</p>
 <pre><code class="python">''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
+</code></pre>
+
+<h4 id="show-notifications-on-macos">Show notifications on macos</h4>
+<p>From <a href="https://stackoverflow.com/a/41318195/2769307">here</a></p>
+<pre><code class="python">import os
+
+def notify(title, text):
+    os.system(&quot;&quot;&quot;
+              osascript -e 'display notification &quot;{}&quot; with title &quot;{}&quot;'
+              &quot;&quot;&quot;.format(text, title))
+
+notify(&quot;Title&quot;, &quot;Heres an alert&quot;)
 </code></pre></div>
             </div>
         </div>

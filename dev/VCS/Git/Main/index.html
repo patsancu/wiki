@@ -657,6 +657,7 @@
             
             
             
+            
         </ul>
     </div>
 </div></div>
@@ -1005,6 +1006,11 @@ git push origin feature
 <h3 id="update-commmit-date">Update commmit date</h3>
 <p>In case you want to push the same commit with a different date (maybe to trigger pipeline?)</p>
 <pre><code>git commit --amend --no-edit --date=\&quot;$(date -R)\&quot;
+</code></pre>
+
+<h3 id="stop-tracking-file">Stop tracking file</h3>
+<p>From this <a href="https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore/20241145#20241145">source</a></p>
+<pre><code>git update-index --skip-worktree &lt;file&gt;
 </code></pre></div>
             </div>
         </div>
