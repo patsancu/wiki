@@ -65,3 +65,17 @@ cryptographically more secure version
 ```python
 ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
 ```
+
+#### Show notifications on macos
+
+From [here](https://stackoverflow.com/a/41318195/2769307)
+```python
+import os
+
+def notify(title, text):
+    os.system("""
+              osascript -e 'display notification "{}" with title "{}"'
+              """.format(text, title))
+
+notify("Title", "Heres an alert")
+```
