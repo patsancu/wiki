@@ -412,3 +412,10 @@ In case you want to push the same commit with a different date (maybe to trigger
 ```
 git commit --amend --no-edit --date=\"$(date -R)\"
 ```
+
+### Stop tracking file
+From this [source](https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore/20241145#20241145)
+
+```
+git update-index --skip-worktree <file>
+```
