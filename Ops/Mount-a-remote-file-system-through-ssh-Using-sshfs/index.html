@@ -631,27 +631,34 @@
 <h3 id="install">Install</h3>
 <pre><code>sudo apt-get install -y sshfs
 </code></pre>
+
 <h3 id="make-sure-the-following-condition-is-met-in-the-local-system-type-as-root">make sure the following condition is met. In the local system, type (as root)</h3>
 <p>Should return nothing</p>
 <pre><code># sudo modprobe fuse
 </code></pre>
+
 <h3 id="create-the-mount-point">create the mount point</h3>
 <pre><code>$ sudo mkdir /mnt/remote
 $ sudo chown [user-name]:[group-name] /mnt/remote/
 </code></pre>
+
 <h3 id="add-yourself-to-the-fuse-group">Add yourself to the fuse group</h3>
 <pre><code>adduser [your-user] fuse
 </code></pre>
+
 <h3 id="switch-to-your-user-and-mount-the-remote-filesystem">switch to your user and mount the remote filesystem.</h3>
 <pre><code>sshfs remote-user@remote.server:/remote/directory /mnt/remote/
 </code></pre>
+
 <h3 id="if-you-want-to-mount-a-directory-other-than-the-home-directory-you-can-specify-it-after-the-colon-actually-a-generic-sshfs-command-looks-like-this">If you want to mount a directory other than the home directory, you can specify it after the colon. Actually, a generic sshfs command looks like this:</h3>
 <pre><code>$ sshfs [user@]host:[dir] mountpoint [options]
 </code></pre>
+
 <h3 id="unmount-your-directory">Unmount Your Directory</h3>
 <p>Try:</p>
 <pre><code>sudo umount /mnt/remote
 </code></pre>
+
 <p>or</p>
 <pre><code>fusermount -u mountpoint
 </code></pre></div>

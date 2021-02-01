@@ -637,17 +637,21 @@ Enter passphrase:
 Verify passphrase: 
 Command successful.
 </code></pre>
+
 <h3 id="create-mapping">Create mapping</h3>
 <pre><code>cryptsetup luksOpen /dev/xvdc backup2
 </code></pre>
+
 <h3 id="format-partition">Format partition</h3>
 <pre><code>pv -tpreb /dev/zero | dd of=/dev/mapper/backup2 bs=128M
 mkfs.ext4 /dev/mapper/backup2
 </code></pre>
+
 <h3 id="unmount">Unmount</h3>
 <pre><code>umount /backup2
 cryptsetup luksClose backup2
 </code></pre>
+
 <h3 id="mount">Mount</h3>
 <pre><code>cryptsetup luksOpen /dev/xvdc backup2
 mount /dev/mapper/backup2 /backup2

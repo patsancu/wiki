@@ -663,8 +663,9 @@
 
 <h2 id="basics">Basics</h2>
 <h3 id="create-a-new-ssh-key">Create a new SSH Key</h3>
-<pre><code class="language-bash">ssh-keygen -t rsa -C &quot;your-email-address&quot;
+<pre><code class="bash">ssh-keygen -t rsa -C &quot;your-email-address&quot;
 </code></pre>
+
 <p>Be careful that you don't over-write your existing key for your personal account. Instead, when prompted, save the file as id_rsa_key. In my case, I've saved the file to ~/.ssh/id_rsa_other_key</p>
 <h2 id="ssh-config">SSH config</h2>
 <p>Taken From <a href="http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/">here</a></p>
@@ -677,41 +678,50 @@ and put this contents of $HOME/.ssh/config</p>
     Port 22000
     User fooey
 </code></pre>
+
 <p>With this setup, simply</p>
-<pre><code class="language-bash">ssh dev
+<pre><code class="bash">ssh dev
 </code></pre>
+
 <p>and the rest will go fine</p>
 <h3 id="aliases-with-redirection-and-more">Aliases with redirection and more</h3>
 <p>Instead of</p>
-<pre><code class="language-bash">ssh -f -N -L 9906:127.0.0.1:3306 coolio@database.example.com
+<pre><code class="bash">ssh -f -N -L 9906:127.0.0.1:3306 coolio@database.example.com
 </code></pre>
+
 <p>you can add an entry to</p>
-<pre><code class="language-bash">~/.ssh/config
+<pre><code class="bash">~/.ssh/config
 </code></pre>
+
 <p>as the following one:</p>
-<pre><code class="language-bash">Host tunnel
+<pre><code class="bash">Host tunnel
     HostName database.example.com
     IdentityFile ~/.ssh/path_to_PRIVATE_key
     LocalForward 9906 127.0.0.1:3306
     User coolio
 </code></pre>
+
 <p>And just</p>
-<pre><code class="language-bash">ssh -f -N tunnel
+<pre><code class="bash">ssh -f -N tunnel
 </code></pre>
+
 <p>Which will make it easier to manage</p>
 <h2 id="check-key-fingerprint">Check key fingerprint</h2>
 <h3 id="sha-256">SHA-256</h3>
 <pre><code>ssh-keygen -lf ~/.ssh/id_rsa.pub
 1024 SHA256:19n6fkdz0qqmowiBy6XEaA87EuG/jgWUr44ZSBhJl6Y (DSA)
 </code></pre>
+
 <h3 id="md5">MD5</h3>
 <pre><code>ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub
 2048 MD5:4d:5b:97:19:8c:fe:06:f0:29:e7:f5:96:77:cb:3c:71 (DSA)
 </code></pre>
+
 <h2 id="passwordless-login-to-machine-via-ssh">Passwordless login to machine via SSH</h2>
 <p>Use</p>
 <pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub some_user@some_host -p 22
 </code></pre>
+
 <p>or these steps:
 <code>ssh-keygen -t rsa (Optional)</code></p>
 <p><code>ssh b@B mkdir -p ~/.ssh</code></p>
@@ -721,6 +731,7 @@ and put this contents of $HOME/.ssh/config</p>
 <h2 id="execute-graphical-command-in-remote-computer">Execute graphical command in remote computer</h2>
 <pre><code>ssh user@host &quot;DISPLAY=:0 nohup vlc /path/to/media/movie.mp4&quot;
 </code></pre>
+
 <h2 id="disable-ssh-password-authentication">Disable SSH password authentication</h2>
 <p>edit <code>/etc/ssh/sshd_config</code>
 with contents</p>
@@ -728,6 +739,7 @@ with contents</p>
 PasswordAuthentication no
 UsePAM no
 </code></pre>
+
 <p>Restart daemon
 <code># /etc/init.d/sshd restart</code></p>
 <h2 id="add-private-key">Add private key</h2>

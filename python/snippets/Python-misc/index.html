@@ -626,31 +626,36 @@
 
 <h3 id="create-matrix">Create matrix</h3>
 <h4 id="create-matrix-of-none">Create matrix of None</h4>
-<pre><code class="language-python">A = [[ None for _ in xrange(M)] for _ in xrange(N)]
+<pre><code class="python">A = [[ None for _ in xrange(M)] for _ in xrange(N)]
 </code></pre>
+
 <h4 id="create-matrix-of-random-numbers">Create matrix of random numbers</h4>
-<pre><code class="language-python">import random
+<pre><code class="python">import random
 A = [[ random.random() for _ in xrange(M)] for _ in xrange(N)]
 </code></pre>
+
 <h4 id="generator-for-lists-of-m-random-elements">Generator for lists of M random elements</h4>
-<pre><code class="language-python">import random
+<pre><code class="python">import random
 A = ([ random.random() for _ in xrange(M)] for _ in iter(int, 1))
 for i in A:
     print i
     sleep(0.2)
 </code></pre>
+
 <h3 id="flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</h3>
-<pre><code class="language-python">import itertools
+<pre><code class="python">import itertools
 list2d = [[1,2,3],[4,5,6], [7], [8,9]]
 list(itertools.chain.from_iterable(list2d))
 &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
+
 <h4 id="strip-punctuation-of-string">Strip punctuation of string</h4>
-<pre><code class="language-python">s.translate(None, string.punctuation)
+<pre><code class="python">s.translate(None, string.punctuation)
 </code></pre>
+
 <h3 id="permutations">Permutations</h3>
 <p>From <a href="https://docs.python.org/3/reference/lexical_analysis.html">python lexical analysis docs</a></p>
-<pre><code class="language-python">def perm(l):
+<pre><code class="python">def perm(l):
     # Compute the list of all permutations of l
     if len(l) &lt;= 1:
         return [l]
@@ -662,18 +667,21 @@ list(itertools.chain.from_iterable(list2d))
              r.append(l[i:i+1] + x)
     return r
 </code></pre>
+
 <h4 id="print-literal-curly-braces">Print literal curly-braces</h4>
-<pre><code class="language-python">p = &quot;{{}} {}&quot;
+<pre><code class="python">p = &quot;{{}} {}&quot;
 p.format(7)
 </code></pre>
+
 <h4 id="random-string">Random string</h4>
 <p>taken from <a href="https://stackoverflow.com/a/2257449">here</a></p>
-<pre><code class="language-python">import string, random
+<pre><code class="python">import string, random
 N = 7
 ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
 </code></pre>
+
 <p>cryptographically more secure version</p>
-<pre><code class="language-python">''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
+<pre><code class="python">''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
 </code></pre></div>
             </div>
         </div>

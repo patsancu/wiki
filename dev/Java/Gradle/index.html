@@ -632,19 +632,23 @@
     }
 }
 </code></pre>
+
 <h3 id="debug">Debug</h3>
 <h4 id="list-folder-contents">List folder contents</h4>
 <pre><code>new File(&quot;${stageDir}&quot;).eachFile{ println it}
 </code></pre>
+
 <h4 id="run-spring-boot-project-with-java-params">Run spring boot project with java params</h4>
 <p>Put this in build.gradle file</p>
 <pre><code>bootRun {
     systemProperty(&quot;spring.config.location&quot;, &quot;src/main/docker/application.properties,../override.properties&quot;)
 }
 </code></pre>
+
 <p>Then, usual run</p>
 <pre><code>gradle bootrun
 </code></pre>
+
 <h3 id="run-debug">Run debug</h3>
 <pre><code>gradle bootrun --debug-jvm
 </code></pre></div>

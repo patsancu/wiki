@@ -627,13 +627,16 @@
 <h3 id="start-simple-http-server-python">Start simple http server python</h3>
 <pre><code>$ python -m SimpleHTTPServer [port]
 </code></pre>
+
 <pre><code>$ python3 -m http.server [port]
 </code></pre>
+
 <h3 id="progress-bar-with-tdqm">Progress bar with tdqm</h3>
-<pre><code class="language-python">from tqdm
+<pre><code class="python">from tqdm
 </code></pre>
+
 <p>trange(i) is a special optimised instance of tqdm(range(i)):</p>
-<pre><code class="language-python"># worse
+<pre><code class="python"># worse
 for i in tqdm(xrange(10**6)):
     pass
 
@@ -641,13 +644,15 @@ for i in tqdm(xrange(10**6)):
 for i in trange(10**6):
     pass
 </code></pre>
+
 <h5 id="manual">Manual</h5>
-<pre><code class="language-python">with tqdm(total=100) as pbar:
+<pre><code class="python">with tqdm(total=100) as pbar:
     for i in range(10):
         pbar.update(10)
 </code></pre>
+
 <h3 id="generate-uuid">Generate UUID</h3>
-<pre><code class="language-python">python -c &quot;import uuid; print uuid.uuid4()&quot;
+<pre><code class="python">python -c &quot;import uuid; print uuid.uuid4()&quot;
 </code></pre></div>
             </div>
         </div>

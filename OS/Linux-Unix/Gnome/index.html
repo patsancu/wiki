@@ -635,13 +635,16 @@ to contain the line
 <h3 id="change-screenshot-directory">Change screenshot directory</h3>
 <pre><code>gsettings set org.gnome.gnome-screenshot auto-save-directory &quot;file:///home/$USER/Pictures/Screenshots/&quot;
 </code></pre>
+
 <h3 id="assignunassign-keyboards-sleep-button">Assign/unassign keyboard's sleep button</h3>
 <h4 id="assign">Assign</h4>
 <pre><code>gsettings set org.gnome.settings-daemon.plugins.power button-suspend &quot;nothing&quot;
 </code></pre>
+
 <h4 id="unassign">Unassign</h4>
 <pre><code>gsettings set org.gnome.settings-daemon.plugins.power button-suspend &quot;suspend&quot;
 </code></pre>
+
 <h3 id="custom-launchers">Custom launchers</h3>
 <p>The applications launchers Gnome knows about are .desktop files in /usr/share/applications, and <code>~/.local/share/applications</code>. You can create custom launchers for whatever is in your home folder, by either manually creating and editing a custom .desktop file, or by using Alacarte, the old Gnome menu editor.</p>
 <p>The Gnome desktop file documentation can be of help: https://developer.gnome.org/integration-guide/stable/desktop-files.html.en</p>
@@ -654,6 +657,7 @@ Terminal=false
 Type=Application
 Icon=/optional/path/to/icon.png
 </code></pre>
+
 <h3 id="disable-annoying-evince-thumbnailer">Disable annoying evince thumbnailer</h3>
 <ul>
 <li>From <a href="https://bugs.launchpad.net/ubuntu/+source/evince/+bug/1386120/comments/4">here</a></li>

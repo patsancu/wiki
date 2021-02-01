@@ -632,25 +632,28 @@
 <h3 id="currying-functions">Currying functions</h3>
 <p>Function that returns a function</p>
 <h4 id="with-lambdas">With lambdas</h4>
-<pre><code class="language-python">import math
+<pre><code class="python">import math
 def make_cylinder_volume_fun(r):
     return lambda h: math.pi * r * r * h
 </code></pre>
+
 <h4 id="without-lambdas">Without lambdas</h4>
-<pre><code class="language-python">import math
+<pre><code class="python">import math
 def make_cylinder_volume_func(r):
     def volume(h):
         return math.pi * r * r * h
     return volume
 </code></pre>
+
 <h3 id="flatten-list-of-lists-only-one-level-of-nesting">Flatten list of lists (only one level of nesting)</h3>
-<pre><code class="language-python">import itertools
+<pre><code class="python">import itertools
 list2d = [[1,2,3],[4,5,6], [7], [8,9]]
 list(itertools.chain.from_iterable(list2d))
 &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
+
 <h3 id="flatten-json">Flatten json</h3>
-<pre><code class="language-python">def flattenjson( b, delim ):
+<pre><code class="python">def flattenjson( b, delim ):
     val = {}
     for i in b.keys():
         if isinstance( b[i], dict ):
@@ -662,18 +665,21 @@ list(itertools.chain.from_iterable(list2d))
 
     return val
 </code></pre>
+
 <h4 id="strip-punctuation-of-string">Strip punctuation of string</h4>
-<pre><code class="language-python">s.translate(None, string.punctuation)
+<pre><code class="python">s.translate(None, string.punctuation)
 </code></pre>
+
 <h3 id="flatten-list-of-lists-only-one-level-of-nesting_1">Flatten list of lists (only one level of nesting)</h3>
-<pre><code class="language-python">import itertools
+<pre><code class="python">import itertools
 list2d = [[1,2,3],[4,5,6], [7], [8,9]]
 list(itertools.chain.from_iterable(list2d))
 &gt;&gt;&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
+
 <h3 id="misc">Misc</h3>
 <h4 id="dissassemble-python-code">Dissassemble python code</h4>
-<pre><code class="language-python">def myfunc(alist):
+<pre><code class="python">def myfunc(alist):
     return len(alist)
 &gt;&gt;&gt; import dis
 &gt;&gt;&gt; dis.dis(my_func)
@@ -683,6 +689,7 @@ list(itertools.chain.from_iterable(list2d))
               6 CALL_FUNCTION            1
               9 RETURN_VALUE
 </code></pre>
+
 <h3 id="python-program-from-cli">Python program from CLI</h3>
 <pre><code>#!/usr/bin/env bash
 echo &quot;somebody&quot; | python -c &quot;
@@ -691,6 +698,7 @@ for line in sys.stdin:
     print line
 &quot;
 </code></pre>
+
 <p>or</p>
 <pre><code>#!/usr/bin/env bash
 
@@ -701,25 +709,28 @@ for line in fileinput.input():
 &quot;
 somebody
 </code></pre>
+
 <h3 id="generator">Generator</h3>
 <h4 id="take-n-elements-from-a-generator">Take n elements from a generator</h4>
-<pre><code class="language-python">n = 5
+<pre><code class="python">n = 5
 array = (x**2 for x in xrange(10))
 smaller = itertools.islice(array, n) ## get a new generator
 list(smaller) ## or a list
 &gt;&gt;&gt; [0, 1, 4, 9, 16]
 </code></pre>
+
 <h3 id="json">Json</h3>
 <h4 id="read-json-ignoring-trailing-commas">Read json ignoring trailing commas</h4>
-<pre><code class="language-python">import json
+<pre><code class="python">import json
 from jsoncomment import JsonComment
 
 with open(filename) as data_file:
     parser = JsonComment(json)
     data = parser.load(data_file)
 </code></pre>
+
 <h4 id="flatten-json_1">Flatten json</h4>
-<pre><code class="language-python">def flattenjson( b, delim ):
+<pre><code class="python">def flattenjson( b, delim ):
     val = {}
     for i in b.keys():
         if isinstance( b[i], dict ):

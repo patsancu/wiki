@@ -627,7 +627,7 @@
                     <div class="col-md-9" role="main">
 
 <h3 id="check-number-of-sessions">Check number of sessions</h3>
-<pre><code class="language-sql">SELECT
+<pre><code class="sql">SELECT
   'Currently, '
   || (SELECT COUNT(*) FROM V$SESSION)
   || ' out of '
@@ -637,11 +637,13 @@ FROM
   V$PARAMETER VP
 WHERE VP.NAME = 'sessions'
 </code></pre>
+
 <h3 id="change-concurrency-and-stuff-params">Change concurrency and stuff params</h3>
 <pre><code>alter system set processes = 150 scope = spfile;
 alter system set sessions = 300 scope = spfile;
 alter system set transactions = 330 scope = spfile;
 </code></pre>
+
 <h3 id="list-sesssions-per-pid-machine-username-etc">List sesssions per pid, machine, username, etc</h3>
 <pre><code>select
        substr(a.spid,1,9) pid,
@@ -656,6 +658,7 @@ WHERE b.paddr = a.addr
 and type='USER'
 order by spid; 
 </code></pre>
+
 <h3 id="delete-all-tables">Delete all tables</h3>
 <p>Proceed with caution</p>
 <pre><code>BEGIN
@@ -703,8 +706,9 @@ order by spid;
   END;
 END;
 </code></pre>
+
 <h3 id="find-table-with-column-namesql">Find table with column name.sql</h3>
-<pre><code class="language-sql">select 
+<pre><code class="sql">select 
   * 
 from 
   dba_tab_columns 

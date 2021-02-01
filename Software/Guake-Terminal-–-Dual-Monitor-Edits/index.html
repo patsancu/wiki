@@ -632,11 +632,13 @@
 <pre><code>window_rect.x = 1280
 window_rect.y = 24
 </code></pre>
+
 <ul>
 <li>Now Guake will be positioned on your right monitor, but it will still be the size of the left one. In my case it was sized at 1280, and I needed it to be 1920. Divide your right monitor’s width by the left monitor’s width (ie. 1920/1280 = 150). Still within  <code>get_final_window_rect(self):</code> you will find the line <code>width = 100</code> . This setting is a percentage of your left monitor, so set it to the answer you got by dividing one width into the other. In my case it was:</li>
 </ul>
 <pre><code>width = 150
 </code></pre>
+
 <p>That’s it! Just make sure to always run your copy of the program, or better yet add it to your autostart so it runs automatically!</p></div>
             </div>
         </div>

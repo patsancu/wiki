@@ -624,13 +624,14 @@
 
 <h4 id="faker"><a href="https://pypi.python.org/pypi/Faker">Faker</a></h4>
 <p>Generate random data on the fly</p>
-<pre><code class="language-python">from faker import Factory
+<pre><code class="python">from faker import Factory
 fake = Factory.create('fr_FR') # Localized names
 
 for _ in range(0, 10):
    print fake.first_name()
    print fake.last_name()
 </code></pre>
+
 <p>More elaborate <a href="https://gist.github.com/patsancu/416a1ba88294277d1d51e562f5fd97cf">example</a>, with custom providers</p></div>
             </div>
         </div>

@@ -634,37 +634,46 @@
 <li>https://drill.apache.org/docs/alter-system/</li>
 </ul>
 <h3 id="change-store-format">Change store format</h3>
-<pre><code class="language-sql">use dfs.tmp;
+<pre><code class="sql">use dfs.tmp;
 alter session set store.`format`='json';
 </code></pre>
+
 <p>After that, </p>
-<pre><code class="language-sql">CREATE TABLE movieRegions (region, title, purchases) as  SELECT region, title, count(*) as numberOfPurchases  FROM dfs.`/home/user/data/some/path/some_file.json` group by region, title;
+<pre><code class="sql">CREATE TABLE movieRegions (region, title, purchases) as  SELECT region, title, count(*) as numberOfPurchases  FROM dfs.`/home/user/data/some/path/some_file.json` group by region, title;
 </code></pre>
+
 <p>will create table on <code>/tmp/movieRegions/SOME_NUMBERS.json</code></p>
 <h3 id="query-custom-sv-file-fields-delimited-by-another-character">query custom *sv file (fields delimited by another character)</h3>
 <pre><code>select * from table(dfs.`/path/to/file/some_data.xsv` (type =&gt; 'text', fieldDelimiter =&gt; '~', extractHeader =&gt; true));
 </code></pre>
+
 <h3 id="query-file-given-absolute-path">Query file given absolute path</h3>
 <p>select * from dfs.<code>/home/patrick/dev/tvmetrix/extractor/data/liveevents/2018-01-18/liveevents_DF_2018-01-18_153010_469.json.gz</code> limit 20;</p>
 <h3 id="query-the-system">Query the system</h3>
 <h4 id="identify-the-foreman">Identify the Foreman</h4>
 <p>Issue the following query to identify the Foreman node:</p>
-<pre><code class="language-sql">SELECT hostname FROM sys.drillbits WHERE `current` = true
+<pre><code class="sql">SELECT hostname FROM sys.drillbits WHERE `current` = true
 </code></pre>
+
 <h4 id="get-drill-version">Get drill version</h4>
-<pre><code class="language-sql">SELECT version FROM sys.version;
+<pre><code class="sql">SELECT version FROM sys.version;
 </code></pre>
+
 <h4 id="get-a-complete-list-of-planning-and-execution-options-that-are-currently-set-at-the-system-or-session-level">Get a complete list of planning and execution options that are currently set at the system or session level</h4>
-<pre><code class="language-sql">SELECT name, type FROM sys.options WHERE type in ('SYSTEM','SESSION') order by name;
+<pre><code class="sql">SELECT name, type FROM sys.options WHERE type in ('SYSTEM','SESSION') order by name;
 </code></pre>
+
 <h3 id="change-system-settings">Change system settings</h3>
 <pre><code>alter system set planner.enable_hashagg = true;
 </code></pre>
+
 <pre><code>alter system set planner.enable_multiphase_agg = false;
 </code></pre>
+
 <h3 id="change-port-of-web-ui">Change port of web UI</h3>
-<pre><code class="language-shell">$ vim conf/drill-override.conf
+<pre><code class="shell">$ vim conf/drill-override.conf
 </code></pre>
+
 <pre><code>drill.exec: {
   cluster-id: &quot;drillbits1&quot;
   rpc: {
@@ -701,6 +710,7 @@ alter session set store.`format`='json';
 drill.logical.function.package+=[com.mapr.drill]
 
 </code></pre>
+
 <h3 id="change-log-level">Change log level</h3>
 <p>Edit <code>/conf/logback.xml</code></p></div>
             </div>

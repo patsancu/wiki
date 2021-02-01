@@ -631,53 +631,65 @@
 <pre><code>sqlite3 {database file name}
 sqlite3 my_stuff_database.db
 </code></pre>
+
 <p>If the database exists it will be opened, if it doesn’t exist, it will be created (sort of – you’ll need to perform some sort of write operation first)</p>
 <p>Print the database structure</p>
 <pre><code>.schema
 </code></pre>
+
 <p>Print database structure and data</p>
 <pre><code>.dump
 </code></pre>
+
 <p>Turn on column names on query results</p>
 <pre><code>.explain on
 </code></pre>
+
 <p>To turn it off do:</p>
 <pre><code>.explain off
 </code></pre>
+
 <p>This will return the output to the default of pipe-separated values with no column header. Use the following command to see the current ‘explain’ status:</p>
 <pre><code>.show
 </code></pre>
+
 <h3 id="creating-tables">Creating Tables</h3>
 <pre><code>create table {table name} ('{column name}' {data type} primary key, '{column name}' {data type});
 Eg:
 CREATE TABLE my_things('id' int primary key, 'name' varchar(20), 'description' varchar(50));
 </code></pre>
+
 <p>Adding a Column to a Table</p>
 <pre><code>alter table {table name} ADD '{column name}' {data type};
 Eg:
 alter table my_things ADD 'description' varchar(50);
 </code></pre>
+
 <p>Deleting a table</p>
 <pre><code>drop table {table name};
 
 Eg:
 drop table my_things;
 </code></pre>
+
 <p>Inserting Data into a Table</p>
 <p>```insert into {table name} values ({data}, {more data}, '{yet more data}');
 Eg:
 insert into my_things values (1, 'My first thing', 'It is nice');</p>
 <pre><code>Transactions
 </code></pre>
+
 <p>begin transaction;
 {put the relevant queries here}
 commit;</p>
 <pre><code>Output query results to a file
 </code></pre>
+
 <p>.output {filename.txt}</p>
 <pre><code>After entering the above command, the results of subsequent queries will be written to the specified file
 Change the output back to being printed to the console by typing the following:
 </code></pre>
+
 <p>.output stdout</p>
 <pre><code>
 ### Export/dump query results to file

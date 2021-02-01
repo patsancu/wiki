@@ -638,22 +638,26 @@
 <h3 id="find-out-what-is-loading-some-specific-class">Find out what is loading some specific class</h3>
 <pre><code>java -verbose:class project-televisa-reports-db-extractor-spring-boot.jar | grep javax.servlet.ServletContext
 </code></pre>
+
 <p>More info <a href="http://www.oracle.com/technetwork/java/javase/clopts-139448.html">here</a></p>
 <h3 id="jmx-debug-jconsole">JMX debug jconsole</h3>
 <p>execute </p>
-<pre><code class="language-bash">$JAVA_HOME/bin/jconsole server:port
+<pre><code class="bash">$JAVA_HOME/bin/jconsole server:port
 ## Example:
 $JAVA_HOME/bin/jconsole localhost:8048
 </code></pre>
+
 <h3 id="freemarker">Freemarker</h3>
 <h4 id="ouptut-integers-without-commas-separating-the-thousands">Ouptut integers without commas (separating the thousands)</h4>
 <p>Add <strong>?c</strong> to the number variable</p>
 <pre><code>report.total_households?c
 </code></pre>
+
 <h3 id="eclipse">Eclipse</h3>
 <h4 id="remote-debug">Remote debug</h4>
 <pre><code>java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=&quot;8765&quot; project.jar --server.port=7080 
 </code></pre>
+
 <ul>
 <li>From Eclipse, Run -&gt; Debug configurations... -&gt; Remote Java Application</li>
 <li>In <em>Connection Type</em>: </li>
@@ -663,10 +667,12 @@ Connection Properties:
 Host: localhost
 Port: 8765
 </code></pre>
+
 <p>More info <a href="http://www.ibm.com/developerworks/library/os-eclipse-javadebug/">here</a></p>
 <h3 id="extract-jar-contents">Extract jar contents</h3>
 <pre><code>jar jar xf iris-analytics-information-extractor-1.1.1.jar
 </code></pre>
+
 <h3 id="useful-libraries">Useful libraries</h3>
 <p><a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/base/Strings.html">com.google.common.base.Strings</a></p>
 <p><code>static String commonPrefix(CharSequence a, CharSequence b)</code></p>

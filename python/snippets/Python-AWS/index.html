@@ -624,7 +624,7 @@
                     <div class="col-md-9" role="main">
 
 <h3 id="s3">S3</h3>
-<pre><code class="language-python">import boto3
+<pre><code class="python">import boto3
 
 class S3wrapper(object):
 
@@ -649,9 +649,10 @@ class S3wrapper(object):
         self.s3.upload_file(self.file_name, self.bucket_name, self.key)
 
 </code></pre>
+
 <h3 id="kinesis">Kinesis</h3>
 <h4 id="simply-send-some-data">Simply send some data</h4>
-<pre><code class="language-python">#!/usr/bin/env python
+<pre><code class="python">#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
@@ -694,8 +695,9 @@ print &quot;********************&quot;
 
 print &quot;HTTPStatusCode: {}&quot;.format(response.values()[1]['HTTPStatusCode'])
 </code></pre>
+
 <h4 id="read-write">Read write</h4>
-<pre><code class="language-python">import json
+<pre><code class="python">import json
 import time
 from boto import kinesis
 
@@ -727,8 +729,9 @@ while True:
     time.sleep(0.2)
 print &quot;********************&quot;
 </code></pre>
+
 <h4 id="read">Read</h4>
-<pre><code class="language-python">import sys
+<pre><code class="python">import sys
 from time import strftime, gmtime
 import logging
 import json

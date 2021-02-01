@@ -632,16 +632,17 @@
                     <div class="col-md-9" role="main">
 
 <h3 id="selective-count">Selective count</h3>
-<pre><code class="language-sql">SELECT count(
+<pre><code class="sql">SELECT count(
     CASE
         WHEN content.parental_rating IS NULL THEN 1
     end
 )/count(*)*100
 FROM CONT_AV_CONTENT content
 </code></pre>
+
 <h3 id="rank-rows-relative-to-some-column">Rank rows relative to some column</h3>
 <p>A content has multiple genres. This will rank genres of each content (categorised according to their title).</p>
-<pre><code class="language-sql">SELECT content.content_id,
+<pre><code class="sql">SELECT content.content_id,
        content.title,
        genre.NAME,
        Row_number() OVER ( partition BY content.title ORDER BY genre.genre_id DESC) AS ranking
@@ -651,12 +652,14 @@ FROM   cont_av_content CONTENT
        JOIN cont_genre genre
          ON genre.genre_id = cmap.genre_id
 </code></pre>
+
 <h3 id="from-string-to-timestamp">From string to timestamp</h3>
 <pre><code>TO_TIMESTAMP('2016-05-14', 'YYYY-MM-DD')
 </code></pre>
+
 <h3 id="calculate-table-size">Calculate table size</h3>
 <p><a href="https://stackoverflow.com/a/10109416">source</a></p>
-<pre><code class="language-sql">-- Tables + Size MB
+<pre><code class="sql">-- Tables + Size MB
 select owner, table_name, round((num_rows*avg_row_len)/(1024*1024)) MB
 from all_tables
 where owner not like 'SYS%'  -- Exclude system tables.
@@ -669,19 +672,22 @@ where owner not like 'SYS%'  -- Exclude system tables.
 and num_rows &gt; 0  -- Ignore empty Tables.
 order by num_rows desc -- Biggest first.;
 </code></pre>
+
 <h3 id="group-by-truncated-date">Group by truncated date</h3>
 <pre><code>select TRUNC(created), count(*)
 from PURCHASES
 where created &gt;=  TO_TIMESTAMP ( '01-OCT-2017 00:00:00', 'DD-MON-YYYY HH24:MI:SS')
 group by TRUNC(created)
 </code></pre>
+
 <h3 id="look-for-table-by-name">Look for table by name</h3>
-<pre><code class="language-sql">SELECT owner, table_name
+<pre><code class="sql">SELECT owner, table_name
   FROM dba_tables
   where owner = 'da_owner'
 </code></pre>
+
 <h3 id="round-timestampdatetime-to-next-5-minutes">Round timestamp/datetime to next 5 minutes</h3>
-<pre><code class="language-sql">with table_x as (
+<pre><code class="sql">with table_x as (
  select timestamp '2010-02-19 01:25:46' t from dual union all
  select timestamp '2010-02-19 01:40:46' from dual union all
  select timestamp '2010-02-19 01:55:46' from dual union ALL
@@ -711,8 +717,9 @@ SELECT
      else t end as rounded_time_TO
 FROM time_table
 </code></pre>
+
 <h3 id="split-string-and-pick-last">Split string and pick last</h3>
-<pre><code class="language-sql">WITH some_table AS (
+<pre><code class="sql">WITH some_table AS (
     SELECT 'SOME_CITY_NAME_1' city_name FROM dual UNION ALL
     SELECT 'BERLIN_24' FROM dual UNION ALL
     SELECT 'MADRID_3' FROM dual UNION ALL
@@ -729,8 +736,9 @@ SELECT city_name, SUBSTR( city_name,
 -- MADRID_3 || 3
 -- SOME_OTHER_CITY_NAME_2 || 2
 </code></pre>
+
 <h3 id="split-string-and-pick-all-but-last">Split string and pick all but last</h3>
-<pre><code class="language-sql">WITH some_table AS (
+<pre><code class="sql">WITH some_table AS (
     SELECT 'SOME_CITY_NAME_1' city_name FROM dual UNION ALL
     SELECT 'BERLIN_24' FROM dual UNION ALL
     SELECT 'MADRID_3' FROM dual UNION ALL
@@ -747,8 +755,9 @@ SELECT city_name, SUBSTR( city_name,
 -- MADRID_3;MADRID
 -- SOME_OTHER_CITY_NAME_2;SOME_OTHER_CITY_NAME
 </code></pre>
+
 <h3 id="compare-dates-with-and-without-timezone">Compare dates with and without timezone</h3>
-<pre><code class="language-sql">-- trans_time is with time zone and SUBSCRIPTION.VALID_FROM is in UTC but with no explicit timezone
+<pre><code class="sql">-- trans_time is with time zone and SUBSCRIPTION.VALID_FROM is in UTC but with no explicit timezone
 SELECT
     *
 FROM

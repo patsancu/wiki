@@ -631,9 +631,11 @@
 <p>Test speficic method from specific classes, ignoring failure if there are no tests</p>
 <pre><code>mvn test -Dtest=ZoneDaoTest#findZoneByCityIdExistingCityId -DfailIfNoTests=false
 </code></pre>
+
 <h3 id="find-duplicated-dependencies">Find duplicated dependencies</h3>
 <pre><code>mvn dependency:analyze-duplicate
 </code></pre>
+
 <h3 id="create-executable-jar">Create executable jar</h3>
 <ul>
 <li>In pom.xml</li>
@@ -680,11 +682,14 @@
     &lt;/pluginManagement&gt;
 &lt;/build&gt;
 </code></pre>
+
 <pre><code>mvn clean compile assembly:single -Dmaven.test.skip=true
 </code></pre>
+
 <h4 id="run-java-project-from-cli">Run java project from CLI</h4>
 <pre><code>mvn exec:java -Dexec.mainClass=&quot;s3.pruebas.pruebas.App&quot;
 </code></pre>
+
 <h4 id="maven-error">Maven error</h4>
 <p>try-with-resources is not supported in -source 1.6</p>
 <h3 id="cause">Cause</h3>
@@ -707,6 +712,7 @@
     &lt;/pluginManagement&gt;
   &lt;/build&gt;
 </code></pre>
+
 <h3 id="get-project-version">Get project version</h3>
 <pre><code>MVN_VERSION=$(mvn -q \
     -Dexec.executable=echo \

@@ -631,11 +631,12 @@
                     <div class="col-md-9" role="main">
 
 <h3 id="sleep">Sleep</h3>
-<pre><code class="language-java">//Pause for 4 seconds
+<pre><code class="java">//Pause for 4 seconds
 Thread.sleep(4000);
 </code></pre>
+
 <h3 id="write-file">Write file</h3>
-<pre><code class="language-java">public void writeFile() {
+<pre><code class="java">public void writeFile() {
     try(FileOutputStream fos = newFileOutputStream(&quot;movies.txt&quot;);
         DataOutputStream dos = newDataOutputStream(fos)) {
 
@@ -649,11 +650,13 @@ Thread.sleep(4000);
 }
 
 </code></pre>
+
 <h3 id="read-file">Read file</h3>
 <h4 id="java-7">Java 7</h4>
 <h5 id="read-all-contents-at-once">Read all contents at once</h5>
-<pre><code class="language-java">String content = new String(Files.readAllBytes(Paths.get(fileName)));
+<pre><code class="java">String content = new String(Files.readAllBytes(Paths.get(fileName)));
 </code></pre>
+
 <h5 id="line-by-line">Line by line</h5>
 <pre><code>package com.mkyong;
 
@@ -688,12 +691,14 @@ public class ReadTextFile {
 
 }
 </code></pre>
+
 <h4 id="java-8">Java 8</h4>
-<pre><code class="language-java">Stream&lt;String&gt; lines = Files.lines(path);
+<pre><code class="java">Stream&lt;String&gt; lines = Files.lines(path);
 lines.forEach(line -&gt; data.append(line).append(&quot;\n&quot;));
 lines.close();
 </code></pre>
-<pre><code class="language-java">@Test
+
+<pre><code class="java">@Test
 public void givenFilePath_whenUsingFilesLines_thenFileData() {
    String expectedData = &quot;Hello World from fileTest.txt!!!&quot;;
 
@@ -708,16 +713,19 @@ public void givenFilePath_whenUsingFilesLines_thenFileData() {
    Assert.assertEquals(expectedData, data.toString().trim());
 }
 </code></pre>
+
 <h3 id="read-file-extension">Read file extension</h3>
 <p>http://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FilenameUtils.html#getExtension</p>
-<pre><code class="language-java">String ext1 = FilenameUtils.getExtension(&quot;/path/to/file/foo.txt&quot;); // returns &quot;txt&quot;
+<pre><code class="java">String ext1 = FilenameUtils.getExtension(&quot;/path/to/file/foo.txt&quot;); // returns &quot;txt&quot;
 String ext2 = FilenameUtils.getExtension(&quot;bar.exe&quot;); // returns &quot;exe&quot;
 </code></pre>
+
 <pre><code>// https://mvnrepository.com/artifact/commons-io/commons-io
 compile group: 'commons-io', name: 'commons-io', version: '2.4'
 </code></pre>
+
 <h3 id="get-file-last-updated-date">Get file last updated date</h3>
-<pre><code class="language-java">import java.io.File;
+<pre><code class="java">import java.io.File;
 import java.text.SimpleDateFormat;
 
 public class GetFileLastModifiedExample
@@ -734,6 +742,7 @@ public class GetFileLastModifiedExample
     }
 }
 </code></pre>
+
 <h3 id="empty-stack-trace">Empty stack trace</h3>
 <p>From <a href="https://www.atlassian.com/blog/archives/if_you_use_exceptions_for_path_control_dont_fill_in_the_stac">here</a>. Useful for custom exceptions, or when a quicker <em>error handling</em> is required.</p>
 <pre><code>/**
@@ -751,21 +760,24 @@ return this;
 }
 }
 </code></pre>
+
 <h3 id="create-temp-filefolder">Create temp file/folder</h3>
-<pre><code class="language-java">import java.nio.file.Files;
+<pre><code class="java">import java.nio.file.Files;
 
 tempCheckpointFolder = Files.createTempDirectory(&quot;checkpoints&quot;);
 //the directory must be empty in order to be deleted.
 tempCheckpointFolder.toFile().deleteOnExit();
 </code></pre>
+
 <h3 id="compute-time-difference">Compute time difference</h3>
-<pre><code class="language-java">LocalDateTime now = LocalDateTime.now();
+<pre><code class="java">LocalDateTime now = LocalDateTime.now();
 boolean olderThanAday = ChronoUnit.DAYS.between(startSessionDate, now ) &gt;= 1;
 if (olderThanAday){
     System.out.println(&quot;The stored timestamp is older than a day&quot;)
     startSessionDate = now;
 }
 </code></pre>
+
 <h3 id="random-alphanumeric-string">Random alphanumeric string</h3>
 <p>```<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 <dependency>
@@ -775,11 +787,13 @@ if (olderThanAday){
 </dependency></p>
 <pre><code>
 </code></pre>
+
 <p>RandomStringUtils.randomAlphanumeric(10);</p>
 <pre><code>
 
 ### Difference between two dates
 </code></pre>
+
 <p>LocalDateTime now = LocalDateTime.now();
 boolean olderThanAday = ChronoUnit.DAYS.between(startSessionDate, now ) &gt;= 1;
 if (startSessionDate == null || olderThanAday){

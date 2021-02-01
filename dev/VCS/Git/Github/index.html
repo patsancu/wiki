@@ -629,19 +629,23 @@
 rawUrl=`echo &quot;$1&quot; | sed &quot;s/github/raw.githubusercontent/g&quot; | sed &quot;s/blob\///&quot;`; wget $rawUrl; 
 wget $rawUrl
 </code></pre>
+
 <h3 id="cloning-and-forking">Cloning and forking</h3>
 <h4 id="updating-a-forked-repo-from-github">Updating a forked repo from github</h4>
 <p>http://stackoverflow.com/questions/7244321/how-do-i-update-a-github-forked-repository</p>
 <pre><code>base: mine 
 head fork: original
 </code></pre>
+
 <h3 id="change-repo-remote-url-from-http-to-ssh">Change repo remote url from http to ssh</h3>
 <p>change url in .git/config from:</p>
 <pre><code>https://github.com/USERNAME/OTHERREPOSITORY.git
 </code></pre>
+
 <p>to</p>
 <pre><code>git@github.com:USERNAME/OTHERREPOSITORY.git
 </code></pre>
+
 <h4 id="having-already-cloned-the-repo-but-not-forked-it">Having already cloned the repo, but not forked it</h4>
 <ul>
 <li>Ideally, create the repo with: https://developer.github.com/v3/repos/#create</li>
@@ -654,6 +658,7 @@ head fork: original
     git fetch my-fork
     git push my-fork master
 </code></pre>
+
 <h4 id="traditionally">Traditionally</h4>
 <p>Otherwise, if you want to follow convention:</p>
 <ol>

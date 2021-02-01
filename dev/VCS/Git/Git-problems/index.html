@@ -628,24 +628,28 @@
 git checkout master
 git merge branch-name
 </code></pre>
+
 <h3 id="git-is-pushing-with-an-unexpected-useremail">git is pushing with an unexpected user/email</h3>
 <p>According to the github <a href="https://help.github.com/articles/setting-your-commit-email-address-in-git/">docs</a>, GitHub uses the email address set in your local Git configuration to associate commits pushed from the command line with your GitHub account.
 * Check values from</p>
-<pre><code class="language-bash">git config -l
+<pre><code class="bash">git config -l
 </code></pre>
+
 <ul>
 <li>Check</li>
 </ul>
-<pre><code class="language-bash">git config --global -l
+<pre><code class="bash">git config --global -l
 </code></pre>
+
 <ul>
 <li>Check
 Check host from</li>
 </ul>
-<pre><code class="language-bash">vim ~/.ssh/config
+<pre><code class="bash">vim ~/.ssh/config
 </code></pre>
+
 <p>and compare it with the one in the repo push/fetch url at</p>
-<pre><code class="language-bash">.git/config
+<pre><code class="bash">.git/config
 </code></pre></div>
             </div>
         </div>

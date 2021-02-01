@@ -630,14 +630,17 @@
 <h3 id="delete-exited-containers">Delete exited containers</h3>
 <pre><code>docker rm -v $(docker ps -a -q -f status=exited)
 </code></pre>
+
 <h3 id="remove-dangling-images">Remove dangling images</h3>
 <pre><code>$ docker rmi $(docker images -f &quot;dangling=true&quot; -q)
 </code></pre>
+
 <h3 id="create-user">Create user</h3>
 <h4 id="simple-way-alpine">Simple way (alpine)</h4>
 <pre><code>RUN addgroup groupname &amp;&amp; adduser -s /bin/bash -D -G groupname username
 
 </code></pre>
+
 <h4 id="complex-way">Complex way</h4>
 <pre><code>
 # User config
@@ -664,6 +667,7 @@ USER developer
 WORKDIR $UHOME
 ENV ANT_HOME $UHOME/process-tools/bin
 </code></pre>
+
 <h3 id="private-registry">Private registry</h3>
 <ul>
 <li>Run private docker registry. <em>Only</em> works in local, because there are no installed certs.</li>
@@ -671,17 +675,20 @@ ENV ANT_HOME $UHOME/process-tools/bin
 </ul>
 <pre><code>docker run -d -p 8888:5000 registry:2
 </code></pre>
+
 <h3 id="docker-commit">Docker commit</h3>
 <ul>
 <li>Commit a new image with name commit, tag test, author Joe Bloggs, comment.</li>
 </ul>
 <pre><code>docker commit -a &quot;Joe Bloggs&quot; -m &quot;Comment&quot; RUNNING_IMAGE_ID commit:test
 </code></pre>
+
 <ul>
 <li>Commit a new image with name svendowideit/testimage, tag version4, with changes: a CMD command and an EXPOSE one.</li>
 </ul>
 <pre><code>docker commit --change='CMD [&quot;apachectl&quot;, &quot;-DFOREGROUND&quot;]' -c &quot;EXPOSE 80&quot; c3f279d17e0a  svendowideit/testimage:version4
 </code></pre>
+
 <h3 id="get-docker-containers-os">Get docker container's OS</h3>
 <ul>
 <li>Info <a href="https://serverfault.com/questions/805389/">here</a>

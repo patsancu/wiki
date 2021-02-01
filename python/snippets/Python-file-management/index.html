@@ -632,11 +632,12 @@
 * a list of the files immediately beneath the folder being traversed
 * a list of the folders immediately beneath the folder being traversed</p>
 <h3 id="quicktest">Quicktest</h3>
-<pre><code class="language-python">import os
+<pre><code class="python">import os
 
 for item in os.walk(&quot;.&quot;):
     print item
 </code></pre>
+
 <h3 id="traverse-all-the-tree-from-the-current-folder">Traverse all the tree from the current folder</h3>
 <pre><code>folder_tree_generator = os.walk(&quot;.&quot;)
 for dirpath, dirnames, filenames in gen:

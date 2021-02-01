@@ -632,13 +632,16 @@
 <h3 id="positional-args">Positional args</h3>
 <pre><code>'{1} {0}'.format('one', 'two')
 </code></pre>
+
 <h3 id="keyword-args">Keyword args</h3>
 <pre><code>'{first} {last}'.format(first='Hodor', last='Hodor!')
 </code></pre>
+
 <h3 id="getitem">Getitem</h3>
 <pre><code>person = {'first': 'Jean-Luc', 'last': 'Picard'}
 '{p[first]} {p[last]}'.format(p=person)
 </code></pre>
+
 <h3 id="value-conversion">Value conversion</h3>
 <pre><code>class Data(object):
 
@@ -650,21 +653,26 @@
 
 '{0!s} {0!r}'.format(Data())
 </code></pre>
+
 <h3 id="padding-and-aligning-strings">Padding and aligning strings</h3>
 <p>where _ is the padding characer. default is space</p>
 <h4 id="align-right">align right</h4>
 <pre><code>'{:_&gt;10}'.format('test')
 ______test
 </code></pre>
+
 <h4 id="align-left">align left</h4>
 <pre><code>'{:10}'.format('test')
 </code></pre>
+
 <h4 id="center-align">center align</h4>
 <pre><code>'{:^10}'.format('test')
 </code></pre>
+
 <h3 id="truncate-string">truncate string</h3>
 <pre><code>'{:.5}'.format('xylophone')
 </code></pre>
+
 <h3 id="date-time">Date time</h3>
 <pre><code>'{:%Y-%m-%d %H:%M}'.format(datetime(2001, 2, 3, 4, 5))
 </code></pre></div>

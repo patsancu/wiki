@@ -634,8 +634,9 @@ DROP TABLE original_table;
 CREATE TABLE original_table ...
 INSERT INTO original_table SELECT * FROM temp_table;
 </code></pre>
+
 <h3 id="search-column-which-has-value-in-range">Search column which has value in range</h3>
-<pre><code class="language-sql">SELECT
+<pre><code class="sql">SELECT
     a.created, b.*
 FROM
     table_b b
@@ -646,24 +647,29 @@ WHERE
 --  and a.created &lt;= '2020-10-21'::date
     a.created BETWEEN '2020-10-01'::date and '2020-10-21'::date
 </code></pre>
+
 <h3 id="list-tables">List tables</h3>
-<pre><code class="language-sql">SELECT * FROM pg_catalog.pg_tables
+<pre><code class="sql">SELECT * FROM pg_catalog.pg_tables
 where tablename like '%patata%' ;
 </code></pre>
-<pre><code class="language-sql">SELECT * FROM pg_catalog.pg_tables
+
+<pre><code class="sql">SELECT * FROM pg_catalog.pg_tables
 where schema like '%some_model%' ;
 </code></pre>
+
 <h3 id="describe-table">Describe table</h3>
-<pre><code class="language-sql">select column_name, data_type, character_maximum_length
+<pre><code class="sql">select column_name, data_type, character_maximum_length
 from INFORMATION_SCHEMA.COLUMNS where table_name = 'table_name_without_schema'
 </code></pre>
+
 <h3 id="capitalize-first-letter-of-each-word">Capitalize first letter of each word</h3>
-<pre><code class="language-sql">select initcap(lower(deli.short_title))
+<pre><code class="sql">select initcap(lower(deli.short_title))
 from deli
 </code></pre>
+
 <h3 id="select-top-n-from-groups">Select top N from groups</h3>
 <h4 id="select-top-2-subcategories-from-each-category-according-to-the-movie-screentime">Select top 2 subcategories from each category, according to the movie screentime</h4>
-<pre><code class="language-sql">with grouped_stuff as
+<pre><code class="sql">with grouped_stuff as
     ( select movie.category, movie.subcategory,
     sum(movie.screentime) as total_screentime
     from movies movie
