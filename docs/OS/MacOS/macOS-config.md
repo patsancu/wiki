@@ -19,3 +19,13 @@ to ~/.bashrc
 
 ### Basic stuff that should be included, but it's not
 `$ brew install coreutils`
+
+### Increase keyboard repeat rate
+From [here](https://apple.stackexchange.com/a/83923).
+
+Run in terminal
+```
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+```
+Important: Then logout for the changes to be applied
