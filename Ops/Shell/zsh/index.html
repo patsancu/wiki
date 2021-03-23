@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Kinesis - Patrick's Wiki</title>
+        <title>Zsh - Patrick's Wiki</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -166,31 +166,31 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../Cli-Config/" class="dropdown-item">Cli Config</a>
+    <a href="../../AWS/Cli-Config/" class="dropdown-item">Cli Config</a>
 </li>
             
 <li>
-    <a href="../EC2/" class="dropdown-item">EC2</a>
+    <a href="../../AWS/EC2/" class="dropdown-item">EC2</a>
 </li>
             
 <li>
-    <a href="../ECS/" class="dropdown-item">ECS</a>
+    <a href="../../AWS/ECS/" class="dropdown-item">ECS</a>
 </li>
             
 <li>
-    <a href="../General/" class="dropdown-item">General</a>
+    <a href="../../AWS/General/" class="dropdown-item">General</a>
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Kinesis</a>
+    <a href="../../AWS/Kinesis/" class="dropdown-item">Kinesis</a>
 </li>
             
 <li>
-    <a href="../Redshift/" class="dropdown-item">Redshift</a>
+    <a href="../../AWS/Redshift/" class="dropdown-item">Redshift</a>
 </li>
             
 <li>
-    <a href="../S3/" class="dropdown-item">S3</a>
+    <a href="../../AWS/S3/" class="dropdown-item">S3</a>
 </li>
     </ul>
   </li>
@@ -228,19 +228,19 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../Shell/Script-building/" class="dropdown-item">Script building</a>
+    <a href="../Script-building/" class="dropdown-item">Script building</a>
 </li>
             
 <li>
-    <a href="../../Shell/Scripts/" class="dropdown-item">Scripts</a>
+    <a href="../Scripts/" class="dropdown-item">Scripts</a>
 </li>
             
 <li>
-    <a href="../../Shell/Shell/" class="dropdown-item">Shell</a>
+    <a href="../Shell/" class="dropdown-item">Shell</a>
 </li>
             
 <li>
-    <a href="../../Shell/zsh/" class="dropdown-item">Zsh</a>
+    <a href="./" class="dropdown-item active">Zsh</a>
 </li>
     </ul>
   </li>
@@ -591,17 +591,17 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../General/" class="nav-link">
+                                <a rel="prev" href="../Shell/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Redshift/" class="nav-link">
+                                <a rel="next" href="../../../Software/Alluxio/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://github.com/patsancu/wiki/edit/master/docs/Ops/AWS/Kinesis.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                                <a href="https://github.com/patsancu/wiki/edit/master/docs/Ops/Shell/zsh.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
                     </ul>
                 </div>
@@ -621,97 +621,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<ul>
-<li><a href="../../../python/snippets/Python-AWS/#kinesis">Python</a></li>
-</ul>
-<h3 id="aws-cli">AWS CLI</h3>
-<p><strong>Warning</strong> Before using check that you have properly set the <code>AWS_PROFILE</code> env variable to some profile existing in <code>~/.aws/credentials</code>, or comfortable using the aws default profile
-as </p>
-<pre><code class="shell">$ export AWS_PROFILE=analytics-storm
-</code></pre>
-
-<h3 id="get-kinesis-decoded-data">Get kinesis decoded data</h3>
-<p>aws kinesis get-records --shard-iterator some_shard_hash --profile some-profile | jq ".Records [] .Data" | tr -d '
-"' | base64 -d</p>
-<pre><code>$ aws kinesis describe-stream --stream-name stream_name --profile user2
-
-{
-    &quot;StreamDescription&quot;: {
-        &quot;RetentionPeriodHours&quot;: 24, 
-        &quot;StreamName&quot;: &quot;stream_name&quot;, 
-        &quot;Shards&quot;: [
-            {
-                &quot;ShardId&quot;: &quot;shardId-000000000000&quot;, 
-                &quot;HashKeyRange&quot;: {
-                    &quot;EndingHashKey&quot;: &quot;whateverhashkey&quot;, 
-                    &quot;StartingHashKey&quot;: &quot;0&quot;
-                }, 
-                &quot;SequenceNumberRange&quot;: {
-                    &quot;StartingSequenceNumber&quot;: &quot;whateversequencenumber&quot;
-                }
-            }, 
-            {
-                &quot;ShardId&quot;: &quot;shardId-000000000001&quot;, 
-                &quot;HashKeyRange&quot;: {
-                    &quot;EndingHashKey&quot;: &quot;whateverhashke&quot;, 
-                    &quot;StartingHashKey&quot;: &quot;whatevernumber&quot;
-                }, 
-                &quot;SequenceNumberRange&quot;: {
-                    &quot;StartingSequenceNumber&quot;: &quot;somenumber&quot;
-                }
-            }
-        ], 
-        &quot;StreamARN&quot;: &quot;arn:aws:kinesis:region:accountNumber:stream/stream_name&quot;, 
-        &quot;EnhancedMonitoring&quot;: [
-            {
-                &quot;ShardLevelMetrics&quot;: []
-            }
-        ], 
-        &quot;StreamStatus&quot;: &quot;ACTIVE&quot;
-    }
-}
-</code></pre>
-
-<pre><code>$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type LATEST
-{
-    &quot;ShardIterator&quot;: &quot;whateversharditeratorwithnumberslettersandslashes &quot;
-}
-
-</code></pre>
-
-<p>get shard iterator for specific date (take into account the retention policy for your kinesis service)</p>
-<pre><code>$ aws kinesis get-shard-iterator --stream-name tvmetrix --shard-id shardId-000000000001 --shard-iterator-type AT_TIMESTAMP --timestamp &quot;2017-05-25 08:00:00&quot;
-</code></pre>
-
-<ul>
-<li>
-<p>shardId is one appearing in the describe-stream command above  </p>
-</li>
-<li>
-<p>for more info about shard-iterator-type
-http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#API_GetShardIterator_RequestSyntax</p>
-</li>
-</ul>
-<pre><code>$ aws kinesis get-records --shard-iterator whateversharditeratorwithnumberslettersandslashes --limit 1 --profile user2
-{
-    &quot;Records&quot;: [
-        {
-            &quot;Data&quot;: &quot;some_encoded_data&quot;, 
-            &quot;PartitionKey&quot;: &quot;some_numbers&quot;, 
-            &quot;ApproximateArrivalTimestamp&quot;: 1490964900.808, 
-            &quot;SequenceNumber&quot;: &quot;some_very_long_number&quot;
-        }
-    ], 
-    &quot;NextShardIterator&quot;: &quot;some_sequence_of_letters_and_numbers_and_slashes&quot;, 
-    &quot;MillisBehindLatest&quot;: 0
-}
-
+<h3 id="solve-compinit-issues">Solve compinit issues</h3>
+<pre><code>for f in $(compaudit);do sudo chown $(whoami):admin $f;done;
 </code></pre></div>
             </div>
         </div>
