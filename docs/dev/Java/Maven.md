@@ -4,6 +4,20 @@ Test speficic method from specific classes, ignoring failure if there are no tes
 ```
 mvn test -Dtest=ZoneDaoTest#findZoneByCityIdExistingCityId -DfailIfNoTests=false
 ```
+
+### Find dependency version updates
+
+#### Display version updates
+```
+mvn -DskipTests -Dmaven.test.skip=true -Pgrpc -Panalysis -Pdisplay-updates versions:display-dependency-updates
+```
+
+### Update dependencies in place
+```
+mvn -DskipTests -Dmaven.test.skip=true -Pgrpc -Panalysis -Pdisplay-updates versions:update-properties
+```
+
+
 ### Find duplicated dependencies
 ```
 mvn dependency:analyze-duplicate
