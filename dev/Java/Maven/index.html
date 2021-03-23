@@ -622,6 +622,8 @@
             
             
             
+            
+            
         </ul>
     </div>
 </div></div>
@@ -630,6 +632,15 @@
 <h3 id="maven">Maven</h3>
 <p>Test speficic method from specific classes, ignoring failure if there are no tests</p>
 <pre><code>mvn test -Dtest=ZoneDaoTest#findZoneByCityIdExistingCityId -DfailIfNoTests=false
+</code></pre>
+
+<h3 id="find-dependency-version-updates">Find dependency version updates</h3>
+<h4 id="display-version-updates">Display version updates</h4>
+<pre><code>mvn -DskipTests -Dmaven.test.skip=true -Pgrpc -Panalysis -Pdisplay-updates versions:display-dependency-updates
+</code></pre>
+
+<h3 id="update-dependencies-in-place">Update dependencies in place</h3>
+<pre><code>mvn -DskipTests -Dmaven.test.skip=true -Pgrpc -Panalysis -Pdisplay-updates versions:update-properties
 </code></pre>
 
 <h3 id="find-duplicated-dependencies">Find duplicated dependencies</h3>
