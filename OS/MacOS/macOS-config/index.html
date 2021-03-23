@@ -619,6 +619,7 @@
             
             
             
+            
         </ul>
     </div>
 </div></div>
@@ -640,7 +641,15 @@ $ export LANG=en_US.UTF-8
 
 <p>to ~/.bashrc</p>
 <h3 id="basic-stuff-that-should-be-included-but-its-not">Basic stuff that should be included, but it's not</h3>
-<p><code>$ brew install coreutils</code></p></div>
+<p><code>$ brew install coreutils</code></p>
+<h3 id="increase-keyboard-repeat-rate">Increase keyboard repeat rate</h3>
+<p>From <a href="https://apple.stackexchange.com/a/83923">here</a>.</p>
+<p>Run in terminal</p>
+<pre><code>defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+</code></pre>
+
+<p>Important: Then logout for the changes to be applied</p></div>
             </div>
         </div>
 
