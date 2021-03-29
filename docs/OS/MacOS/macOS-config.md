@@ -1,3 +1,12 @@
+### Remap keys
+From [superuser.com](https://superuser.com/a/1405422).
+
+Run this to assign the mapping of tilde from paragraph (the one that was showing, but was not meant to be there)
+```
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
+```
+
+For other keys, take a look [here](http://web.archive.org/web/20201211211934/https://developer.apple.com/library/archive/technotes/tn2450/_index.html)
 
 ### Mac OS X: ValueError: unknown locale: UTF-8 in Python
 
