@@ -624,11 +624,19 @@
             
             
             
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
+<h3 id="remap-keys">Remap keys</h3>
+<p>From <a href="https://superuser.com/a/1405422">superuser.com</a>.</p>
+<p>Run this to assign the mapping of tilde from paragraph (the one that was showing, but was not meant to be there)</p>
+<pre><code>hidutil property --set '{&quot;UserKeyMapping&quot;:[{&quot;HIDKeyboardModifierMappingSrc&quot;:0x700000064,&quot;HIDKeyboardModifierMappingDst&quot;:0x700000035}]}'
+</code></pre>
+
+<p>For other keys, take a look <a href="http://web.archive.org/web/20201211211934/https://developer.apple.com/library/archive/technotes/tn2450/_index.html">here</a></p>
 <h3 id="mac-os-x-valueerror-unknown-locale-utf-8-in-python">Mac OS X: ValueError: unknown locale: UTF-8 in Python</h3>
 <p>If you have faced the error on MacOS X, here's the quick fix - add these lines to your ~/.bash_profile:</p>
 <pre><code class="sh">$ export LC_ALL=en_US.UTF-8
