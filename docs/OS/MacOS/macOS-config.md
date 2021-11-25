@@ -1,3 +1,12 @@
+### Install java
+Download tar gz from [here](https://jdk.java.net/)
+```
+sudo mv openjdk-17.0.1_macos-x64_bin.tar.gz /Library/Java/JavaVirtualMachines/
+cd /Library/Java/JavaVirtualMachines/
+sudo tar -xzf openjdk-17.0.1_macos-x64_bin.tar.gz
+sudo rm openjdk-17.0.1_macos-x64_bin.tar.gz
+```
+
 ### Remap keys
 From [superuser.com](https://superuser.com/a/1405422).
 
