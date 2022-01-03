@@ -75,3 +75,7 @@ cat /etc/issue
 ### others
 cat /etc/os-release
 ```
+### Point to local machine from within container (macos)
+```
+docker run -p 8081 -e REDIS_HOST=host.docker.internal -e REDIS_PORT=6379 --rm rediscommander/redis-commander
+```
