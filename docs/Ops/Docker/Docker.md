@@ -79,3 +79,8 @@ cat /etc/os-release
 ```
 docker run -p 8081 -e REDIS_HOST=host.docker.internal -e REDIS_PORT=6379 --rm rediscommander/redis-commander
 ```
+
+### docker with minikube ip
+```
+echo "$(minikube ip)\t\t redis" | sudo tee -a /etc/hosts
+```
