@@ -413,6 +413,10 @@
 <li>
     <a href="../../../dev/Misc/Markdown/" class="dropdown-item">Markdown</a>
 </li>
+            
+<li>
+    <a href="../../../dev/Misc/XML/" class="dropdown-item">XML</a>
+</li>
     </ul>
   </li>
                                     
@@ -626,6 +630,8 @@
             
             
             
+            
+            
         </ul>
     </div>
 </div></div>
@@ -707,6 +713,14 @@ lsb_release -sirc
 cat /etc/issue
 ### others
 cat /etc/os-release
+</code></pre>
+
+<h3 id="point-to-local-machine-from-within-container-macos">Point to local machine from within container (macos)</h3>
+<pre><code>docker run -p 8081 -e REDIS_HOST=host.docker.internal -e REDIS_PORT=6379 --rm rediscommander/redis-commander
+</code></pre>
+
+<h3 id="docker-with-minikube-ip">docker with minikube ip</h3>
+<pre><code>echo &quot;$(minikube ip)\t\t redis&quot; | sudo tee -a /etc/hosts
 </code></pre></div>
             </div>
         </div>

@@ -413,6 +413,10 @@
 <li>
     <a href="../../dev/Misc/Markdown/" class="dropdown-item">Markdown</a>
 </li>
+            
+<li>
+    <a href="../../dev/Misc/XML/" class="dropdown-item">XML</a>
+</li>
     </ul>
   </li>
                                     
@@ -626,12 +630,19 @@
             
             
             
+            
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
 <p>Install VBox additions!</p>
+<h3 id="port-forward-from-the-cli-to-allow-to-ssh-into-the-virtual-machine">Port forward from the CLI (to allow to ssh into the virtual machine)</h3>
+<pre><code>VBoxManage modifyvm &quot;ubuntu20.04&quot; --natpf1 &quot;SSH,tcp,127.0.0.1,2522,10.0.2.15,22&quot;
+</code></pre>
+
+<p>After that, just ssh into the machine with:</p>
+<p><code>ssh 127.0.0.1 -p 2522</code></p>
 <h3 id="start-headless-machine-cli">Start headless machine CLI</h3>
 <p>VBoxManage startvm ubuservloc --type headless</p>
 <h3 id="get-ipv4-address-of-a-vbox-machine-named-ubuntu">Get ip(v4) address of a vbox machine (named <strong>ubuntu</strong>)</h3>
