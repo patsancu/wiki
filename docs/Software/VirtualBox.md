@@ -1,5 +1,15 @@
 Install VBox additions!
 
+
+### Port forward from the CLI (to allow to ssh into the virtual machine)
+```
+VBoxManage modifyvm "ubuntu20.04" --natpf1 "SSH,tcp,127.0.0.1,2522,10.0.2.15,22"
+```
+
+After that, just ssh into the machine with:
+
+`ssh 127.0.0.1 -p 2522`
+
 ### Start headless machine CLI
 VBoxManage startvm ubuservloc --type headless
 
@@ -13,7 +23,7 @@ VBoxManage guestproperty enumerate ubuntu | grep "Net.*V4.*IP"
 
 `sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) NAME_OF_SHARED_FOLDER_IN_VBOX FOLDER_IN_WHICH_TO_MOUNT`
 
-### Share folder between ubuntu host and windows guest 
+### Share folder between ubuntu host and windows guest
 * Add folder to shared folders in VBox settings
 * In windows cli: ```net use <letra>: \\vboxsvr\shared_folder_name```
 
