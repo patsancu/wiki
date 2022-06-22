@@ -1,3 +1,21 @@
+### Use docker remote host via ssh
+
+If a machine is accessible via ssh, this should work
+
+```
+export DOCKER_HOST=ssh://username@host:port
+```
+
+```
+2022-06-22 14:53:42 in some-folder on  master [⇡!?]
+➜ export DOCKER_HOST=ssh://someUser@127.0.0.1:9191
+2022-06-22 14:53:44 in some-folder on  master [⇡!?] on 🐳 v20.10.7 (someUser@127.0.0.1:9191)
+➜ docker images
+REPOSITORY                                                   TAG                                        IMAGE ID       CREATED         SIZE
+gcr.io/distroless/java                                       11-nonroot                                 1f9a30825753   52 years ago    210MB
+```
+
+
 ### Delete exited containers
 ```
 docker rm -v $(docker ps -a -q -f status=exited)
